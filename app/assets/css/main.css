@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* Folio markers rendered as subtle annotations */
+.folio-marker {
+  display: block;
+  font-size: 0.7rem;
+  font-family: system-ui, sans-serif;
+  font-variant: small-caps;
+  color: #9ca3af;
+  margin: 1.25rem 0 0.15rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid #d1d5db;
+  letter-spacing: 0.05em;
+}
+
+/* Override prose spacing for paragraphs following folio markers */
+.prose .folio-marker + p {
+  margin-top: 0;
+}

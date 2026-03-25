@@ -1,0 +1,14 @@
+---
+page: 0rb
+pdf_page: 9
+sortable_pagination_id: "0_002"
+---
+### Diclogus inter duos magiſtros Iohannē formā preceniorem
+Obannes quas nuduiſtertius accepi litteras de patria michi periocunde fuerunt dn̄e
+rector quare remigrare in patriam ociſſime vrgeor vt michi comes ſis itineris te ex
+orstum facio. Pe. lares nunc patrios viſere recuſo aureliā vl̓ audegauos ꝓpediē ſuꝫ
+petitirus vt legibus vacem. Io. ꝓbe agis vt te cura quā habes dignū reddas. Pe.
+ad hoc ſi fais ſinant eniter nec in hac parte magiſtri noſtri ꝯſilio acquieſcere inſtitui qͥ
+ſtudium theologicū michi ſuadēs ad kalendas grecas ꝑſuadebit humilis ſortꝭ tm̄ vi
+ros theologie ſe dedere intueor. Io. nec voto viuitur vno mille holm ipecies ⁊ rerū
+Fu¬

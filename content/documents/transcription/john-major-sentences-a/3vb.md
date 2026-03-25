@@ -1,0 +1,63 @@
+---
+page: 3vb
+pdf_page: 16
+sortable_pagination_id: "3_004"
+---
+Queſtioprologi.
+lueris: hoc in mathematicis et anſto. facere debe¬
+bis. vel amplius in vtroqꝫ iure et in ipſa theologis
+que incundros dedaleos continet. vix ſpicas a qui
+qꝫ panibus ordeaceis euangelicis toto cuo euelles
+cum ſit in locoillos comedendi multitudo feni et
+duo piices ita ꝙ diſtribuerunt viri quaſi quinqꝫ mi
+lia et adhuc manſerunt fragmenta in eodem prato
+bos gramē/ ciconia lacertū/ canis leporem querit.
+ſcd̓e ad thimothe. ſcd̓o. noli verbis contendere: ad
+nichil em̄ vtile contēditu niſi ad ſubuerſionem au
+dientium. crebrohoc timotheo a̓t. et iterū addit
+candem ſentētiam tito/ ſcd̓e ad thimoth. tertio de
+ſcriptura loquens dicit. Tu vero permane in his
+que didiciſti et credita ſunt tibi: ſciens a quo didi¬
+ceris: Et quia ab infantia ſacras litteras noſti que
+te poſſunt īſtruere ad ſalinem. et ſequitur. Omnis
+em̄ ſcriptura diuinitus inſpirata vtilis eſt ad docē¬
+dum/ ad arguendum/ ad corripiēdum/ ad erudien¬
+dum in tuſticia. Et eccla. xxiiij. Quiedunt me ad
+huc eſurient: et quibibunt me adhuc ſitient. ſed er
+ror in hoc latuit: vt de michi ſimilibus loquor: cum
+mox relictis artium vorticibus ad iheologiam ad
+rent. Nunquidin hac tempeſtate amcricus veſpu¬ uolarunt/ in cuiua paleſtra non tātum olei ſicut vi¬
+ni conſumpſerunt: nimis cito ſe ponentes ad ſcri¬
+bendū in theologia quiſquillias porcinas artiū in
+theologiā iniecernt. nimirum alioquin ante reple
+tas papiros diſpoſiras pertinentia ſcribentes ante
+medium fons exhauſtus fuiſſet/ et fundus aridus ⁊
+arenoſus. in cuius argumētum vide multorum ſen
+tentiarum primos ⁊ ſecūdos artibus et nonnunqͣꝫ
+ſuperſtitioſis refertos quorū aliqui in preclaros vi
+ros tandem improbo labore euaſere (quorum no
+minibꝰ ꝑco aliqui in om̄i tempore ſteriles auenas
+et palleas collegerunt. iſti laneorū canibus compa
+rabiles ſunt/ qui integra beſtia relicta ad exta curſi
+tem eſſet facile theologus. hac via pariſienſe ſtudi¬ tant precipites. logica eſt ianitrix ſorbone. ergo nō
+debet inrareſcolam ſed ſedere in porta niſi per ac
+nia rationum in diſputādo: ſolis auctortaubus in¬ cidens ad querendum bacchalarium. ſic theologꝰ
+biandor idem ſtudiū altis cedere neceſſe eſt. Et li. per accidens vtitur ianitrice et eam introducit cū
+negatu diſcurſus euidens in ſchola/ vel aliud lo¬
+ſcrendi ad quem poſteriores deuenerimt et potiſſi gicaleincides in argumento. de per ſe non citat lo
+mum meihafiſice grādifaciat: ex altera parte hos gicam in medium. edhuc iſte incptiole in aliis ſtu¬
+non approbo qui prolixe intheologia queſtiōes in¬ diis plus honoris adepte ſunt qͣꝫ pariſi/ et plus pa
+uules in artibus inſerunt: ad longū opinionea fri¬ riſti olim qͣꝫ in iſtis annis octuaginta. Patꝫ: de alia
+cenſe/ gerſono et noſtro vicino martio de magiſtrꝭ
+Inſoper ſires ſit om̄ino lucidaet prio obtuitu qui¬
+dum guſtui videauir. ſcd̓m prouerbium varonis. libet ꝑuia conte̓nitur/ ciicitur/ et deniqꝫ a theologie
+tirunculis exploditur. quocirca tenere mediū ten¬
+tandum eſt. paulo maiora canumus non om̄es ar¬
+adulteratum autem refutites. ſumamus autē ſer¬ buſta iuuant/ humilesqꝫ mirice. Relinquentes ex
+mones optimos. deos autem ridiculos et fabulas teris theologis diſceptationē de vniuerſalibus de
+alienas canibus proticiauus. Comra quos bene ſcd̓is intentionibus complexe ſignificabilibus de
+dicit gerion. illa prolixitas inuuliū facit multa vo vniuocutione entis ſubiecroattribiniōis/ praxi/ et
+lumin in quibus bona inſeruntr. non legi in ſco¬ potentiis anime ſcu̓m modum aliquorū/ clucidan¬
+lis et plura edhuc iaceret ſi affectio ſectarum non da eſt ⁊ nōeꝯfuſcanda theologia: vt vitam eternā
+occideret. Aliqui queſtioli ſibi videntur. iactant ſe promereamur. Iuxia illud Eccliaſtici. xiiij. Qui
+quaſdam ſubulitates meibaſiſicas callere: vt dls me clucidant vitam eternam poſſidebun.
