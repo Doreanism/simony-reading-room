@@ -70,15 +70,29 @@ const pagePairs = computed(() => {
 
 const currentPair = computed(() => pagePairs.value[currentSpread.value] ?? []);
 
-// Pages to preload (adjacent spreads)
-const preloadPages = computed(() => {
-  const pages: number[] = [];
-  const prevPair = pagePairs.value[currentSpread.value - 1];
-  const nextPair = pagePairs.value[currentSpread.value + 1];
-  if (prevPair) pages.push(...prevPair.filter((p): p is number => p !== null));
-  if (nextPair) pages.push(...nextPair.filter((p): p is number => p !== null));
-  return pages;
-});
+// Image preloading
+const loadedImages = new Set<string>();
+
+function preloadImage(page: number): Promise<void> {
+  if (!doc.value) return Promise.resolve();
+  const src = `/d/${doc.value.key}/${page}.webp`;
+  if (loadedImages.has(src)) return Promise.resolve();
+  if (!import.meta.client) return Promise.resolve();
+  const img = new window.Image();
+  img.src = src;
+  return img.decode().then(
+    () => { loadedImages.add(src); },
+    () => {},
+  );
+}
+
+function preloadSpread(spreadIdx: number): Promise<void> {
+  const pair = pagePairs.value[spreadIdx];
+  if (!pair) return Promise.resolve();
+  return Promise.all(
+    pair.filter((p): p is number => p !== null).map(preloadImage),
+  ).then(() => {});
+}
 
 // Find spread index containing a given page number
 function spreadForPage(page: number): number {
@@ -90,6 +104,12 @@ const initialPage = route.params.page ? Number(route.params.page) : null;
 const currentSpread = ref(
   initialPage ? Math.max(0, spreadForPage(initialPage)) : 0,
 );
+
+// Preload adjacent spreads
+watch(currentSpread, (idx) => {
+  if (idx > 0) preloadSpread(idx - 1);
+  if (idx < pagePairs.value.length - 1) preloadSpread(idx + 1);
+}, { immediate: true });
 
 // Update URL without triggering navigation
 function updateUrl() {
@@ -107,21 +127,32 @@ function hasTextSelection() {
   return sel && sel.toString().length > 0;
 }
 
+const navigating = ref(false);
+
+async function navigate(targetIdx: number, dir: "forward" | "back") {
+  if (navigating.value) return;
+  navigating.value = true;
+  try {
+    await preloadSpread(targetIdx);
+    direction.value = dir;
+    currentSpread.value = targetIdx;
+    updateUrl();
+  } finally {
+    navigating.value = false;
+  }
+}
+
 function prev() {
   if (hasTextSelection()) return;
   if (currentSpread.value > 0) {
-    direction.value = "back";
-    currentSpread.value--;
-    updateUrl();
+    navigate(currentSpread.value - 1, "back");
   }
 }
 
 function next() {
   if (hasTextSelection()) return;
   if (currentSpread.value < pagePairs.value.length - 1) {
-    direction.value = "forward";
-    currentSpread.value++;
-    updateUrl();
+    navigate(currentSpread.value + 1, "forward");
   }
 }
 
@@ -159,11 +190,10 @@ onMounted(() => {
 function goToPage(pdfPage: number) {
   const idx = spreadForPage(pdfPage);
   if (idx >= 0) {
-    direction.value =
-      pdfPage > (currentPair.value[0] ?? 0) ? "forward" : "back";
-    currentSpread.value = idx;
-    updateUrl();
     searchOpen.value = false;
+    const dir: "forward" | "back" =
+      pdfPage > (currentPair.value[0] ?? 0) ? "forward" : "back";
+    navigate(idx, dir);
   }
 }
 </script>
@@ -245,14 +275,6 @@ function goToPage(pdfPage: number) {
               </Transition>
             </div>
           </div>
-          </div>
-          <!-- Preload adjacent spread images -->
-          <div class="hidden">
-            <img
-              v-for="p in preloadPages"
-              :key="p"
-              :src="`/d/${doc.key}/${p}.webp`"
-            />
           </div>
         </div>
       </div>
@@ -371,6 +393,17 @@ function goToPage(pdfPage: number) {
 
 .page-slot > * {
   grid-area: 1 / 1;
+  will-change: transform;
+}
+
+@keyframes flip-in-from-right {
+  from { transform: rotateY(-90deg); }
+  to { transform: rotateY(0); }
+}
+
+@keyframes flip-in-from-left {
+  from { transform: rotateY(90deg); }
+  to { transform: rotateY(0); }
 }
 
 /* Forward right: old page flips away over spine, new page visible immediately underneath */
@@ -394,11 +427,8 @@ function goToPage(pdfPage: number) {
 .flip-left-forward-enter-active {
   z-index: 10;
   transform-origin: right center;
-  transition: transform 0.4s ease-out 0.4s;
+  animation: flip-in-from-right 0.4s ease-out 0.4s both;
   backface-visibility: hidden;
-}
-.flip-left-forward-enter-from {
-  transform: rotateY(-90deg);
 }
 
 /* Back left: old page flips away over spine, new page visible immediately underneath */
@@ -422,10 +452,7 @@ function goToPage(pdfPage: number) {
 .flip-right-back-enter-active {
   z-index: 10;
   transform-origin: left center;
-  transition: transform 0.4s ease-out 0.4s;
+  animation: flip-in-from-left 0.4s ease-out 0.4s both;
   backface-visibility: hidden;
-}
-.flip-right-back-enter-from {
-  transform: rotateY(90deg);
 }
 </style>

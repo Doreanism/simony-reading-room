@@ -47,7 +47,7 @@ const loading = computed(() => status.value === 'pending' && debouncedQuery.valu
 
 function resultUrl(result: SearchResult) {
   if (result.type === 'translation' && result.readingKey) {
-    return `/readings/${result.readingKey}`
+    return `/readings/${result.readingKey}#${result.folio}`
   }
   return `/documents/${result.documentKey}/${result.pdfPage}?q=${encodeURIComponent(query.value)}`
 }

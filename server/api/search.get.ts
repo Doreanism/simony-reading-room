@@ -69,11 +69,12 @@ export default defineEventHandler(async (event) => {
   const maxResults = Math.min(Number(limit) || 50, 200)
   const query = normalizeSearch(q)
 
-  const [transSections, transPages, translationSections, translationMeta] = await Promise.all([
+  const [transSections, transPages, translationSections, translationMeta, translationPages] = await Promise.all([
     queryCollectionSearchSections(event, 'documentsTranscription'),
     queryCollection(event, 'documentsTranscription').all(),
     queryCollectionSearchSections(event, 'readingsTranslation'),
     queryCollection(event, 'readingsMeta').all(),
+    queryCollection(event, 'readingsTranslation').all(),
   ])
 
   function findPageMeta(pageName: string, documentKeyVal: string) {
@@ -108,14 +109,17 @@ export default defineEventHandler(async (event) => {
       const normalized = section.content.toLowerCase()
       const idx = normalized.indexOf(query)
       if (idx < 0) continue
-      const sectionKey = section.id.replace(/#.*$/, '').split(/[\/:]/).pop()
-      const reading = translationMeta.find(r => r.key === sectionKey)
+      // Match search section to translation page metadata by path suffix
+      const sectionPath = section.id.replace(/#.*$/, '')
+      const translationPage = translationPages.find(p => sectionPath.endsWith(p.path.replace(/^\//, '')))
+      if (!translationPage) continue
+      const reading = translationMeta.find(r => r.key === translationPage.reading)
       if (!reading) continue
       matches.push({
         type: 'translation',
         documentKey: reading.document,
-        folio: `${reading.page_start}–${reading.page_end}`,
-        pdfPage: reading.pdf_page_start,
+        folio: translationPage.page,
+        pdfPage: translationPage.pdf_page,
         readingKey: reading.key,
         snippet: buildSnippet(section.content, idx, query.length),
       })

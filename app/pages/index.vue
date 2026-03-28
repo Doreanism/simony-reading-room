@@ -1,3 +1,17 @@
+<script setup lang="ts">
+useHead({ titleTemplate: '' })
+
+const { data: readings } = await useAsyncData('home-readings', () =>
+  queryCollection('readingsMeta').all()
+)
+const { data: documents } = await useAsyncData('home-documents', () =>
+  queryCollection('documentsMeta').all()
+)
+const { data: authors } = await useAsyncData('home-authors', () =>
+  queryCollection('authors').all()
+)
+</script>
+
 <template>
   <AppPage>
   <div class="py-12 text-center">
@@ -25,6 +39,7 @@
         class="group flex flex-col items-center gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 p-8 transition-all hover:ring-2 hover:ring-primary hover:shadow-lg"
       >
         <UIcon name="i-lucide-book-open" class="text-4xl text-primary" />
+        <span class="-mb-2 text-xs text-neutral-400 dark:text-neutral-500">{{ readings?.length ?? 0 }}</span>
         <span
           class="text-xl font-serif font-semibold group-hover:text-primary transition-colors"
           >Readings</span
@@ -39,6 +54,7 @@
         class="group flex flex-col items-center gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 p-8 transition-all hover:ring-2 hover:ring-primary hover:shadow-lg"
       >
         <UIcon name="i-lucide-file-text" class="text-4xl text-primary" />
+        <span class="-mb-2 text-xs text-neutral-400 dark:text-neutral-500">{{ documents?.length ?? 0 }}</span>
         <span
           class="text-xl font-serif font-semibold group-hover:text-primary transition-colors"
           >Documents</span
@@ -53,6 +69,7 @@
         class="group flex flex-col items-center gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 p-8 transition-all hover:ring-2 hover:ring-primary hover:shadow-lg"
       >
         <UIcon name="i-lucide-users" class="text-4xl text-primary" />
+        <span class="-mb-2 text-xs text-neutral-400 dark:text-neutral-500">{{ authors?.length ?? 0 }}</span>
         <span
           class="text-xl font-serif font-semibold group-hover:text-primary transition-colors"
           >Authors</span

@@ -1,0 +1,81 @@
+---
+page: 3rb
+pdf_page: 29
+sortable_pagination_id: "3_002"
+---
+Fo. Hl.
+cuctoritas romauorū pontificū. Reſpōdet: credo ſicpi
+ci poſſe: ꝙ etiā mnexpoſitionibꝰ ſacre ſcripture ſcripta
+pōtiſicū ī iure īcorporata ſunt p̄ponēda. rō eſt ꝙ cūma
+gno multoꝝ deliberamine poſt illos ſctōs viſos in luci
+abierſit. ergo dato ꝙ vnꝰ ſanctoꝝ etiā de quo eſt mētio
+inp̄ſato. c. Sāctaromana eccl̓ia dicat vnū: ⁊ ius pōtibi
+cuim oppoſituꝫ: et aliunde nō cōſtet. doctor ille reliquē
+dus eſt. Sermo eſt illic de aliquibꝰ pontificibꝰ: qꝛ in. c.
+decretales. xx. diſtīctiōe paulopoſt pncipiū dicit̉. vndē
+nōnullorū pontificū cōſtitutis: Auguſti. Hierony. atqꝫ
+aliorū tractatorū dicta vident̉ eis p̄ferēda: qꝛ varij pō¬
+tifices etiā circa expoſitionē fidei cōtraria dixerūt: et
+patebit diſtīctiōe. xxvij. hutꝰ. Sed minꝰ bene ſentiētiſi
+expoſſtiōen ſūt aiure pōtificio excluſe. Sed harmonia
+pōt ſeruari inter oīa tā in decietalibꝰ: ſexto ⁊ clementi
+nis. Iſta ꝯfirmado ex pulchris auctoritatibꝰ illumina
+e̓ UNimi Auguſtini. quarſi vna eſt ad Hierony. Et aucto¬
+ritas eſt canoniſata. ix. diſtīct. c. Egoſolis eis ſcriptoꝝ
+qui iā canoniei appellant̉: didici hūc timorē honorēqꝫ
+deferre vt nullū eoꝝ ſcribēdoerraſſe credere audeā. At
+ſi aliqͥd iueis aſſerēdo qd̓ vldcat̉ ꝯtrariū veritati nihil
+aliud exiſtimē ꝙͣ mēdoſum eſſe codicē vl̓ nō eſſe aſſecu
+tū īter p̄tē qv̓ dictū eſt vl̓ meminime ītellexiſſe nō ambi
+gum. alios aūt lego vt quātalibet ſanctitate quātave
+doctrina polleāt nō ideo verū ptitem: qꝛ ip̄i ita ſenſer̄t.
+ſed qꝛ mihi vel per alios auctores: vel ꝑ canonicus: vel
+per ꝓbabiles ratiōes (qd̓ a vero nō abhorret) ꝑſuade¬
+re potuerſit Et in ꝓlogo tertij libri de triuitate. Noli
+921
+ineis literis quaſi canonicis ſcripturis deſeruire: ſꝫ in
+illis q̄ nō credebas cūtnuencris incunctāter crede: I
+iſtis aūt qd̓ certū nō habebas iuiſicertū itellexerꝭ noli
+firmū tenere Et Augu. mepta ad vincētiſi poſtꝙͣ deau
+ctoritate hilarij: cypriani et ſimilit locutus erat: dicit
+hoc genꝰ literaruꝫ ab auctorita te canonti viſtinguēdū
+794
+eſt. nō em̄ Ac legunt̉ tanꝙͣ ita ex eis teſtimoniū ꝓferat
+vt cōtra ſentire nō liceat ſicubi fortealiter ſapuertit ꝙͣ
+p M
+veritas poſtulat. Et humiliter cicit īepla ad fortunatii
+cū idē tenent de alijs patribꝰ. talis ego ſum in ſcriptis
+aliorum quales volo eſſe lectores meorum. hoc ad lon¬
+cum pouit īlibro de vnico baptiſmo libro ſcd̓o Ex hi¬
+patet ꝙ ⁊ratiōe ⁊ Auguſt. auctoritate ſacra ſcriptura
+omnē aliā trāſcēdit: ⁊ rationabilit̉ in ea ꝓportiōe qua
+ereaturā or̄m deꝰ anteire noſcit. ⁊ Auguſt. ⁊ Hicrony.
+ſcripta qͥ intertheologos ꝓprimis partibꝰ laborartt
+nō ſūt ſicaccepta: ꝙ oī̓a ſut deneceſſitate credēda: qꝛ
+aliqͥs pōt ſine pctō Auguſtinū negare: dicendo habeo
+## Hieronymū prome ⁊ bonā rationē vl̓ ecōuer ſochoc pu
+tet ex cocluſone. Si aſſertiōes edꝝ oppoſite ſtnt eque
+Mſ l
+pēv̓
+apparētes cūneutrū iſtorſi duorū alteri in literis p̄ſera
+re audemn: qpuire nō licebit tenere qd̓ voles duꝫ modo
+2 ☞87
+rationi alterlis ſatiſfacies? Si vnus alterorationabi
+Sꝯ
+lius loquat̉ hūc imitabere. Stat Feriorē poſſe de hoc
+iudicare qui itacrudite dicere nequit. Sicut bene iudi
+cas quis ſuꝑp chordā meliꝰ ſcandit: vel grauiora cōpo¬
+uit carmina: ⁊ tuipſe neſcis ita faccreiſtat etiā inferio¬
+remtā inliteris ꝙͣ in īgenior vna materia fidei vel mo
+ruꝫ ſanius Itelligere ꝙͣ vnū iſtorū. Et ſi vnū iſtorū in ma
+teria ꝓbabili negaueris ita ꝙ nuliū doctorē: ſed ſolam
+rationē prote habes nō ꝓpteren es hereticus: nec he¬
+reſimtents. Dicēdo hec fuitoninio beati Auguſt. nou
+mihi plocet propt̓ has ratiōes ⁊ illas ⁊ ip̄ſiꝰ ſoluo vti
+vides. ſed impudēs et vētoſus es. debes eos exponene
+cūreuerētia eſto ꝙ oppoſitū tenere videant̉ Certū eſt
+de Ariſtotele ꝙ crrores tenuit vt de ꝓpetuitate mūdi¬
+quo nō obſtāte eū in materia etiā ꝓbabili negare nū̄ꝙͣ
+ſolemꝰ. iſtis vero cruditiſſimis virꝭ reipublice xp̄iane:
+⁊ per cōſequis humane nō minꝰ vtilibꝰ immo vtiliori¬
+a. iij.

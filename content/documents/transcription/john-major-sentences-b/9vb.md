@@ -1,0 +1,74 @@
+---
+page: 9vb
+pdf_page: 42
+sortable_pagination_id: "9_004"
+---
+Questio Tertia  Diſtin  . I.  Quarti  Sententiarum ...
+pot inherere ſubiecto totaliter corporeo.fi primi non
+apparet quomodo agit in aiam characterem.etia vir
+tus corporea in maiori  ſubiecto  eſt maior : ſed in maio
+ri fubiecto hectus  eſt equalis : igitur   est cotra bea
+( tum Augustinu.vi.Mufice.g corpus pt agercin ſpia
+ritum  hac via tenebo q ignis  inferni pt cauſare qua
+dam qualitaté ſpualemnociua demont i anime dam
+nate : quod non admittunt bene intelligentes : nec  te
+nētes illa poſitioné Rursus vel  iſteinfluxus  inheret
+verbis : tficaccidétis eſt accidés : ptra  Aristotelezin
+ferta ppietate ſubſtatie.Maxime pprineſt ſubſtana
+tie cum fit vna readénumero q  fit  ſuſceptiua contra
+rioz . Si inhereat verbis taque inbaptifmo : hoc vide
+tur extraneŭ q vnum accidens inhereat duobus fubs
+rectis  ſpecie distinctis  nõfacientibus aliqovni.Etq
+fritur an inhereat toti aquemaris ſyncathegorematts
+ce : pofito q quis baptizekin mari :   cuilibet fyllabeil
+lius orationis ego  te baptizo : vel vltimesyllabe.fi no
+uiſſime syllabe : alieptes ſupfluunt   Preterea cuzoz
+tes cotrahit cum  Berta pverbadepfenticapio tein
+meam : r contra : velilla verba effectiue  concurrunt ad
+ornatum matrimonij vel non : ſi ſecundum pofitio  nul
+la : ſl pmum ponaturnutus veltaciturnitas : vt pater
+in verecunda puella : ponat matrimonium  contractu
+inter fortem in  Butanniar  Bertam  in  Liuonia.Et
+querit quomodo poſſunt verba illa ad tantam   distan
+tiam cauſare ornatum :  Mon puto has  rationes  radis
+/ citus polle diffolui : elto & duo ſolenes doctores hanc
+pofitionem pofuerunt  cum eorum fequacibus : vtcuqs
+tamenreſpondere conabimur : ğğ luctant viri illius
+poſitionis . Aliquibus vicentibus accidés  effe corpo
+reum : aliquibus oppofitum  dica ipfumeſſe  incorpos
+reum . Honem admittimus  &  corpus  agat  aliquam
+actionemvltranotitiam in  fubftantiam  impertibilé .
+Et dico non inconuenire accidens imptibile inherere
+fubiecto  diuifibili.patet  in  relationibus  intrinfecus
+adueniétibus  paritertextrinfecus : paternitas  inbe
+ret totipatri :   nullipti eius :   pater eft corporeus . Et
+Adicas vnaptem  ſortis  eſſe indiuifibilez accipito bu
+nellum patré totaliter diuifibilemidem patet in acci
+dentibus absolutis : @titas  difcreta est accidés indis
+uifibile :   fubiecto diuifibilik  inheret : taceo de  fecúdis
+intētiõib   hitib   eſſe diminutu eritib   qil in venoia
+told fromotcit qisteinthurus  in baptifino inheret
+* bist aque  copulatim   non est improbabile preque
+ter & miniftrobistaque  inhereattenedo & nume
+rus formalis  distinguit a rebus  numeratis : rest accia
+dens indiuifibile inherés pluribus  fubiectis  copula
+tim a non copulatiue : qeniſſſic dabis  eandem remna
+turaliter effe motaz  ad diuerfas  differétias poſitionu
+vel mouerir qutescere.patet.captonumero quaterna
+riohoim mouentiū ad partes  oppoſitas  vel  duobus
+quiefcentibus :   duob   motis : nmagis  illo accidés ca
+pit inheſionem in vltima  syllaba  forume verborum : et
+in aqua proxime tangenti baptizatum accidens inhe
+ret accidenti tang subiecto  quo.fed notang subiecto
+qd.naturalik vltimateaccidés inheret eidez ſubiecto
+cut inheret accides in qeft : vt ſikitudoinberet albedis
+nifudaméto  primo : reide subiecto radicalif cui albe
+do iheret : ide ptz de  qlitate a
+titate . Et  sicut novak
+locus adequatus  in quo  eſt numerus  formalis : itano
+datur locus adequatus in quo  eſt  illud accidens : ſed
+copulatim eſt in multis : co modo quo ei competit cffe
+inloco.Adaliud argumentum  de matrimonio  vici
+tur q verba hec ego capio te in med rc.caulant ornas
+tusquoſda in animabus coniuguz : 7  si fuerint nutus
+anoba ide facilitiet  fi fuerint  in distantis  mille  leu

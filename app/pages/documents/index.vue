@@ -29,7 +29,7 @@ const sortedDocuments = computed(() => {
       :to="`/documents/${doc.key}`"
       :title="doc.title_en"
       :subtitle="doc.title"
-      :image="doc.cover || `/d/${doc.key}/1.webp`"
+      :image="doc.cover || `/d/${doc.key}/cover.jpg`"
     >
       <template #meta>
         <span>{{ authorName(doc.author) }}</span>

@@ -16,20 +16,17 @@
 set -euo pipefail
 
 DOCUMENT_KEY="${1:?Usage: cloud-ocr.sh <document-key> [start-page] [end-page]}"
-START_PAGE="${2:-1}"
-
-# Read total pages from document meta if end page not specified
-if [ -z "${3:-}" ]; then
-  END_PAGE=$(grep '^pages:' "content/documents/meta/${DOCUMENT_KEY}.md" | awk '{print $2}')
-  echo "No end page specified, using total pages from meta: ${END_PAGE}"
-else
-  END_PAGE="$3"
-fi
+START_PAGE="${2:-}"
+END_PAGE="${3:-}"
 
 VENV_PYTHON=".venv/bin/python3"
 VASTAI=".venv/bin/vastai"
 
-echo "=== Cloud OCR: ${DOCUMENT_KEY} pages ${START_PAGE}-${END_PAGE} ==="
+# Read S3 config from .env
+BUCKET=$(grep '^BUCKET=' .env | sed 's/BUCKET=//;s/"//g')
+S3_REGION=$(grep '^REGION=' .env | sed 's/REGION=//;s/"//g')
+
+echo "=== Cloud OCR: ${DOCUMENT_KEY} ${START_PAGE:+pages ${START_PAGE}-${END_PAGE:-$START_PAGE}} ==="
 echo ""
 
 # 1. Find cheapest offer with decent GPU
@@ -113,86 +110,36 @@ echo ""
 sleep 15
 
 # 5. Upload files
-echo "Uploading OCR script and page images..."
+echo "Uploading build script and document meta..."
 
-# Create remote directories
-$SSH_CMD "mkdir -p /workspace/pages /workspace/output"
+$SSH_CMD "mkdir -p /workspace/content/documents/meta /workspace/public/d/${DOCUMENT_KEY}"
 
-# Upload the OCR script
-$SCP_CMD scripts/ocr-pages.py "${SSH_HOST}:/workspace/ocr-pages.py"
+$SCP_CMD scripts/build-page-json.py "${SSH_HOST}:/workspace/build-page-json.py"
+$SCP_CMD "content/documents/meta/${DOCUMENT_KEY}.md" "${SSH_HOST}:/workspace/content/documents/meta/${DOCUMENT_KEY}.md"
 
-# Upload page images (only the ones we need)
-echo "Uploading ${START_PAGE}-${END_PAGE} page images..."
-for page in $(seq "$START_PAGE" "$END_PAGE"); do
-  IMG="public/d/${DOCUMENT_KEY}/${page}.webp"
-  if [ -f "$IMG" ]; then
-    echo -ne "\r  Uploading page ${page}..."
-    $SCP_CMD "$IMG" "${SSH_HOST}:/workspace/pages/${page}.webp" 2>/dev/null
-  fi
-done
-echo ""
-
-# Upload the PDF (for page dimensions)
-echo "Uploading PDF..."
-$SCP_CMD "public/d/${DOCUMENT_KEY}.pdf" "${SSH_HOST}:/workspace/${DOCUMENT_KEY}.pdf"
-
-# 6. Build config and run OCR on the remote
+# 6. Install dependencies and run OCR
 echo "Installing Kraken on remote instance..."
-$SSH_CMD "pip install kraken pymupdf 2>&1 | tail -3"
+$SSH_CMD "pip install kraken pymupdf python-dotenv 2>&1 | tail -3"
 
-# Read document meta for folio mapping
-OCR_MODEL=$(grep '^ocr_model:' "content/documents/meta/${DOCUMENT_KEY}.md" | sed 's/ocr_model: *//;s/"//g' || echo "10.5281/zenodo.11113737")
-BASE_PDF_PAGE=$(grep '^base_pdf_page:' "content/documents/meta/${DOCUMENT_KEY}.md" | awk '{print $2}')
-BASE_FOLIO=$(grep '^base_folio:' "content/documents/meta/${DOCUMENT_KEY}.md" | awk '{print $2}')
-BASE_SIDE=$(grep '^base_side:' "content/documents/meta/${DOCUMENT_KEY}.md" | awk '{print $2}')
+# Build the page range args
+PAGE_ARGS=""
+if [ -n "$START_PAGE" ]; then
+  PAGE_ARGS="$START_PAGE"
+  if [ -n "$END_PAGE" ]; then
+    PAGE_ARGS="$START_PAGE $END_PAGE"
+  fi
+fi
 
-# Build page/folio list using our local folio library
-PAGES_JSON=$($VENV_PYTHON -c "
-import json, sys
-sys.path.insert(0, 'scripts/lib')
-
-# Inline folio calculation
-base_pdf = ${BASE_PDF_PAGE}
-base_folio = ${BASE_FOLIO}
-base_side = '${BASE_SIDE}'
-
-pages = []
-for p in range(${START_PAGE}, ${END_PAGE} + 1):
-    offset = p - base_pdf
-    base_is_recto = base_side == 'r'
-    abs_index = offset + (0 if base_is_recto else 1)
-    folio_offset = abs_index // 2
-    is_recto = abs_index % 2 == 0
-    folio = base_folio + folio_offset
-    side = 'r' if is_recto else 'v'
-    pages.append({'page': p, 'folio': f'{folio}{side}'})
-
-print(json.dumps(pages))
-")
-
-CONFIG_JSON=$(cat <<ENDJSON
-{
-  "img_dir": "/workspace/pages",
-  "out_dir": "/workspace/output",
-  "pdf_path": "/workspace/${DOCUMENT_KEY}.pdf",
-  "ocr_model": "${OCR_MODEL}",
-  "pages": ${PAGES_JSON}
-}
-ENDJSON
-)
-
-echo "Running OCR on ${START_PAGE}-${END_PAGE} ($(echo "$PAGES_JSON" | $VENV_PYTHON -c "import sys,json;print(len(json.load(sys.stdin)))") pages)..."
+echo "Running OCR..."
 echo ""
 
-# Write config to remote and run
-echo "$CONFIG_JSON" | $SSH_CMD "cat > /workspace/config.json"
-$SSH_CMD 'cd /workspace && python3 ocr-pages.py "$(cat config.json)"'
+$SSH_CMD "cd /workspace && BUCKET=${BUCKET} REGION=${S3_REGION} python3 build-page-json.py ${DOCUMENT_KEY} ${PAGE_ARGS}"
 
 # 7. Download results
 echo ""
 echo "Downloading JSON results..."
 mkdir -p "public/d/${DOCUMENT_KEY}"
-$SCP_CMD "${SSH_HOST}:/workspace/output/*.json" "public/d/${DOCUMENT_KEY}/"
+$SCP_CMD "${SSH_HOST}:/workspace/public/d/${DOCUMENT_KEY}/*.json" "public/d/${DOCUMENT_KEY}/"
 echo "Downloaded to public/d/${DOCUMENT_KEY}/"
 
 # 8. Destroy instance

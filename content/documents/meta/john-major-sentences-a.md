@@ -6,7 +6,7 @@ author: john-major
 year: 1509
 url: https://archive.org/details/bub_gb_VELCLv2RWmwC/page/n7/mode/2up
 document: /d/john-major-sentences-a.pdf
-cover: /covers/john-major-sentences-a.jpg
+cover: /d/john-major-sentences-a/cover.jpg
 pages: 500
 filesize: 47MB
 pagination: folio-two-column

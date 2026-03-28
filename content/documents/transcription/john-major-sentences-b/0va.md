@@ -1,0 +1,58 @@
+---
+page: 0va
+pdf_page: 24
+sortable_pagination_id: "0_003"
+---
+Uita contemplatiua actiue p̄ſerenda eſt/ licet actiua
+illi aduerſetur. fo. ccxxi. c.
+Uit alitium emere ſicut contractum p̄cariaꝝ facere ꝓ
+batur licitum ſed non omnibus ꝑſonis. fo. cxviij. b/ c/d.
+Uitam eternam meruit aliquis etiam categorice qui
+non habebit illam niſi conditionoliter. ſolio. cliij. d/ et
+ſequenti. a.
+Uitium mercis an vendeus teneatur detegere empto
+ri. folio. cxi. c.
+Uiui ⁊ mortui quō reſurgēt in extremo iudicio. f. ccl. a.
+Unita non fuiſſet diuinitas ſanguini nec corpus ſi ſub
+ſpeciebꝰ vini quis conſecraſſet in triduo. fo. xliij. b.
+Uoluntas ꝑfectior potētia ꝙͣ intellctus tenet̉ propter
+varias rationes: que tamen ſoluuntur tenendo poſitio
+nem oppoſitam. fo. cclxx. c.o. ⁊ ſequenti.
+Uoluntas in via apprehendēs beatitudiuē ſiue in vni
+uerſali ſiue in particulari non neceſſario vult illam. fo
+lio. cclxxij. c.
+Uoluntas quomodo poſſit deum odio habere declara
+tur aliquibus concluſlonibus. fo. eodem. d.
+Uoluntas poteſt acceptare minus bonum maiore reli
+cto. fo. cclxxiij. b.
+Uoluntatem non poſſe nolle beatitudinē formalem in
+vniuerſali/ ꝓblematicuꝫ declaratur. fo. cclxxij. d.
+Uoluntas an poſſit cogioſtenditur. folio. cxcix.
+d. ⁊ ſequenti a.
+Uoluptas incidens in copulā carnalē cum ꝓpria/ non
+reddit actum illicitum. fo. ccvij. a.
+Uoti diffinitio declaratur cum aliquibus propoſitio¬
+nibus corollarijs. fo. ccxvi. b/ c/ d. ⁊ ſequenti. a.
+Uoti nōnulle diuiſiones. fo. ccxvij. b.
+Uotum ſimplex continentie non repugnat matrimo¬
+nio. fo. ccix. b.
+Uotum ſimplex impedit matrimoniū contrahendum
+ſed non dirimit contractum. ibidem.
+Uotum quomodo ſit obligatorium: ⁊ pluribus modis
+poteſt quis voto ſatiſfacere. fo. ccxviij. b/ c/ d.
+Uotum obedientie probatur exuperare in bonitate
+votum paupertatis ⁊ caſtitatis. fo. ccxxix. d.
+Uouens ꝓfiteri religionē an debeat ſtatim ſuū votum
+adīplere: ⁊ non ſuper hoc deliberare. vide . f. ccxviij. a.
+Uouens aſſumere religionem: an ſtatim exieus ſatiſſa
+cint voto. ibidem.
+Uouere expedit: licet meliꝰ ſit nō vouere ꝙͣ votū nō ꝑ¬
+ficere: ⁊ an nō peccare ſit licita materia voti. f. ccxvij. b
+Uouere q̄ ꝑſone ꝓhibeantur. fo. ccxix. d.
+Uouere poteſt aliquis ſe nunꝙͣ comeſturuꝫ carnes. fo
+lio. ccxxxvi. c.
+Uſura diffinit̉ ⁊ beclatat̉ diffinitio. fol. xcviij. a/ b.
+Uſura declarat̉ peccatū ꝓhibitum in nouo ⁊ veteri te
+ſtamēto legenaturali ⁊ hūana. f. xcviij. cd4. ij. ſequē.
+Uſura non pōt euidenter ꝓbari eſſe contra legē natu¬
+ruleꝫ: Ideoqꝫ legū ꝯditores qͥ ꝑmittebāt aliquas vſu¬

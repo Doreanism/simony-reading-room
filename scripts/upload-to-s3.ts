@@ -16,7 +16,11 @@
 import "dotenv/config";
 import { readFileSync, readdirSync, statSync, existsSync } from "fs";
 import { join, extname } from "path";
-import { S3Client, PutObjectCommand, HeadObjectCommand } from "@aws-sdk/client-s3";
+import {
+  S3Client,
+  PutObjectCommand,
+  ListObjectsV2Command,
+} from "@aws-sdk/client-s3";
 
 const BUCKET = process.env.BUCKET;
 const REGION = process.env.REGION || "us-west-2";
@@ -35,18 +39,36 @@ const CONTENT_TYPES: Record<string, string> = {
   ".json": "application/json",
 };
 
-async function needsUpload(key: string, localSize: number): Promise<boolean> {
-  try {
-    const head = await s3.send(new HeadObjectCommand({ Bucket: BUCKET, Key: key }));
-    return head.ContentLength !== localSize;
-  } catch {
-    return true;
-  }
+async function listRemoteObjects(prefix: string): Promise<Map<string, number>> {
+  const objects = new Map<string, number>();
+  let token: string | undefined;
+
+  do {
+    const response = await s3.send(
+      new ListObjectsV2Command({
+        Bucket: BUCKET,
+        Prefix: prefix,
+        ContinuationToken: token,
+      })
+    );
+    for (const obj of response.Contents ?? []) {
+      if (obj.Key && obj.Size != null) {
+        objects.set(obj.Key, obj.Size);
+      }
+    }
+    token = response.NextContinuationToken;
+  } while (token);
+
+  return objects;
 }
 
-async function uploadFile(localPath: string, s3Key: string): Promise<boolean> {
+async function uploadFile(
+  localPath: string,
+  s3Key: string,
+  remoteObjects: Map<string, number>
+): Promise<boolean> {
   const stat = statSync(localPath);
-  if (!(await needsUpload(s3Key, stat.size))) {
+  if (remoteObjects.get(s3Key) === stat.size) {
     return false;
   }
 
@@ -65,12 +87,17 @@ async function uploadFile(localPath: string, s3Key: string): Promise<boolean> {
 }
 
 async function uploadDocument(documentKey: string) {
+  console.log(`  listing remote objects...`);
+  const remoteObjects = await listRemoteObjects(`documents/${documentKey}`);
+  console.log(`  ${remoteObjects.size} file(s) already on S3`);
+
   let uploaded = 0;
 
   // Upload PDF
   const pdfPath = join(PUBLIC_D, `${documentKey}.pdf`);
   if (existsSync(pdfPath)) {
-    if (await uploadFile(pdfPath, `documents/${documentKey}.pdf`)) uploaded++;
+    if (await uploadFile(pdfPath, `documents/${documentKey}.pdf`, remoteObjects))
+      uploaded++;
   }
 
   // Upload page images and JSON
@@ -82,7 +109,7 @@ async function uploadDocument(documentKey: string) {
     for (const file of files) {
       const localPath = join(pagesDir, file);
       const s3Key = `documents/${documentKey}/${file}`;
-      if (await uploadFile(localPath, s3Key)) uploaded++;
+      if (await uploadFile(localPath, s3Key, remoteObjects)) uploaded++;
     }
   }
 

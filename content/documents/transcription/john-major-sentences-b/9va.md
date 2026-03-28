@@ -1,0 +1,72 @@
+---
+page: 9va
+pdf_page: 42
+sortable_pagination_id: "9_003"
+---
+riſtiar baptifinus reſpectu paſſionis  Chrifti . Scribi
+tur  Matthei.xxvi .   Luce.xxij.hoc facite inmea com
+memorationé.De  Baptismo patet ad Romanos.vi .
+Confepultiem fumus cum illo p baptismű in  morte :
+fed refpectu gratieeſt  ſignu  pgnoſtici  [ Quarto  ar
+guit curuet  ſortes genua coraz  imagine  crucifixi  ex-
+panfis manibus  ad ſydera actu exteriore ab  interiozi
+bono impato.hocſuppoſito  ſic arguméto  : talicofert
+gratia : ratione ſigni ſenſibilis  non foluratione   actus .
+opantis : fedetiaratione act   exteriozis : quia eſtact
+exterior bonus z  meritorius : ergoei ofert gratia . Re
+ſpondet tali actui exteriou nulla gratia  alia  confert
+agratia ğdat  rõne  act   interiozis . Lontra  tenédo q
+devirmen  u  firtein
+actus exterior aliquid  bonitatis  actui  interiozi  ſupa
+addit noſoluit argumétű.Refpódeo : cu inō  tenea ills
+grg
+in arguméto  afſſumpto extra facramentalocûreplica
+non habet : pfeipfis  alij ſoluant .  [ Ex  omibus  ptz q
+ly facramétinoue  legis  phoc coplexubidiffinit.Sa
+cramétű eſt ſignú ſenſibile gra cuius virtute opis opa
+ti  cofert gratia ſinoponak ober . Belinquo illa claufu
+alamquaponit   Magister : vt  eius  imaginez gerat i ca
+exiftat.hocmultos opinari fecit & facraméta caufali
+tatem habent refpectu characteris vel omatus / Ses
+cúdo ſequit & hecno eſt diffinitio facramétiin ppofi
+to.Sacramétüest alicui   ſacre  rei ſignum : patet : hec
+diffinitio  cõuenit imagini Crucifixircolûbe ą appa
+ruit in baptismo  Lhuſti .
+Distinctionis prime Queſtio tertia .
+Geritur  tertio  circa
+hacdistinctioné.vtru facra
+mēta noue legis  causalita-
+té  aliqua habeat  refpectu
+characteris vel ornatus  in
+anima.ro folutione que
+ſtionis  notabis ptitace po
+fitioné .  Doctores  antiqui
+tenuerunt facramentanul
+la actiuitatēhabere : ſedee
+causas fine quibus non . Quidadoctor in quarta  pte
+astiõe.vij.mebro.iij.articulo.v.quéſequik alius rei ?
+ſchola tenér ſacraméta habere cauſalitatem prope dl
+ctam.ro intelligentiailli   pofitionis  notabis.duo
+funt effectus facraméti vnus est character in trib ?  fas
+cramentis impreſſus : vel ornatus in  quatuor alijs  im
+plus.Alius  eft gratis refpectu characteris veloma
+tus ſacraméta cauſalitateppiedictazhabét   nōres
+ſpectu gratie Colorat pofitio.inftrumétā dūmouek s
+puncipali agete recipit ab  co virtutem aliqua y quaz
+pducit  aliquid vitra illud quſcom  ſua natura pduce
+ret . Illud est qios forma vltima quadoqaliqua diſpo
+Ntio puig.declarat exéplariter .  calor ex natura ſua p
+ducit calorem : fed pro quato eſt  inſtrumētu forme lub
+ſtantialis concurrit ad pductionem forme ſubſtatia-
+lis virtus in ſeminenon attingit  productionez forme
+ſubſtantialis anime  rationalis : fed difpofitioné puia :
+modoſacramenta funt instrumenta dei :   recipintab
+eo quendam influxū y  qué agūt vitra actione fibina-
+turalem : aqua in baptifmo  madefacit :   mudater pa
+pia natura :   pinfluxū inherētē ağ cócurrit ad pdu-
+ctioné characteris  in aia baptizati : ſecudū ills beati
+Augustini   Homilia.lxxx.fup Joane . Que  eſt  iſta vir
+tus aq que corpus tangit   cor  abluit ?
+Lõtra  istam  poſitionem  argumentor
+vel  iſte influxus ſacramento inherés eſt accidens  coz
+poreum vel incorporeum : fi fecundum non apparet

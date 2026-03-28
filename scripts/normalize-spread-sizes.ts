@@ -76,8 +76,6 @@ function updatePageJson(
   }
 
   // Update dimensions to reflect padded image
-  json.page_width = Math.round((json.page_width / origW) * newW * 100) / 100;
-  json.page_height = Math.round((json.page_height / origH) * newH * 100) / 100;
   json.image_width = newW;
   json.image_height = newH;
 

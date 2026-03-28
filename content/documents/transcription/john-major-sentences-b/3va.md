@@ -1,0 +1,72 @@
+---
+page: 3va
+pdf_page: 30
+sortable_pagination_id: "3_003"
+---
+bus magna ſanctimoniap̄ditis nō ſolti equalis: ſed lō
+ge maior detur reucrētia: ꝙ nullo mō in ſchola vel po¬
+pulo negēt addo ꝙ iā ꝯſuetudie hoc merito ꝯſequuti
+ſunt cui cōtrauenire ſtultū eſt. ¶ Sed cōtra illd̓ argui
+tur. in p̄ſato. c. Sāctaromana eccl̓ia dicit Grlaſtus pa
+pa. Hicronymꝰ cuilibet alteri p̄fert̉. patꝫ. in. §. Itē ruſi
+nus: dicit pōtifex ſic. Item Aufinꝰ vir religioſus plurt
+mos eccleſſaſtici oꝑis edidit libros nōnullas etiā ſcri¬
+pturas īterp̄tatꝰ eſt. Sedqm̄ beatꝰ Hieronymꝰ in ali
+quibꝰ eū de libertate arbitrij notauit. illa ſentimus que
+beatū Hierony. p̄dictū ſentire cognoſcimꝰ: ⁊ ſequit̉ ad
+propoſitū nō ſolū de ruſino: ſed etiā de vniuerſis qͥs vir
+ſepiꝰ memoratꝰ zelodei ⁊ fidei religiōerep̄hēdit. ergo
+Hierony. ſemꝑ tenēdus eſt: cuicūqꝫ cōtradicit. Rn̄det
+nō opꝫ illa ꝟba capere: vt incēt qū̄ cōtradicit cuicūqꝫ.
+Sed de ſuſpectis infide ⁊ ad materiū ſubiectā quēadi
+modū p̄ſumebat̉ derufino. Hec de receptione doctrine
+☞E
+poſitiua ⁊ approbatius ꝟbaliter. ¶ Sititerbifariū ali
+qua doctrina ꝑmiſſiue recipit̉. vno mō qn̄ allegat taq̄
+pro oꝑe autentico qn̄nō ſoletei contradici inte dubio.
+eſto ꝙ aliqͣ falſa: īmo hereſes inaduertēter ponatꝭ hoc
+mō magr̄ ſentētiarū (cuiꝰ errores doctores colligunt)
+recipit̉: Et Gratianꝰ qͥarrentice vbilibet allegat̉: a cu
+tus libro pōtificij iurꝭ doctores decretiſte appellant̉: ⁊
+nō decretaliſte a decretalibꝰ. ⁊ tamē nullibi legit̉ poſta
+tiue ſuus liber abeccla approbatꝰ. ſccus eſt de decre¬
+talibꝰ/ ſexto/ ⁊ Clemētinis. vt ptꝫ īeoꝝ ꝓlogis  Et tn̄ il
+leidt̓ vnā tenet hereſimī fide. vt patꝫ. xxiij. q. tiij. Si il
+lic. vbi dicit ꝙ rex Achab duos qͥnqͣgenarios ad Heliā
+theſbitēmiſit: ⁊ tn̄ nō fuit Achub ſed ochoſias: vt ptꝫ
+quarti regū pͥmo Sic bea. Bernardꝰ ⁊ Anſelinꝰ reci¬
+piunt̉. qͥbꝰ nō ē modꝰ in ſcholis ꝯͣdicere. Sectdi recipi
+ut̉ ꝑmiſſiue: qm̄ allegūt̉ tā īſcholis ꝙͣ in populo: ꝯſue
+tudo tn̄ inualuit ꝙ ad orm ventū in ſcholis negent̉: et
+corū auctoritas paulo ꝓbꝰ habet grauitatis ꝙͣ ratiōes
+eoꝝ valeāt: vt Altiſodorenſis/ Alexā. btūs Thomas/
+doctor ſubtilis ⁊ huiuſmodi ſcriptores quoꝝ auctori¬
+tates a doctis in ſermone inrebꝰ ambiguis recitūtur:
+⁊ amultis ſcriptoribꝰ: ⁊ tn̄ ſi cōtra quecūqꝫ ī ſcholisre
+ſpōdentē vel ſcribētē vnū: iſtoꝝ adduceres ſine vlterio
+re ꝓceſſu abſqꝫ expoſitiōe eos negabitinet temerere¬
+ſpōdere iudicabit: ⁊ tn̄ alidiſtorū opinionemeamulto
+doctiores ſunt ꝙ multi quos aſſueti ſiunꝰ uōnegare: ſꝫ
+cum ipſi ſcholaſtice moterias arduas ꝑtractarunt et
+erudite ⁊ cōtradixerūt ſibi mutuo īmatertatopica: ſta
+tim poſt ſuatꝑa cōtradictores apparētes inuenerunt.
+auctoritatē illā cūaliquot minꝰ doctis antiqͥs de non
+negādo nō cōfecuti ſunt Sedqꝛmulta ⁊ docte ſcripſe¬
+rūt auctoritatē īprobo labore ⁊ magnaeruditiōendea
+pti ſunt: vt in cōtractibꝰ ⁊ materijs ambiguta allegen
+tun ⁊ aliorū nōeſt memoris Alia eſt etiū Mbuſa. Ulij ad
+deuotiōes extra materias ambiguus ſe iplicobāt qͥbꝰ
+cōtradicēdū erat nō tetigere: iſtoꝝ oīmin̄ opaſunt ap
+probata ꝑmiſſiue: ⁊ quanto plura bona ⁊ rōuabiliꝰ qͥ¬
+ſcribit tāto magis approbatiōes meretur Heretici tn̄
+ml̓ta vera ponſt vt cāapparētie in fallacta nō deſit. in
+tendētes vnā hereſtin vel plures ex induſtria īmediuꝫ
+adducerdoēs alij catholici p̄ter intentionē intrrores
+inciderūt. In oībus beue iudicare: ⁊ in nullis deficere
+eſt potiꝰ diuinū ꝙͣ humant¶ Soloꝝ ſapititieſt inabſem
+tia dep̄hēdere qn̄ qꝫ p̄ter intētionē intetrorē labiē (oui
+venia dādaeſt) ⁊ qn̄ ex ꝓpoſito. Quicqͥd agūt hoīes ī¬
+tētio iudicat oēs: ipſi nouerūt quo alo loquuti ſunt. i
+aliquibꝰ inaduertētiā facile eſt ꝑcipere: vt inillo dicto
+Gratiani. Ex his poteſtargumētū iuforma dilui.
+## Contra tertiam concluſionē arguitur.

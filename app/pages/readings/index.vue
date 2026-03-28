@@ -3,10 +3,6 @@ const { data: readings } = await useAsyncData('readings', () =>
   queryCollection('readingsMeta').all()
 )
 
-const { data: documents } = await useAsyncData('documents', () =>
-  queryCollection('documentsMeta').all()
-)
-
 const { data: authors } = await useAsyncData('authors', () =>
   queryCollection('authors').all()
 )
@@ -16,17 +12,9 @@ function authorName(slug: string) {
   return author?.name_en ?? slug
 }
 
-function documentFor(key: string) {
-  return documents.value?.find((s) => s.key === key)
-}
-
 const sortedReadings = computed(() => {
-  if (!readings.value || !documents.value) return []
-  return [...readings.value].sort((a, b) => {
-    const yearA = documentFor(a.document)?.year ?? 0
-    const yearB = documentFor(b.document)?.year ?? 0
-    return yearA - yearB
-  })
+  if (!readings.value) return []
+  return [...readings.value].sort((a, b) => (a.year ?? 0) - (b.year ?? 0))
 })
 </script>
 
@@ -46,8 +34,8 @@ const sortedReadings = computed(() => {
       <template #meta>
         <span>{{ authorName(reading.author) }}</span>
         <span>&middot;</span>
-        <span v-if="documentFor(reading.document)?.year">{{ documentFor(reading.document)!.year }}</span>
-        <span v-if="documentFor(reading.document)?.year">&middot;</span>
+        <span v-if="reading.year">{{ reading.year }}</span>
+        <span v-if="reading.year">&middot;</span>
         <span>{{ reading.section }}</span>
         <span>&middot;</span>
         <span>fol. {{ reading.page_start }}&ndash;{{ reading.page_end }}</span>

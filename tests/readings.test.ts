@@ -1,26 +1,12 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync, readdirSync, existsSync } from "fs";
 import { join, basename } from "path";
-import { parseFolio, readYaml } from "../scripts/lib/folio.js";
+import { parseFolio, readYaml, readMarkdown } from "../scripts/lib/folio.js";
 import { normalizeSearch } from "../utils/normalize-search.js";
 
 const READINGS_META = "content/readings/meta";
 const READINGS_TRANSCRIPTION = "content/readings/transcription";
 const READINGS_TRANSLATION = "content/readings/translation";
-
-/**
- * Extract folio markers from a reading file.
- * Markers look like: [145rb](/documents/john-major-sentences-a/299)
- */
-function extractFolioMarkers(content: string): string[] {
-  const pattern = /^\[(\d+[rv][ab])\]\(/gm;
-  const markers: string[] = [];
-  let match;
-  while ((match = pattern.exec(content))) {
-    markers.push(match[1]);
-  }
-  return markers;
-}
 
 /**
  * Extract the body text (after frontmatter) from a reading file.
@@ -29,6 +15,36 @@ function extractBody(content: string): string {
   const endIdx = content.indexOf("---", 3);
   if (endIdx === -1) return content;
   return content.slice(endIdx + 3).trim();
+}
+
+/**
+ * Get sorted column files for a reading directory.
+ */
+function getColumnFiles(dir: string): string[] {
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir)
+    .filter((f) => f.endsWith(".md"))
+    .sort((a, b) => {
+      return parseFolio(basename(a, ".md")).sort - parseFolio(basename(b, ".md")).sort;
+    });
+}
+
+
+/**
+ * Return the structural signature of a markdown body: an array describing
+ * the sequence of block types. Each entry is either { type: 'heading', depth }
+ * or { type: 'paragraph' }. This lets us verify that transcription and
+ * translation have the same block structure (not just the same totals).
+ */
+function blockStructure(body: string): Array<{ type: 'heading'; depth: number } | { type: 'paragraph' }> {
+  return body.split(/\n{2,}/)
+    .map((block) => block.trim())
+    .filter((block) => block.length > 0)
+    .map((block) => {
+      const headingMatch = block.match(/^(#{1,6})\s/);
+      if (headingMatch) return { type: 'heading' as const, depth: headingMatch[1].length };
+      return { type: 'paragraph' as const };
+    });
 }
 
 /**
@@ -63,96 +79,152 @@ describe("readings", () => {
   for (const metaFile of metaFiles) {
     const readingKey = basename(metaFile, ".md");
     const meta = readYaml(join(READINGS_META, metaFile));
+    const transcriptionDir = join(READINGS_TRANSCRIPTION, readingKey);
+    const translationDir = join(READINGS_TRANSLATION, readingKey);
 
-    it(`${readingKey} transcription has consecutive folio markers within page range`, () => {
-      const transcriptionPath = join(READINGS_TRANSCRIPTION, `${readingKey}.md`);
-      const content = readFileSync(transcriptionPath, "utf-8");
-      const markers = extractFolioMarkers(content);
+    if (!existsSync(transcriptionDir)) continue;
+
+    it(`${readingKey} transcription has consecutive column files within page range`, () => {
+      const files = getColumnFiles(transcriptionDir);
+      const refs = files.map((f) => basename(f, ".md"));
       const fullSequence = expectedFolioSequence(meta.page_start, meta.page_end);
 
-      expect(markers.length).toBeGreaterThan(0);
+      expect(refs.length).toBeGreaterThan(0);
 
-      for (const m of markers) {
-        expect(fullSequence).toContain(m);
+      for (const ref of refs) {
+        expect(fullSequence).toContain(ref);
       }
 
-      // Markers must be consecutive (no gaps)
-      for (let i = 1; i < markers.length; i++) {
-        const prev = parseFolio(markers[i - 1]);
-        const curr = parseFolio(markers[i]);
+      // Column files must be consecutive (no gaps)
+      for (let i = 1; i < refs.length; i++) {
+        const prev = parseFolio(refs[i - 1]);
+        const curr = parseFolio(refs[i]);
         expect(curr.sort).toBe(prev.sort + 1);
+      }
+    });
+
+    it(`${readingKey} transcription columns have valid frontmatter`, () => {
+      const files = getColumnFiles(transcriptionDir);
+      for (const file of files) {
+        const { frontmatter } = readMarkdown(join(transcriptionDir, file));
+        expect(frontmatter.reading).toBe(readingKey);
+        expect(frontmatter.page).toBe(basename(file, ".md"));
+        expect(frontmatter.pdf_page).toBeTruthy();
+        expect(frontmatter.sortable_pagination_id).toBeTruthy();
       }
     });
 
     if (meta.start_text) {
       it(`${readingKey} transcription starts with start_text`, () => {
-        const transcriptionPath = join(READINGS_TRANSCRIPTION, `${readingKey}.md`);
-        const content = readFileSync(transcriptionPath, "utf-8");
-        const body = normalizeSearch(extractBody(content));
+        const files = getColumnFiles(transcriptionDir);
+        const firstFile = readFileSync(join(transcriptionDir, files[0]), "utf-8");
+        const body = normalizeSearch(extractBody(firstFile));
         const startText = normalizeSearch(meta.start_text);
 
         expect(body).toContain(startText);
-        // The start_text should appear before any substantial content
         const idx = body.indexOf(startText);
-        // Allow up to 200 chars before start_text (folio marker + minor preamble)
         expect(idx).toBeLessThan(200);
       });
     }
 
     if (meta.end_text) {
       it(`${readingKey} transcription ends with end_text`, () => {
-        const transcriptionPath = join(READINGS_TRANSCRIPTION, `${readingKey}.md`);
-        const content = readFileSync(transcriptionPath, "utf-8");
-        const body = normalizeSearch(extractBody(content));
+        const files = getColumnFiles(transcriptionDir);
+        const lastFile = readFileSync(join(transcriptionDir, files[files.length - 1]), "utf-8");
+        const body = normalizeSearch(extractBody(lastFile));
         const endText = normalizeSearch(meta.end_text);
 
         expect(body).toContain(endText);
-        // The end_text should appear near the end of the body
         const idx = body.indexOf(endText);
         expect(idx).toBeGreaterThan(body.length - 500);
       });
     }
 
-    const translationPath = join(READINGS_TRANSLATION, `${readingKey}.md`);
-    if (existsSync(translationPath)) {
-      it(`${readingKey} translation has no straight quotes or apostrophes`, () => {
-        const content = readFileSync(translationPath, "utf-8");
-        const body = extractBody(content);
-        // Strip markdown links and inline code before checking
-        const textOnly = body.replace(/\[[^\]]*\]\([^)]*\)/g, "").replace(/`[^`]+`/g, "");
-        const matches = [...textOnly.matchAll(/["']/g)];
-        if (matches.length > 0) {
-          const examples = matches.slice(0, 5).map((m) => {
-            const start = Math.max(0, m.index! - 20);
-            const end = Math.min(textOnly.length, m.index! + 20);
-            return `  ${m[0]} at offset ${m.index}: ...${textOnly.slice(start, end)}...`;
-          });
-          expect.fail(
-            `Found ${matches.length} straight quote(s)/apostrophe(s) in translation body:\n${examples.join("\n")}`
-          );
-        }
-      });
-    }
-
     it(`${readingKey} transcription headings have blank lines around them`, () => {
-      const transcriptionPath = join(READINGS_TRANSCRIPTION, `${readingKey}.md`);
-      const content = readFileSync(transcriptionPath, "utf-8");
-      const lines = extractBody(content).split("\n");
+      const files = getColumnFiles(transcriptionDir);
+      for (const file of files) {
+        const content = readFileSync(join(transcriptionDir, file), "utf-8");
+        const lines = extractBody(content).split("\n");
 
-      for (let i = 0; i < lines.length; i++) {
-        if (lines[i].startsWith("#")) {
-          // Line before heading should be blank (or be the first line)
-          if (i > 0) {
-            expect(lines[i - 1].trim(), `Missing blank line before heading at line ${i}: "${lines[i]}"`).toBe("");
-          }
-          // Line after heading should be blank or another line (not required to be blank if heading is last)
-          if (i < lines.length - 1) {
-            expect(lines[i + 1].startsWith("#") || lines[i + 1].trim() === "" || !lines[i + 1].startsWith("["),
-              `Heading at line ${i} should be followed by blank line or content: "${lines[i]}"`
-            ).toBeTruthy();
+        for (let i = 0; i < lines.length; i++) {
+          if (lines[i].startsWith("#")) {
+            if (i > 0) {
+              expect(
+                lines[i - 1].trim(),
+                `Missing blank line before heading at line ${i} in ${file}: "${lines[i]}"`
+              ).toBe("");
+            }
           }
         }
       }
     });
+
+    if (existsSync(translationDir)) {
+      it(`${readingKey} translation has no straight quotes or apostrophes`, () => {
+        const files = getColumnFiles(translationDir);
+        for (const file of files) {
+          const content = readFileSync(join(translationDir, file), "utf-8");
+          const body = extractBody(content);
+          const textOnly = body.replace(/\[[^\]]*\]\([^)]*\)/g, "").replace(/`[^`]+`/g, "");
+          const matches = [...textOnly.matchAll(/["']/g)];
+          if (matches.length > 0) {
+            const examples = matches.slice(0, 5).map((m) => {
+              const start = Math.max(0, m.index! - 20);
+              const end = Math.min(textOnly.length, m.index! + 20);
+              return `  ${m[0]} at offset ${m.index}: ...${textOnly.slice(start, end)}...`;
+            });
+            expect.fail(
+              `Found ${matches.length} straight quote(s)/apostrophe(s) in ${file}:\n${examples.join("\n")}`
+            );
+          }
+        }
+      });
+
+      it(`${readingKey} translation columns match transcription columns`, () => {
+        const transFiles = getColumnFiles(transcriptionDir).map((f) => basename(f, ".md"));
+        const translFiles = getColumnFiles(translationDir).map((f) => basename(f, ".md"));
+        expect(translFiles).toEqual(transFiles);
+      });
+
+      it(`${readingKey} transcription and translation block structure matches per column`, () => {
+        const transFiles = getColumnFiles(transcriptionDir);
+        const translFiles = getColumnFiles(translationDir);
+        const translMap = new Map(translFiles.map((f) => [basename(f, ".md"), f]));
+
+        for (const file of transFiles) {
+          const page = basename(file, ".md");
+          const translFile = translMap.get(page);
+          if (!translFile) continue;
+
+          const transBody = extractBody(readFileSync(join(transcriptionDir, file), "utf-8"));
+          const translBody = extractBody(readFileSync(join(translationDir, translFile), "utf-8"));
+
+          const transBlocks = blockStructure(transBody);
+          const translBlocks = blockStructure(translBody);
+
+          const format = (blocks: typeof transBlocks) =>
+            blocks.map((b) => b.type === "heading" ? `h${b.depth}` : "p").join(", ");
+
+          expect(
+            translBlocks.length,
+            `Column ${page}: structure mismatch\n  transcription: [${format(transBlocks)}]\n  translation:   [${format(translBlocks)}]`
+          ).toBe(transBlocks.length);
+
+          for (let i = 0; i < transBlocks.length; i++) {
+            expect(
+              translBlocks[i].type,
+              `Column ${page}, block ${i + 1}: transcription has ${transBlocks[i].type} but translation has ${translBlocks[i]?.type}`
+            ).toBe(transBlocks[i].type);
+
+            if (transBlocks[i].type === "heading" && translBlocks[i]?.type === "heading") {
+              expect(
+                (translBlocks[i] as any).depth,
+                `Column ${page}, block ${i + 1}: heading depth mismatch`
+              ).toBe((transBlocks[i] as any).depth);
+            }
+          }
+        }
+      });
+    }
   }
 });

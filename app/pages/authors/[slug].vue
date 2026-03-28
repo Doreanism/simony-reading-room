@@ -72,7 +72,7 @@ function readingsForDocument(documentKey: string) {
         :to="`/documents/${doc.key}`"
         :title="doc.title_en"
         :subtitle="doc.title"
-        :image="doc.cover || `/d/${doc.key}/1.webp`"
+        :image="doc.cover || `/d/${doc.key}/cover.jpg`"
       >
         <template #meta>
           <span v-if="doc.year">{{ doc.year }}</span>
