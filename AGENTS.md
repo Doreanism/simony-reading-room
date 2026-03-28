@@ -39,6 +39,9 @@ These are run once per document and the results are committed or uploaded to S3.
 |--------|---------|---------|
 | `build:page-json` | `tsx scripts/build-page-json.ts <doc> <start> [end]` | Run Kraken OCR to produce page JSON (~55s/page, run overnight) |
 | `build:transcriptions` | `tsx scripts/generate-transcriptions.ts` | Generate per-column .md transcription files from page JSON (all pages) |
+| `build:images` | `tsx scripts/build-page-images.ts` | Extract page images from source PDF |
+| `build:normalize-spreads` | `tsx scripts/normalize-spread-sizes.ts` | Normalize spread image dimensions for the book viewer |
+| `build:readings` | `tsx scripts/build-readings.ts` | Produce per-column normalized reading transcription files from document-level OCR columns |
 
 Example: `npm run build:page-json -- john-major-sentences-a`
 
@@ -46,9 +49,7 @@ Example: `npm run build:page-json -- john-major-sentences-a`
 
 | Script | Command | Purpose |
 |--------|---------|---------|
-| `build:images` | `tsx scripts/build-page-images.ts` | Extract page images from source PDF |
-| `build:readings` | `tsx scripts/build-readings.ts` | Produce per-column normalized reading transcription files from document-level OCR columns |
-| `build` | `build:images` + `build:normalize-spreads` + `build:readings` + `nuxt build` | Full deploy build |
+| `build` | `nuxt build` | Full deploy build |
 
 ## `content/` Directory Structure
 

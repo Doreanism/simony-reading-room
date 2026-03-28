@@ -5,8 +5,7 @@
  *
  * Local layout (public/d/):        S3 layout (documents/):
  *   <key>.pdf                        <key>.pdf
- *   <key>/<N>.webp                   <key>/<N>.webp
- *   <key>/<N>.json                   <key>/<N>.json
+ *   <key>/<file>                     <key>/<file>
  *
  * Usage:
  *   tsx scripts/upload-to-s3.ts                # upload everything
@@ -37,6 +36,9 @@ const CONTENT_TYPES: Record<string, string> = {
   ".pdf": "application/pdf",
   ".webp": "image/webp",
   ".json": "application/json",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".png": "image/png",
 };
 
 async function listRemoteObjects(prefix: string): Promise<Map<string, number>> {
@@ -104,7 +106,7 @@ async function uploadDocument(documentKey: string) {
   const pagesDir = join(PUBLIC_D, documentKey);
   if (existsSync(pagesDir)) {
     const files = readdirSync(pagesDir).filter(
-      (f) => f.endsWith(".webp") || f.endsWith(".json")
+      (f) => f.includes(".")
     );
     for (const file of files) {
       const localPath = join(pagesDir, file);

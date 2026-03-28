@@ -148,6 +148,8 @@ function buildPerColumn(
   mkdirSync(outDir, { recursive: true });
 
   for (const block of blocks) {
+    const outPath = join(outDir, `${block.ref}.md`);
+
     const lines: string[] = [];
     lines.push("---");
     lines.push(`reading: ${yamlValue(readingKey)}`);
@@ -159,7 +161,7 @@ function buildPerColumn(
     lines.push(block.content.trim());
     lines.push("");
 
-    writeFileSync(join(outDir, `${block.ref}.md`), lines.join("\n"));
+    writeFileSync(outPath, lines.join("\n"));
   }
 
   return blocks.length;

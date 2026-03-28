@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "build": "npm run build:images && npm run build:normalize-spreads && npm run build:readings && nuxt build",
+    "build": "nuxt build",
     "pipeline": "tsx scripts/pipeline.ts",
     "build:images": "tsx scripts/build-page-images.ts",
     "build:normalize-spreads": "tsx scripts/normalize-spread-sizes.ts",
