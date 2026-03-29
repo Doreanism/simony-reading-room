@@ -1,6 +1,6 @@
 ---
 name: translate-reading
-description: Translate a reading transcription from Latin to English. Use when asked to translate a reading or create/redo a translation.
+description: Translate a reading transcription to English. Use when asked to translate a reading or create/redo a translation.
 argument-hint: "<reading-key>"
 allowed-tools: Read, Write, Glob, Grep, Bash, Agent
 ---

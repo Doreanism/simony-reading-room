@@ -34,8 +34,8 @@ Examine the PDF to determine metadata yourself. Do not ask the user for values y
 ### Title, author, year, and description
 
 - Extract the embedded PDF metadata (title, author) using PyMuPDF as a starting point.
-- Render the **title page** (typically the first or second page of content) at 150+ DPI and read it to get the exact Latin title, author, publisher, and place of publication.
-- Render the **colophon** (typically one of the last few pages) at 300 DPI and read it to find the publication date. Latin dates use forms like "Millesimo quingentesimo decimo sexto" (1516) or Roman numerals. The colophon also confirms the printer.
+- Render the **title page** (typically the first or second page of content) at 150+ DPI and read it to get the exact title, author, publisher, and place of publication.
+- Render the **colophon** or publication page (typically one of the last few pages, or verso of title page) at 300 DPI and read it to find the publication date. The colophon also confirms the printer.
 - Draft a brief description of the work based on what you've read.
 
 ### Pagination base
@@ -52,7 +52,7 @@ Examine the PDF to determine metadata yourself. Do not ask the user for values y
 ### Assemble the meta file
 
 Write the meta file to `content/documents/meta/<key>.md` following the format of existing meta files. Include all fields:
-- `key`, `title`, `title_en`, `author` (slug), `year`, `url` (provenance), `document`, `cover` (`/d/<key>/cover.jpg`), `pages`, `filesize`, `pagination`, `language` (`latin`), `typeface`, `ocr_model` (default: `10.5281/zenodo.11113737`), `base_pdf_page`, `base_folio`, `base_side`
+- `key`, `title`, `title_en`, `author` (slug), `year`, `url` (provenance), `document`, `cover` (`/d/<key>/cover.jpg`), `pages`, `filesize`, `pagination`, `language`, `typeface`, `ocr_model` (default: `10.5281/zenodo.11113737` for Latin; find an appropriate model for other languages), `base_pdf_page`, `base_folio`, `base_side`
 
 Present the proposed metadata to the user for confirmation before writing.
 

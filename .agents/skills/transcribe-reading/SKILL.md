@@ -1,6 +1,6 @@
 ---
 name: transcribe-reading
-description: Transcribe a reading from source PDF pages into flowing Latin text. Use when asked to transcribe, create, or redo a reading transcription.
+description: Transcribe a reading from source PDF pages into flowing text. Use when asked to transcribe, create, or redo a reading transcription.
 argument-hint: "<reading-key>"
 allowed-tools: Read, Write, Glob, Grep, Bash, Agent
 ---

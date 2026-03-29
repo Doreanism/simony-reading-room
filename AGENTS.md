@@ -109,7 +109,7 @@ Coordinates are normalized (0-1) relative to page dimensions. Lines are sorted b
 
 Reading transcriptions and translations are stored as **per-column files** in `content/readings/transcription/{reading-key}/` and `content/readings/translation/{reading-key}/`. Each file corresponds to one folio column (e.g., `145rb.md`) and contains flowing text for that column only.
 
-Reading transcriptions are **readable, flowing Latin text** produced by reading source page images directly — not from OCR. Reading translations are scholarly English translations of the transcriptions. Transcription and translation column files must have matching headings (same count and depth per column).
+Reading transcriptions are **readable, flowing text** in the source language, produced by reading source page images directly — not from OCR. Reading translations are scholarly English translations of the transcriptions. Transcription and translation column files must have matching headings (same count and depth per column).
 
 Use the skills `/transcribe-reading` and `/translate-reading` for detailed instructions on producing these files. See `.agents/skills/` for the full rules on text formatting, headings, and what to omit.
 
@@ -122,6 +122,22 @@ Document transcription files are **not** registered as a Nuxt Content collection
 Each indexed record carries metadata (`folio`, `pdfPage`, `documentKey`) and filters (`type: transcription|translation`, `documentKey`) so the client can filter and display results appropriately.
 
 For local development, run `npm run build:search-index` to generate the index before starting the dev server.
+
+## Agent Tools
+
+Reusable scripts for agent workflows live in `.agents/tools/`. These are not part of the application — they exist solely for agent use during development tasks.
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| `pdf-tool.py` | `python3 .agents/tools/pdf-tool.py <command>` | PDF operations (metadata, page rendering) |
+
+### pdf-tool.py
+
+- `info <pdf>` — Print page count, file size, and embedded metadata.
+- `render <pdf> <pages> [--dpi N] [--out-dir DIR]` — Render pages to PNG. Pages are 0-indexed, comma-separated, with ranges (e.g., `0,5,10-15`). Default DPI: 150, default output: `/tmp`.
+- `trim <pdf> [--start N] [--end N]` — Remove N pages from the start/end of a PDF, in place.
+- `cover <pdf> --output <path> [--page N]` — Extract a page as a 3:4 cover image (900x1200 JPG).
+- `text <pdf> <pages> [--limit N]` — Extract embedded text from pages. Limit chars per page with `--limit`.
 
 ## Vue Conventions
 
