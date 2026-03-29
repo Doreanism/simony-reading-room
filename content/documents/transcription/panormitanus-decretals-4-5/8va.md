@@ -1,0 +1,137 @@
+---
+page: 8va
+pdf_page: 16
+sortable_pagination_id: "8_003"
+---
+fentie\:cín  fumma  bácmateríá  relinqueré  arbi
+trio  iudicátie\:etoiligéter  omnib?  póderib?  ofi
+derct  etríi  oe  moate  fit  fctá  certificatio
+fj  ibiercufat.oicit  bic.o.£lnt.q»  ad  boc  vt  excu»
+fctur  mulier  a  peccato  fufficit  qo  verifilr  crede»
+bat  mariti  moztuü\:fed  quoad  bocvt  ecclía  oet
+lícétiá  5bédí  requiritaptioz  pbatio\:vt  bic  boc
+oíctü  vf  prima  fronte  5  fi.te.bi  cóinngütur  illa
+oto  vytvroznon  poffit  3beremecetiá  ecclía  oa»
+relicentiá  níficertüi  nütiii  reccperit.ratio  nà  cum.
+mulier  occafu  5bat  lege  refiftéte  nó  pfumit  e&
+in  bora  fide.l.quéadmodii.C.ocagri.«  céfi.li.ri.
+4  íinreg.d  2  ius.oercg.iur.li.vji  ter.i.o.aut.bo^
+dic.oírít  q»
+fi  aliter  exo  2bit  oe
+íta  q  bodíe  cíi  babeaw?  tex.apertti  nó  ercufares
+5Sacbarías.
+mulieré  ab  adulterío\:q2  15  adultcriti  non  cómiít»
+4  (Lzfoerctrir.ad
+tatur  fineoolo.Lpe.ff.oc  adulte.tit  ool?  pfumit
+debaL.i.l.eqs  na
+€r  quo  3rít\:lege  pbibéte.z  fic  videtur  qp  vroz  eft
+feparádaafcóo  viro\:lícet  aliter  fenferit  Sjmno.in
+tales.cibi  Xy.C.
+c;ofíe.ocfecum.nup.vbi  oicam.£(bb.
+$  pba.«  i.l.oata
+opera.ff.quí  acc.  1
+&$3  azf»eretricéi  erozé  oucere  que  vultfe  cozrí
+nó  pof.ín.Lfiqua
+gerepium  eft\:zad  remiffioné  pzoficít  peccatoaíí.
+alf»eretrícii  quátüciiqs  publicum  non  pzobíibet
+illuftrís.C.ad  o?  2
+fi.pleni?  p  J6al.i
+matrímonium.
+Lidé.$.dtice.ff.o
+a»fimnonit  3berepótots  qerpffenó  pbibet.
+K  baritatís  opa  pfuntad  peccato\:iti  remiffioné.
+códí.ob  tur.cau.  3
+qoeccato:ü  remiffio  oupler  eft  culpefcs  «  pene
+Sau.  oe  ca.tn.l.
+qffo  peccata  remittant
+fij.
+$.
+fed  qó  mere
+*]Remiffio  peccato?(i  fine  indulgétia  plenaría  pa
+trír.eo.líb.  «  íftii
+pequid  operetur.
+ín.c.cíl  oecozé.
+Aonnícatio  efta  iurc  oíuíno  pbibíta  «  eft  pecca»
+Ovíta  zbon.cder.  4
+e-*Gebafti.  Sapía.
+tum  mostalc.
+8  (L  afoeretrir.  b;
+Alf»eretriroicitilla  publícá  queftum  facere  que
+queftue  caufa  ouos  admíttit.
+10.9?  effectus  eft
+mayíim?  fi  eft  me  1
+retrirmá  fi  eft  me
+retrír\:oata  non
+poffüntrepetí\:et
+trímonij  cii  peccatrice  volétefe  cozrigere  pzoficit
+oeillíe  pót  tefta»
+ad  remiffioné  peccato\:ti
+rivt  p  J&al.ín.l.
+fum  ftatutí.&cóo  ftatutii.ibi  ftatuimusq[
+j.C.62di.obtur.
+fusfalie.JDicitur  qp  inter  cetera  opera  cbarita»
+cau.fi  vero  nó  eft
+tís  magna  cbaritas  reputatur  peccáté  ad  peníté
+meretrir  oata  au
+tiam  reuocare\:ende  Z4leyander  papa  vult  qciiqs
+ferunt  per  fifcum.
+publicas  mulieres  oe  lupanari  ertrazerínt  eae
+vtp  2ing.in.Lü.
+oureríntin  erozee  ín  remiffionécis  pficíat  pece
+C.oc  2dí.obtur.
+catoz.AOer
+cau.q$  mitii  no.  2
+publici  nó  pztuat  mulíeré  bocfacraméto  matri»
+2tramulíeres  ba
+montj\:máquifqs  cétrabere  poteft  qui  erpffenon
+bétee  amafiosa
+piobibet.vtín.c.cii  apud.i.coE  tScóo  not.qó
+quib?  erto\:quét  3
+opera  cbarítatie  pficiunt
+focalía  in  auro  c
+rii\:z  intellígo  oe  peccatis  refpectu  pene.  nam  ou
+argento  ná  fif?
+plereft  malíi.f.cnlpe  «  penc.tulpa  eri  remittit
+bec  pót  auferre:
+erfola  cótrítione  peccato  fiue  qua  nó  fufficiüt
+vtibíper  ei.et  p
+opacbarítatis.oe  peni.oift.i.in.c.oiri.d.c.fi  pece
+3af.in.L.íi.$.fed.
+catii.cii  fi.fcd  pena  peccati  e  fola  cótrítíone  non
+qo  metríci.  ff.co;
+víinittit  nífi  cx  penítétia  erteriozi  nifi  maria  cét
+oe2dí.ob  turpé
+cótritio\:má  illa  marima  pena  cft\:vtno.gl.ocofe.
+caufam.
+oíft.iij.baptifmi  vicé-Zlii  intelligo  tert.cp  illud
+€L  £óualefcít.ad
+matrimoniit  pficitad  remíffioné  pene4L  S5  eft
+dead  veclaratio
+oubiüiniiqd  omnia  peccata  oíimittantz^5etr.et
+nem  bui?  oecret.
+3bb.oíciit  qp  nó  nibil  tiallegát.oo.sCardi.oícit
+videndii  Id.có
+poflc  fuftinerioppohitii  cii  litera  log£  indefinite
+furreví.
+et  ficvf  q  egpolleat  eníuerfalí.íurta  no.in.c.vt
+(Lum  otingat
+circa.oc  elect.líb.vj.q?
+£ócoxlad  pba
+in  bacmatería  fauozabilí.Sed  p  pzio  oícto  fae
+tíoné.C.oc  pba,
+cit  tez,
+oti  oícit.pficiat.3téq:  qfi  papa  indulget
+Zind.iBarb.
+remíffioné  oim  peccatozü  adücit  plenas  feu  ple»
+niffimá\:q5  vbübicnó  ponitietno.gl.ín  cle.ij.oe
+peni.  remif.  3jo.an.in.c.ad  liberandi.  j.oe  iude.
+(L1  3nglj.in  fi.
+ep  ecdefia  oíffimulat  et  euítet  maíus  malum  tíi
+bocpeccatii  ocbem?  pfequi  vt  moatalesem  eum
+alle.q6  babet  in  aut.ocleno-fed  tu  víde  melíozes
+ter.  xrr8.q.  iiij.  (m.c.ameretrices..c.
+día£.oclegi.«  vbi  legit  not.q»  fomnícatío  cíí  me»
+tetrice  vel  cócubina  eft  moztale  peccatíí\:z  a  iure
+oiuino  pbibíta\:l5  qdá  vulgares  zígnozátes  cre
+dátoppofitii\:qó  eft  falfüi.«|
+«  yideibi.3n  glo.tfi  er  quo  muliercá  dftue  ad»

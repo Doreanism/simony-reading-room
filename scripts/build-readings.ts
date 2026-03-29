@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, rmSync } from "fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from "fs";
 import { join, basename } from "path";
 import { normalizeText, normalizeSearch } from "../utils/normalize-search.js";
 import { parseFolio, sortablePaginationId, readYaml, yamlValue } from "./lib/folio.js";
@@ -139,16 +139,13 @@ function buildPerColumn(
     }
   }
 
-  // Write per-column files
+  // Write per-column files, skipping any that already exist (hand-transcribed)
   const outDir = join(READINGS_DIR, "transcription", readingKey);
-  // Clean output directory
-  if (existsSync(outDir)) {
-    rmSync(outDir, { recursive: true });
-  }
   mkdirSync(outDir, { recursive: true });
 
   for (const block of blocks) {
     const outPath = join(outDir, `${block.ref}.md`);
+    if (existsSync(outPath)) continue;
 
     const lines: string[] = [];
     lines.push("---");

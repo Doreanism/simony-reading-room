@@ -1,0 +1,164 @@
+---
+page: 3rb
+pdf_page: 5
+sortable_pagination_id: "3_002"
+---
+Íue  fauo\:t  eft  iti»
+SSeptenniti  requirit  ad  validitate  fponfaliozit.
+terpofitít  inramé
+tumbs  vim  aplí
+stas  certa  eb  requirit  refpect?  oifcretióie  pace
+inremittédo.c.ó
+$$
+Simaio\:fepténio
+iureít.ín  fi..L.fi.
+j  cu  €niS.as  prima  fepten
+f.q
+«a  q.J8art.i
+jio  in  qua  malítía  fupplet  etatem  fpó
+Llabeo.ff.oc  iure
+ise  ifalia  Sbiter  bis  osi  iuftitia  publice
+íu.zilj.$.«  poft
+boneftatie  marime  fi  cómifceri  tétarct.ita  cóiter.
+operis.  ff.
+oc  no.
+fummat\:fed  in  veritate  fummariii  nó  colligit  cx
+ope.nun.p  mod.
+litera  vt  patebit  clari?  er.j.oicédis.fed  inberédo
+i.L.f.ff.q  fatifda.
+lfepótficfummari.ei  maio?  fepténio  ourit  in.
+cog.p  $osí.  cófi.
+vro\:m  mínosé  fepténio  «  eá  tradugit  ad  oomif
+lrvij.Sfi.fcóo  re»
+odit  ertali  ctu  publíceboncftatie  iuftitia.oíui»
+fpódet.aler.  cóft.
+dít  peio  narrat  factii  «  cafum  oubíiii.fcóo  onplíci
+lij.in.f.vo.  verfi.
+róneoíffinit.ibi\:q?  agit4L  cafus  Iralis.Suidá
+fcóo  quía.
+(5  crt.
+a»
+fuueníeourit  quádá  pucllá  nondi.víj.au.fpon:  f
+falia  5bédo  cii  ipfa.«  attétanit  cii  ipfa  qó  2plere
+cit.c.fi  quem.j.oc
+nó  potuít.tádé  moztua  füít  yel  oíct?  iuuenis  ab
+fenté.eycom.
+ea  receffit  atip  fozte  fpófalib?  ofentiret\:a  cii  alia.  c-esebafti.  &apía.
+illi?  puclle  mfimoniii  2xit.drebat  f  4p  5  cert?  .mul
+taad  b  accumti»
+vtrü  poffint  infimul  remancreríidet  papa  q9  ín
+lat.o.5c.i.c.  audt
+bis  doubíafuntqó  certi?  eft  feruaríos\:ct  ó  pp
+boncftaté  ecctie\:q2  oícebat  fpófa  ipfius  «  pp  ou»
+tís.col.xriij.S.li»
+mita  fcóo.8.0€
+biii  dicti  oebét  ad  iuicé  fepari.35.4[  Tio.  i.q
+piefcrip.
+ín  2cernétib?  picuifi  aie  oebem?  ioubüefemp  te
+3acbaríae.
+nere  qo  certi?  f  eft  «  q  finc  perículo  aie  erplicarí
+«L  zitimoniü.
+efttutioz.ad  b  &
+3.  uaddeülr  bo
+videboná  gLi.c.j.oefcruti.s  ter.in  cle.exiuíi.oe  v.
+ncftas  publíce  i»
+&[  tifio.ti.qó  ín  matrimonio  3bendo  magis
+boneftas  d  rci  veritas.vnde  alíbi  ot^
+pediat  mrümno»
+nít5:;per  Spe.in
+citter.turís  ciuilie  q$  inadítionib?  nó  qo  líceat
+tí.oc  cófan.catFi.
+fa  qb  veccat2iderádti  efl.vt  i.Lfemp.ff.oe  rí.nu.
+«Lt  3ténoabi2plerenó  potuít.qó  magis  2fi^
+verfi.fi  vero.
+g  iurteffect?
+T  t
+eiltimo.qe  er  e-toebafti,  &apia.
+fpófalib?  ozit  publice  boncftatie  iuftitía  iteríps  b.  (L  zifrinitas.
+im
+poopiie  tí  cadit
+fpófum«  cófanguíneos  fpófe\:a  e5  iter  fpófas  «
+affinitas  afi  cor»
+oés  2fanguincoefpófi  vfqs  ad  drtii  sradii  babí^
+fümationé  mfí»
+«oirímedii  mfímoniii  5  inter
+monü\:vt  p  zio
+eos  5bendit.ad  boc.c.fpófam.j.co.
+clari?  in.c.j.
+der.poft  Jar.  in
+€o.ti.lib.ei.fEtfcíae  q5  bocipedimétüi  nó  cátur
+cx  2fanguinitate  necer  affinítate\:q  afí  counfume
+Loy  feruíus.ff.  oc
+códíi.ob  cau.
+matíoné  mfíimonf$  feu  carnis  cómtrtioné  nó  eft
+(La  20rima.ar^
+o\:ta  affinitas:  f5  ozit  ey  cófenfu  pftito  i  fpófae  í
+lib?\:z  fuítinductii  bocipcdimétii  ab  ecclefia  pp
+€bí.  t.c.j.  oc  oefp.
+boneftatéofítarat\:q2  qfiqs  otícbant  graues  ini»
+fmptub.t5ouo  re
+micitie  itcr  2fanguincos  cti  eni  ocfpófatá  alius
+qrí.pzio  cp  malí^
+2fanguíncoz  drebatoucere  t  voz  z  appellauit
+tía  fapplcat  eta^
+ecctia  illud  ipedimétü  publica  bóeftas\:q:  nó  po
+téfcóo  y  mulier
+tétata  fucrit.3io.
+teratoarí  cógruétius  nomé  cii  non  poffet  attri
+an.ibit5  q»  mali»
+buíalicutercognationib?  f.legalí\:vel  fpüalizvel
+tía  fupplet  etaté
+carualí.ná  trípler  eft  cognatío.iftó  ergo  impedi
+menti  eft  oc  p  fecrfola  boneftate  ab  ecclia  indue
+ficutín  matrimo
+3jo.ar.i.o.c.j.li.j.
+CL  3n  gj.
+niofeat  ibi  2i.
+ín  fi.OLiftanó  clare  aperit  íntellectii.c.f5  vt  clare
+íta  tenct  fanctus
+31  bo.  íi.  fntari
+babcam?  materíá  aduertédii  cft  qo  aut  fpófalía
+fuerüit  5cta  inter  maío1es  fepténio  «ioubio  ozit
+oífti.rrvj.arti.ij.
+fll6  impedimétü  publice  boneftatis  necerigitur  c-texcbaftí.  &apía.
+boc  cafu  qp  fpófus  tentauerit  cognofcerefpone  k.-.  (T  Sponfaliozfi.
+fam.vt  ín.c.fponfam  j.e.  pall.c.j.iftenó  eft  ca»
+7510  bacopí.fa»
+citooctrina  £r»
+fusnofter.8  i  fpofalia  bunt  iter  niínozes  fce
+pténio  fercnulla  oifcretioné  babétee\:ficutfolet
+cbí.in.c.fi.oetud.
+fierí.qríiqs  parétee  5bunt  fpófalía  p  fils  «mulli
+fi.vi.q  vbiler  re
+oxitipedimenti\:q?  talía  fpófalía  funt  nulli?  effe
+arítcerti  tps  an
+ctue  er  oefectu  2fenfus  vt ín  pall.c.j.2  bic  nó  eft
+noz  femp  rcgrit
+cafus  noftcr.Ofiqs  maíor  5bit  fpófalía  cii  mino
+pfectionifialiud
+ri  fepténtozpriüma  tfi  feptenio.z  glifta  vf  fenti^
+expiimat:  fequi£
+re  q  oifcretio  füppleatetaté'a  clari?  b/fentit.j.c.
+3Bal.in.c.cü  vice
+t  zr  qU?  iferf  qo  pri
+finii.S.oeoffi.oc
+ma  ifcptenío  pót  5bere  fpófalia.fs  ccrteb  oictii
+le.£1rc.in.l.  d  eta
+tc.ff.octeft.fentit
+nullibi  pbat.ná.c.lfas.v.c.ouo  pueri.«.c.attefta
+tíócs  j.ti.  pri.aperteinnuuntoppofitii.vidétur
+Zibb.in.c.cii  i  cio
+eii  pcife  regrerefepténiti  ad  validitatéfponfalío
+ctíe.circa  glof.in.
+rii:*  p  bocfacit  qo  fcpteniti  rearítzqz  i  talí  etate
+ver.ercgerit.S.oe
+elec.
+pfunnt  oifcretio  cit  ercat  qe  tumcinfantiá\:fs
+vbi
+certa  etae  regrit  refpectuoifcrerióis  illa  puenirí
+nó  pót\:vtapte  patct  ictate  ftatnta  ad  2fectioné
+teftaméti\:vt  legit  «  no.in.l.d  ctate,ff;oc  teft.ites
+patct  erno.in.c.puberes  j.ti.pri.z  in.Lad  répu.
+blicá.frioe  mu,zbono.Stéptotitit.C.qr  tutoz
+Zi2zizi
+ij

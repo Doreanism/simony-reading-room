@@ -13,6 +13,7 @@
 
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from "fs";
 import { join } from "path";
+import { execSync } from "child_process";
 import { sortablePaginationId, readYaml } from "./lib/folio.js";
 
 interface OcrLine {
@@ -181,3 +182,7 @@ if (documentKey) {
     generateForDocument(documentKey);
   }
 }
+
+// Rebuild the Pagefind search index
+console.log("Rebuilding search index...");
+execSync("tsx scripts/build-search-index.ts", { stdio: "inherit" });

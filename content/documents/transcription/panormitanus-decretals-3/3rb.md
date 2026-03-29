@@ -1,0 +1,147 @@
+---
+page: 3rb
+pdf_page: 8
+sortable_pagination_id: "3_002"
+---
+*banox  fuper  tertio  Decrecottum.,
+oícit  q3  nó  oíciter  elcemofr  na  allá  quefitcerapinis  2  vide  bond  &l.
+iu  ctej.oecéfi.z  adde  qz  ekcetmo  Pnanonos  oóríoe  male  acquifitis.
+vt  in.celeemofrnguitj.q.v.2  vide  ZArcbuitn.cnon  eft  -90.,j.»
+bipenit
+bcquibus  reb?os  ficri  éieemofr
+na.  ad  materia  el  ecmofr
+ne
+vide  ir.c.
+1302.21).  zd  ici.  z
+feq.oz  pe  oij.z  vide  £  ard.m  Cle;j.in.$.ideo,
+oereli.et  venera,
+nis  accedere  ad  altare  caufa  ozandi\:quafifecne  —  fanctozum.
+tpecclebzationís.z  boc  eft  oe  moze  in  multis  [oz  6  «L  Zoniugatis  ,
+£iS.z  becfaciunt  ad.q.quotidianá  nuugdlieat  ^  addeangaudeát
+laicis  ca  offerendi  accedere  ad  altare  fempoxce  —  piíuilegio  clerico
+lebzationis.3lo;oe  lig.inducit  ifti  teradpartes.  —
+rum.  Z-  cpo,  cófil.
+negatiuam.2\:go  putarem  cotrariut  quía  vt.8,
+£j  Jler,latecófi,
+oirinon  pzobibetur  bec  itinergtio.  matünecauz  —  Ávij.j.lib2o.  Jap.
+facfferédi  ad  altarerfed  paobibét  laiciibi  ftare  z
+2lleg.  ccviij.
+federezz  caufa  paobitionie  fuit  onpler.]Eoima  ——  Zinton.  4rancif,
+neitipediant  c[cricos  oiuina  miniftrantes.  ez
+€[  Z1ddeg  dere
+cunda  vt  clerici  bonozíficentür  etficeís  oefera£  —  cus  cóíugat?^non
+ín  fedibus.vt  babetur  oe  cófe;otiium.cfacerdoz
+gaudet  pzíuilegio.
+tuin.eed  per  acceffurm  caufa  offerédí  cdffant  ifte  —  fon\:yt  per  3loi,
+ouecaufecum  inagisclerici  Donozificen£  «obla  —  and.inver.oectaz
+tionibus  oiuinozumme  ímpediantur  cdlebzgre;  —
+rq  mus,i.cj.  P  ate
+nu  elt  magimamultitudoofferre  víolentium.  —  leg.z  sloff.ín.  c.ft
+Jjtes  ter.bic  iunpliciter  permittit  acceffus  caufa.
+fuder  laic.  in  wf,
+vel  federe.quod
+exandi  vel  comanicgndinecoiftinguit  tps  €edlez  ^  ocbent  oe  fente,
+tit  fit.  oífz
+bzatjonis  gb  alio  tempoac\:fed  tif  oicit  ficat  mos
+ercof.iti.vj.qs  ime
+tferucrurergo  in  bocconfüctudo.
+21d  ídes  ter.
+tellíge  verusinci
+in.ciouo  funt  genera.rj,  qam  fim.»bi  oícitur  q8
+uílibüsfedíncrí
+laici  offerre  ogbétbin  altari.vt  im.conmíscbiiftie  —  minalibus  etíam.
+nus.oeconfcoiftj,
+tem  proboperlonusafpe  —
+ciuiliter  intétatis
+cial  in.c.oblationcs.tc.oittvbrtermot,z  menti  «  benc  gaudctpuis
+tenendusoicit  qo  oblatióes  oiffidentiü  fratrum,
+legiofi  vità  2  baz
+non  funt  neci  facrarío  nec  S3sopbilatio  recs.  —
+bitum  fernet:ícas
+piende;z  videibigloffam  notabilem  qui  piobie
+JÉÓeminía.ibi:  ct
+betur  ad  oblationibus.
+[ct  tene  mentiillus  te,  ^  adégrfidericcó
+contra  iftos  fouentcs  inímicitíasz  nolentes  reco
+iurat?  eercet  dra
+ciliari  pzogimis:»t  non  admittantur
+gd
+offeren
+tesvílesnó  gauz
+duim:üic  repellitur  vfurarius".cap.quíd.oe  vfü,  ^  det  pattilegto  clez
+4L  [Sd  bicoubitatur  quid  oeclericis  coníuga  ^  rícalivtpleneper
+tis^gnocbegnt  ftareinter  clerícostempozecelee  —
+oo.  Iard.in  def.
+bzationis?4r3n,2  3Joan.an.poft  eum\:z  comm
+ín.£vi.q.oe  vita
+niter  oocto;oicunt  q  interlaicosoebét  ftarenó  —  bo.cerí.z  adde
+ínter  clerícos.argurme.in.c.oiuerfis  fallacijs.j.oe
+Q  derícis  ouces
+clerí.coniig.2  it.cjj.eodem  tit.lib.
+jv  bioicitur
+*vroxem  vel  fact?
+clericos  coniugatos  gquderepzíuilegiocleríconi  —  miles  perdit  pzía
+inouobus*ountaratoummodoocferant  babí  ^  uilegitm  ipfo  ínz
+tum  z  tonfüramzergo  non  inc[uduntur  bic  8p^
+revteftalof.in.c,
+prllatione  clericoaum.  E  redo  poffe  oicí  contra
+quifquís.rvít.qó.
+ríum\:quia  illud  non  eft  pauiledium  clerícozum:  —  iijz  eodé  modo
+fcd  vt  pfallentes  nonimpediantur.zvteisocfez  —
+fincedit  fine  ba«
+ratur  bocemanauit  vt  pdiríJFü  ergo  clerícicóz  —  bítuztonfürg\:vt
+iugatino  fint  purelaíci.ende  appellantur  deríí  —  plenep.o.iZardí,
+vtm  rüb.oecleri.cójuga.bictantum  epdudunt  —  indem.j.ín.j.opz
+laíciergo  non  veniumt  appellatione  laícosipzo  ^  pofitione.z  in.xif.
+-  bocfacitvnur  no;oictü  Sjo.aud.in.ciogunes,
+queftíone.oe  vita
+oc  clerí.coniuga.vbioicit  quod  ftatutum  epifcoz
+et  boncfta.  cleri,
+píezcommunicás  certo  catt  laícos  Ton  cotnpace
+etimateríam  clerí
+beridít  clericos  coniuigatos\:cus  materia  fit  odío
+€o215  coniugatoz
+faz  illimontint  pure  laícíifed  quoddam  genus
+rum  vídeplenep
+fcu  quedam  fpecies  mirta.facit  oícti.c.  ftatutii,
+Sspecu.in  titu.oe
+oe  electio,libzo  fezto,z  àdde.c.fi  qui-errij.oiftinz
+€le.coít.per  totii,
+ctio.pbioxatur  quod  clerici  coniugati  oebét  viz
+Zjacbarías,
+silarein  pfalmis  oicendie\:permittitur  ergo  eis
+€L?idde  plenf?
+cantarecu  clericis;pit  ergo  ftare  inter  pfallétes.
+per  JDeriimía.  ín
+vridcomnmo  gloff.rrij.qucftio.íiij  puis.quefen
+C.  $.2  cusparifiéz
+tit  q  poffunt  effeinfer  clericos.
+d]  ed  cftoubiz
+fe.num.5.2  q8  ibi
+ui  quid  oealtjsclericis  qui  veniunt  caufa  auz
+not.cel.in  apoftil,
+diendi  oiuimum  officii  z  nó  cantant;certe  fima
+in  verfi,  cozam  ít
+pediant  pfallentes  per  cos  nó  eft  eis  lícitus.facit
+díce  laico  ,  et  ibí
+po  bocoxtiotantum  bic  pofita.oícít  enim.  ter.
+]P»bilip.Sranmu
+Tantum  pfallencbus  zc.fed  vbi  impediunt  pfal
+inero.1.2  eundem.
+lentca  fatis  poflct  permitti  vt  m  cbozo  fint  quía
+E  cLin  apoftil.  ín
+«fant  cumcrationce  ftatuendizz  qz  ifte  tert.ere
+vt.
+ver,iudice  feculaz
+£ludít  folum  laicos.babuit  ergo  Tefpectumiquia.  —  ri.oe  cleri.coníuz
+clericicomumiter  fimt  mclufi  inter.  ecclefia  eo.
+S&.lib.vi,
+&[  Sed  qüero  gn  peccent  laicimon  feruádo  boc  c  Sxbattí  eapia,
+ftatum;  3nnocoitr  qóuon.loquitürerti  boc  e  €739n  ouobus  ad
+ST
+DLP
+detame  q.valeat
+confuetudo  qa  cleríci  contigati  gaudeant  pziuilegijs  dericalibus  sls
+nonoefzrant  babitum  z  tonfürgin:  vt  voluit  4ulg.n  confil.crpii
+incipiente  pacfupporit  i$  tatutis  imdj.oubio,
+€ocboncitate

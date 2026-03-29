@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { readdirSync, existsSync } from "fs";
+import { readdirSync, existsSync, readFileSync } from "fs";
 import { join, basename } from "path";
+import imageSize from "image-size";
 import { readYaml, parseFolio } from "../scripts/lib/folio.js";
 
 const DOCUMENTS_META = "content/documents/meta";
@@ -26,7 +27,16 @@ describe("documents", () => {
       expect(missing, `Missing webp files: ${missing.slice(0, 10).join(", ")}${missing.length > 10 ? "..." : ""}`).toEqual([]);
     });
 
-    it(`${key} has all ${pages} json files`, () => {
+    it(`${key} cover image has 3:4 aspect ratio`, () => {
+      const coverPath = join(dir, "cover.jpg");
+      if (!existsSync(coverPath)) {
+        expect.fail(`Missing cover image: ${coverPath}`);
+      }
+      const { width, height } = imageSize(readFileSync(coverPath));
+      expect(width! * 4, `Cover ${width}×${height} is not 3:4`).toBe(height! * 3);
+    });
+
+it(`${key} has all ${pages} json files`, () => {
       const missing: number[] = [];
       for (let i = 1; i <= pages; i++) {
         if (!existsSync(join(dir, `${i}.json`))) {

@@ -1,0 +1,159 @@
+---
+page: 9ra
+pdf_page: 20
+sortable_pagination_id: "9_001"
+---
+t  pio  bocfacit  quod  babetur  in  pontíficali.vbi  babettir  z
+vifponítur  fupcr  annulo  acedédo  abbatib?  ficut  epifcopo
+ille  liber  appzobátus  cft  ab  ecclefia  vt  in.c  miramur.  z  q&
+no.ocfer.non  ozdi.Gi  tamen  vis  tenere  opí.Sjo.andr.que
+céía  eft,  poffes  oícere  qó  qutadmodum  annultie  oat  fpofe
+in  fignü  mrimont.rrt.q.v.femme.ita  z  pfoneecclefiaftíce
+8  (D  ígnitae.ad^
+in  fignü  matrímont  fpirítualís.z  qp  alij  pzelati  inferiozes
+oc  £(lecan.confi,
+maríme  regularce  oícatur  cótrabere  matrímoniü  cii  eccle
+Ev.lib.itj.33er.
+fije  eo1i  mon  tíi  illud  eft  verum  matrimonium  quéadmo^
+b  ([srtraloci.ad
+dum  cótrabítur  ínter  epm  7  ecclefiarn  füd\:vnde  videmus
+de  Y  ap.alleg.tit.
+Q6  ps  tang  matrímonialiter  alligat?  nó  pot  eligíad  alia
+2Bernar.
+oignitatéjfed  oebet  poftularí.c.fi.oe  poftu.pla.ted  plati  ine
+(L  uod  perdit.
+feriozes  pfit  cligi.c.abbaté.oc  cle.li.vi.z  ad  íd  q5  oirí  oe  li
+[3
+adde  videdüare4
+bio  pontificali  poteft  refponderí  q8  babuit  refpectum  ad
+ti.cófi,
+Itt  cj.  vbi  i
+íd  q8  cóiter  accidit.q:  er  paiuilegio  cóceduntur  abbatibts
+fctó  fuluit  Ber.
+infignía  epalía.ideo  voluit  ponereformam  tradendí.iure
+c  Sebaftí.  Gapía,  7
+tfi  cauetur  nec  pro  mec  contra.  T]P»uto  tamen  q  ooc.cleríci
+o  4L  ]Poffit  repetí.
+lícet  fecerumt  annulüzquonias  intra  cetera  ínfignía  que  lici
+din  víctoz  iludo
+tetradütur  ooctozibus  etíá  clericis  oatur  amul?  dd  pzefi*
+teneat  ad  reftóné
+surádiimatrímonin  fpiiale  effe  Sctum  inter  eum  2  ecclefid,
+16  Copíofe  p  o0.
+de.tj.oemagí.t  qa  ibi  no.z  ifte  ter.  folimodo  fundat  fefüp
+Find.ficu.in  cófi.  a
+officio  bígnitatis.boctozat?  aüt  eft  bignitas?.c.quáto.oe
+lrv.  ínci.  afferam
+magí.vbi  ter.fing.fm  vnü  intellectü  fenfit  JGar.in.Li.C.3
+in  medium.i.íiij.
+mouo  codí.cópo.2  in.L.fi.C.oe  ítide.15  vacillauerit  i.e  eo.
+volu.z  late  oífpu
+ffoemili.teft.
+tat  inbuob?  tra»
+et  offíciooisuitatis.fundat  ením  fefup  officio  z  officíus  ec
+«tatib?  impzeffis
+CIefiaftici  eft  adminiftratio  rerü  ecctíafticarürvt  no.grcbi
+oeludo  in  quíb?
+día.in.c.f.oe  ofie.[b.vf.oicá  íri.c.multa.oepzeb.z  bác  ad4
+tráffümítur  tota
+míniftratíoné  nó  b5ooctoz.Csatie  vidct  paffus  ifte  oubís
+Tatería  ludi.
+tabilis  marimecii  ter.8.pzobibuerit  clerícís  ornati  argen
+Sjacbarías.
+tiz  auri  étcírca  corrigia.]
+€  (CIBO  fiet  repeti  b
+infigníi  epaliü  er  Duilegio  poffit  vti  illis  ertra  locii  »  pztuís
+tio.Z'uoic  B  ve^
+legíatum.z2octo.gllegant  po  2  cótra.tü  acludunt  recure
+ritín  collufoze  vel
+redii  ad  formá  pituilegit..oe  puf.poro.fs  qs  poffint  ade
+ducit  bic  So.and.o.c.vt  apoftolice.e  ita  etiá  adducit  ibí\:z
+aleatote\:vel  fi  cuí
+mutua  fit  maio:
+optíme  facit  ille  tet  abi eii  oícíttez.dp  abbates  quib?  fumt
+vel  fit  eí  bonísim
+cóceffa  infisnía  epalia  poffunt  vti  in  prouincíalib?  cócílija.
+terdictusvt  plene
+7  frmodalibus  c
+perbar.in.Lís  cuí
+ficutepí.z  banc  parté  tener  nífi  priuileíit  aliter  veftrínae
+ret  ptátem  vel  conceffioné.argu.in.Lj.ff-oe  offi.piocon.vbí
+bonis.oe  ?*.oblí.
+£  in..fi  qs  cus  (cie
+poocófül  vtitur  nfignüs  oignitatis  ettra  territozinfuii,
+ret.ff  pro  emptoa,  9
+qd  itellíge  vtoiriincf.vtlit.ped.
+Sjmo.ialL.1.fi  gs,
+clooegradent.not.ez  bocotra  oíctii  3jmm.q  fimpliciter  oí»
+Eit  fe  credere  bec.c.loquioe  boneffate.£lídes  eim  qs  ín  boc
+vbitii  lünítat\:fcí
+Vcet  nifi  poft  ep  i»
+zin  iiultis  alijs  cótinet  paecepti  vtcollíaitur  bícín  8lo.in
+*er.ad  aleao;z  oíc  vt.8.oiri.et  indturi  alo.oicit  q  cleri
+teruallo  mutuüre
+€i  erercétes  officia  fecularía  oebet  oegradarí\:non  intelligit
+cpíés  promittat
+ita  amare  ficut  gLloquit.m3  effet  oe  oírecto  cotra  menté.c,
+eimutuüreftitues
+ftq.fed  intelligo  q8  oebét  oegradarí.id  eft  fufpédí  vel  etías
+refi  3o.an.fin.
+bceponíqi  effent  incorrígibiles\:fed  oebét;pztmo  moneri  vt
+finaddí.ad  Gpe.i
+t6  act.2  fo,i  pn,  10  oicii.cfeq.  T  3n  ea.sLibimüd  be  mann  fua  ereat  pfab
+*  quís  Iud?  fit  p,
+tcrífi.;oí  q5.c.qó  alleg.glo.eft  IBiero.z  loquit  ot  religíofis:
+ucc  itelligas  q5  nibil  alis  oebeat  facerereligiofua.fs  fntel
+miffus.víde  íftus
+ligebozie  cópetétibus:  z  marimeín  illis  qnó  babit  aliud
+fn.c.latoz.c  ibíof
+Eupcd  qui  nibil  intelliguntoe  alijs.alias  ipfe  IPiero.effet
+«àinapof.ad  ipm
+fibi  cótrarius  oum  fcribens  ad  ruftici  monacbum  fnquit,
+ín  ver.Indus  fola
+2ZLógo  tempoze  oiífce  que  poftmodi  ooceas.z  ínter  bonos
+tíofas.  nu.2.j.  oe
+femp  fectare  meliozes\:vt  ín.c.fic  vítte.2  in.c.ft  clerícat?.cvj.
+bo\:volun.  into,
+*rancif.
+q.i.ct  quib?  verbis  clare  colligit  relíatofum  poffe  affüme
+(Lin  mutuans
+tc  officium  oocendiotimodo  ad  illud  piomoueatur  legítí^
+ludétíbéat  actío
+e:  ita  códuduntoocoemasf.cq:  nónullinam  quéade
+tiiodü  paopter  officium  cure  poteft  oe  monafterío  ertrábí
+nem  ad  répetédiüi
+€.q$  cei  tímoxéoe  ftatu  regula.2  vt  fit  cubícularius  epi.á.
+mutuus  vltra  bic
+q.v6.cii  paftozís.íta  2  foztiue  ppter  officii  oocédi\:cum  ibí
+allegatavió  bar,
+lóge  magie  proficiat  d»  in  pdictie  cafibus.cii  ad  predicta
+fu.Lfi  filio.i.$.1.ff.
+qua.re.act.móoe,  L1
+multirepetíant  idonei  t  non  ad  officium  oocendí.  (T  1  3n
+zinl.fifFoc  alea
+6loam  ver.ad  aleas.ibí\:credo  in  büficio  obtento.n  o.gl.ífta
+in  prier  qua  babes  q5  clericue  publice  aleatoz,  ipfo  facto
+to.z  vide  Soa,oe
+imo.i.o.Lf  qs  cus
+rejxllít  a  poomotione\:fed  non  pztua£  a  beneficio  obtento
+nili  pzecedat  monitío\:vt  ín  c1.£n  aíit  oícat  publice  alea»
+fciret.bic  allez  ví
+de  o.ibb.in.c.
+to?  3
+femel  vel  bis  publiceludít\:be  bocoíc\:vt  3ar.pzofe^
+quit  in  poemnio  ffozü.z  ibi  querít  qi  veríficétur  fta  noia
+pe-oevi.z  bo.cle,
+tbioíct  qà  terti?
+tPbalía.vt  aleator\:calimiatoxxmercato2  z  fimilia.z  aliquid
+mutuás  q  non  fit  12
+tctigiin.cf.oe  fadi
+€ollufo?  pót  repa(
+tCno.fftam  glo.vfqs  ad  fi.quia  quotidie  fif  remíffio  ad  íftà
+teeocquoetiam  —  glo.cum  querit  numquid  poffit  repeti  in  lido  illud  q5  pero
+vídeJ33lz  €al.c  d\:turCvideGLrrev.oift.in  fum.z  ín.c.f.2  per  Sinno/in.c.q1
+,isutslearüv(us  —
+pleríqs.oe  immu.eccl.z  aliquíd  ponít  bic  K-alde.poft  3o,
+and.z  beati  Z'bo.fecimda  fecnmde.z  et  babeas  m  fterías
+zibi  plene  ema
+piofequere  gngs  membaa;pzimo  nunquid  poffit  repeti^.fe
+ría  Coral.  o

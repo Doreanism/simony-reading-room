@@ -1,0 +1,114 @@
+---
+page: 5ra
+pdf_page: 12
+sortable_pagination_id: "5_001"
+---
+MAL
+etus.  ]Pritmus  q3  principium  z  finis  intelligátur  -—
+&  (Eleicus  cófuv.—
+oeclericofecalarnin  mimonbus  confhtütoietifte  —
+gar.Hdéiller,
+monmaudattondermediüveroloqut  incóuer?  1
+coi.vij.S.alleim  —  fofeu  monacbosz  iteoebet  iterü.  tonderi;  qzmon.
+C€j.2Ber,
+potuit  matrumeniü  contraberez  fm  bunc  mtelle.—
+e  exbaft;Siapís,  —
+crum  celat  cotrariii.  Secüido  poteft  mtelligivtto  |
+b  ([3nuito,videg  —  tajitera  ponat  vnum  cafüm\:z  loquiturineoqui  ,.—  uíturinerpottiuam.
+nomS,téyobis,  —
+ínglo.m  verímui  —  relponderur  quod  oeber  toderi  caufatiuef-fi  vult
+tis.inftiperquga  —
+gaudere  paiuilegio  clericali;ve]  fioifpefatiue
+erfonas'mo.dcg,  —
+[4  &
+me  Z]dsquodió  5  elbcafusrotumdusoeceo  quod  piedir;t  quod  dle  ^  —  mafteriocui  intulit  (niuríam.
+vicit  IRoma.cófi,  a:  ricus  coniugatus?er  oimulfione  tonlurcnonpet?  —
+'Ktvü.gadulterá   .
+ditirrecupergbiliter  paiuilegiur  clercaleied  uz
+'  diofuetudo  facit  '
+contimentireaffumendo  ronfüram  reatlumitpui:  ^  j|
+pfümiadulterius  —  legiurm\:zz  boc  no.zc,
+voluntariü.Z3er,  1.  $2  Z  lericus  nutríeng  comang  potet  3  fuperíoze
+tpidetads  —  inuitus  tonderi.
+oId.ofierrrvit.  2.
+JBonummon  volütarium  non  eft  renumerabile..—  .
+€  (Li£rempte.  21d  5.  JBencficium  an  z  quomodo  confertur  m  inditus,
+deadmaterii4e  —  rs
+FÀ  1
+[«,
+de.»f.ccectj  XBer,  t
+MW
+JS.  [4
+TIC  1S  *tummari.T4  lerícus
+J3onà  fama,
+oebet  tonfuram  oeferrezz  i  non  vult
+ddéqóveritas  —  Ez  potcft  muitus  a  fuo  fuperioe  tonderi.
+bonefameppter  —
+fandalüoimitte  —
+da  nó  eft:  vt  oicit.
+-  cit.c.ad  bocoeoff.arcbi.fedoicvtibimotin.m
+E  ald.eo-tit.2fuj,
+|.  quadam.
+X3ernar.
+pillos  clerico  fibi  fübiecto  etià  reluctant  fime  mee
+ed  Sxbatti.Sapiía.  —  tu  ercómunmicationis.z  poteft  litera  íntelligi  ou^
+$  (L2  frequeta^-—
+tione.  Clideglin  —  datoarcbidiaconozum\:mon  enim  tenetur  ipfefa
+$.fidnauf.oeoc  —  ceremamibus  pzopiíjs.  G«cimdo  vt  arbitroz  poe
+femciuivbi  vult  —
+teftintelligi  pzopzie  vt  imígnominías  clerici  füpee
+qéoiciofrequen  —  ríorincidatfibicrines  non  ozdínate  ficut  faceret
+fermificatiouas  —  barbitonfoz\:fed  ita  et  taliter  qued  fllenon  poffit
+busvidbus.zad  —
+bec  vide  Zib.tc  —  loquaturoe  inutis  vt  pcedat  íu  clericis  conftitie
+*£uamobíeinglj,
+fismfacrís;eelin  minozibus  volentibus  gaude
+S.oegpp.vbino.
+repaiuilegio  clerícalinam  foate  poztant  tonfuras
+Blàglo.p\:ottatue  —
+paruam  znutriunt  comam  mo2e  mulicrís  qo  téz
+tispermitentib?  —
+ditim  oppzobaiti  cleri.facit  cle.j.eo.títu.z  vide  qu
+gliquíd  iterari.»  2.  otcitur  in.c.fina.oe  clerí.coniuga.
+punientib?facié&  —  ibrquodiam  fufcepit.fimile  babes.rriiij.q0.vj.im.
+tem  aliquiditérü  —  furn.fed  contra  bocfacit;quía  bonum  nou  volum
+vtbabeatlocüta  —  taríummon  eítremunerabile.cmo  fatis.lrzrvj.oí
+léftatutüingemi  —
+ftmn.vndealibioicit  glo.q5  oeus  eft  remuneratoz  |
+manteactü.zoidt  —  aduerbiogum  c  non  nominum\:in.c.j;oe  collioes
+fbiJBalqsfiar^
+—tegóbocus  nonrefpicit  q8  fit\:fed  quo  animo  fit  z
+bitro  eatürptás-
+qmbenefiat\:ergo  quíé  nüquam  oeber  compelli
+przogandiop\:o  —  eccleiamad  bonum  faciendum  .folue  boc  cotra»
+mffusfemelzitee  —
+riurn.vt  babctur.xríj.qo.vj.im.c.vides.z  in.$.fiu.
+rumnonintelligi3  ea.caufa  2.0.(L  |  3n
+fi.glof.fed  cotra  pánc  coclüz
+turpoffep;ogare  —  fionem  glo.eft  tect.erpaeffus.f£oe  reg.ur.Lintiito
+nifi  bís.
+b  vbiinutobnon  confertur  beneficium.fol.contrae
+«LZ2uab"vícb?  —  rum  pzoutno,glo.z  JBar.in.l.foluendo.ff  ocnez
+JHdde'iRom.cof,
+—go,geft.Sed  mclius  poteft  icoicí  q»  refpectu  voz
+eríjvbiquotvie
+—[untatis  feu  ot  confülitur  volütati  nung  bencfi
+ibus  qs  ooiratur
+"e«eifagz  fugitiu?,  —
+tieraliter  fumptum  eft  beniuola  actio  gaudifi  paez
+"WA
+bens  capienti.vt  in  lib.feu,in  títu,  quib.mo.feud,
+gmit.c.).Sed  refpectu  vtilitatie  pot  beneficii  con
+ferriin  muitum  ytfitevolenté  mittere  ignem
+"Pi  cobibeo  vt  eft  tez.im.c.z  qui  emendar,rlv.oifti,
+fpétus  ad  voluntatem  ipfius,
+2H  d  dí
+í,«
+Glide  etiam  per  JBar,inl.fer4
+Q9  ant  beneficium  feu  cómodum
+fn  deríco  quinon  poteft  renuntiare  ne  conueniat
+£o2àtm  eccleitaftico.
+«am  vtilitatem  etigim  inuítís  conferumtur.vtinti
+fu.oemune;z  bono.pertotum.z  videadinaterià
+id  quod  oícitur  ín  legefi  quía  m  confcribendo.C,
+-\:pérpifcopis.z  cleicis.er  in.Lnon  fantum.oe  ape  —  tionem  accedffarit

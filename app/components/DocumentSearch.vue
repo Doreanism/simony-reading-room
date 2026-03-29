@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { searchPagefind, type PagefindSearchResult } from '~/composables/usePagefind'
+
 const props = defineProps<{
   documentKey: string
   pageLabel: string
@@ -17,51 +19,25 @@ const emit = defineEmits<{
 
 const query = defineModel<string>({ default: '' })
 
-interface SnippetParts {
-  before: string
-  match: string
-  after: string
-}
+const results = ref<PagefindSearchResult[]>([])
+const loading = ref(false)
 
-interface SearchResult {
-  type: 'transcription' | 'translation'
-  documentKey: string
-  folio: string
-  pdfPage: number
-  snippet: SnippetParts
-}
-
-interface SearchResponse {
-  results: SearchResult[]
-  hasMore: boolean
-}
-
-const debouncedQuery = ref('')
 let debounceTimer: ReturnType<typeof setTimeout>
 
 watch(query, (val) => {
   clearTimeout(debounceTimer)
   if (val.length < 2) {
-    debouncedQuery.value = ''
+    results.value = []
     return
   }
-  debounceTimer = setTimeout(() => {
-    debouncedQuery.value = val
+  loading.value = true
+  debounceTimer = setTimeout(async () => {
+    results.value = await searchPagefind(val, { documentKey: props.documentKey, limit: 200 })
+    loading.value = false
   }, 300)
 })
 
-const { data: searchData, status } = await useLazyAsyncData(
-  `doc-search-${props.documentKey}`,
-  () => $fetch<SearchResponse>('/api/search', {
-    query: { q: debouncedQuery.value, documentKey: props.documentKey, limit: 200, type: 'transcription' },
-  }),
-  { watch: [debouncedQuery], default: () => ({ results: [], hasMore: false }) }
-)
-
-const results = computed(() => searchData.value?.results ?? [])
-const loading = computed(() => status.value === 'pending' && debouncedQuery.value.length >= 2)
-
-function navigateTo(result: SearchResult) {
+function navigateTo(result: PagefindSearchResult) {
   emit('navigate', result.pdfPage)
 }
 </script>
@@ -133,7 +109,7 @@ function navigateTo(result: SearchResult) {
       <p v-if="loading" class="px-3 py-2 text-sm text-(--ui-text-dimmed)">
         Searching...
       </p>
-      <p v-else-if="debouncedQuery.length >= 2 && results.length === 0" class="px-3 py-2 text-sm text-(--ui-text-dimmed)">
+      <p v-else-if="query.length >= 2 && results.length === 0" class="px-3 py-2 text-sm text-(--ui-text-dimmed)">
         No results found
       </p>
       <ul v-else-if="results.length > 0">
@@ -146,13 +122,19 @@ function navigateTo(result: SearchResult) {
           <div class="text-xs text-(--ui-text-dimmed) mb-0.5">
             <span class="font-medium">fol. {{ result.folio }}</span>
           </div>
-          <p class="text-sm font-serif leading-snug text-(--ui-text)">
-            <span>{{ result.snippet.before }}</span>
-            <mark class="bg-primary/30 rounded-sm px-0.5 text-inherit">{{ result.snippet.match }}</mark>
-            <span>{{ result.snippet.after }}</span>
-          </p>
+          <!-- eslint-disable-next-line vue/no-v-html -->
+          <p class="text-sm font-serif leading-snug text-(--ui-text) pagefind-excerpt" v-html="result.excerpt" />
         </li>
       </ul>
     </div>
   </div>
 </template>
+
+<style scoped>
+.pagefind-excerpt :deep(mark) {
+  background: color-mix(in srgb, var(--ui-primary) 30%, transparent);
+  border-radius: 0.125rem;
+  padding-inline: 0.125rem;
+  color: inherit;
+}
+</style>

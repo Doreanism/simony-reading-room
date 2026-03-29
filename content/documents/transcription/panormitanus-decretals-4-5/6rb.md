@@ -1,0 +1,70 @@
+---
+page: 6rb
+pdf_page: 11
+sortable_pagination_id: "6_002"
+---
+c  &xcbatti.  Sapía.
+à  «LY»crilliatum
+coitü.  ide  $cli
+c.p  tuas.  col.j.S.
+no.fcóo.8.0  pba
+tio.ebíót  q;  ma»
+trimoniti  ipedit
+5bere  cr  natiut»
+tatcfilij  baftardí
+q:  baftardi  oíciie
+tur  oc  cófangtii»
+nitate  pfig\:ct  fic
+cófanguinitas  5
+bi£  per  illicitum.
+coitum.
+alleget  turpítudiné  fuá\:fed  p
+b  p  scafum.ali?  ca.
+fus  cft  qfi  6  2co2
+día  ptit  fuit  com
+uétii  q  ftarct  oi^
+cto  vni?.Lj.$.fin.
+fi-oe  eer.obl.et.l.
+tbeopópus.ff.oc
+oo.fleg.l5  bar.in.
+v.c.fi.tencat  qà
+nó  fit  ppzie  teftz
+€óis  opi.eítin  có
+traríum\:imo  ade
+nerfaríue  pót  fta
+reoícto  aduerfa
+ge  timct  potentíà  aduerfaríf\:vcl
+rü.Lfi.C.  6
+fideic.
+L.fi.C.oe  fen.paf.
+«oc  boc  dfi  vf  bícter.S5  pio  ct  5
+oedpan.zzibb.
+ín.c.tj.S.0c  pba.
+qadudütq  ptes
+non  pritoifpone
+vníi  oíctti  W20.
+re
+qp  ftctur  oicto
+vui?  nifi  er  cuidé
+ti«neceffaria  cá:
+q?  eét  vifponere
+(T  1  Stem  oícít
+5  ius  ciuiniü  cii  í
+02€  ot102:.c.I5.c.t
+oi.&.oe  teftí.c.cil
+€ffce.j.6  tefta.oic
+vtínoictis  locis.
+c-Scbafti.  Sapia.
+&$  alfoatrimonium  mctu  cótractumfi  poftea  ín  emm  nó  €  «.  3ncémodo.
+IPocoictiüi  rcfert
+etfcquit.o.  Saf.t
+repe.  L.admonen
+di.co.lrrv.v-
+té
+plenecredit.ff.  à
+turcíurzz  ibi  enu
+merat  plurce  ca»
+fusin  quibus  oí
+ctu5  vius  teftía
+facit  plená  pbae
+tionem.

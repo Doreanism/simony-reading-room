@@ -1,0 +1,155 @@
+---
+page: 7ra
+pdf_page: 16
+sortable_pagination_id: "7_001"
+---
+piopofitum  2  boncftum  babítü  itum  fpectat  ad  bocoffiz
+€jummon  obftante  co  q9  quidà  cozum  funt  monacbiquiz
+dà  veroregulares  vel  fub  aliaoiftinctione  paofeffi.JBerii.
+4L  [1Ho.j.ter-valdenot.z  fing.iüdicio  meo  q3  vbíciigs  ct
+bonefta  cauta  conuenit  boics  oífparíe  babit?  z  obferuaz
+ticfifcandalum  generatur  als  ec  oiuerfitatepoffunt  fe
+«onfozmare  in  enum  boncftü  babitum  z  propofitum  z'in
+tellígo  pzopofitü.quo  ad  modum  víuédi.ad  bocvíde  glof.
+uot.cv).q.vi.i  noua.ín  glo.fi.queoícit  q5  monacbus  fa
+€tus  epifcopus  velcanonicus  regularís  pót  fi  fcandalum
+giiatur  alijs  fe  confozmarerm
+lozum  ínter  quos  viuit.z  pondera  q$  oittoefcandalo  al's
+fecus\:fic  intelligo  gl.que  videtur  illi  contraria.rvj.q0.j.  in.
+$  ([2enouo.adó
+€ap.oemonacbis.z  vide  etiam  onas  caufas  not.ea.cau.et
+quod  ofuluit  oo.
+uud  2  ifj.queoicit  q8  monacbus  pzomotus  ad  officii
+car.cofil.crrzvítj.
+ecularezputa  ad  epifcopatii
+b  qp  atbicbabet.
+git  feruare  regulá  ficut  pzíma\:fed  extra  fübftátialia  reguz
+ado  g  voluit  cal
+lepoteritfe  ofozmare  mozibus  illozum  ínter  quos  viuit:
+de.2fi.j.boc  eo.ti
+nc  ficftricte  pot  regulà  feruare  eztra  monafterus  ficut  in
+c-*  Sxebaftí.  Sapia.
+monafteríorz  oic  vtibi.
+€  (LiPabit?.aduers
+miareligíoni  cófufionez  multiplicitatemá  oiuerfitasbabí
+tetii  qp  vbí  funt
+tusritus  zobferuantie  vna  cadéqs  fidegenerat  fcandalii
+tollegia  oiuifa  z
+apud  infideles.bacratione  grauiter  peccát  ínueniétes  rez
+fcparata  prit  ied  a
+gulà  oe  nouo?abfas  cófirmatione  romani  pontificís.z  vi
+dem  ecclefia  ftare
+de  bo.tez.ín.c.fi-oe  relig.oomi.nec  ezcufantur  quod  bocfa.
+Cericioinerfi  baz
+ciatit  ad  bonii  finem.nam  potefteis  refponderi  piout  not,
+bit?  z  oifparis  p
+oicít  ter.in.cmon  folum.oe  reg,íu.lib.vj.fcs  qp»
+feffionisvt  afsc  2
+faentienon  ocbet  oecffe  iudicium  rónis.  Q[.  |  &Altimo  not.
+diolani  i  ecetia
+ibíquanti  ad  bocfpectatofficium\:quod  vbi  aliquid  acez
+fci  Zimbi.z  paz
+ditur  pzopter  neceflitatem  illud  videtur  effe  2ceffum  qua»
+pie  i  ecctia  (aucti
+tenus  neceffitas  bocpoftulat.z  fic  caufa  limitata  límítatii
+auguft.íta  oeclae
+parit  effectü.
+QT  |  3n  gLibi.boc  verum  intellige  quantum
+rat  illuftris  pece
+ad  folennitatem.no.gl.itrmcto  ter.g»  contenta  ín  regulare
+pto?  me.  o.  Ros
+ligiofozii  non  obligant  regulariter  ex  voto  pzeter  tría  fübz
+cbuscurtí?  ircpe,
+ftantíalía  regule.Cdotii  enm  in  paofeffione  emiffumitefer£
+€/fi.col.  rrviij.cire
+sdillatría  fübftantíalia\:vt  ad  boc  atínentiá:  obedientías
+€a  tnedium.s,  oe
+z  paupertaté.z  bocvoluit  beatus  Z^  bo.vt  oícam  plene  in
+£onfue,
+c.nam  concupifcentiam.oc  confti.  Stem  p10bo.róne.  nam.
+o  ([  3nferiusbabi
+fi  votum  pariter  acerneret  omnia  cótenta  ín  regula  quare
+ti.Zlddean  pou
+fieret  fpálie  pzouifio  z  magis  fpecificenotarenturilla  tría,
+tans  babitii  füb
+*tnom.ccdi  ad  monafterium.in  fi.oe  fta.reg.mam  ibioicí
+mantello  incidat
+tur  q8  ílla  tría  funt  ita  anmera  oidinimonacbalí.q8  ctías
+in  pená.o.c.Old.
+papa  oifpenfarenon  pótz  intellige  vt  ibíoicamn.ergo  cete
+ep  2  3-cófil.cccccz
+T  contenta  in  regula  non  fic  obligant  cz  voto.itio  tenuit
+lecrig.z.  cleri.
+beatus  Z-bo.q6  nifi  regula  pzobibcat  in  alijs  pzeceptiue:
+[1  Fick
+vel  relíafofus  peccet  ex  otemptumon  obligatur  ad  mozta4
+ed.cófil.crrE  vj.
+letranfareffione  cuíuftibet  contenti  imregula\:alias  vt.  82
+«4L  Ziddc  PS
+periculofio2  effet  ftatusregularium  qua  fecularíum  :  cum
+E  ard.icef.cbar,
+ex  nimía  oiftrictíóe  oífficilefit  4d  vngué  obfertiare  femp.z
+ij.z.itj.q.  voe  rez
+boc  fentit  etíam  ifta  glo.oum  oícit  cetera  etiam  requiri  ad
+gularíi.z.$.f.q0.8.
+folennitatem  religionis.z  q5  papa  poteft  in  ills  libere  oi
+vbi  oícit  boc  effe
+fponere-Siterm  probatur  z  aliaróne  notabiliozzpapa  boc
+verüzinternenicte
+nó  índulget.ímo  pz2ecepiter  ratione  fcandali  euitandicon
+ti  abbatis  fuijlice
+ueniantin  vnum  pzopofitum  z  iri  vnum  babitü.  ergo  nó
+ti2.0c  quo  p  eum«
+tenetur'ad  itas  obferuantías  er
+dem
+m  cle.fi.z  ibí
+otii  omittere  piopter  fcandalii  alterius.nam  faciitus  fca
+bonágl.vbíquaz
+dalünafci  permittitur  quá  verítas  relinquatzvt  not.én.c.
+literoictum  bene
+fj;oe  no.oper.nii.mó  ením  pzopter  fcandalum  pzozimí  pofz
+ficium  oebet  exer
+fet  relígiofüs  oucere  Proze\:fiueoimittere  babitii  vel  alías
+xeri.oe  celeb.  mif.
+obferuatias  que  funt  ad  folénitatem  ozdiuis\:vt  bic  babes
+c»  Sebaftí.  &apia.
+tur.bz  bacratione\:q?  mon  funt  oe  fubftantia  religionis  7
+f  4L  IPer  dericos.
+Q8  per  papar  tolli  poffunt  confuluít  oo./-  ardi.vt  ipferez
+q8  clerícis  non  lí
+fert  in  ca.cum  ad  monafteríü.quod  fi  in  certo  monafterío
+ceat  laruis  fetege
+nó  eft  memozia  in  otrariii  g  efus  carnium  fuerit  paobibi
+-retenet  Zardi.im
+tus  qà  oc  noto  affumttes  ibibabitii  mó  peccant  fequendo
+Cle.  j.in.i.q.oevi
+Tioxesoínturnos'aliorti.z  marímepapa  fciente  z  toleráz
+ta  z  bonecle.2  fir
+tenam  cófuetido  tanti  tempoais  inducit  pefumptionetn
+ma.itracoe  epa.
+glícuius  titt.c.j.
+oe
+ín.ff.parteoctaue
+ifta  poffunt  tolerari  vt  bíc;3)dé  oicoealtis  obferuátüs  có
+ptis  piincipalís,
+ceruétibue  folennítatem\:ná  idem  vídemusin  clericis  fecus
+€ol.íitj.z  ibi  étoie
+laribus.3n  multis  enís  coz  ftatusrelatatus  elt  no  funt
+&t  q5  ,pbibentur
+fub  illa  oiftrictione  que  erat  tépoze  apoftolozü.nam  paimo
+interefle  fpectacu
+piobibebant  vtipzopiio\:bodic  fecus.rij.a.j.certe.z  ibi  in
+lis  nifi  fierent  ad
+fumma.3item  grauius  puniebstur  pzimo  er  foznicatíone
+pias  caufas
+vt  in.
+quam  bodie.z  oícit  ter.im  cap.fraternítatío  zxriij.oift.  oe
+repfentatione
+paf
+fectus  noftri  tempozís  quibus  nó  folum  merita\:fed  ctiam.
+fionis  rpi.z  mae
+cozpoza  bomini  ocfecerumt  cenfüram  z  oiftríctionem  anti
+:$02ü   tunilium,
+quozum  canonum  non  patíumtur  permanere.z  facit
+paout  ipfcoicit,
+oejreg.  Scd  nunquid  fi  certa  relígio  reducitur  ad  paiozetm

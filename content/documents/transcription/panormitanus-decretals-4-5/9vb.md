@@ -1,0 +1,134 @@
+---
+page: 9vb
+pdf_page: 18
+sortable_pagination_id: "9_004"
+---
+4banonní.fuper  quarto.
+$  er  legitimi  cófen;
+oídicitzoíc  vc  b  plenc  peus.z  oícít  qo  regularít
+Cle  fratern  itati
+*fum  otrabtt  matrimo
+vbiverbavefübftátia  requiruntur  nópoteft  ma
+jn
+iter  cce  trí  qui  loquí  poffunt  ecbet  confenfus  vcrbis)
+imi  Cic  aliter  fim  üntellectum  qué  infra  tenebo.  Solo
+eftínfuroxefsba»  —  citfoluscófenfüs\:vmdepoteftbaptisarifednon  ——  confenfu  legitimo  cótrabitur  matrimon
+i:  fcd
+verba  requirunt  quo
+8d  piobationé\:z  fntellíge  velalia  figna  cquipollétía  :  pmo  ponit  que
+ftionem\:fcóo  ciue  folutioné  quá  probat  eremplis.fcóa  ibi  nos  ígitur.
+Latus  líceralis.Shucfitii  fuita  papa  vtrü  per  fola  verba  poffit  cor»
+fic  aa  naturaliter  poteft  mulieres
+trabí  matrünoníti  «  fi  p  verba  foli  querit.
+oy:
+quib?  riídet  papa  q»  ma
+Ste  babet  rationes  naturalem.3n
+trimonit  ín
+verítatecontrabítur  per  legitimü
+fenfum  víri  z  mulie
+ríg\:fcd  verba  fimt  neceffaria
+quantü  ad  ecd'efió
+vimentía  ofenfam
+mututi  ce  pzefentí\:ct  per  c  anfom  re  vera.  coritrabit  matrimoniti  \:q.
+muti  poffaut  cótrabcrematrimoniü  per  cófenfum  inututi  finc  vbís.
+lDoftoicitaduertendus  vtrum  poffit  ezpzümere  —  vummodo  per  aliqua  figna  confaifum  ccpzimát  :  fed  pucri  ari
+lesitio
+ín  contrabédozocbct  adinitti:
+inos  annos  per  fola  verba  nó  contrabüt\:cii
+antea  codi
+cófenfüs  ró  fit:
+legítímue.35er.([  [1Rlot.i.»  ad  fübftantiam  matrinoníj  verba  nó  re
+quirunt\:fcd  fufficit  fol?
+cófenfue  legitimus.  (|  Sed  contra  bocoppoz
+3bbas.
+nitur\:nà  litera
+bíc  videt  velle  cótraríti  oii  oícit  qp  verba  funt  neccítaz
+ría  quo
+ad  ecclefüá\:illud  cri  neceffarío  rcquirítur  fine  quo  ac?  cftnulo
+lus\:vtpatet  ín  fi.litere.&ol.glanultü  ín  boc  íinftat  z  innolnte  loquit.
+vocfuntyarij./3nn.tenuit  verba  effeve  fübftátía  quo  ad  ecclefiá  milia
+ttem
+ín  loqui  valétibue.££t  boc  ftatuít  ecclefia  £m  e  netiti  facramé
+tum  effet  íncertiabs  fequí  poffet  abfürdti  q»  fi  vír  vídée  mulieré  cone
+fentíret  i  eà  in  coude  fno  «  ídé  faceret  mulier  qp
+ínter  ece  cffct  matrimo:
+fiii.  ££x  quo  potfent  feg  multe  abfürdítatce.ll2oft.  tenuit  vba  ron  cffe
+vefübftátia  etíá  quo  ad  ecclefiá\:fed  fatis  eft  qualítercüqs  apparcatoe
+cófenfu.jo.an.oíftiguit  q»aut  fceffit  5ctue  «  nó  requirunt  vba:  alías
+vba  funt  ncecflaría.eed  ooc.moderntoaee  cóiter  fentit
+cii  oft  .  cii
+$  Xófenfusanfitoenecefitateqó  fünnleodétépo  —  fatís  fit  qp  appareat  vc  cófenfü  p  figna  etíá  ín  loqui  valentib?.  ná  eba
+erigunt
+folii  ad  oftédendi
+cófenfum  ideo  fa  tís  cffc  o5  q^p  fignaappae
+reat  oe  ipfo  »fenfu\:z  bác  opi.fcmp  tentí  «  pbo  p  iftü  ter.nà
+afülratio
+lectus  lóuriofüs  matri  ^  bícfuitfactaigücz  paparíídédo  pbat  verba  nó  cffcoc  fübitatía  ad:
+"inoniti  cótrabere
+ducédo  erépliü  ín  muto.  Soter  quo  ad  valídítatem  inrimonij  voluit
+16  pót\:pzímo  cccife  narrat  factii.fecii
+fetequíparare  mutii
+loqui  valenté  inepte  adduyiffet  eplüoemuto
+tlícet  poftmodn  oirerít  verba  cffe  necdffaría.  babuit  refpectü  qa  cói£
+s  afus  literalis.  Cidam  noie  robertus
+loqui  valétee  expaimunt  cófenfüm  per  verba.3ftévidem?g  legati  fi
+deicómifium.  poffunt  Irdínqui  nutu  etíáa  loqui  valétibus.eti  fur.ale
+leg.  el.  Zidídem  facit  tcr-$.eo.cum.  apud.  vbi  oícit  qpfufficit  confen
+fus.ná  illud
+fi  üfficere  G  pofito  nibil  aliud  regrít  ad  fübftátiá  actus
+*t  no.fn.glo;
+flatnti.ce  refcrip.i.vj  Sie  non  refert  ad  cr  cquípole
+leitib?fiat.vt  1c.lícet  ey
+quada.oe  tefti  .  |  3Tt6  pbo  er  alía  róne  neces
+farío  cóclndéte\:matrimoniü
+cft
+ce  iure  oiuino.  vtín.c.j.  ce  votol
+[s
+ocíure  yero  oíuíno  nó  oíftínguit  iter  muti  z  loa  valétéillud  aüt  cere
+ab  ínuice  feparare3&er.(T  ifto.
+tum  eft  e»
+mutus  pót  cótrabere  matrimonii  fine  ebis  oümodo  expzt
+mat  cófenfum  fignis.  bvt.S.co.cii  apud.vbi  papa  rfidet  nó  ftatniédo  oc
+nouo\:fcd  Pm  ius  antíqui.  ergo  foztíus  poterit  bic  valens  loqui  qz  ci
+cli?  fit  feruatue  poterit  meli?  cófenfum  fignis  oftemdere  JSiténullus
+ter-paecife  rcquírit  9ba.iRec  ob.iftud.c.q:  bic  papa  ríidetad  ofültatio
+Tem:
+fic  nó  ponít  usce  nono.not.in.c.cófultatíói.oc  tépo.  oxdi.et  p
+boctollítur  motiuii  3jnno.cf  cícit  qp  ecclefia  boc  ftatuit.nam  boc  fta.
+tuti  nullibi  vidct
+zd  idé  facit.c.ex  parte;oc  réftítu.fpo.z  bác  opí.  fen
+fit  g.not.ín.cfüfficiatarvij.q.i.vbí  glo.erponit  tert.  illum  oum  vicit
+quo  ad  ecclefiam\:ideft  quo  ad  pbarioné  probatio  vero  cófenfus  nore
+To  c  aduenictefanamétemollet  cófentirenóeffer  —  ftringitur  ad  vcrba.vt  iri.Lnutü.ffveleg
+iis.
+Xibbas.
+$3  Gba  vubía  piolata  ín
+matrimonio  ad  vecípiendtü  mulierem  fi
+poftinodum  eam  cognofcít  carnaliter  indica  pzo  matrimonio
+iri
+foe
+To  iudiciali:  fecnsín  penitentíali.8.  »
+cófentit  eftimatrímonil\:qe  2  'élerba  prolata  in  tertía  perfona  fi
+cótrabens  loquítur  ocftipfonó  vi
+iomen  fi  colo  mutat  per  cótrabenté  ín  propzía  perfona  nó  vítíat  có;
+fractum  er  quo  ec  coopoxe  conftat.ó.
+Af»atrímonti  l5  fitínducti  caufa  fobolis  pereáde
+«  íncótinentíc  eta
+tande  tamen  fob  alíam  caufam  contrabatur  tenet.
+Kredítur  vuicuíqs  pzo  fc  «  cótra  fc  in  fozo  cófcientic  qfolü  ibi  agitur
+ic  eiue  paeíudicio.7.
+oubito  perd  qó  no.glo.in..cófenfüs.ftocactio.  6  ziatrimoniti  per  oolii  vd  veceptioné  cótractii  fi  ín  verítatenó  cófen
+vtrobiqs  nota
+fit  non  tenet  quo  ad  eum  fecus  eft  quo  ad  ecclefiam
+ín  fozo  idíc
+3olofus  turpitudinem  fuà  allcgás  an  fit  audiendus  «
+aliud  cft  foz0.
+fudiciali  aliud  in  penitentíali.
+SSimulatenuptie  tenent  ín  foo  fudiciali  quía  ibí  indicatur  fm.ertrin
+feca  fccue  in  fovo  penitentíali.
+*|foxotcftatio  facta  ante  matrír
+nalíscopula  fequatur  vídct
+Jo  "foxotcftatio  facta  ab  vno  in
+Zibb.
+berí  nifi  mediantibus  verbíe  aut  fignis.
+arua  nos

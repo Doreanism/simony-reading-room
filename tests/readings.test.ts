@@ -140,6 +140,15 @@ describe("readings", () => {
       });
     }
 
+    it(`${readingKey} transcription has no unresolved [???] placeholders`, () => {
+      const files = getColumnFiles(transcriptionDir);
+      for (const file of files) {
+        const content = readFileSync(join(transcriptionDir, file), "utf-8");
+        const body = extractBody(content);
+        expect(body, `Found [???] in ${file}`).not.toContain("[???]");
+      }
+    });
+
     it(`${readingKey} transcription headings have blank lines around them`, () => {
       const files = getColumnFiles(transcriptionDir);
       for (const file of files) {

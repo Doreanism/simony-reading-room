@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "build": "nuxt build",
+    "build": "tsx scripts/build-search-index.ts && nuxt build",
+    "build:search-index": "tsx scripts/build-search-index.ts",
     "pipeline": "tsx scripts/pipeline.ts",
     "build:images": "tsx scripts/build-page-images.ts",
     "build:normalize-spreads": "tsx scripts/normalize-spread-sizes.ts",
@@ -22,6 +23,9 @@
     "@aws-sdk/client-s3": "^3.0.0",
     "@nuxt/test-utils": "^4.0.0",
     "better-sqlite3": "^12.8.0",
+    "image-size": "^2.0.2",
+    "pagefind": "^1.4.0",
+    "playwright": "^1.58.2",
     "tsx": "^4.0.0",
     "typescript": "^5.0.0",
     "vitest": "^4.1.1"

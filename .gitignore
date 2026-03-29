@@ -5,4 +5,5 @@
 /.venv
 /node_modules
 /public/d
+/public/pagefind
 /scripts/__pycache__

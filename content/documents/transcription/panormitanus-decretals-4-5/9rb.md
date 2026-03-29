@@ -1,0 +1,130 @@
+---
+page: 9rb
+pdf_page: 17
+sortable_pagination_id: "9_002"
+---
+f  (LSoP  cófefue.
+«Aó  pccdíti  mw
+to  «furdo  fimul  a
+natura\:z  bocfpe
+leiSctumtinouij
+qi  als  mut?  2  für
+dusarnatura  non
+prteftari  nec  relin
+nati  offcedere:  bec  vItüra  tbeoxíca  claríorz  vi
+quere  ét  ad.  pías
+caufas.Loffcretío.
+C.q  tefta
+face  pof.
+limitata  fuítín  t$e.s£t
+nánóptlegare  li
+bertaté
+écá  pia.
+fent  pure  3cta  l5  poftea  fpófus   fpófa  ouenirét
+Lj.in  f.C.oeferuo
+véotenuptíarü  nó  p  boclapfus  illi?  oíciliberat
+manu.ct.q
+íd  qp.
+9b  ílla  oblígatióe  q:  terminus  cr  poftfacto  fuit
+ff\:cc  co.tfi  o  alijs
+appofit?  pfolícitádo.implemento  promífionís
+Sctib?  ad  mrímo:
+Hbbas.
+niü  nó  pót  argut
+$3  zitoutues  furdus  «  quíciiqs  qui  crptfe  nó
+éfpalein  mfimo«
+nio  pp  pertculum
+"nf»ermíffiua  bí  eft  materia  edíctü  oícit  probis
+fomicationis  fm
+*jo.an.bic  .uíd
+edicti  pzctoarj:«  alij  tamen.  oppofitum  oícunt.
+oeco  a  éfürd?mu.
+X-onfenfue  folue  fufficit  quo  ad  fubftátíá  ma;
+tus  cce?  a  nate
+trímonij  zídeo  verba\:folennitatee  parenti\:vdl
+ra  vtrü  poffit  5be
+rematrimoníum.
+zif»utue  2  fardus  poffunt  erplícare  omné  con?
+l2ofti.z  3jo.oícüt
+q$  füp  boc  papa
+Sacramentum  matrimonii  permiffum  eft  mt»
+et  cófuléd?.et  ad
+boc  et  mut?  «für
+zifout?«  fürdus   cec^fimul  ntiquíid  poffint  ma
+dus  poffit  5bere
+mfimoníi  regrit
+irn:
+zitout?sfür
+ei?  cófeufus  cxpfe
+fue  p  figna  adco
+q  nó  piobibent  matrimonii  cótra;
+nó  fufficerct  ofenz
+teciibere  poffunt."»rio  occifus  exoudíti.
+fuealíor\:oato  qo
+co  cófültatio  ibi\:fáne.2-ertío  rcfponfio  ibi:
+effent  cox  pcurae
+ad  qó\:que  tría  facit\:pzmo  ponítouae  rationes
+to\:e  cr  quo  ifert
+fcóo  rüdetibí\:vidcE.tertío  foluit  obftaculi  íbí:
+bíc  ^f»bilip.frác.
+S  ucfitü  fita  papa  vtrü
+qi
+als  parentes
+matus  zfürdue  poffint  contrabere  mrimonit:
+poffintSberc  p  fi
+ríídetpapa  edíctii  oematrímonío  contraben;
+líe.c.i.ocodfpo.t
+do  pbibitoríii  eft\:q9  eft  oícere  quíctiqs  nó  pbi»
+pub.in.vi.fallit  q»
+be  per  íura  cófcquéter  cótrabere  pót:«  fol?  có»
+fili?  effet  mut?  ct
+fenfus  fufficit  ad  matrimonii  contrabédii\:vii  fi
+furd?  q»  eft  notan
+zifoutus  zfürdus  veíntotrabere  z  inuenit  cü
+düctpd
+figna  po
+quíbuscis  nó  05  oenegart  q?  qó  nó  prit  verbís
+terítoftare  ocvo
+p  figna  valeát  oeclarare.  eer.  ([  |  fio.  paio  q»
+lütate  muti.&ar.
+vbi  matería  eft  ín  fe  pmiffiua  edicti  à  pbibito
+iLmnutü.ff.oc  acq.
+rium  quafifit  pbíbitozí  certarüi  pfonarti\:non
+bere.z  Lj.  feo  bo.
+emi  o5  cíci  edíctii  permíffozíi  c:  quo  matería  oc
+pof.ifanti.zqualt
+fe  eft  pmitfa:  à:  edíctii  ad  inftar  edicti  ptoarí:
+notari?  ocbeat  2fi
+oe  quo  legit  z  no.fj.of.c.cóftitutio.Z(li  til  oícit
+eere  inftim.jear.
+eft  pmitfi
+ín.Lj.ffce  9b.obl.
+tia  zedíctii  oícat  pmiffoziti\:os  tücintelligi  pmif
+c-Sxbafti.eapia
+foxít  regulariter  7  probibítooíti  certarüi.  plona;
+6  (LSolinitates  pa
+ri.  LT  Saidono.ibi  fufficit  folus  cófenfus  fgp
+tric.vide  qà  p  illit
+ad  fabftatíá  mftmonfi:  verba  nó  funt  neceffaría
+tor.  no.Jealtl.fa
+necfolénítatee  pfícSnec  cófenfus  parctii  vt  orto.
+fpófo.C.oe  coria
+rüi  fs  fufficit  folus  ofenfus  3bétii.boc  oenotat
+tic.afi  nup.  vbi  ot
+boc$bi  fufficit  ad  boc  q9  no.gl.in.c.ftatutü.in
+q9  fiéconfüctudo
+|  té  nomutiü  zfurdü
+efculandi  fpótam
+potfc  xplicare  omné2xtti  qui  folo  ofenfu  pficé
+*el  bibedí  vba  tí
+élltio  babes  bíc
+uelut
+colligere  vnü  facramétü  ecclefie  pmitffüm  muto
+ct  mfiitios
+alíje  facrieyt  baptifino:
+dü
+omitia  ila  có
+cófirmatíonc\:eucbariftía:  poritétia\:ectrema  vn
+fuetudine.
+«tíone  «  oxdíne:  tractat  bic  3jo.an.qui  cómeuta
+353535

@@ -1,0 +1,166 @@
+---
+page: 6vb
+pdf_page: 12
+sortable_pagination_id: "6_004"
+---
+fPanonníi.fuper  quarto.
+reddit  rónépzima  fronte  notabilé.o.21nt
+f.op  iuc  ifti?  fup  y
+inducte  eft  ita  cóiiicti  cü  iurefpoliátie  q  nópoffct  audiri
+f»oticffozio  fiagat  ppieteee  EE  A  i  nm  potio
+ifta  fuperinducta  quomin?  pdcffetfpoliato?  fecus
+bí  ius
+Si  mulier  inuita  cum  alie
+tertij  cóparétie  rió  eflct  ita  cóiunctii  cii  iure  fpolíantís.boc
+"i  Jemene.  quo  cótrabat  ncc  ín  cii  poftea
+victi  nüd  mibíplacuit  vt
+plene  oíri  in.c.item  cum  quís.oe
+4  cóofenfitts  matrimonii  fi  alteri  poftea  nubit.ita
+ríti.fpolia.qz  odiü  fpolíatoz  nó  vebet  obeffetertio  qui  nó.
+fm  bc  itellectii  effet  bic  cafus
+fuitinculpa.z  poti?  ocbettolerari  odiofue  dp  innocés  piu
+apertus  qp  matrimoniti  metu  cótractü  effet  ipfo  iure  nullii
+níiri.vt.c/facris.oefcpultu.a.rritj;q.tij.in.c.d»  magnum.fa»
+boctü  clare  nó  colligit  eplta\:vt.j.patebit.pzumo  narrat  fa»
+cit.Labfenté.ff.oc  pe.3jte  queftio  propaictatis  ercludit
+in  cá
+ctíi.fcóo  oiffinitioné  omittit  ibi  mádam?  qten?  tuit  «  re»
+reftitutozia  in  oditi  fpoliátis\:vti  de;j.oe  cá  po.«  ppzie.qo
+camáté  «cL  Xzafue  lfalis.Souedà  mulier.  zif.noie  itàtii
+ceffat  bic  refpectu  tert  et  marime  qz  ifta  tertía  eratin  pof
+admauít  quédá  inuené  qp  vterg;  illozi  irpfentia  trii  tcftius
+feffione  et  fic  potuitfctimpedireetíà  erecutioné  fentétie  pe
+pttititiuramétü  oe  matrimonio  inuicé  2bédo.parétes  mu
+porendo  oe  turefuo\:yt  im.c.veniens.oe  tefti.  ir.o.$.fi  fup
+lieris  bocígnozatee  cà  inuità  «  reclamáté  cuidà  alij  in.  wxo
+rebus.
+in.o.c.cum  fuper.
+nnllo  mó  fe
+£300  tutus  atfisnarí
+o5  puelle  fi
+tíme£oc  víolentía.;.
+pa  pmo  víro
+zif»et?  ct  violétía  excludit  cófenfum  «  p  aris  annullat  acti
+cognita  «iurata  fucrit.tàdé  cpe  oiocc.cognito  glli  effent
+ínfpialib?  wbi  requirit  cófenfus  liberzim  alijs  auté  non.
+cófanguinei  ipfos  ab  iuicé  feparauit\:fs  oii  cáilla  tractaba£
+&oacta  voliitastvoliitas  eft.fed  non  in  matrimonio  zalíjs
+*illanollet  »fentíre  viro  cuia  parétib?  tradíta  fuerat  ipfe
+quibufdam.
+viralíá  oucitin  vrozézilla  cuidà  alij.27.noic  publice  fuit
+£  onfenfüscontrabentiii  fufficit  quo  ad  vinculii  matrímo:
+ocfpófata  ve  quo  poftmodífiliii  genuit.pf  illi?  irici  ope
+nü.Sutricit  quid  figuificet.
+pofuit  q  filii  fuii  bfc  in  viri  nó  poterateo  q5  abalio  viro
+I£onfenfus  quo  ad  matrimoníii  contrabendii  non  fufficit
+q  iáoefunct?  erat  fucrat  ocfpófata.  eiii  mulier  illa  ad  o0.
+nifi  fitcum  plena  libertate  et  fecuritate.
+pa.acceffit  erponés  fibi  oia  fupzadicta.zff»ádat  pa.qbufdá
+Sjuder  fi  timetur  oc  violentia  etiá  parentii  oebet  puellá  fur
+oícta  mulier  a  pzto2e  viro  iudicio  eccle
+ripereetinlocotuto  ponere.
+fie  fueratfeparata  cab  illo.3D.fine  5dictionc  ecclefie  ero^
+Scqueftrari  puella  $bi  et  quando  oebeat.
+réccclefietraducta\:z  ille  cuí  a  parétibus  tradíta  fuitvita  oc
+zif»atrimonium  metu  contractum  an  ipfo  fure  fit  ullum
+ceffitzmoncát  oictii.  3.4  cópellát  vt  pzefatà.  zi»  .rccipiat  i
+zifoetus  an  requiratur  etiam  ey  parte  viri  et  qualis,
+vroié:«  cá  maritali  affectu  ptractet  qo  &  cótradireritercói
+zif»etu  et  violentía  facta  queet  quando  tencant.g.
+ot.j.q  illicitus  amo  pcedés
+zif»atrimoniit  cft  facramentum  ctfignificatpnionem  ínter
+non  tollit  liberíi  confenfum  i  matrimonio  3bendo.vides
+cbüiftum  «  eccletamn  qua  requiruntur  fides  4  pzoles.
+eti  bic  becinnenis  adamauitillii  adolefcenté  illicite  pzo
+zif»atrimontfcoa  inftitutio  facta  fuit  et'euitct  foanícatío.
+pter  bíícamoxé  otrarít  fecü  fponfalía  à  valuitfent  «  tenuif2
+Sjucarcerati  acta  «  matrimonii  an  4  quando  teneant?
+fentnifiobftitifiet  ofanguimtae.JEtno.bocoictüq:  quoti
+rl
+(E  tei  timetur  inferrí
+(EN  c«m  locum.  puelle  oe  cui?
+4C.qp  ociure  canonico  tenétfpófalía  3cta  p  puellà  etià  illi»
+matrimonio  agit  o5  iüdey  puiderefibi  locum  ttr
+cito  amoze  ouctà  parétibue  ignoztib?.ad  fubftantià  ergo
+um   boneftiü  ooneccá  terminet.b.o.  pzincipali
+matrimont  oeíurecanonico  nó  requirit  q»  filius  cótrabat
+o  ponitregulá.Sceoinfert  gen?.  3-ertío  fpecié
+vecófenfu  vel  fciétia  pris  ad  boc.c.cum  Loci  j.exry.q..ca.
+fbi  matrimoniti.zibi  quo  circa.zefttert.multum  allegabí»
+lís.«  quotidie  accidit  ifte  caf?
+4|  £afus  ralis.  3]nterouos
+voicq  inita  62  d  oftédit  voliitatéanimicii  alio  figno  quà
+ciuee  »apienfes  quedam  queftio  vertebatur  fuper  matri
+IR  eclamás  vero  2  dvoceautalío  figno  oftéditanimi
+monio  cuiufdá  puelle  vterqs  illozum  oicebat  fe  cum  illa  ma
+4L  tiRo.tij.qp
+trímoniii  cótrariffe:  mulier  illa  timebat  víolentíam  fibi  in
+coactio  impedit  vires  matrimoni  ét  fi  infera£a  parétíbus.
+ferría  predictis  qui  ipfam  petebant.quefitii  fuit  a
+pa.  quid
+nó  erii  pit  parétee  inferre  violétià  liberis  imfimonio  5bé
+fieri  oeberet.refpondet  vbi  metus  vcl  coactío  intercedat  có.
+do  etiá  oetureciuili  \:vtín.L.unec  filiti.C.oe  nupt.«.ff.oe  ritu.
+fenfue  locum  babere  nó  poteft  fed.  vbí  confenfus  requirit
+nup.in.l.fi  patrc.  z(duerte  tíi  q2  fi  filius  cótrabit  matrimo
+coactio  fige  met?  ocbet  repelli  z  matrímonium  folo  confer
+niücü  puella  ne  incurrat  indignationé  patrie  ita  q5  alias
+fucótrabi\:z  bícomnis  metus  vcl  coactío  oebet  repelli  ne
+pertimoaem  oícat  fibi  placere  qó  odit.vnde  mádat  pa.  cpi»
+fcopo  papienfi  vt  puellam  illá  oe  cuiue  matrimonio  querí
+cadere  iu  2ftantétoe  boc  vf  tcr.motabilíe  iuncta  gl.in.o.l.f
+tur\:ponatín  oomo  aliqua  ebi  nullo  modo  tímeat\:s  etíam.
+patre.qó  tene  méti  qz  vt  multi  limitare  ter.i.Lj.$.d  bono»
+faciat  cuftodirebonefte  oonec  caufa  fuerit  per  fniam  octera
+minata.  fentétia  fine  cótradictióe  cuiufip  erecutiói  miffa.
+gnofci  pinifit  uncta  gl.cp  carnis  copula  fequce  purgat  me
+35er  p  tfo  f.regulá  er  pzincipio  litere  g  metue  yel  coa»
+falté  vt
+er  tüc  qp  intel
+ctío  ercludit  cófenfum.«  per  cófequée  annullat  actíj  a  cone
+ligeqri  copula  nó  fuit  otro  coacta  fed  voluntaría.fecus  fi  p.
+fenfu  oependenté\:fed  intelligo  bancregulà  in  matrimonio
+j.c.  Qt  3ré
+zínaliecafibuefpíritualibue  vbi  requiritur  confenfus  li»
+110.96  refiftétes  erecutioni  fie  prit  ercóicari  etiá  p  legatus
+ber.nam  regnlaríter  mctue  non  excludit  cófenfum  nec  an»
+st  t  3n  gl.inver.occefferitin  fi  not.
+nullat  acti  ipfo  (ure\:xquía  coacta  voluntas\:volütas  eft;  pt
+gl.eultem  apte  relata  ad  ter.qp  mrimoniii  5cti  p  metus  fit
+plenele.2  no.in.l.fi  mulier.in.$.penul.in  fi.ff.qà  me.caufa.z
+in.c.abbae.co.titu.vbi
+plene  per  glo.«  q9  voluit  ter.  patet
+erillatione  quá  facit  per  matrimonii  auté  «c.  Sjtes  videtur
+bec  puella  Sbítciü  tertio  nó  petíta  refciffionefcói  matrimo
+fn  electíone\:vt  ín.c.»  bi  periculum.$.ceterum.oc  elec.lib.  vj.
+nij  5ctí  per  violentià  «dp  oictü  fit  verüinfe  vt  oicá  lati?
+€  t  iRotafcéo  e  adfubftantiá  vinculi  matrimonialis  fo»
+in.c.prinó  thi  pbatur  p  iftá  literá\:fs  potiuspótfumi  otra
+luscófenfue*contrabétium  fufficit  vt
+bic.c  in.c.  cus  apud
+foztc  ad  iftüi  fi
+T.e.4  j.oefpon.ou.c.vlti.enderequiruntad  fuübftátíam  alie
+néq  noluit  toifcutercEniücoeviolétía  ine  effcctu.mam  fi
+folénitatea\:vtin.c.f.8.e.p20  boc.rrvíj.q.f.c.futficiat.
+vbi  ot.
+terti?  marít?  cobabitauit  cii  ifta  mulierepoft  mozté  coi  vf
+citur  q»  fufficit  confenfue.z  oc  figníficato  buiue  verbi  fuffi
+ratificatfe  matrimonii  pfuppofito  qó  pzius  babuiffct  ali^
+cit\:eft  et
+nibil  alíud  requirat  ad  effentiam  actue  vt  oícit  gl.
+quá  oubitationé  p\:o  boc  qo  leg.7  no.i.c.j.oeco  q  oti  ma.
+notabilis  ín.c.ftatutii.in  pzin.oe  refcríp.li.ví.q[  t  TRota  ibí
+plena
+o5  fecuritate.qó  ad  matrimoni  cótrabédü  non  fuffí
+cit  purue  2fenf?  f305  effe  cii  plena  libertate  «  fecuritate.  p
+íure  ftio.z  2cludit  q6  fic
+bocfacit  q5  ftatim  oícet.(L-t
+3  ténota  q  vbi  eft  indagád?
+anímus  puellefüp  cótractu  matrimontj  o5  tuder  er  officio
+puídere  vt  collocetín  pomo  i  qua  nullii  meti  nulláqs!vio»
+létià  babeat  timere.  (T  £x  quo  infero  p  fi  timet  à  violctia
+«etu  paréctum\:puta  q?  puclla  cotradiritclam  parétibus:
+infcs  q6  ad  petitíonéfpófi  iuderos  puellam  furripereoe
+poteftate  parétii  «  collocareeam  ín  aliqua  bonefta  omo:
+putain  monafterío  monialíum.ytín.c.pe.oe  pba.velapud.
+boneftos

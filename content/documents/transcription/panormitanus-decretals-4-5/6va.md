@@ -1,0 +1,106 @@
+---
+page: 6va
+pdf_page: 12
+sortable_pagination_id: "6_003"
+---
+1o  "fSoffcffío  fiagat  ín  matrimontalinon  auditur  pponens
+oepiopuetateninincontimétiparatusfitp\:obare.
+a8  «&  Ob  rcuerctià
+p  7alle.z  J6ar.in.
+L.áoo.ff.fol.mat.
+«  per  X\:ler.in.l.fi
+cii  ooté.$.co.aüt
+X  cóiterfummat:
+tpe.fr.e.an  met?
+reuerentialis  ipe
+diat  cófenfum  re
+fultantem  er  pa»
+tíétiac  piefentía.
+J5art.in.o.l.  que
+ootis  tenet  q9  fic
+p.Lpe.  ff.ocfur.fe
+ré  tradiderit:  fed  illa  intátíi  ipfus  erbozruit  qp
+quitur  Zint.in.c.
+ab  cocognofdpmífit\:z  cepit  publice  2fiteri
+norme,S.o€  pae»
+fump.abb.  cótra
+rííi  tenet.  ibi  qué
+appzobat  alle.in
+o.l.d  ootís.L.vü.
+€ol.ebi  poftea  có
+coi.iftas  opin.vt
+fbi  peti  «  p  lle.
+cófi.c.i.Ltitj.
+vol.
+quate.fi  innenerít  qp
+c-Fexcbafti.  Sapia.
+b  «L  zif»etus.
+io
+Qfcribit2edus
+in.c.j.in.6.not.8.
+ve  offi.ocleg.vbi
+cationi  fübüciant.J5cr.([  t  fl
+tágitanerco  qà
+mulíerpatít  mee
+tüfitiuftus  met?
+erqualitate  pfo»
+nean  9o  regrat
+3  dicacciditinteradolefcentee.Q[  T  co  no.ibi  »  parentes
+«v  fittalísq  cadat
+ín  cóftáté  ad  boc
+vide  etíá  4eLi.c.
+caufas  matrimo
+nij.co.ij.cii  fcq...
+4  v*bigL  i5Lertio  no.ibi  inuítà  z  reclamante  ofíam  iter  ifta
+oc  offi.ocle.
+c  (p  Rullus.latep
+voce
+aler.2fi.  zlvBi\:col.
+y  ocfiftétia.c  oe  bocvidebo,gl.Irriitj.oi.in.c.j
+viti.  in.titj.  vol.ct
+qemetus  reqrat
+etmfimoniii  me
+tu  Sctü  nóvaleat
+Hlerá.confi.cr.p
+totii.in.iij.vol.
+c-*oxbaftti.  Sapía.
+3  nófuiffet  ctus  nifi  ob  reucrentíá^paterná  nót5  mbilomí
+b  nuesmatrimoniii  er  qno  non  interuenit  mctus*qui  poffit
+d  (L'IRefciffiones.
+«dide  3Jaf.in.Lin
+terpofitas.in  pzí
+6  rádecüibino.ff.quarum  rerüact.nó  oa  4T  T  3téno.ibi  co»
+mono.C.ó  tráf.
+«  L.l.pacta  nouif
+tí  pzecedété.«  cóualidat  matrimonii
+fima.co.pe.  ver.
+not.qó  matrímo
+7  vimfuiffet  puella  cognita.vt  not;i.c.»fultatiói
+nium.C.oc  pact.
+€  (LXófenfus.
+ai
+de  d
+ad  fuí  effenz
+8  ocquoim.c.f.ocof.ocle
+tíà  nó  reqrít  co»
+pulá  carnalé.fol.
+€  ipoiurenullü*  íta  qp  nó  tit  op?  petererefcitfionc  4  pactio
+d:  néqb  me.cau.ná  Pm  iftü  intellectii  bic  eft  cafus  apertue\:qe
+cófi.rritj.ver.
+nec
+ob.in.í.vo.q2  có»
+feufus  z  nó  cócu
+bit?  nuptías  fa»
+riii  q:  papa  mádatinquirí  fifcós  occcfferit  4
+cit.L.nuptías  ff,
+pere.iu.
+4  becno.qa  limitat.c.fi.e.ti.(.  t  &ltimo  fcías  qo  '3n.bíctra
+ctatnunadiifta  fuperinducta  a  tertío  viro  potutifet  oppo»
+nereotraiftà  mariotà  pponédoó
+vícens  q5  potuiffet  afittereviro  fuo  in  iudícío  z  peoponere
+oe  iureftio  «  ctiá  appellarea  fnia.ar.a.L.a  oíuo  pio.fi  fuper
+reb?  ff-oc  re  iud.«  in.c.cii  fup.c.ti.facit.Lafnia.ff.oe  app.oí
+citétaliud  oíctü  fatis  no.fi  effet  yerü.tq9  fi  mariota  egiffct
+poffeflozio  non  fuiffct  audita  ifta  fuperinducta  pooponés
+oe  ppiletateíuris  fui  ad  effecti  impediédi  reftitutione  nift
+poluiffet  incótinenti  probarc.ar.in.c.líterag.oc  refti.fpo.ct

@@ -1,0 +1,129 @@
+---
+page: 2rb
+pdf_page: 3
+sortable_pagination_id: "2_002"
+---
+—.
+ocfpófatatri  p  verba  oepfenti  vbi  rcfertale  fccum  oo.Z1nt.oe  but.cée
+fuluiffe  gp»  tante  ftatuto  o  filia  maritata  feu  nupta  nó  veniatad  füce
+ceffioné  q»  boccafu  filía  ocfpófata  p  vba  oc  pfentinó  excludet-ides  tee
+coapoftllatozé  meti  in.Lnó  fine.in  pzin.C.
+aut.o0s  vata.C.occona.ante  nup.iftetn.c.et  ibi  poe
+fui  tn  apo.ad  eus
+metctígiin  queftione  fact  oe  qua  víde  gp
+oírí  ín.
+in  verfi.Sbentes
+fpófalia.8.oc  po
+o.c.er  publico  1^(5er  pzedicta  4  oeterminatur
+alía  queftío.oícit  ftatutü  mulicr  maritata  nó  ad
+itu.  paela,.a  i.c  tcr
+mittatur  adfucceffionem  patris  cum  fratribus.
+tío  loco.  ct  ibi  ct
+ín  apo.meie  i  vf.
+Suidam  oeceffit  relictis  filijs  mafculis  «  filia  oe
+fponfus.  nume.s,
+fpófata  per  verba  oe  futuro.querit  nüquid  ifta
+ybíplenep  zif»o
+oebcat  excludi  a  fucceffíone  paterna  et  oícendus
+der.3.oc  pzefum.
+eft  qó  non.quíaerquo  agit  ocodio  appellatióe
+maritatenon  venitfpófa\:fecue  fiagerct  oc  fauo
+ides  ín.c.fi  inter.
+te.p\:o  bocbor?  ter.ír.L.nó  fine.  C.oe  bo.d  libe.
+jo.  in.c.ij.p  il
+lum  tcrj.oe  fpó.
+etibí  per.  y.alios\:ct  vide  bonaur  gl.ínftit.oc
+ouo.p\:o  qb?  fae
+vroz.«.rrvíj.q..in  petr.fecue  fioi
+cereturoc  filia  ootata  quod  non  füccederet\:quia.
+citglo.incle.j.  oe
+cófan.z  affi.íidé  p
+zHbbas.
+€$  afatrímontum  cii  alienigena  contractum
+Sa.cófil.fuo.ritj.
+non  feruata  cófuctudine  patric  oum»
+inci.íacob?  pmíe
+fit  ftepbano  «c.«
+X\:onfuetudo  venit  legis  appellatione.
+qf5e-ocancb.  ofi.
+y\:onfuctudinis  omilflio  fiue  ocfectue  nonvítíat
+zr.inci.p  folutio
+nc  onbio2ii.Z4d»
+aifSatrimonialis  cáín  confilio  tractarí  poteft.
+ucrtetamen  qo  b
+vict  non  pocce
+in  caufis  cecídedis.
+deret  in  ocfpófa»
+X\:oncilij  con(titutio  fub  noie  concilij  editur  «nó
+papetantum\:fccustamen  quando  fit.
+táp  verbaoe  pfie
+1  eccato2  notarius  compellitur  ad  pzefentíam.
+tí  d  cft  traducta
+aif»arítus  compclliturrediread  ro2é  «  fic  vroz
+adoomus  virivt
+cum  eo  cóíiigere
+xconfuetudo  leges  «  ftatuta  an  poflint  alíqd  oí»
+turl5ante  cóiun
+fponere  circa  mrimoniii  «  alíquá  pená  iponere.
+ctione  mulíer  oc
+oerá  impofita  per  ftatutii  in  matrimonijs  an
+cederet\:quía  boc
+cafu  per  ftatutus
+I2otium  conftítutíoper  ftatutum  facta  valet.
+ocbitá  poztíoné
+S»olénitates  círca  matrimonía  ínductas  per  fta
+lucrarct.iftud  eft
+fing.oictus  Sali,
+eftotuerfa  in  loco  vírí  z  mulieris
+in.Lcum  te.in  fi.
+vfi.C.ó  oona.ait
+Soéfee  an  teneantur  feruare  confuetudiné  loci.
+nup.  qó  p  fing.
+ftatutum  círca  ootee  que  fit  fere
+extollit  rcfertqs«
+fcquit  4el.  i.8.al
+E  fra  ncia  z»rimonium
+lcg.c.tertío  loco.
+*confenfu  2bit  —  coLiij.  vfi.  oetéta
+necinualidatficófuetudopatrienom  —  «c.S.oepfump.
+Yer  uct.pzimo  ponitcafum.fectido  oif  c-fGebaftt.  Sapia.
+4L  £z
+afue  literalis.Suidáiue  d.  fq  »er  pzedicta.
+ueníeoe  jrancíaouritin  vro:é  quandá  nobilé  —  ZiideZib.i2fi.j.
+mulieréoe  Saronía  $m  cófuetudiné.Sjasonü.  ^  ín.j.voL  Zdlex;  in
+fcd  qz  oíiuerfie  cófuetudinib?  $rancígene«  9a»  —  apoft.ad  J&ar.ín
+xonce  etuntin  matrimontj  2bendie\:c  iltenon  —  Liubem?.$.fane.
+fua\:fs  &aronü  legc  contrarit\:füit  accufat?  qud  —  ad  fi.C.
+oe  facro«
+emíffa  aliam  fuperduxit.3in  cófilio  quefitii  fuit;  —
+fan.cccl.]fpau.oe
+Qdoebocfieriocberetzftatuitvt  tráfgreffozeuá  —  ca.i.Loeo  nobis.
+Selicelegisfubiciatpenitétiescafcbayrorefepa  —  im.ij.co.C.oc  epi.
+retur  zpzímá  recipereapellatur.38
+([  tio.  —  «ce:3jafi  aut.p
+yalet  matrimonii  3ctticum  alienigena.z  intelli  —  terea.col.ój.ct.  iij,
+gcocalienigena  refpectu  patrienórefpectufidei  —
+C.vfi  vir  «  yroz,
+nátuncnon  teneret  matrimonium.yt  in.c.caue.  e.  Q  Xciufdes  fidei.
+tvitj.q.j  J2ebenteni  effe  marítns  vroiciufdem  —  it.Lne  quis.C.
+4T  fecoono.iunctagloj.c.pap  ^  oeíndect  alibet
+pellatíonelegís  compzebendít  cófuctudomam  ——  admitti£ad  accu
+cófuetudo  eft  quedáler.fetínl.oe  quibus.fr.oe  —  fandíictiam  finc
+fubfcriptione:  vt
+ibi  perglo.tegularíter  contrarium  cftín.l..C.quí  acci.non  poffunt.
+f  (LOuedam  lcr-5jn  cótrarium  videtur  slo.in.c.j.S.oe  tranfac.queyult
+qpappellatióciuríg  vcl  lcgie  intelligat
+oc  iurecommuni  q  eft  fingula
+re  avtile.Pm  '5bílip.bícer  quo  infertur.Si  cft  renmmtíatà  omni]cgís
+aurilíoran  vídea£renuntiatum  (uri  cófuctudinariozoequo  per  3Bar.
+in.L.ó.C.oc  bo.quelíbe.«  ín.Lilla  inftítutío.ff;oe  beredi-inftitu.vbi  có
+dudítg  fapíene  vígoxc  arbitri  fibi  oati  ociurepoterit  fuppleremon
+folum  ve  iure  cómunt\:fed  etiam  occófuetudine.oe  quo  per  Toma,
+rüb.ocarbi.in.v.col.per  3jafo.in  repeti.loée  populi.ff.oc  ínft.«  iu.in
+itd.col.verfic.bincfeoffert.per  JBarba.ia.Lin  illa.in.v.col.ff.oe  verbo.
+oblí.bioicitq  ifta  eft  queftio  sloziofa\:per  £ozneii  cófi.cclrrviij.inci,
+má  cófuetudo  nó  oíffert  a  lege  nifi  tài  ta.
+citum  ab  expffo\:vt  pulcbie
+S05.2fi.pcir-inci.in  cá  erimij.in  fim.j.col,
+IAzG
+dj

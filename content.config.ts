@@ -73,14 +73,8 @@ export default defineContentConfig({
         sortable_pagination_id: z.string(),
       }),
     }),
-    documentsTranscription: defineCollection({
-      type: 'page',
-      source: 'documents/transcription/**/*.md',
-      schema: z.object({
-        page: z.string(),
-        pdf_page: z.number(),
-        sortable_pagination_id: z.string(),
-      }),
-    }),
+    // documents/transcription/ is excluded from Nuxt Content — too many files
+    // (~4000+) causes the dev server and build to hang. Search is handled by
+    // Pagefind which indexes those files at build time instead.
   },
 })

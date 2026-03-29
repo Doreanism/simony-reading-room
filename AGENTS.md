@@ -49,7 +49,8 @@ Example: `npm run build:page-json -- john-major-sentences-a`
 
 | Script | Command | Purpose |
 |--------|---------|---------|
-| `build` | `nuxt build` | Full deploy build |
+| `build` | `tsx scripts/build-search-index.ts && nuxt build` | Build Pagefind search index, then full deploy build |
+| `build:search-index` | `tsx scripts/build-search-index.ts` | Build Pagefind search index from transcription and translation files |
 
 ## `content/` Directory Structure
 
@@ -78,7 +79,7 @@ Source materials, organized by type:
 
 Use `npm run upload` to push local changes to S3, `npm run download` to pull from S3.
 
-Cover images live at `{source-key}/cover.jpg` inside `public/d/`. Typically extracted from the title page of the source PDF. Target aspect ratio is approximately **3:4** (width:height), matching a typical book page proportion. Ideal dimensions: ~900-1000px wide. Referenced in the source meta frontmatter as `cover: /d/{source-key}/cover.jpg`.
+Cover images live at `{source-key}/cover.jpg` inside `public/d/`. Typically extracted from the title page of the source PDF. Aspect ratio must be exactly **3:4** (width:height). Ideal dimensions: 900×1200px. Referenced in the source meta frontmatter as `cover: /d/{source-key}/cover.jpg`.
 
 ## Page JSON Format
 
@@ -107,6 +108,16 @@ Reading transcriptions and translations are stored as **per-column files** in `c
 Reading transcriptions are **readable, flowing Latin text** produced by reading source page images directly — not from OCR. Reading translations are scholarly English translations of the transcriptions. Transcription and translation column files must have matching headings (same count and depth per column).
 
 Use the skills `/transcribe-reading` and `/translate-reading` for detailed instructions on producing these files. See `.agents/skills/` for the full rules on text formatting, headings, and what to omit.
+
+## Search
+
+Full-text search uses [Pagefind](https://pagefind.app/), a client-side static search library. The search index is built at deploy time by `scripts/build-search-index.ts`, which indexes document transcription files (`content/documents/transcription/`) and reading translation files (`content/readings/translation/`). The index is written to `public/pagefind/` (gitignored).
+
+Document transcription files are **not** registered as a Nuxt Content collection — the volume (~4000+ files) causes the dev server and build to hang. They remain in `content/documents/transcription/` in git but are only read by the Pagefind build script.
+
+Each indexed record carries metadata (`folio`, `pdfPage`, `documentKey`) and filters (`type: transcription|translation`, `documentKey`) so the client can filter and display results appropriately.
+
+For local development, run `npm run build:search-index` to generate the index before starting the dev server.
 
 ## Vue Conventions
 
