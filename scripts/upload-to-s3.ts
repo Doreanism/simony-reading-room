@@ -1,11 +1,14 @@
 #!/usr/bin/env tsx
 
 /**
- * Uploads local public/d/ files to S3.
+ * Uploads local public/d/ and public/a/ files to S3.
  *
  * Local layout (public/d/):        S3 layout (documents/):
  *   <key>.pdf                        <key>.pdf
  *   <key>/<file>                     <key>/<file>
+ *
+ * Local layout (public/a/):        S3 layout (authors/):
+ *   <file>                            <file>
  *
  * Usage:
  *   tsx scripts/upload-to-s3.ts                # upload everything
@@ -31,6 +34,8 @@ if (!BUCKET) {
 }
 
 const s3 = new S3Client({ region: REGION });
+
+const PUBLIC_A = "public/a";
 
 const CONTENT_TYPES: Record<string, string> = {
   ".pdf": "application/pdf",
@@ -118,6 +123,24 @@ async function uploadDocument(documentKey: string) {
   return uploaded;
 }
 
+async function uploadAuthors(): Promise<number> {
+  if (!existsSync(PUBLIC_A)) return 0;
+
+  console.log("Uploading authors...");
+  console.log("  listing remote objects...");
+  const remoteObjects = await listRemoteObjects("authors/");
+  console.log(`  ${remoteObjects.size} file(s) already on S3`);
+
+  let uploaded = 0;
+  const files = readdirSync(PUBLIC_A).filter((f) => f.includes("."));
+  for (const file of files) {
+    const localPath = join(PUBLIC_A, file);
+    const s3Key = `authors/${file}`;
+    if (await uploadFile(localPath, s3Key, remoteObjects)) uploaded++;
+  }
+  return uploaded;
+}
+
 // Main
 const filterKey = process.argv[2];
 let totalUploaded = 0;
@@ -126,24 +149,24 @@ if (filterKey) {
   console.log(`Uploading ${filterKey}...`);
   totalUploaded = await uploadDocument(filterKey);
 } else {
-  if (!existsSync(PUBLIC_D)) {
-    console.log("No public/d directory found.");
-    process.exit(0);
-  }
+  // Upload authors
+  totalUploaded += await uploadAuthors();
 
-  // Find all document keys: PDFs and subdirectories
-  const keys = new Set<string>();
-  for (const entry of readdirSync(PUBLIC_D, { withFileTypes: true })) {
-    if (entry.isDirectory()) {
-      keys.add(entry.name);
-    } else if (entry.name.endsWith(".pdf")) {
-      keys.add(entry.name.replace(".pdf", ""));
+  // Upload documents
+  if (existsSync(PUBLIC_D)) {
+    const keys = new Set<string>();
+    for (const entry of readdirSync(PUBLIC_D, { withFileTypes: true })) {
+      if (entry.isDirectory()) {
+        keys.add(entry.name);
+      } else if (entry.name.endsWith(".pdf")) {
+        keys.add(entry.name.replace(".pdf", ""));
+      }
     }
-  }
 
-  for (const key of keys) {
-    console.log(`Uploading ${key}...`);
-    totalUploaded += await uploadDocument(key);
+    for (const key of keys) {
+      console.log(`Uploading ${key}...`);
+      totalUploaded += await uploadDocument(key);
+    }
   }
 }
 

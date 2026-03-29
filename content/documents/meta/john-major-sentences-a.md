@@ -8,7 +8,7 @@ url: https://archive.org/details/bub_gb_VELCLv2RWmwC/page/n7/mode/2up
 document: /d/john-major-sentences-a.pdf
 cover: /d/john-major-sentences-a/cover.jpg
 pages: 500
-filesize: 47MB
+filesize: 51MB
 pagination: folio-two-column
 language: latin
 typeface: gothic

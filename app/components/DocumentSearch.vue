@@ -24,7 +24,7 @@ const loading = ref(false)
 
 let debounceTimer: ReturnType<typeof setTimeout>
 
-watch(query, (val) => {
+async function search(val: string) {
   clearTimeout(debounceTimer)
   if (val.length < 2) {
     results.value = []
@@ -35,7 +35,13 @@ watch(query, (val) => {
     results.value = await searchPagefind(val, { documentKey: props.documentKey, limit: 200 })
     loading.value = false
   }, 300)
-})
+}
+
+watch(query, search)
+
+if (query.value) {
+  search(query.value)
+}
 
 function navigateTo(result: PagefindSearchResult) {
   emit('navigate', result.pdfPage)

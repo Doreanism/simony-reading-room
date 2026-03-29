@@ -21,9 +21,16 @@ const POS_MAP: Record<string, string> = {
 };
 
 /**
- * Parse a folio reference like "145rb" into a sortable structure.
+ * Parse a folio reference like "145rb" or a plain page number like "42"
+ * into a sortable structure.
  */
 export function parseFolio(ref: string): Folio {
+  // Plain page number (pagination: page)
+  const pageMatch = ref.match(/^(\d+)$/);
+  if (pageMatch) {
+    const page = parseInt(pageMatch[1]);
+    return { folio: page, side: "r", col: "a", sort: page, ref };
+  }
   const m = ref.match(/^(\d+)(r|v)(a|b)$/);
   if (!m) throw new Error(`Invalid folio reference: ${ref}`);
   const folio = parseInt(m[1]);
@@ -34,10 +41,12 @@ export function parseFolio(ref: string): Folio {
 }
 
 /**
- * Compute the sortable pagination ID for a folio reference.
- * e.g., "145rb" -> "145_002"
+ * Compute the sortable pagination ID for a folio reference or plain page number.
+ * e.g., "145rb" -> "145_002", "42" -> "42"
  */
 export function sortablePaginationId(ref: string): string {
+  // Plain page number
+  if (/^\d+$/.test(ref)) return ref;
   const m = ref.match(/^(\d+)(r|v)(a|b)$/);
   if (!m) throw new Error(`Invalid folio reference: ${ref}`);
   const pos = POS_MAP[m[2] + m[3]];

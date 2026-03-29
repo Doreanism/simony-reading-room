@@ -7,6 +7,8 @@ const { data: doc } = await useAsyncData(`doc-${slug}`, () =>
   queryCollection("documentsMeta").where("key", "=", slug).first(),
 );
 
+useHead({ title: () => doc.value?.title_en });
+
 const { data: author } = await useAsyncData(`author-for-${slug}`, async () => {
   if (!doc.value) return null;
   return queryCollection("authors")
@@ -200,9 +202,6 @@ function goToPage(pdfPage: number) {
 
 <template>
   <AppPage full no-px no-pt>
-  <Head v-if="doc"
-    ><title>{{ doc.title_en }}</title></Head
-  >
   <div v-if="doc">
     <!-- Book viewer + sidebar -->
     <div ref="viewerEl" class="dark flex bg-black" :style="{ height: isFullscreen ? '100vh' : 'calc(100vh - 3rem)', '--viewer-h': isFullscreen ? '100vh' : 'calc(100vh - 3rem)' }">

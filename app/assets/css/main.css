@@ -11,7 +11,7 @@
 }
 
 /* Reading column visibility: on small screens, hide the inactive column */
-@media (max-width: 1023px) {
+@media (max-width: 1279px) {
   .reading-content[data-view="translation"] .reading-col-transcription {
     display: none;
   }

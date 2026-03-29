@@ -347,7 +347,9 @@ def main():
     doc_meta = read_yaml(doc_meta_path)
     base_pdf_page = int(doc_meta["base_pdf_page"])
     base_folio = int(doc_meta["base_folio"])
-    base_side = doc_meta["base_side"]
+    pagination = doc_meta.get("pagination", "folio-two-column")
+    is_page_pagination = pagination == "page"
+    base_side = doc_meta.get("base_side", "r") if not is_page_pagination else "r"
     ocr_model = doc_meta.get("ocr_model", DEFAULT_OCR_MODEL)
 
     out_dir = os.path.join(PUBLIC_D, document_key)
@@ -357,7 +359,10 @@ def main():
     page_args = []
     total = end - start + 1
     for i, p in enumerate(range(start, end + 1)):
-        _, _, leaf = pdf_page_to_folio(p, base_pdf_page, base_folio, base_side)
+        if is_page_pagination:
+            leaf = str(p - base_pdf_page + base_folio)
+        else:
+            _, _, leaf = pdf_page_to_folio(p, base_pdf_page, base_folio, base_side)
         page_args.append({
             "page": p,
             "folio": leaf,

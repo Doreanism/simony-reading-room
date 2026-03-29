@@ -1,4 +1,6 @@
 <script setup lang="ts">
+useHead({ title: 'Readings' })
+
 const { data: readings } = await useAsyncData('readings', () =>
   queryCollection('readingsMeta').all()
 )
@@ -20,7 +22,6 @@ const sortedReadings = computed(() => {
 
 <template>
   <AppPage>
-  <Head><title>Readings</title></Head>
   <div class="space-y-3">
     <h1 class="text-2xl font-serif font-bold mb-6">Readings</h1>
     <ListItemCard

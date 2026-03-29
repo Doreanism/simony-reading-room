@@ -3,7 +3,7 @@ key: peraldus
 name: Guillelmus Peraldus
 name_en: William Peraldus
 wikipedia: https://en.wikipedia.org/wiki/William_Peraldus
-image: /img/authors/guillelmus-peraldus.jpg
+image: /a/guillelmus-peraldus.jpg
 born: 1200
 died: 1271
 ---

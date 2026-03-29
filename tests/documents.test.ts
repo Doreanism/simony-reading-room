@@ -71,10 +71,20 @@ it(`${key} has all ${pages} json files`, () => {
 });
 
 /**
- * Enumerate all folio column refs between start and end (inclusive).
- * e.g. "145rb" to "146ra" → ["145rb", "145va", "145vb", "146ra"]
+ * Enumerate all page/column refs between start and end (inclusive).
+ * For folio-two-column: "145rb" to "146ra" → ["145rb", "145va", "145vb", "146ra"]
+ * For page: "1" to "5" → ["1", "2", "3", "4", "5"]
  */
-function enumFolioRefs(startRef: string, endRef: string): string[] {
+function enumPageRefs(startRef: string, endRef: string): string[] {
+  // Plain page numbers
+  if (/^\d+$/.test(startRef)) {
+    const start = parseInt(startRef);
+    const end = parseInt(endRef);
+    const refs: string[] = [];
+    for (let i = start; i <= end; i++) refs.push(String(i));
+    return refs;
+  }
+  // Folio-column refs
   const start = parseFolio(startRef);
   const end = parseFolio(endRef);
   const refs: string[] = [];
@@ -105,33 +115,33 @@ describe("readings", () => {
       expect(existsSync(join("content/authors", `${author}.md`)), `Missing author: ${author}.md`).toBe(true);
     });
 
-    it(`${key} has per-column transcription files for all pages`, () => {
+    it(`${key} has transcription files for all pages`, () => {
       const transcriptionDir = join("content/documents/transcription", document);
       if (!existsSync(transcriptionDir)) {
         expect.fail(`Missing transcription directory: ${transcriptionDir}`);
       }
-      const expected = enumFolioRefs(meta.page_start, meta.page_end);
+      const expected = enumPageRefs(meta.page_start, meta.page_end);
       const missing = expected.filter(
         (ref) => !existsSync(join(transcriptionDir, `${ref}.md`))
       );
-      expect(missing, `Missing column transcription files: ${missing.join(", ")}`).toEqual([]);
+      expect(missing, `Missing transcription files: ${missing.join(", ")}`).toEqual([]);
     });
 
-    it(`${key} has reading-level transcription column files`, () => {
+    it(`${key} has reading transcription files`, () => {
       const dir = join("content/readings/transcription", key);
       expect(
         existsSync(dir),
         `Missing reading transcription directory: ${key}/`
       ).toBe(true);
       const files = readdirSync(dir).filter((f) => f.endsWith(".md"));
-      expect(files.length, `No transcription column files in ${key}/`).toBeGreaterThan(0);
+      expect(files.length, `No transcription files in ${key}/`).toBeGreaterThan(0);
     });
 
     const translationDir = join("content/readings/translation", key);
     if (existsSync(translationDir)) {
-      it(`${key} has reading-level translation column files`, () => {
+      it(`${key} has reading translation files`, () => {
         const files = readdirSync(translationDir).filter((f) => f.endsWith(".md"));
-        expect(files.length, `No translation column files in ${key}/`).toBeGreaterThan(0);
+        expect(files.length, `No translation files in ${key}/`).toBeGreaterThan(0);
       });
     }
   }

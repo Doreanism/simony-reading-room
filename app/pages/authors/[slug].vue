@@ -6,6 +6,8 @@ const { data: author } = await useAsyncData(`author-${slug}`, () =>
   queryCollection('authors').where('key', '=', slug).first()
 )
 
+useHead({ title: () => author.value?.name_en })
+
 const { data: documents } = await useAsyncData('documents', () =>
   queryCollection('documentsMeta').all()
 )
@@ -33,7 +35,6 @@ function readingsForDocument(documentKey: string) {
 
 <template>
   <AppPage>
-  <Head v-if="author"><title>{{ author.name_en }}</title></Head>
   <div v-if="author">
     <div class="flex gap-6">
       <img

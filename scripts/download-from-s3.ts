@@ -1,7 +1,10 @@
 #!/usr/bin/env tsx
 
 /**
- * Downloads document assets from S3 into public/d/ for local development.
+ * Downloads assets from S3 into public/a/ and public/d/ for local development.
+ *
+ * S3 layout (authors/):            Local layout (public/a/):
+ *   <file>                            <file>
  *
  * S3 layout (documents/):          Local layout (public/d/):
  *   <key>.pdf                        <key>.pdf
@@ -25,6 +28,7 @@ import {
 
 const BUCKET = process.env.BUCKET;
 const REGION = process.env.REGION || "us-west-2";
+const PUBLIC_A = "public/a";
 const PUBLIC_D = "public/d";
 
 if (!BUCKET) {
@@ -77,27 +81,43 @@ async function listObjects(prefix: string) {
   return objects;
 }
 
+async function downloadPrefix(
+  s3Prefix: string,
+  localDir: string,
+  label: string
+): Promise<number> {
+  console.log(`Listing ${label} in s3://${BUCKET}/${s3Prefix}...`);
+  const objects = await listObjects(s3Prefix);
+
+  if (objects.length === 0) {
+    console.log(`No ${label} found.`);
+    return 0;
+  }
+
+  console.log(`Found ${objects.length} ${label} objects.`);
+
+  let downloaded = 0;
+  for (const obj of objects) {
+    const relativePath = obj.key.replace(new RegExp(`^${s3Prefix}`), "");
+    const localPath = join(localDir, relativePath);
+    if (await downloadFile(obj.key, localPath, obj.size)) downloaded++;
+  }
+  return downloaded;
+}
+
 // Main
 const filterKey = process.argv[2];
-const prefix = filterKey ? `documents/${filterKey}` : "documents/";
+let totalDownloaded = 0;
 
-console.log(`Listing objects in s3://${BUCKET}/${prefix}...`);
-const objects = await listObjects(prefix);
-
-if (objects.length === 0) {
-  console.log("No objects found.");
-  process.exit(0);
+if (filterKey) {
+  totalDownloaded += await downloadPrefix(
+    `documents/${filterKey}`,
+    PUBLIC_D,
+    "documents"
+  );
+} else {
+  totalDownloaded += await downloadPrefix("authors/", PUBLIC_A, "authors");
+  totalDownloaded += await downloadPrefix("documents/", PUBLIC_D, "documents");
 }
 
-console.log(`Found ${objects.length} objects.`);
-
-let downloaded = 0;
-for (const obj of objects) {
-  // S3 key: documents/<key>.pdf or documents/<key>/<N>.webp
-  // Local:  public/d/<key>.pdf  or public/d/<key>/<N>.webp
-  const relativePath = obj.key.replace(/^documents\//, "");
-  const localPath = join(PUBLIC_D, relativePath);
-  if (await downloadFile(obj.key, localPath, obj.size)) downloaded++;
-}
-
-console.log(`\nDone. ${downloaded} file(s) downloaded.`);
+console.log(`\nDone. ${totalDownloaded} file(s) downloaded.`);

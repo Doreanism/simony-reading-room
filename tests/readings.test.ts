@@ -18,9 +18,9 @@ function extractBody(content: string): string {
 }
 
 /**
- * Get sorted column files for a reading directory.
+ * Get sorted page/column files for a reading directory.
  */
-function getColumnFiles(dir: string): string[] {
+function getPageFiles(dir: string): string[] {
   if (!existsSync(dir)) return [];
   return readdirSync(dir)
     .filter((f) => f.endsWith(".md"))
@@ -48,9 +48,19 @@ function blockStructure(body: string): Array<{ type: 'heading'; depth: number } 
 }
 
 /**
- * Generate the expected sequence of folio column refs from page_start to page_end.
+ * Generate the expected sequence of page/column refs from page_start to page_end.
+ * Handles both folio-column refs ("145ra") and plain page numbers ("42").
  */
-function expectedFolioSequence(pageStart: string, pageEnd: string): string[] {
+function expectedPageSequence(pageStart: string, pageEnd: string): string[] {
+  // Plain page numbers
+  if (/^\d+$/.test(pageStart)) {
+    const start = parseInt(pageStart);
+    const end = parseInt(pageEnd);
+    const sequence: string[] = [];
+    for (let i = start; i <= end; i++) sequence.push(String(i));
+    return sequence;
+  }
+  // Folio-column refs
   const start = parseFolio(pageStart);
   const end = parseFolio(pageEnd);
   const sequence: string[] = [];
@@ -84,10 +94,10 @@ describe("readings", () => {
 
     if (!existsSync(transcriptionDir)) continue;
 
-    it(`${readingKey} transcription has consecutive column files within page range`, () => {
-      const files = getColumnFiles(transcriptionDir);
+    it(`${readingKey} transcription has consecutive files within page range`, () => {
+      const files = getPageFiles(transcriptionDir);
       const refs = files.map((f) => basename(f, ".md"));
-      const fullSequence = expectedFolioSequence(meta.page_start, meta.page_end);
+      const fullSequence = expectedPageSequence(meta.page_start, meta.page_end);
 
       expect(refs.length).toBeGreaterThan(0);
 
@@ -95,7 +105,7 @@ describe("readings", () => {
         expect(fullSequence).toContain(ref);
       }
 
-      // Column files must be consecutive (no gaps)
+      // Files must be consecutive (no gaps)
       for (let i = 1; i < refs.length; i++) {
         const prev = parseFolio(refs[i - 1]);
         const curr = parseFolio(refs[i]);
@@ -103,8 +113,8 @@ describe("readings", () => {
       }
     });
 
-    it(`${readingKey} transcription columns have valid frontmatter`, () => {
-      const files = getColumnFiles(transcriptionDir);
+    it(`${readingKey} transcription pages have valid frontmatter`, () => {
+      const files = getPageFiles(transcriptionDir);
       for (const file of files) {
         const { frontmatter } = readMarkdown(join(transcriptionDir, file));
         expect(frontmatter.reading).toBe(readingKey);
@@ -116,7 +126,7 @@ describe("readings", () => {
 
     if (meta.start_text) {
       it(`${readingKey} transcription starts with start_text`, () => {
-        const files = getColumnFiles(transcriptionDir);
+        const files = getPageFiles(transcriptionDir);
         const firstFile = readFileSync(join(transcriptionDir, files[0]), "utf-8");
         const body = normalizeSearch(extractBody(firstFile));
         const startText = normalizeSearch(meta.start_text);
@@ -129,7 +139,7 @@ describe("readings", () => {
 
     if (meta.end_text) {
       it(`${readingKey} transcription ends with end_text`, () => {
-        const files = getColumnFiles(transcriptionDir);
+        const files = getPageFiles(transcriptionDir);
         const lastFile = readFileSync(join(transcriptionDir, files[files.length - 1]), "utf-8");
         const body = normalizeSearch(extractBody(lastFile));
         const endText = normalizeSearch(meta.end_text);
@@ -141,7 +151,7 @@ describe("readings", () => {
     }
 
     it(`${readingKey} transcription has no unresolved [???] placeholders`, () => {
-      const files = getColumnFiles(transcriptionDir);
+      const files = getPageFiles(transcriptionDir);
       for (const file of files) {
         const content = readFileSync(join(transcriptionDir, file), "utf-8");
         const body = extractBody(content);
@@ -150,16 +160,16 @@ describe("readings", () => {
     });
 
     it(`${readingKey} transcription first heading is h1`, () => {
-      const files = getColumnFiles(transcriptionDir);
+      const files = getPageFiles(transcriptionDir);
       const firstFile = readFileSync(join(transcriptionDir, files[0]), "utf-8");
       const body = extractBody(firstFile);
       const firstHeading = body.match(/^(#{1,6})\s/m);
-      expect(firstHeading, `No heading found in first column of ${readingKey}`).toBeTruthy();
+      expect(firstHeading, `No heading found in first page of ${readingKey}`).toBeTruthy();
       expect(firstHeading![1], `First heading in ${readingKey} is h${firstHeading![1].length}, expected h1`).toBe("#");
     });
 
     it(`${readingKey} transcription headings don't skip levels`, () => {
-      const files = getColumnFiles(transcriptionDir);
+      const files = getPageFiles(transcriptionDir);
       let prevDepth = 0;
       for (const file of files) {
         const body = extractBody(readFileSync(join(transcriptionDir, file), "utf-8"));
@@ -178,7 +188,7 @@ describe("readings", () => {
     });
 
     it(`${readingKey} transcription headings have blank lines around them`, () => {
-      const files = getColumnFiles(transcriptionDir);
+      const files = getPageFiles(transcriptionDir);
       for (const file of files) {
         const content = readFileSync(join(transcriptionDir, file), "utf-8");
         const lines = extractBody(content).split("\n");
@@ -198,7 +208,7 @@ describe("readings", () => {
 
     if (existsSync(translationDir)) {
       it(`${readingKey} translation has no straight quotes or apostrophes`, () => {
-        const files = getColumnFiles(translationDir);
+        const files = getPageFiles(translationDir);
         for (const file of files) {
           const content = readFileSync(join(translationDir, file), "utf-8");
           const body = extractBody(content);
@@ -217,15 +227,15 @@ describe("readings", () => {
         }
       });
 
-      it(`${readingKey} translation columns match transcription columns`, () => {
-        const transFiles = getColumnFiles(transcriptionDir).map((f) => basename(f, ".md"));
-        const translFiles = getColumnFiles(translationDir).map((f) => basename(f, ".md"));
+      it(`${readingKey} translation files match transcription files`, () => {
+        const transFiles = getPageFiles(transcriptionDir).map((f) => basename(f, ".md"));
+        const translFiles = getPageFiles(translationDir).map((f) => basename(f, ".md"));
         expect(translFiles).toEqual(transFiles);
       });
 
-      it(`${readingKey} transcription and translation block structure matches per column`, () => {
-        const transFiles = getColumnFiles(transcriptionDir);
-        const translFiles = getColumnFiles(translationDir);
+      it(`${readingKey} transcription and translation block structure matches per page`, () => {
+        const transFiles = getPageFiles(transcriptionDir);
+        const translFiles = getPageFiles(translationDir);
         const translMap = new Map(translFiles.map((f) => [basename(f, ".md"), f]));
 
         for (const file of transFiles) {
@@ -244,19 +254,19 @@ describe("readings", () => {
 
           expect(
             translBlocks.length,
-            `Column ${page}: structure mismatch\n  transcription: [${format(transBlocks)}]\n  translation:   [${format(translBlocks)}]`
+            `Page ${page}: structure mismatch\n  transcription: [${format(transBlocks)}]\n  translation:   [${format(translBlocks)}]`
           ).toBe(transBlocks.length);
 
           for (let i = 0; i < transBlocks.length; i++) {
             expect(
               translBlocks[i].type,
-              `Column ${page}, block ${i + 1}: transcription has ${transBlocks[i].type} but translation has ${translBlocks[i]?.type}`
+              `Page ${page}, block ${i + 1}: transcription has ${transBlocks[i].type} but translation has ${translBlocks[i]?.type}`
             ).toBe(transBlocks[i].type);
 
             if (transBlocks[i].type === "heading" && translBlocks[i]?.type === "heading") {
               expect(
                 (translBlocks[i] as any).depth,
-                `Column ${page}, block ${i + 1}: heading depth mismatch`
+                `Page ${page}, block ${i + 1}: heading depth mismatch`
               ).toBe((transBlocks[i] as any).depth);
             }
           }

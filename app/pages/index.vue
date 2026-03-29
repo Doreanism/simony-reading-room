@@ -1,5 +1,5 @@
 <script setup lang="ts">
-useHead({ titleTemplate: '' })
+useHead({ title: 'Simony Reading Room', titleTemplate: '%s' })
 
 const { data: readings } = await useAsyncData('home-readings', () =>
   queryCollection('readingsMeta').all()

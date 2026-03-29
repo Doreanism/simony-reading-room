@@ -1,4 +1,6 @@
 <script setup lang="ts">
+useHead({ title: 'Authors' })
+
 const { data: authors } = await useAsyncData('authors', () =>
   queryCollection('authors').all()
 )
@@ -11,7 +13,6 @@ const sortedAuthors = computed(() => {
 
 <template>
   <AppPage>
-  <Head><title>Authors</title></Head>
   <div class="space-y-3">
     <h1 class="text-2xl font-serif font-bold mb-6">Authors</h1>
     <ListItemCard

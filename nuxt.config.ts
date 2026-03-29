@@ -24,12 +24,6 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Simony Reading Room',
-      titleTemplate: '%s %separator %siteName',
-      templateParams: {
-        separator: '|',
-        siteName: 'Simony Reading Room',
-      },
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
@@ -43,6 +37,9 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    '/a/**': {
+      proxy: `https://simony.s3.us-west-2.amazonaws.com/authors/**`,
+    },
     '/d/**': {
       proxy: `https://simony.s3.us-west-2.amazonaws.com/documents/**`,
     },

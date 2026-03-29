@@ -8,7 +8,7 @@ url: https://bildsuche.digitale-sammlungen.de/index.html?c=viewer&bandnummer=bsb
 document: /d/peraldus-summa-de-virtutibus-et-vitiis.pdf
 cover: /d/peraldus-summa-de-virtutibus-et-vitiis/cover.jpg
 pages: 692
-filesize: 561MB
+filesize: 568MB
 pagination: folio-two-column
 language: latin
 typeface: gothic

@@ -114,8 +114,8 @@ function generateForDocument(documentKey: string) {
       readFileSync(join(pagesDir, jsonFile), "utf-8")
     );
 
-    // Skip pages without valid folio metadata
-    if (!data.folio || !data.folio.match(/^\d+(r|v)$/)) continue;
+    // Skip pages without valid folio metadata (folio like "145r" or plain page like "42")
+    if (!data.folio || !data.folio.match(/^(\d+(r|v)|\d+)$/)) continue;
 
     // Split lines into columns for two-column layouts, or treat as single column
     let columnEntries: { col: string; lines: OcrLine[] }[];

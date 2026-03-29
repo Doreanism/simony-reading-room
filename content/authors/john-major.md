@@ -3,7 +3,7 @@ key: john-major
 name: Johannes Maioris
 name_en: John Major
 wikipedia: https://en.wikipedia.org/wiki/John_Major_(philosopher)
-image: /img/authors/john-major.jpg
+image: /a/john-major.jpg
 born: 1467
 died: 1550
 ---

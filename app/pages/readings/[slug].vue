@@ -24,6 +24,8 @@ const { data: reading } = await useAsyncData(`reading-${slug}`, () =>
   queryCollection('readingsMeta').where('key', '=', slug).first()
 )
 
+useHead({ title: () => reading.value?.title_en })
+
 const { data: authors } = await useAsyncData('authors', () =>
   queryCollection('authors').all()
 )
@@ -130,7 +132,6 @@ const coverImage = computed(() => {
 
 <template>
   <AppPage full>
-  <Head v-if="reading"><title>{{ reading.title_en }}</title></Head>
   <div v-if="reading">
     <div class="max-w-3xl mx-auto">
       <div class="flex gap-5 justify-center">
@@ -174,16 +175,16 @@ const coverImage = computed(() => {
       <!-- View tabs (small screens only) -->
       <UTabs
         :items="tabs"
-        class="mt-6 lg:hidden"
+        class="mt-6 xl:hidden"
         @update:model-value="(v: string) => currentView = v as typeof currentView"
         :default-value="currentView"
       />
     </div>
 
     <!-- Side-by-side content: two DOM subtrees with display:contents for grid alignment -->
-    <div class="reading-content max-w-6xl mx-auto mt-6 lg:grid lg:grid-cols-2 gap-x-8" :data-view="currentView">
+    <div class="reading-content max-w-6xl mx-auto mt-6 xl:grid xl:grid-cols-2 gap-x-8" :data-view="currentView">
       <!-- Transcription column (display:contents so children join parent grid) -->
-      <div class="reading-col reading-col-transcription lg:contents">
+      <div class="reading-col reading-col-transcription xl:contents">
         <template v-for="folio in folios" :key="folio.page">
           <div
             :id="folio.page"
@@ -204,7 +205,7 @@ const coverImage = computed(() => {
             v-for="section in folio.transcriptionSections"
             :key="section.gridRow"
             :id="section.headingId ?? undefined"
-            class="prose prose-stone prose-lg max-w-prose lg:w-[65ch] font-serif leading-relaxed text-justify lg:ml-auto"
+            class="prose prose-stone prose-lg max-w-prose xl:w-[65ch] font-serif leading-relaxed text-justify mx-auto xl:mx-0 xl:ml-auto"
             :lang="documentMeta?.language === 'latin' ? 'la' : undefined"
             :style="{ gridRow: section.gridRow, gridColumn: 1 }"
           >
@@ -213,10 +214,10 @@ const coverImage = computed(() => {
         </template>
       </div>
       <!-- Translation column -->
-      <div class="reading-col reading-col-translation lg:contents">
+      <div class="reading-col reading-col-translation xl:contents">
         <template v-for="folio in folios" :key="folio.page">
           <!-- Mobile-only folio divider -->
-          <div class="flex items-center gap-3 my-6 lg:hidden">
+          <div class="flex items-center gap-3 my-6 xl:hidden">
             <div class="flex-1 border-t border-neutral-300" />
             <span class="folio-marker !m-0 !border-0 !p-0">{{ folio.page }}</span>
             <div class="flex-1 border-t border-neutral-300" />
@@ -225,7 +226,7 @@ const coverImage = computed(() => {
             v-for="section in folio.translationSections"
             :key="section.gridRow"
             :id="section.headingId ?? undefined"
-            class="prose prose-stone prose-lg max-w-prose font-serif leading-relaxed text-justify"
+            class="prose prose-stone prose-lg max-w-prose font-serif leading-relaxed text-justify mx-auto xl:mx-0"
             :style="{ gridRow: section.gridRow, gridColumn: 2 }"
           >
             <ContentRenderer :value="wrapBody(section.nodes)" />

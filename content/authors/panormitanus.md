@@ -3,7 +3,7 @@ key: panormitanus
 name: Nicolaus de Tudeschis
 name_en: Panormitanus
 wikipedia: https://en.wikipedia.org/wiki/Panormitanus
-image: /img/authors/panormitanus.jpg
+image: /a/panormitanus.jpg
 born: 1386
 died: 1445
 ---

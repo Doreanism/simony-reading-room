@@ -1,4 +1,6 @@
 <script setup lang="ts">
+useHead({ title: 'Documents' })
+
 const { data: documents } = await useAsyncData('documents', () =>
   queryCollection('documentsMeta').all()
 )
@@ -20,7 +22,6 @@ const sortedDocuments = computed(() => {
 
 <template>
   <AppPage>
-  <Head><title>Documents</title></Head>
   <div class="space-y-3">
     <h1 class="text-2xl font-serif font-bold mb-6">Documents</h1>
     <ListItemCard

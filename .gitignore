@@ -4,6 +4,7 @@
 /.output
 /.venv
 /node_modules
+/public/a
 /public/d
 /public/pagefind
 /scripts/__pycache__
