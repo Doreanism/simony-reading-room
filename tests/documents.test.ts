@@ -4,9 +4,31 @@ import { join, basename } from "path";
 import imageSize from "image-size";
 import { readYaml, parseFolio } from "../scripts/lib/folio.js";
 
+const AUTHORS_DIR = "content/authors";
 const DOCUMENTS_META = "content/documents/meta";
 const READINGS_META = "content/readings/meta";
 const PUBLIC_D = "public/d";
+
+describe("authors", () => {
+  const authorFiles = readdirSync(AUTHORS_DIR).filter((f) => f.endsWith(".md"));
+
+  for (const authorFile of authorFiles) {
+    const meta = readYaml(join(AUTHORS_DIR, authorFile));
+    const key = meta.key || basename(authorFile, ".md");
+    const imagePath = meta.image;
+
+    if (imagePath) {
+      it(`${key} author image is square`, () => {
+        const fullPath = join("public", imagePath.replace(/^\//, ""));
+        if (!existsSync(fullPath)) {
+          expect.fail(`Missing author image: ${fullPath}`);
+        }
+        const { width, height } = imageSize(readFileSync(fullPath));
+        expect(width, `Author image ${width}×${height} is not square`).toBe(height);
+      });
+    }
+  }
+});
 
 describe("documents", () => {
   const metaFiles = readdirSync(DOCUMENTS_META).filter((f) => f.endsWith(".md"));

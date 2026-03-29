@@ -171,9 +171,13 @@ if (!existsSync(metaDir)) {
   process.exit(1);
 }
 
-const readings = readdirSync(metaDir)
-  .filter((f) => f.endsWith(".md"))
-  .map((f) => basename(f, ".md"));
+const filterKey = process.argv[2];
+
+const readings = filterKey
+  ? [filterKey]
+  : readdirSync(metaDir)
+      .filter((f) => f.endsWith(".md"))
+      .map((f) => basename(f, ".md"));
 
 let built = 0;
 

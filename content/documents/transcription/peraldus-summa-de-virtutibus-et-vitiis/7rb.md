@@ -1,0 +1,67 @@
+---
+page: 7rb
+pdf_page: 59
+sortable_pagination_id: "7_002"
+---
+fol.ro
+frere z defiderare: 7 aliqua fiducia obriné
+di habere: ve fez agnofcamus quo debea/
+mus eendere z velim venire a ſperemus
+poſſe puenire: Non enim répranda ſune
+omnino effici non poffunt: ve at Sapiće.
+fide bonitarem finis agnofcimus: Chari
+care defideramus: Spefiduciam obrint/
+di habemus. Cum tria exigantur ad bene
+operandű: fcire: poſſe z velle: et ſcire no/
+ſtru propter peccara fir diminueű in vi ra
+cionabili: 2 poffe in irafcibili: 2 velle inoz
+dinarum in cócupifcibili\:fides ſuppleme/
+cum elt cognitionis in racionabili: fpco
+ſupplemeneŭ fortitudinis in irafcibili: ec
+charitas eſt ordinatina volūtaris in cocu
+pifcibili. fide cognofcimus supremű finé L
+live ſummü bonum eſſe bonum se comuni
+cans. Er qua cognitione due affectiones
+oziuntur: falicer ſpes ex eo q cognofcitur
+liberaliſſimus bona fua comunicando: et
+velidertum ex co y cognofcit cognofcit elle bonum
+quo nihil melius porelt defiderari: Bonú
+enim est quod defiderat ab omnib? ve aie
+bearus Diourſus. Eriam fm Arift. Om
+nia bonŭ exoptaur. Dira hominis ablos
+lumie fidei vaga eft nefciens quo tendar.
+Joh.xij. Qui ambular in eenebus nefcit
+quo vadat. Domo absop fide ad molem
+temporaliй iftorum circuit ad modú fam
+fonis exoculari. Judic.xvi.eterna nec cor
+gnoſcés nec cupiens. Ps. In circuito im/
+pij ambulant. Frem Diam ciuitatis habi
+raculi no inuenerde. Ecco.r. Labor stul
+corum affliger eos qui nesciune ad vrbem
+pergere. Thren.lij. Errauerút cect i pla
+reis. fide homo i via dirigit. Et quia vía
+ardua eft:ſpe omnipotenci innicit. Ee per
+charicarem fuauirare ſummi bont erabit:
+Trahir em fua quem volupras.Cont.viğ
+Que eft ifta a afcendie de deferto delicijs
+afluens: innixa fup dilectum: Aug.in le
+bro de lib.arbi. Lanta est locudiras diuis.
+ni aſpectus q non porest videri fine amo/
+re. I Darum cria virrutú eft: mente vir
+gine ceftam exhibere chrifto. Dirginitas
+em metis (vt are Aug.) confiftie in hocmites manth
+fides fic integra: ſpes ſolida: er charicashie
+fincera. Er ve air idem Flug in libro de
+doctrina chriftiana: Domo fide:ſpe z cha
+ritare fubnicus 2 cas incoculle retinens:
+no indiget ſcripturis nifi ad alios inftru/
+endos. Er subdic: Duleipheetria eriam
+lu folirudine ſine codicibus viuur. fides
+ve aie Aug": nos deo fupponir: ſpes eris
+git: charicas vie. fide agnoscimus nos
+Bdeo effe\:z debirozes eſſe feruitij. Spes
+nos eleuat ve audeam aggredi qo fupra
+vires nřas eft: Charitas to nos facie vnú
+effe cũ deo. Amo: em é vis vniciua: vt die
+Dionpli. Int veures thrologicas ins de
+bij

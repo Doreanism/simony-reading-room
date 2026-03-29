@@ -1,0 +1,84 @@
+---
+page: 8ra
+pdf_page: 61
+sortable_pagination_id: "8_001"
+---
+Tract.... de fide: La...
+fenfui vel ple notis intellectui vel neceffa
+rio pbario merirá uō habet: q2 quaſi co/
+acra est
+. Di
+Ai
+glo.ſup illud Debre.r. Dal
+in introitu
+béres fiduciam
+ſanctoy in fan
+guine christi zë. Fides non haber meriru
+vbi husna ratio\:id eft huanus fenfus pre
+ber
+expimenei. Que gratia eft credicosi li
+lub bono
+cautione credat verba alicuus.
+[Fee
+hic modus cognofcedi laude dign
+eft. No eſt virtuofum videre lucidu
+: fic nec
+credere go manifeſte pbabile eft. Sz virio nro.
+ruolü z laude dignu é credere deo in his are
+affenfu cuu: cu dis eis crediderit fenfu
+ſenſus vel ratio videt vilſuadere: Sicur fe
+cit
+abzan: de & legit Roma.iiy. & contra
+fpes in ſpem credidit. Bloſa
+. Prior ſpts
+Em natura fuir:
+dü iuuenis ex inuécula Fm
+natura fperauit fobolez nec came habuir:
+modo cótrarin illi ſpet ſperauit: fez vt ve
+tulus ex verula ſterili generaret. De eodé
+habes Ben.rv.digie
+ons abrad: Qui egre
+diet ve veero tuo habebis eum herede. E
+bide: Suspice celu z numera ſtellas fi po
+res\:fic erie ſemé tuŭ. Impoſſibilia poterat
+bec
+videri cu vña aclufiliz fara.Ben.xvi.
+Et cu ſpla coſenuiſſer
+z abzaa yerul elfer
+Ejufde.
+viij. Er en credidir abzaa veo: z
+repucati eſt et ad iusticia. Eiufde.rv.si/
+milicer beate virgo beatificat Lut 1.que
+credidir angelo in illa fublimi priſſione:
+Beata inquie que credidiſti z?. Ecotras
+rio vo moplesz aaron puntunt de incredu
+licare. Nne-xr. Quia no credidiſtis mihi
+ve fanctificaretis me cora filijs iſrt\:no in/
+troducecis bos populos i terrá qua varu/
+rus ſum eis. Eczacharias filter punitur
+Luce.1. Ecce inde angel eris racens z'no
+poteris loqui vios in diem quo her fiant p
+cono credidiſti bis meis. Ecci. xvj.
+In geee icredibili exardefcet ira. Er Apo
+ca.xrj. Limidis z incredulis pe illoy erit
+in ſtagno igne arderi z fulphure\:qo eft fe
+cūda moze. Natura coy que cognofcéda
+fune requirie hunc modu cognitiois: cum
+queda cop fine pterica\:queda furura: Ec
+cum queda fine in celo: queda in inferno:
+Quomo em de his omnis cognitio habe/
+ri porerie uili o fide: Preteres Preterea de de quo
+bee cognitio pncipaliter eft lucem habitat
+inaccellibile qua null vidir hominú nec
+videre pot. 1. Limorb. vi. Ero.xxxii. No
+videbit me homo z viure. Ela.xlv. Dere
+tu es veus abſcodirus. Job.f. Deu nemo
+vidit vnos nifi vnigenir nir? filius qui est in
+finu
+patris ipe enarrauit. Et Darth.xj.
+Remo noule filiu nifi pater: nes patrem
+de nouie nisi filius a cui fili voluerie reue
+200lare. Credendum est & ve deo filio enar
+ranet: z his quis filius enarrauit: cũ a no
+bis in plenti videri no poſſir. Et fm ver/
+bü bilera\:foli deo de se credendi eſt qui

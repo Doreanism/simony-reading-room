@@ -1,0 +1,65 @@
+---
+page: 8rb
+pdf_page: 61
+sortable_pagination_id: "8_002"
+---
+fo.ji
+ſe ſolus nouit. Bene credit deo qui credit
+Cancris in quito deus loquik. Nec mirada
+eft fi neceffe habem credere deo de fe\:cam
+homi ve ineeriozito fuis neceſſe habeam
+credere.j.Cor.. Quis ſeit hominů a füe
+bomis nili ſpus homis & in ipſo elt? Ita
+2 que del für nemo nouit niſi ſpus del. Er
+ſubdit: Nos auc no ſpim müdi hui accepi
+masz ſpini qui ex deo eft. Blo. Amb. Dal
+nifeftu eft cogicatiões a nullo ſciri nili ab
+Aio não. Non rimtas viris fanctis credes
+fuu.j.Cort.in.Nos aur fenfu ppt habem?.
+Breg.in.iij.li.dialogov dicir: Quilds i
+credulicare inuifibiliū folida no est: deber
+pculdubio maiorū victis fidé fibere: ellas
+& ſpilanceů inuifibiliŭ expimentu babe
+ribus credere: Na stultus eft puer ſi mes
+tre ido extimar de luce mentiri: qr ipſe nil
+aliud o tenebres carceris nouie. Loquil
+Brego de puero nato z nuerito in carcera
+cui mater que grauida de co pofira fuit in
+carcere: de luce ſolis quá ipe ques nouit lo
+quik. Natura etia cor qui cognituri füe
+búc modů cognitiōts redric: Cognitio eri
+iſta prinet ad cõiteré hoim\:imo ad vniuer
+firare. Eft em cognito neceffitatis\:fine
+no eſt ſalus. Deb.pj. Sine fide impoflibe
+•le eſt placere deo. Dulri vo funt qui ca
+paces no funt rarioni quis eis pruadere
+poffine ea a neceffe eſt cognofci accedêtib
+ad veu: vnde oporter eos credere his qui
+caliu funt capaces. Bruta aialia non fune
+dei preptibilia\:fic nec homines aiales ca/
+paces funt cop que dei funt\:nifi credendo
+viris ſpualis.1. Cortij. Aialis ho nó pels
+sialis eft quis\:vel in vira: vel in fenfu.191
+ta cialis é quá ítra naruralis ordinis me
+ras ſpüs rectoz nó cõriner to ipe deo rs
+gendu ſe no fubijcir: Animi vo fenfu quie
+sialis est: qr de deo iux corpor fancafiom
+vel legis littera vel rönem phyſicam iudi
+car. Fite mod cognofcedi ſupplet defece
+altay cognizionů. Si alicui deficie vifus:
+necelle habet credere alij de via: z ve alije
+que ad vifum prinent. Si est ineellecrno
+parui z rudis: neceſſe habet credere his d
+bür magna intellecrü z exercicaru. Difces
+té em opozter credere. Ergo cu ßdicra fen
+fui no fubiacear: z intellectus huanus fm
+verbu phi le habeat ad riuina effentia fie
+visus noctue ad folé: neceffe eft p fide calle
+cognofci. Prererea eu de aleiſſim fie: no
+eft poffibile repire ſcală fufficiéris rōnis:
+qua glibec ad euz attingar. Non stringie
+gnan quocus attingir gigas: nec arrigle
+deſt parui intellect ad coprehendendu p
+rões oia ad q areingir de magni itellect.
+Fréd no oppropingerei fubrili nõ pēc
+bij

@@ -149,6 +149,34 @@ describe("readings", () => {
       }
     });
 
+    it(`${readingKey} transcription first heading is h1`, () => {
+      const files = getColumnFiles(transcriptionDir);
+      const firstFile = readFileSync(join(transcriptionDir, files[0]), "utf-8");
+      const body = extractBody(firstFile);
+      const firstHeading = body.match(/^(#{1,6})\s/m);
+      expect(firstHeading, `No heading found in first column of ${readingKey}`).toBeTruthy();
+      expect(firstHeading![1], `First heading in ${readingKey} is h${firstHeading![1].length}, expected h1`).toBe("#");
+    });
+
+    it(`${readingKey} transcription headings don't skip levels`, () => {
+      const files = getColumnFiles(transcriptionDir);
+      let prevDepth = 0;
+      for (const file of files) {
+        const body = extractBody(readFileSync(join(transcriptionDir, file), "utf-8"));
+        const headings = [...body.matchAll(/^(#{1,6})\s/gm)];
+        for (const match of headings) {
+          const depth = match[1].length;
+          if (prevDepth > 0) {
+            expect(
+              depth,
+              `Heading skips from h${prevDepth} to h${depth} in ${file}`
+            ).toBeLessThanOrEqual(prevDepth + 1);
+          }
+          prevDepth = depth;
+        }
+      }
+    });
+
     it(`${readingKey} transcription headings have blank lines around them`, () => {
       const files = getColumnFiles(transcriptionDir);
       for (const file of files) {

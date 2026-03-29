@@ -1,0 +1,66 @@
+---
+page: 2va
+pdf_page: 50
+sortable_pagination_id: "2_003"
+---
+Li.1. Pars.1.
+Kridus. Fré virt fic defcribit ab Aug.
+in li.de quantitate anime. Virtus est cali
+cas quedam vite vndics plonens rationi.
+Virtus vite equalitatem facir\:quia from
+Señ.anima reddir afperis blandifos inui
+ctu: nearri ſe fortune submittente: qué nul
+la vis frangar\:que nec attollant forsuira
+nec.depumar. Tullius. Preclara eſt equa
+licas in omni vira\:idées ſemp vultus\:ca/
+dép frons: ve de focrate accepimus. Dir/
+tus in veracy fortuna par eft: virtute ma/
+teria non murar\:nec peioré facir dura aut
+difficilis\:nec melioré bilaris z lera\:ve_air
+Señ. Virtus p ommia pronat rationi. On
+Bern.in epla ad fratres de môre det: vir
+rus est ad iudiciŭ rationis vfus libere vo
+luntaris. Señ.Dumanis virtutib" regu/
+la vne eft\:racio recta. Dire etia fic be
+fcribit a philoſopho. Birtus est habirus
+animi\:modo nature plentaneus rationi
+Ad opera vircutu: Primo incirat nos na
+cura\:fecundo ratio\:tertio gracie\:bi gra/
+sie. Necure incicar ve fubuenias primo
+idigenti. Ide eciä ratio dicrat\:quia fimi
+lis indigencia porest ribi accidere in qua
+velles idé ribi fleri. Bra vero hoc fuadet
+sibi\:quia primus est: det imago ve der filt
+us\:vel ad hoc creatus vt in eterna beari
+rudine fir tibi focius. De inſtinccu narure
+vicir Lullius. Sür nobis innata virtutū
+inina\:que ſi adolere liceret 2 pateremur :
+nos ad beatitudiné cũ diuino munere ipa
+narura pducerer. Idem : Nosigniculos a
+Natura baros extinguim. Si quis tamé
+obijciato ad opus pariérie no inciramur
+• natura\:qo videt potius eſſe orra naru/
+ră. Reſponder Sen. q maceria boni pera
+natura eft: ve vulnerari\:z ſubiecto igne ca
+befcere\:fed bonā nāquá: Heruare eni aim
+infatigabilé inter iſta quod eft opus bru/
+cis fm natura é\:q2 nullü bonŭ linerōneć:
+vripe sit: ſequiť ac rõ nerura.Bern.Dis
+virt homi naturalis é. Idé. Virtus qin
+nature res eft\:cu venie in anima: aliqua
+do non venie fine labore:ſed venir in locu
+funz: 2 fideliter feder: z bene cu ea noture
+Zuenie. Sen. Virtus fm natură elt: vitta
+vero inimica fune infeſta. Er fm Arc/
+ſto.virtus non eft preter natură. Chrylo.
+vero in quada homel. vicie: virranimi
+elt recte de deo lentire z recre inter hoies
+agere. Dircus eria fic describiť a pho.
+Virtus est habie volütarius in mediera
+ce pristens quo ad nos. Dedieras iſta ot
+sendir inter ſupfhaicare: z indigentia. Dn
+idem phe dicit:& virr est medieras dua
+rū malirtarü\:hui quidé fm fupfluitatez:
+hui'vero fm idigeria. Boe. Virtures me
+diŭ rener:ſi vel viero vel citra B oporrue
+ris fier\:e virture discedit. Dec aür medi

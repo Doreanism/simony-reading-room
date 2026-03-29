@@ -43,7 +43,7 @@ Tell each agent the translation rules, the block structure requirement, and whic
 
 Each output file should already be fluent, scholarly English — not a rough literal translation. This is critical because improvement rounds work best when refining good prose, not rescuing poor drafts.
 
-Do NOT use intermediary files in `/tmp/` — write directly to column files in the repo. Agents have permissions for repo paths but may not for `/tmp/`.
+Agents must ONLY write to files in `content/readings/translation/$ARGUMENTS/`. Do not write to any other location — no `/tmp/` files, no transcription files, no other directories. Each agent writes only the translation column files it was assigned.
 
 ### Improvement loop (REQUIRED — run automatically)
 
@@ -69,7 +69,7 @@ Launch **improvement agents** in parallel — one per section. Each agent:
 6. If improvements are found: writes the corrected translation back to the column file(s) and reports `IMPROVED` with a summary of changes
 7. If no improvements are needed: reports `DONE`
 
-Tell each agent the review criteria and which column files to read — do NOT paste the source text into the agent prompt. Agents must read and write files in the repo directory (not `/tmp/`).
+Tell each agent the review criteria and which column files to read — do NOT paste the source text into the agent prompt. Agents must ONLY write to their assigned translation column files in `content/readings/translation/$ARGUMENTS/` — no other files.
 
 After all agents complete, print progress (section number, IMPROVED/DONE, summary). For any section that reported `IMPROVED`, re-launch an improvement agent in the next round. Sections that reported `DONE` are finished.
 
