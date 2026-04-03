@@ -60,7 +60,7 @@ export default defineContentConfig({
         reading: z.string(),
         page: z.string(),
         pdf_page: z.number(),
-        sortable_pagination_id: z.string(),
+        sortable_pagination_id: z.number(),
       }),
     }),
     readingsTranslation: defineCollection({
@@ -70,7 +70,7 @@ export default defineContentConfig({
         reading: z.string(),
         page: z.string(),
         pdf_page: z.number(),
-        sortable_pagination_id: z.string(),
+        sortable_pagination_id: z.number(),
       }),
     }),
     // documents/transcription/ is excluded from Nuxt Content — too many files

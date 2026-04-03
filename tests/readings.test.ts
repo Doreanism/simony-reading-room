@@ -121,6 +121,33 @@ describe("readings", () => {
         expect(frontmatter.page).toBe(basename(file, ".md"));
         expect(frontmatter.pdf_page).toBeTruthy();
         expect(frontmatter.sortable_pagination_id).toBeTruthy();
+
+        // sortable_pagination_id must be "{pdf_page}" for single-column pages
+        // or "{pdf_page}.1"/"{pdf_page}.2" for two-column folio pages
+        const page = basename(file, ".md");
+        const pdfPage = String(frontmatter.pdf_page);
+        const sid = String(frontmatter.sortable_pagination_id);
+        const isFolioColumn = /^\d+[rv][ab]$/.test(page);
+
+        // Must be an unquoted number in the YAML (no surrounding quotes in raw file)
+        const rawContent = readFileSync(join(transcriptionDir, file), "utf-8");
+        expect(
+          rawContent,
+          `${file}: sortable_pagination_id must be an unquoted number (no quotes)`
+        ).toMatch(/^sortable_pagination_id: \d/m);
+
+        if (isFolioColumn) {
+          const col = page.endsWith("a") ? "1" : "2";
+          expect(
+            sid,
+            `${file}: sortable_pagination_id should be ${pdfPage}.${col}`
+          ).toBe(`${pdfPage}.${col}`);
+        } else {
+          expect(
+            sid,
+            `${file}: sortable_pagination_id should be ${pdfPage}`
+          ).toBe(pdfPage);
+        }
       }
     });
 
@@ -159,13 +186,16 @@ describe("readings", () => {
       }
     });
 
-    it(`${readingKey} transcription first heading is h1`, () => {
+    it(`${readingKey} transcription starts with an h1`, () => {
       const files = getPageFiles(transcriptionDir);
       const firstFile = readFileSync(join(transcriptionDir, files[0]), "utf-8");
       const body = extractBody(firstFile);
-      const firstHeading = body.match(/^(#{1,6})\s/m);
-      expect(firstHeading, `No heading found in first page of ${readingKey}`).toBeTruthy();
-      expect(firstHeading![1], `First heading in ${readingKey} is h${firstHeading![1].length}, expected h1`).toBe("#");
+      const firstBlock = body.split(/\n{2,}/).map((b) => b.trim()).find((b) => b.length > 0);
+      expect(firstBlock, `${readingKey}: first block of body is empty`).toBeTruthy();
+      expect(
+        firstBlock,
+        `${readingKey}: first block should be an h1 heading, got: "${firstBlock}"`
+      ).toMatch(/^# /);
     });
 
     it(`${readingKey} transcription headings don't skip levels`, () => {
