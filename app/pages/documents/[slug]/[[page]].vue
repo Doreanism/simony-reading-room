@@ -10,7 +10,7 @@ const { data: doc } = await useAsyncData(`doc-${slug}`, () =>
 useHead({ title: () => doc.value?.title_en });
 
 const { data: author } = await useAsyncData(`author-for-${slug}`, async () => {
-  if (!doc.value) return null;
+  if (!doc.value?.author) return null;
   return queryCollection("authors")
     .where("key", "=", doc.value.author)
     .first();
@@ -189,6 +189,12 @@ onMounted(() => {
   });
 });
 
+function onSliderChange(value: number) {
+  const dir = value > currentSpread.value ? "forward" : "back";
+  navigate(value, dir);
+}
+
+
 function goToPage(pdfPage: number) {
   const idx = spreadForPage(pdfPage);
   if (idx >= 0) {
@@ -203,8 +209,9 @@ function goToPage(pdfPage: number) {
 <template>
   <AppPage full no-px no-pt>
   <div v-if="doc">
-    <!-- Book viewer + sidebar -->
-    <div ref="viewerEl" class="dark flex bg-black" :style="{ height: isFullscreen ? '100vh' : 'calc(100vh - 3rem)', '--viewer-h': isFullscreen ? '100vh' : 'calc(100vh - 3rem)' }">
+    <!-- Book viewer + sidebar + slider -->
+    <div ref="viewerEl" class="dark flex flex-col bg-black" :style="{ height: isFullscreen ? '100vh' : 'calc(100vh - 3rem)' }">
+    <div class="flex flex-1 min-h-0" :style="{ '--viewer-h': isFullscreen ? 'calc(100vh - 2.5rem)' : 'calc(100vh - 5.5rem)' }">
       <!-- Main viewer area -->
       <div class="flex-1 min-w-0 relative">
         <UButton
@@ -286,6 +293,7 @@ function goToPage(pdfPage: number) {
           v-model="searchQuery"
           :document-key="slug"
           :page-label="pageLabel"
+          :pagination="doc?.pagination"
           :can-prev="currentSpread > 0"
           :can-next="currentSpread < pagePairs.length - 1"
           @navigate="goToPage"
@@ -296,6 +304,17 @@ function goToPage(pdfPage: number) {
           @zoom-out="zoomOut"
         />
       </aside>
+    </div>
+
+    <!-- Navigation slider -->
+    <DocumentSlider
+      :model-value="currentSpread"
+      :max="pagePairs.length - 1"
+      :page-pairs="pagePairs"
+      :document-key="slug"
+      :pagination="doc.pagination"
+      @update:model-value="onSliderChange"
+    />
     </div>
 
     <!-- Mobile search slideover -->
@@ -310,6 +329,7 @@ function goToPage(pdfPage: number) {
           v-model="searchQuery"
           :document-key="slug"
           :page-label="pageLabel"
+          :pagination="doc?.pagination"
           :can-prev="currentSpread > 0"
           :can-next="currentSpread < pagePairs.length - 1"
           @navigate="goToPage"
@@ -333,6 +353,8 @@ function goToPage(pdfPage: number) {
       <div class="mt-2 flex flex-wrap gap-4 text-sm text-neutral-600">
         <span v-if="doc.year">{{ doc.year }}</span>
         <span v-if="doc.year">&middot;</span>
+        <span v-if="languageLabel(doc.language)">{{ languageLabel(doc.language) }}</span>
+        <span v-if="languageLabel(doc.language)">&middot;</span>
         <span>{{ doc.pages }} pages</span>
         <a
           v-if="doc.document"
@@ -374,6 +396,7 @@ function goToPage(pdfPage: number) {
           <span v-if="author.born || author.died">{{ author.born }}&ndash;{{ author.died }}</span>
         </template>
       </ListItemCard>
+      <p v-else-if="doc" class="mt-6 text-sm text-neutral-500">Anonymous</p>
     </div>
   </div>
   </AppPage>

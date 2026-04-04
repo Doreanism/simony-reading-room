@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { searchPagefind, type PagefindSearchResult } from '~/composables/usePagefind'
+import { searchPagefind, type PagefindSearchResult } from '~/utils/pagefind'
 
 const props = defineProps<{
   documentKey: string
   pageLabel: string
+  pagination?: string
   canPrev: boolean
   canNext: boolean
 }>()
@@ -126,7 +127,7 @@ function navigateTo(result: PagefindSearchResult) {
           @click="navigateTo(result)"
         >
           <div class="text-xs text-(--ui-text-dimmed) mb-0.5">
-            <span class="font-medium">fol. {{ result.folio }}</span>
+            <span class="font-medium">{{ pagination === 'page' ? 'p.' : 'fol.' }} {{ result.folio }}</span>
           </div>
           <!-- eslint-disable-next-line vue/no-v-html -->
           <p class="text-sm font-serif leading-snug text-(--ui-text) pagefind-excerpt" v-html="result.excerpt" />

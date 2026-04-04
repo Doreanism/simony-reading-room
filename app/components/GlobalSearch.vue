@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { searchPagefind, type PagefindSearchResult } from '~/composables/usePagefind'
+import { searchPagefind, type PagefindSearchResult } from '~/utils/pagefind'
 
 const query = ref('')
 const results = ref<PagefindSearchResult[]>([])

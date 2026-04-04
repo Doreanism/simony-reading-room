@@ -15,10 +15,10 @@ watch(currentView, (view) => {
   }, { replace: true })
 })
 
-const tabs = [
-  { label: 'Transcription', value: 'transcription' as const },
-  { label: 'Translation', value: 'translation' as const },
-]
+const tabs = computed(() => [
+  { label: sourceLanguageLabel.value, value: 'transcription' as const },
+  { label: translationLanguageLabel.value, value: 'translation' as const },
+])
 
 const { data: reading } = await useAsyncData(`reading-${slug}`, () =>
   queryCollection('readingsMeta').where('key', '=', slug).first()
@@ -121,11 +121,17 @@ const author = computed(() => {
   return authors.value?.find((a) => a.key === reading.value!.author) ?? null
 })
 
-const authorName = computed(() => author.value?.name_en ?? reading.value?.author ?? '')
+const authorName = computed(() => author.value?.name_en ?? (reading.value?.author || 'Anonymous'))
 
 const coverImage = computed(() => {
   if (!documentMeta.value) return null
   return documentMeta.value.cover || `/d/${documentMeta.value.key}/cover.jpg`
+})
+
+const sourceLanguageLabel = computed(() => languageLabel(documentMeta.value?.language) || 'Original')
+
+const translationLanguageLabel = computed(() => {
+  return documentMeta.value?.language === 'early-english' ? 'Modern English' : 'English'
 })
 
 </script>
@@ -146,13 +152,13 @@ const coverImage = computed(() => {
           <h1 class="text-2xl font-serif font-bold">
             {{ reading.title_en }}
           </h1>
-          <p class="mt-1 text-base text-neutral-500 italic font-serif">
+          <p v-if="reading.title !== reading.title_en" class="mt-1 text-base text-neutral-500 italic font-serif">
             {{ reading.title }}
           </p>
           <div class="mt-2 flex flex-wrap gap-4 text-sm text-neutral-600">
             <span>{{ reading.section }}</span>
             <span>&middot;</span>
-            <span>fol. {{ reading.page_start }}&ndash;{{ reading.page_end }}</span>
+            <span>{{ folioLabel(documentMeta?.pagination, reading.page_start, reading.page_end) }}</span>
           </div>
           <NuxtLink
             v-if="documentMeta"
@@ -169,6 +175,7 @@ const coverImage = computed(() => {
             />
             <span>{{ authorName }}</span>
           </NuxtLink>
+          <span v-else class="mt-3 block text-sm text-neutral-500">{{ authorName }}</span>
         </div>
       </div>
 
@@ -181,8 +188,14 @@ const coverImage = computed(() => {
       />
     </div>
 
+    <!-- Column headers (desktop only) -->
+    <div class="hidden xl:grid xl:grid-cols-2 gap-x-8 max-w-6xl mx-auto mt-6 mb-2">
+      <div class="text-xs font-semibold uppercase tracking-wider text-neutral-400 text-center">{{ sourceLanguageLabel }}</div>
+      <div class="text-xs font-semibold uppercase tracking-wider text-neutral-400 text-center">{{ translationLanguageLabel }}</div>
+    </div>
+
     <!-- Side-by-side content: two DOM subtrees with display:contents for grid alignment -->
-    <div class="reading-content max-w-6xl mx-auto mt-6 xl:grid xl:grid-cols-2 gap-x-8" :data-view="currentView">
+    <div class="reading-content max-w-6xl mx-auto xl:grid xl:grid-cols-2 gap-x-8" :data-view="currentView">
       <!-- Transcription column (display:contents so children join parent grid) -->
       <div class="reading-col reading-col-transcription xl:contents">
         <template v-for="folio in folios" :key="folio.page">

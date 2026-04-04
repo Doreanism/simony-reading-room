@@ -112,6 +112,7 @@ describe("readings", () => {
     });
 
     it(`${key} references a valid author`, () => {
+      if (!author) return; // anonymous works have no author file
       expect(existsSync(join("content/authors", `${author}.md`)), `Missing author: ${author}.md`).toBe(true);
     });
 

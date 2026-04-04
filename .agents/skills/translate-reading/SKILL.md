@@ -18,6 +18,7 @@ Translate the reading `$ARGUMENTS` from the per-column transcription files into 
 ## Translation rules
 
 - Produce fluent, scholarly English
+- If the source text is already in English (e.g., Middle English), modernize it rather than translating — produce clear modern English while preserving the meaning and scholarly register
 - Preserve the `#`/`##` heading structure from the transcription, translating the heading text
 - Omit page headers and marginal annotations (same as transcription)
 - Use standard English forms for scripture references (e.g., "Matthew 10", "1 Corinthians 12")

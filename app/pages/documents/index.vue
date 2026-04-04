@@ -10,6 +10,7 @@ const { data: authors } = await useAsyncData('authors', () =>
 )
 
 function authorName(slug: string) {
+  if (!slug) return 'Anonymous'
   const author = authors.value?.find((a) => a.key === slug)
   return author?.name_en ?? slug
 }
@@ -36,6 +37,8 @@ const sortedDocuments = computed(() => {
         <span>{{ authorName(doc.author) }}</span>
         <span v-if="doc.year">&middot;</span>
         <span v-if="doc.year">{{ doc.year }}</span>
+        <span v-if="languageLabel(doc.language)">&middot;</span>
+        <span v-if="languageLabel(doc.language)">{{ languageLabel(doc.language) }}</span>
         <span>&middot;</span>
         <span>{{ doc.pages }} pages</span>
       </template>

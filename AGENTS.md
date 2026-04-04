@@ -19,7 +19,14 @@ Assets in `public/a/` and `public/d/` are gitignored. In production they are ser
 
 ## OCR Setup
 
-Page JSON is generated using [Kraken](https://kraken.re/) with the **Latin Incunabula and Early Prints** model (`10.5281/zenodo.11113737`). Kraken runs in a Python venv:
+Page JSON can be generated four ways via `build:page-json`:
+
+- **kraken:** `npm run build:page-json -- kraken <doc>` — slow (~55s/page), high quality, uses the model specified in `ocr_model` meta field. Requires Kraken in `.venv`.
+- **frompdf:** `npm run build:page-json -- frompdf <doc>` — fast (seconds), uses the OCR layer already embedded in the PDF. Only suitable when the PDF has clean embedded text.
+- **docai:** `npm run build:page-json -- docai <doc>` — high quality, cloud-based. Requires `GOOGLE_PROJECT_ID` and `GOOGLE_PROCESSOR_ID` in `.env`.
+- **vastai:** `npm run build:page-json -- vastai <doc>` — rents a Vast.ai GPU, runs Kraken remotely, downloads results, destroys instance. Requires vastai CLI in `.venv`.
+
+Kraken runs in a Python venv:
 
 ```bash
 python3 -m venv .venv
@@ -27,7 +34,7 @@ source .venv/bin/activate
 pip install kraken pymupdf
 ```
 
-The model is downloaded automatically on first use via `htrmopo`.
+The Kraken model is downloaded automatically on first use via `htrmopo`.
 
 ## Build Scripts
 
@@ -37,13 +44,13 @@ These are run once per document and the results are committed or uploaded to S3.
 
 | Script | Command | Purpose |
 |--------|---------|---------|
-| `build:page-json` | `tsx scripts/build-page-json.ts <doc> <start> [end]` | Run Kraken OCR to produce page JSON (~55s/page, run overnight) |
+| `build:page-json` | `python3 scripts/build-page-json.py <mode> <doc> [start] [end]` | Produce page JSON. Modes: `kraken`, `frompdf`, `docai`, `vastai` |
 | `build:transcriptions` | `tsx scripts/generate-transcriptions.ts` | Generate per-column .md transcription files from page JSON (all pages) |
 | `build:images` | `tsx scripts/build-page-images.ts` | Extract page images from source PDF |
 | `build:normalize-spreads` | `tsx scripts/normalize-spread-sizes.ts` | Normalize spread image dimensions for the book viewer |
 | `build:readings` | `tsx scripts/build-readings.ts` | Produce per-column normalized reading transcription files from document-level OCR columns |
 
-Example: `npm run build:page-json -- john-major-sentences-a`
+Example: `npm run build:page-json -- kraken john-major-sentences-a`
 
 ### Deploy build (runs on every deploy)
 
@@ -138,6 +145,7 @@ Reusable scripts for agent workflows live in `.agents/tools/`. These are not par
 - `trim <pdf> [--start N] [--end N]` — Remove N pages from the start/end of a PDF, in place.
 - `cover <pdf> --output <path> [--page N]` — Extract a page as a 3:4 cover image (900x1200 JPG).
 - `text <pdf> <pages> [--limit N]` — Extract embedded text from pages. Limit chars per page with `--limit`.
+- `json <doc-key> <pages> [--limit N]` — Show text from page JSON files (`public/d/<doc>/<N>.json`). Pages are 1-indexed.
 
 ## Vue Conventions
 

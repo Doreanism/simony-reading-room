@@ -10,7 +10,6 @@
     "build:images": "tsx scripts/build-page-images.ts",
     "build:normalize-spreads": "tsx scripts/normalize-spread-sizes.ts",
     "build:page-json": ".venv/bin/python3 scripts/build-page-json.py",
-    "build:page-json-docai": ".venv/bin/python3 scripts/build-page-json-docai.py",
     "build:merge": "tsx scripts/merge-transcriptions.ts",
     "build:transcriptions": "tsx scripts/generate-transcriptions.ts",
     "build:readings": "tsx scripts/build-readings.ts",

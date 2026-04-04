@@ -32,8 +32,11 @@ Do **NOT** read:
 
 ### Text
 - Produce **continuous, flowing prose** — join words that are split across line breaks in the original. The output should read as normal text, not preserve the column width of the printed page.
-- Use standard Latin characters (`s` not `ſ`), expanding abbreviations where clear (e.g., `ꝙ` → `quod`, `⁊` → `et`)
+- Use standard characters (`s` not `ſ`), expanding abbreviations where clear (e.g., `ꝙ` → `quod`, `⁊` → `et`)
 - Preserve original spelling; do not modernize
+- **Long-s normalization:** Early modern printing used the long-s character (ſ), which OCR often renders as `f`. The general rule "use standard characters (s not ſ)" applies to **all text, English and Latin**. Always convert OCR `f` to `s` when the image shows a long-s (ſ) character.
+  - **English heuristic:** if substituting `s` for `f` yields a real English word in context, it is long-s. Examples: `fuch` → `such`, `fhall` → `shall`, `felf` → `self`, `Gofpel` → `Gospel`, `Chriftian` → `Christian`. Genuine `f` sounds (e.g., `of`, `if`, `for`, `from`) are not affected.
+  - **Latin text:** Do NOT apply the English word-pattern heuristic to Latin. Instead, read the image directly — if the image shows ſ (long-s), normalize to `s` just as you would for English. Examples: `Eccleſia` in image → `Ecclesia`, `eft` in image → `est`, `fub` in image → `sub`. If you cannot tell whether the image shows ſ or f, use the standard Latin spelling.
 
 ### Headings
 - `#` — the first heading of the reading (the distinction/question title)

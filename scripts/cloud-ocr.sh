@@ -112,9 +112,10 @@ sleep 15
 # 5. Upload files
 echo "Uploading build script and document meta..."
 
-$SSH_CMD "mkdir -p /workspace/content/documents/meta /workspace/public/d/${DOCUMENT_KEY}"
-
-$SCP_CMD scripts/build-page-json.py "${SSH_HOST}:/workspace/build-page-json.py"
+$SSH_CMD "mkdir -p /workspace/scripts/lib /workspace/content/documents/meta /workspace/public/d/${DOCUMENT_KEY}"
+$SCP_CMD scripts/build-page-json.py "${SSH_HOST}:/workspace/scripts/build-page-json.py"
+$SCP_CMD scripts/lib/page_json_helpers.py "${SSH_HOST}:/workspace/scripts/lib/page_json_helpers.py"
+$SCP_CMD scripts/lib/page_json_kraken.py "${SSH_HOST}:/workspace/scripts/lib/page_json_kraken.py"
 $SCP_CMD "content/documents/meta/${DOCUMENT_KEY}.md" "${SSH_HOST}:/workspace/content/documents/meta/${DOCUMENT_KEY}.md"
 
 # 6. Install dependencies and run OCR
@@ -133,7 +134,7 @@ fi
 echo "Running OCR..."
 echo ""
 
-$SSH_CMD "cd /workspace && BUCKET=${BUCKET} REGION=${S3_REGION} python3 build-page-json.py ${DOCUMENT_KEY} ${PAGE_ARGS}"
+$SSH_CMD "cd /workspace && BUCKET=${BUCKET} REGION=${S3_REGION} python3 scripts/build-page-json.py kraken ${DOCUMENT_KEY} ${PAGE_ARGS}"
 
 # 7. Download results
 echo ""

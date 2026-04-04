@@ -62,14 +62,46 @@ Run: `npm run build:images -- <key>`
 
 This extracts WebP images from the PDF for every page. It may take a while for large documents. Report the result to the user.
 
-## Step 5: Ask about transcription generation
+## Step 5: Generate page JSON files
 
-After images are built, ask the user:
+Page JSON files (one per page in `public/d/<key>/`) drive the document viewer text overlay and search index. Generate them now using the appropriate method.
 
-> Page images are ready. Would you like to proceed with OCR and transcription file generation? This requires:
-> 1. **OCR page JSON** (`npm run build:page-json -- <key>`) — runs Kraken OCR at ~55s/page. For a large document this should be run overnight.
-> 2. **Transcription files** (`npm run build:transcriptions -- <key>`) — generates per-column .md files from the page JSON. Fast, but requires page JSON first.
->
-> These steps can be run later. Would you like to start OCR now?
+### Assess embedded PDF OCR quality
 
-If the user says yes, start the OCR process. Otherwise, stop here.
+Use `python3 .agents/tools/pdf-tool.py text <pdf> <pages>` to extract embedded text from 3–5 representative content pages (not the title page or blanks — pick pages from the middle of the text).
+
+Assess quality by reading the output:
+- **Good quality**: Lines are mostly coherent words in the source language, minimal stray symbols, recognizable structure.
+- **Poor quality**: Garbled words, stray single characters or numbers, symbol soup, large gaps or missing lines.
+
+### If PDF has good embedded OCR
+
+Run the fast extraction:
+```
+npm run build:page-json -- <key> --from-pdf
+```
+
+This reads the PDF's embedded text layer directly (seconds, not hours). Report the result.
+
+### If PDF has poor embedded OCR
+
+Use Google Document AI (high-quality OCR, requires API credentials in `.env`):
+```
+npm run build:page-json -- <key> --docai
+```
+
+Required `.env` variables:
+- `GOOGLE_PROJECT_ID` — GCP project ID
+- `GOOGLE_PROCESSOR_ID` — Document AI OCR processor ID
+- `GOOGLE_LOCATION` — processor region (default: `us`)
+
+If these are not set, inform the user and offer the alternative of running Kraken OCR overnight instead (`npm run build:page-json -- <key>`), which takes ~55s/page.
+
+### After page JSON is generated
+
+Run transcription file generation (fast):
+```
+npm run build:transcriptions -- <key>
+```
+
+Report the number of transcription files generated.

@@ -5,6 +5,7 @@ import argparse
 import json
 import os
 import sys
+from pathlib import Path
 
 import fitz
 
@@ -90,6 +91,24 @@ def cmd_text(args):
     doc.close()
 
 
+def cmd_json(args):
+    """Show text from page JSON files (public/d/<doc>/<N>.json)."""
+    for page_num in args.pages:
+        path = os.path.join("public", "d", args.doc, f"{page_num}.json")
+        if not os.path.exists(path):
+            print(f"--- page {page_num}: not found ---")
+            print()
+            continue
+        with open(path) as f:
+            data = json.load(f)
+        folio = data.get("folio", "?")
+        lines = data.get("lines", [])
+        text = "\n".join(l["text"] for l in lines)
+        print(f"--- page {page_num} (folio {folio}) ---")
+        print(text[:args.limit] if args.limit else text)
+        print()
+
+
 def parse_page_list(s):
     """Parse a comma-separated list of page numbers and ranges like '1,5,10-15'."""
     pages = []
@@ -130,6 +149,11 @@ def main():
     p_text.add_argument("pages", type=parse_page_list, help="Page numbers (0-indexed), e.g. '0,5,10-15'")
     p_text.add_argument("--limit", type=int, default=0, help="Max characters per page (0=unlimited)")
 
+    p_json = sub.add_parser("json", help="Show text from page JSON files (public/d/<doc>/<N>.json)")
+    p_json.add_argument("doc", help="Document key (e.g. anatomy)")
+    p_json.add_argument("pages", type=parse_page_list, help="Page numbers (1-indexed), e.g. '10,15,20-25'")
+    p_json.add_argument("--limit", type=int, default=0, help="Max characters per page (0=unlimited)")
+
     args = parser.parse_args()
     if args.command == "info":
         cmd_info(args)
@@ -141,6 +165,8 @@ def main():
         cmd_cover(args)
     elif args.command == "text":
         cmd_text(args)
+    elif args.command == "json":
+        cmd_json(args)
 
 
 if __name__ == "__main__":
