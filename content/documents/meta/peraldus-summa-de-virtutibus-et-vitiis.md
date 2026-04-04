@@ -2,7 +2,8 @@
 key: peraldus-summa-de-virtutibus-et-vitiis
 title: "Summa de Virtutibus et Vitiis"
 title_en: "Summa on Virtues and Vices"
-author: peraldus
+authors:
+  - peraldus
 year: 1497
 url: https://bildsuche.digitale-sammlungen.de/index.html?c=viewer&bandnummer=bsb00053999&pimage=00650&v=5p&nav=&l=en
 document: /d/peraldus-summa-de-virtutibus-et-vitiis.pdf

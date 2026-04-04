@@ -22,7 +22,7 @@ export default defineContentConfig({
         key: z.string(),
         title: z.string(),
         title_en: z.string(),
-        author: z.string(),
+        authors: z.array(z.string()).optional(),
         year: z.number().optional(),
         url: z.string().optional(),
         document: z.string().optional(),

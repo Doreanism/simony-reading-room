@@ -2,7 +2,8 @@
 key: panormitanus-decretals-4-5
 title: "Commentaria in Tertium Decretalium (Libri IV–V)"
 title_en: "Commentary on the Third Book of the Decretals (Fourth and Fifth Books)"
-author: panormitanus
+authors:
+  - panormitanus
 year: 1546
 url: https://archive.org/details/gri_panormitanvs00nicc
 document: /d/panormitanus-decretals-4-5.pdf

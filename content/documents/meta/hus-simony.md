@@ -2,7 +2,8 @@
 key: hus-simony
 title: "O svatokupectví"
 title_en: "On Simony"
-author: jan-hus
+authors:
+  - jan-hus
 year: 1907
 url: https://www.google.com/books/edition/O_svatokupectv%C3%AD/5Y7_jSFN38wC
 document: /d/hus-simony.pdf

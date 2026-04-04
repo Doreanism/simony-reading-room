@@ -2,7 +2,8 @@
 key: john-major-sentences-a
 title: "Quartus Sententiarum Iohannis Maioris (Redactio A)"
 title_en: "Fourth Book of the Sentences of John Major (First Edition)"
-author: john-major
+authors:
+  - john-major
 year: 1509
 url: https://archive.org/details/bub_gb_VELCLv2RWmwC/page/n7/mode/2up
 document: /d/john-major-sentences-a.pdf

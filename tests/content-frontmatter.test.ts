@@ -16,6 +16,22 @@ function parseFrontmatter(content: string) {
   return { keys, body }
 }
 
+describe('author frontmatter', () => {
+  const authorFiles = _globSync('content/authors/*.md', { cwd: process.cwd() })
+
+  it('every author should have an "image" key in frontmatter', () => {
+    const violations: string[] = []
+    for (const file of authorFiles) {
+      const content = readFileSync(file, 'utf-8')
+      const { keys } = parseFrontmatter(content)
+      if (!keys.includes('image')) {
+        violations.push(file)
+      }
+    }
+    expect(violations, `These author files are missing "image" in frontmatter:\n${violations.join('\n')}`).toEqual([])
+  })
+})
+
 describe('content frontmatter', () => {
   const contentFiles = _globSync('content/**/*.md', { cwd: process.cwd() })
 

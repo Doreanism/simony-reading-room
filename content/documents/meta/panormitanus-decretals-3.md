@@ -2,7 +2,8 @@
 key: panormitanus-decretals-3
 title: "Commentaria in Tertium Decretalium (Liber III)"
 title_en: "Commentary on the Third Book of the Decretals (Third Book)"
-author: panormitanus
+authors:
+  - panormitanus
 year: 1546
 url: https://archive.org/details/gri_panormitanvs00nicc
 document: /d/panormitanus-decretals-3.pdf

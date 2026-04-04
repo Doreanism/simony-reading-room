@@ -9,10 +9,14 @@ const { data: authors } = await useAsyncData('authors', () =>
   queryCollection('authors').all()
 )
 
-function authorName(slug: string) {
-  if (!slug) return 'Anonymous'
-  const author = authors.value?.find((a) => a.key === slug)
-  return author?.name_en ?? slug
+function authorNames(slugs: string[] | undefined) {
+  if (!slugs?.length) return 'Anonymous'
+  return slugs
+    .map((slug) => {
+      if (slug === 'anonymous') return 'Anonymous'
+      return authors.value?.find((a) => a.key === slug)?.name_en ?? slug
+    })
+    .join(' & ')
 }
 
 const sortedDocuments = computed(() => {
@@ -34,7 +38,7 @@ const sortedDocuments = computed(() => {
       :image="doc.cover || `/d/${doc.key}/cover.jpg`"
     >
       <template #meta>
-        <span>{{ authorName(doc.author) }}</span>
+        <span>{{ authorNames(doc.authors) }}</span>
         <span v-if="doc.year">&middot;</span>
         <span v-if="doc.year">{{ doc.year }}</span>
         <span v-if="languageLabel(doc.language)">&middot;</span>

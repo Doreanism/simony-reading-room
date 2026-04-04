@@ -56,13 +56,49 @@ Write the meta file to `content/documents/meta/<key>.md` following the format of
 
 Present the proposed metadata to the user for confirmation before writing.
 
-## Step 4: Generate page images
+## Step 4: Create author file and image
+
+Check whether an author file already exists at `content/authors/<author-slug>.md`.
+
+### If the author file does not exist
+
+Create `content/authors/<author-slug>.md` following the format of existing author files:
+
+```yaml
+---
+key: <author-slug>
+name: <canonical Latin or native-language name>
+name_en: <English name>
+wikipedia: <Wikipedia URL>
+image: /a/<author-slug>.jpg
+born: <birth year>
+died: <death year>
+---
+
+<One-paragraph biography in English.>
+```
+
+Use information from the document itself (title page, colophon) and general knowledge to fill in the fields. The biography should be 3–5 sentences covering the author's role, major works, and historical significance. Present the proposed author file to the user for confirmation before writing.
+
+### Author portrait image
+
+Search Wikimedia Commons for a public-domain portrait of the author. Prefer a painted or engraved portrait contemporary with the author's lifetime. Download it and save to `public/a/<author-slug>.jpg`.
+
+The image must be a **square crop** — ideally 400×400 px. Crop to the face and shoulders if needed. Use ImageMagick (`convert`) to resize/crop:
+
+```bash
+convert <source> -resize 400x400^ -gravity center -extent 400x400 public/a/<author-slug>.jpg
+```
+
+If no suitable portrait can be found, inform the user and skip the image (leave the `image` field in the author file but note that it is missing).
+
+## Step 5: Generate page images
 
 Run: `npm run build:images -- <key>`
 
 This extracts WebP images from the PDF for every page. It may take a while for large documents. Report the result to the user.
 
-## Step 5: Generate page JSON files
+## Step 6: Generate page JSON files
 
 Page JSON files (one per page in `public/d/<key>/`) drive the document viewer text overlay and search index. Generate them now using the appropriate method.
 
@@ -78,7 +114,7 @@ Assess quality by reading the output:
 
 Run the fast extraction:
 ```
-npm run build:page-json -- <key> --from-pdf
+npm run build:page-json -- frompdf <key>
 ```
 
 This reads the PDF's embedded text layer directly (seconds, not hours). Report the result.
@@ -105,3 +141,12 @@ npm run build:transcriptions -- <key>
 ```
 
 Report the number of transcription files generated.
+
+## Step 7: Run tests
+
+Run the test suite to verify the pipeline is healthy:
+```
+npm test -- --run
+```
+
+If tests fail, investigate the failures and fix them before reporting completion.

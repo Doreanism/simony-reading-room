@@ -5,19 +5,9 @@ const { data: readings } = await useAsyncData('readings', () =>
   queryCollection('readingsMeta').all()
 )
 
-const { data: authors } = await useAsyncData('authors', () =>
-  queryCollection('authors').all()
-)
-
 const { data: documents } = await useAsyncData('documents', () =>
   queryCollection('documentsMeta').all()
 )
-
-function authorName(slug: string) {
-  if (!slug) return 'Anonymous'
-  const author = authors.value?.find((a) => a.key === slug)
-  return author?.name_en ?? slug
-}
 
 function doc(docKey: string) {
   return documents.value?.find((d) => d.key === docKey)
@@ -40,9 +30,10 @@ const sortedReadings = computed(() => {
       :title="reading.title_en"
       :subtitle="reading.title !== reading.title_en ? reading.title : undefined"
       :description="reading.description"
+      :image="doc(reading.document)?.cover"
     >
       <template #meta>
-        <span>{{ authorName(reading.author) }}</span>
+        <AuthorBadge :slug="reading.author" />
         <span>&middot;</span>
         <span v-if="reading.year">{{ reading.year }}</span>
         <span v-if="reading.year">&middot;</span>

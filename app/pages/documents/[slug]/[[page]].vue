@@ -9,11 +9,12 @@ const { data: doc } = await useAsyncData(`doc-${slug}`, () =>
 
 useHead({ title: () => doc.value?.title_en });
 
-const { data: author } = await useAsyncData(`author-for-${slug}`, async () => {
-  if (!doc.value?.author) return null;
-  return queryCollection("authors")
-    .where("key", "=", doc.value.author)
-    .first();
+const { data: docAuthors } = await useAsyncData(`authors-for-${slug}`, async () => {
+  if (!doc.value?.authors?.length) return [];
+  const all = await queryCollection("authors").all();
+  return doc.value.authors
+    .map((key) => all.find((a) => a.key === key))
+    .filter(Boolean);
 });
 
 const direction = ref<"forward" | "back">("forward");
@@ -383,20 +384,30 @@ function goToPage(pdfPage: number) {
         <ContentRenderer :value="doc" />
       </div>
 
-      <!-- Author -->
+      <!-- Authors -->
+      <template v-if="docAuthors?.length">
+        <ListItemCard
+          v-for="author in docAuthors"
+          :key="author!.key"
+          class="mt-6"
+          :to="`/authors/${author!.key}`"
+          :title="author!.name_en"
+          :subtitle="author!.name"
+          :image="author!.image"
+        >
+          <template #meta>
+            <span v-if="author!.born || author!.died">{{ author!.born }}&ndash;{{ author!.died }}</span>
+          </template>
+        </ListItemCard>
+      </template>
       <ListItemCard
-        v-if="author"
+        v-else-if="doc?.authors?.includes('anonymous')"
         class="mt-6"
-        :to="`/authors/${author.key}`"
-        :title="author.name_en"
-        :subtitle="author.name"
-        :image="author.image"
-      >
-        <template #meta>
-          <span v-if="author.born || author.died">{{ author.born }}&ndash;{{ author.died }}</span>
-        </template>
-      </ListItemCard>
+        title="Anonymous"
+        :image="'/a/anonymous.jpg'"
+      />
       <p v-else-if="doc" class="mt-6 text-sm text-neutral-500">Anonymous</p>
+
     </div>
   </div>
   </AppPage>

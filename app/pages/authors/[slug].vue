@@ -19,7 +19,7 @@ const { data: readings } = await useAsyncData('readings', () =>
 const authorDocuments = computed(() => {
   if (!documents.value) return []
   return documents.value
-    .filter((s) => s.author === slug)
+    .filter((s) => s.authors?.includes(slug))
     .sort((a, b) => (a.year ?? 0) - (b.year ?? 0))
 })
 

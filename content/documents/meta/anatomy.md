@@ -2,7 +2,8 @@
 key: anatomy
 title: "The Anatomy of Simon Magus, Or, the Sin of Simony Laid Open"
 title_en: "The Anatomy of Simon Magus, Or, the Sin of Simony Laid Open"
-author: ""
+authors:
+  - anonymous
 year: 1700
 url: https://www.google.com/books/edition/The_Anatomy_of_Simon_Magus_Or_the_Sin_of/C3RmAAAAcAAJ
 document: /d/anatomy.pdf

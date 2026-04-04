@@ -121,7 +121,10 @@ const author = computed(() => {
   return authors.value?.find((a) => a.key === reading.value!.author) ?? null
 })
 
-const authorName = computed(() => author.value?.name_en ?? (reading.value?.author || 'Anonymous'))
+const authorName = computed(() => {
+  if (reading.value?.author === 'anonymous') return 'Anonymous'
+  return author.value?.name_en ?? (reading.value?.author || 'Anonymous')
+})
 
 const coverImage = computed(() => {
   if (!documentMeta.value) return null
@@ -175,6 +178,14 @@ const translationLanguageLabel = computed(() => {
             />
             <span>{{ authorName }}</span>
           </NuxtLink>
+          <span v-else-if="reading.author === 'anonymous'" class="mt-3 inline-flex items-center gap-2 text-sm text-neutral-500">
+            <img
+              src="/a/anonymous.jpg"
+              alt="Anonymous"
+              class="w-8 h-8 rounded-full object-cover"
+            />
+            <span>Anonymous</span>
+          </span>
           <span v-else class="mt-3 block text-sm text-neutral-500">{{ authorName }}</span>
         </div>
       </div>

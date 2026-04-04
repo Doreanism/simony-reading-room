@@ -2,7 +2,8 @@
 key: wycliffe-simony
 title: "Tractatus de Simonia"
 title_en: "Treatise on Simony"
-author: john-wycliffe
+authors:
+  - john-wycliffe
 year: 1898
 url: https://archive.org/details/tractatusdesimon00wycl
 document: /d/wycliffe-simony.pdf

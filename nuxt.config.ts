@@ -11,14 +11,18 @@ export default defineNuxtConfig({
       description: 'Medieval text translation pipeline',
       theme_color: '#292524',
       background_color: '#fafaf9',
+      display: 'standalone',
+      start_url: '/',
       icons: [
         { src: '/pwa-192x192.png', sizes: '192x192', type: 'image/png' },
         { src: '/pwa-512x512.png', sizes: '512x512', type: 'image/png' },
+        { src: '/pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
       ],
     },
     workbox: {
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,png,json}'],
+      globIgnores: ['a/**', 'd/**', 'pagefind/**'],
     },
   },
 

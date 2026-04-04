@@ -2,7 +2,8 @@
 key: john-major-sentences-b
 title: "In Quartum Sententiarum Iohannis Maioris (Redactio B)"
 title_en: "Fourth Book of the Sentences of John Major (Second Edition)"
-author: john-major
+authors:
+  - john-major
 year: 1516
 url: https://books.google.com/books?id=YbFoAAAAcAAJ
 document: /d/john-major-sentences-b.pdf
