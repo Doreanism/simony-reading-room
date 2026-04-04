@@ -119,7 +119,7 @@ def main():
     base_pdf_page = int(doc_meta["base_pdf_page"])
     base_folio = int(doc_meta["base_folio"])
     pagination = doc_meta.get("pagination", "folio-two-column")
-    is_page_pagination = pagination == "page"
+    is_page_pagination = pagination in ("page", "page-two-column")
     base_side = doc_meta.get("base_side", "r") if not is_page_pagination else "r"
     ocr_model = doc_meta.get("ocr_model", DEFAULT_OCR_MODEL)
 

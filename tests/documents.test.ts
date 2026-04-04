@@ -73,6 +73,7 @@ it(`${key} has all ${pages} json files`, () => {
 /**
  * Enumerate all page/column refs between start and end (inclusive).
  * For folio-two-column: "145rb" to "146ra" → ["145rb", "145va", "145vb", "146ra"]
+ * For page-two-column: "42a" to "43b" → ["42a", "42b", "43a", "43b"]
  * For page: "1" to "5" → ["1", "2", "3", "4", "5"]
  */
 function enumPageRefs(startRef: string, endRef: string): string[] {
@@ -84,7 +85,19 @@ function enumPageRefs(startRef: string, endRef: string): string[] {
     for (let i = start; i <= end; i++) refs.push(String(i));
     return refs;
   }
-  // Folio-column refs
+  // Page-column refs (page-two-column)
+  if (/^\d+(a|b)$/.test(startRef)) {
+    const start = parseFolio(startRef);
+    const end = parseFolio(endRef);
+    const refs: string[] = [];
+    for (let sort = start.sort; sort <= end.sort; sort++) {
+      const page = Math.floor(sort / 2);
+      const col = sort % 2 === 1 ? "b" : "a";
+      refs.push(`${page}${col}`);
+    }
+    return refs;
+  }
+  // Folio-column refs (folio-two-column)
   const start = parseFolio(startRef);
   const end = parseFolio(endRef);
   const refs: string[] = [];

@@ -90,7 +90,7 @@ const hoverLabel = computed(() => {
   const pages = pair.filter((p): p is number => p !== null)
   const folios = hoverFolios.value.filter((f): f is string => f !== null)
   if (folios.length === pages.length) {
-    const prefix = props.pagination === "page" ? "p." : "fol."
+    const prefix = props.pagination === "page" || props.pagination === "page-two-column" ? "p." : "fol."
     return `${prefix} ${folios.join("\u2013")}`
   }
   return pages.join("\u2013")

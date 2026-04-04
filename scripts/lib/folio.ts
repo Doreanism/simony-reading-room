@@ -21,8 +21,8 @@ const POS_MAP: Record<string, string> = {
 };
 
 /**
- * Parse a folio reference like "145rb" or a plain page number like "42"
- * into a sortable structure.
+ * Parse a folio reference like "145rb", a page-column ref like "42a",
+ * or a plain page number like "42" into a sortable structure.
  */
 export function parseFolio(ref: string): Folio {
   // Plain page number (pagination: page)
@@ -31,6 +31,15 @@ export function parseFolio(ref: string): Folio {
     const page = parseInt(pageMatch[1]);
     return { folio: page, side: "r", col: "a", sort: page, ref };
   }
+  // Page-column ref (pagination: page-two-column), e.g. "42a", "42b"
+  const pageColMatch = ref.match(/^(\d+)(a|b)$/);
+  if (pageColMatch) {
+    const page = parseInt(pageColMatch[1]);
+    const col = pageColMatch[2] as "a" | "b";
+    const sort = page * 2 + (col === "b" ? 1 : 0);
+    return { folio: page, side: "r", col, sort, ref };
+  }
+  // Folio-column ref (pagination: folio-two-column), e.g. "145rb"
   const m = ref.match(/^(\d+)(r|v)(a|b)$/);
   if (!m) throw new Error(`Invalid folio reference: ${ref}`);
   const folio = parseInt(m[1]);
@@ -41,12 +50,20 @@ export function parseFolio(ref: string): Folio {
 }
 
 /**
- * Compute the sortable pagination ID for a folio reference or plain page number.
- * e.g., "145rb" -> "145_002", "42" -> "42"
+ * Compute the sortable pagination ID for a folio reference, page-column ref,
+ * or plain page number.
+ * e.g., "145rb" -> "145_002", "42a" -> "42_001", "42" -> "42"
  */
 export function sortablePaginationId(ref: string): string {
   // Plain page number
   if (/^\d+$/.test(ref)) return ref;
+  // Page-column ref (pagination: page-two-column)
+  const pageColMatch = ref.match(/^(\d+)(a|b)$/);
+  if (pageColMatch) {
+    const pos = pageColMatch[2] === "a" ? "001" : "002";
+    return `${pageColMatch[1]}_${pos}`;
+  }
+  // Folio-column ref (pagination: folio-two-column)
   const m = ref.match(/^(\d+)(r|v)(a|b)$/);
   if (!m) throw new Error(`Invalid folio reference: ${ref}`);
   const pos = POS_MAP[m[2] + m[3]];

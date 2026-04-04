@@ -98,7 +98,7 @@ function generateForDocument(documentKey: string) {
   // Read document metadata to determine pagination type
   const metaPath = join("content/documents/meta", `${documentKey}.md`);
   const meta = existsSync(metaPath) ? readYaml(metaPath) : {};
-  const twoColumn = meta.pagination === "folio-two-column";
+  const twoColumn = meta.pagination === "folio-two-column" || meta.pagination === "page-two-column";
 
   const outDir = join(TRANSCRIPTIONS, documentKey);
   if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true });
