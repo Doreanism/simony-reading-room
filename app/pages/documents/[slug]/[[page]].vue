@@ -17,6 +17,10 @@ const { data: docAuthors } = await useAsyncData(`authors-for-${slug}`, async () 
     .filter(Boolean);
 });
 
+const { data: docReadings } = await useAsyncData(`readings-for-${slug}`, () =>
+  queryCollection("readingsMeta").where("document", "=", slug).all(),
+);
+
 const direction = ref<"forward" | "back">("forward");
 const searchOpen = ref(false);
 const searchQuery = ref((route.query.q as string) || "");
@@ -385,11 +389,11 @@ function goToPage(pdfPage: number) {
       </div>
 
       <!-- Authors -->
+      <h2 v-if="doc" class="mt-8 mb-2 text-lg font-serif font-semibold">{{ docAuthors && docAuthors.length > 1 ? 'Authors' : 'Author' }}</h2>
       <template v-if="docAuthors?.length">
         <ListItemCard
           v-for="author in docAuthors"
           :key="author!.key"
-          class="mt-6"
           :to="`/authors/${author!.key}`"
           :title="author!.name_en"
           :subtitle="author!.name"
@@ -402,11 +406,37 @@ function goToPage(pdfPage: number) {
       </template>
       <ListItemCard
         v-else-if="doc?.authors?.includes('anonymous')"
-        class="mt-6"
         title="Anonymous"
         :image="'/a/anonymous.jpg'"
       />
-      <p v-else-if="doc" class="mt-6 text-sm text-neutral-500">Anonymous</p>
+      <p v-else-if="doc" class="text-sm text-neutral-500">Anonymous</p>
+
+      <!-- Readings -->
+      <template v-if="docReadings?.length">
+        <h2 class="mt-8 mb-2 text-lg font-serif font-semibold">Readings</h2>
+        <div class="space-y-3">
+          <ListItemCard
+            v-for="reading in docReadings"
+            :key="reading.key"
+            :to="`/readings/${reading.key}`"
+            :title="reading.title_en"
+            :subtitle="reading.title !== reading.title_en ? reading.title : undefined"
+            :description="reading.description"
+          >
+            <template #meta>
+              <AuthorBadge :slug="reading.author" />
+              <span>&middot;</span>
+              <span v-if="reading.year">{{ reading.year }}</span>
+              <span v-if="reading.year">&middot;</span>
+              <span v-if="languageLabel(doc?.language)">{{ languageLabel(doc?.language) }}</span>
+              <span v-if="languageLabel(doc?.language)">&middot;</span>
+              <span>{{ reading.section }}</span>
+              <span>&middot;</span>
+              <span>{{ folioLabel(doc?.pagination, reading.page_start, reading.page_end) }}</span>
+            </template>
+          </ListItemCard>
+        </div>
+      </template>
 
     </div>
   </div>

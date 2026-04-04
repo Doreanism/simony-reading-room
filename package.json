@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "build": "tsx scripts/build-search-index.ts && nuxt build",
+    "build": "npm run build:search-index && npm run build:nuxt",
+    "build:nuxt": "nuxt build && rm -rf .output/public/d .output/public/a",
     "build:search-index": "tsx scripts/build-search-index.ts",
     "pipeline": "tsx scripts/pipeline.ts",
     "build:images": "tsx scripts/build-page-images.ts",
