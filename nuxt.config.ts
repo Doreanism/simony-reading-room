@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     workbox: {
       navigateFallback: '/',
       globPatterns: ['**/*.{js,css,html,png,json}'],
-      globIgnores: ['a/**', 'd/**', 'pagefind/**'],
+      globIgnores: ['a/**', 'd/**', 'pagefind/**', '**/_payload.json'],
     },
   },
 
