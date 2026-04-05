@@ -90,6 +90,11 @@ const { data: authors } = await useAsyncData('home-authors', () =>
         Sébastien Bourdon, <em>La Chute de Simon le Magicien</em> (1657)
       </figcaption>
     </figure>
+
+    <p class="mt-12 text-xs text-neutral-400 dark:text-neutral-500">
+      Descriptions, transcriptions, and translations on this site have been automatically produced with minimal human review.
+      Please verify details against the original documents and other reliable sources.
+    </p>
   </div>
   </AppPage>
 </template>
