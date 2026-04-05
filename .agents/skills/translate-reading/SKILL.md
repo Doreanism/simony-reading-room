@@ -23,7 +23,7 @@ Translate the reading `$ARGUMENTS` from the per-column transcription files into 
 - Omit page headers and marginal annotations (same as transcription)
 - Use standard English forms for scripture references (e.g., "Matthew 10", "1 Corinthians 12")
 - Keep Latin legal references but add clarifying notes in square brackets where helpful (e.g., `[Extra, de simonia]`)
-- Keep proper names in their Latin form (e.g., Petrus, Symon). Do NOT add English equivalents or elaborations — if the source says "Altisiodorus", write "Altisiodorus", not "Altisiodorus [William of Auxerre]"
+- Keep proper names in their Latin form for patristic authors, medieval canonists, popes, and councils (e.g., Petrus, Symon, Gregorius, Augustinus, Ambrosius, Iohannes). For well-known **biblical figures**, use the standard English form (e.g., Judas not Iudas, Gehazi not Giezi/Iezi, David not Dauid). Do NOT add English equivalents or elaborations — if the source says "Altisiodorus", write "Altisiodorus", not "Altisiodorus [William of Auxerre]"
 - Where the text references canon law (e.g., "extra de simonia", "de restitutione"), keep the Latin reference
 - Translator elaborations (clarifications not in the source text) must use escaped square brackets `\[like this\]` so they render correctly in markdown and are visually distinct from the source text. Bare `[brackets]` in markdown become link syntax and won't display.
 

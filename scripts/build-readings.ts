@@ -152,7 +152,11 @@ function buildPerColumn(
     lines.push(`reading: ${yamlValue(readingKey)}`);
     lines.push(`page: ${block.ref}`);
     lines.push(`pdf_page: ${block.pdfPage}`);
-    lines.push(`sortable_pagination_id: "${sortablePaginationId(block.ref)}"`);
+    // Format: {pdfPage}.1 or {pdfPage}.2 for two-column pages (folio or page),
+    // plain {pdfPage} for single-column pages.
+    const isTwoCol = /^\d+([rv][ab]|[ab])$/.test(block.ref);
+    const colSuffix = isTwoCol ? "." + (block.ref.endsWith("a") ? "1" : "2") : "";
+    lines.push(`sortable_pagination_id: ${block.pdfPage}${colSuffix}`);
     lines.push("---");
     lines.push("");
     lines.push(block.content.trim());

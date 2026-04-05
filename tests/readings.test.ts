@@ -49,7 +49,7 @@ function blockStructure(body: string): Array<{ type: 'heading'; depth: number } 
 
 /**
  * Generate the expected sequence of page/column refs from page_start to page_end.
- * Handles both folio-column refs ("145ra") and plain page numbers ("42").
+ * Handles folio-column refs ("145ra"), page-column refs ("179a"), and plain page numbers ("42").
  */
 function expectedPageSequence(pageStart: string, pageEnd: string): string[] {
   // Plain page numbers
@@ -60,7 +60,19 @@ function expectedPageSequence(pageStart: string, pageEnd: string): string[] {
     for (let i = start; i <= end; i++) sequence.push(String(i));
     return sequence;
   }
-  // Folio-column refs
+  // Page-column refs (page-two-column), e.g. "179a", "219b"
+  if (/^\d+[ab]$/.test(pageStart)) {
+    const start = parseFolio(pageStart);
+    const end = parseFolio(pageEnd);
+    const sequence: string[] = [];
+    for (let sort = start.sort; sort <= end.sort; sort++) {
+      const page = Math.floor(sort / 2);
+      const col = sort % 2 === 0 ? "a" : "b";
+      sequence.push(`${page}${col}`);
+    }
+    return sequence;
+  }
+  // Folio-column refs (folio-two-column), e.g. "145ra"
   const start = parseFolio(pageStart);
   const end = parseFolio(pageEnd);
   const sequence: string[] = [];
@@ -128,6 +140,7 @@ describe("readings", () => {
         const pdfPage = String(frontmatter.pdf_page);
         const sid = String(frontmatter.sortable_pagination_id);
         const isFolioColumn = /^\d+[rv][ab]$/.test(page);
+        const isPageColumn = /^\d+[ab]$/.test(page);
 
         // Must be an unquoted number in the YAML (no surrounding quotes in raw file)
         const rawContent = readFileSync(join(transcriptionDir, file), "utf-8");
@@ -136,7 +149,7 @@ describe("readings", () => {
           `${file}: sortable_pagination_id must be an unquoted number (no quotes)`
         ).toMatch(/^sortable_pagination_id: \d/m);
 
-        if (isFolioColumn) {
+        if (isFolioColumn || isPageColumn) {
           const col = page.endsWith("a") ? "1" : "2";
           expect(
             sid,
