@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync } from "fs";
 import { join, basename } from "path";
+import yaml from "js-yaml";
 
 export interface Folio {
   folio: number;
@@ -10,7 +11,7 @@ export interface Folio {
 }
 
 export interface ReadingMeta {
-  [key: string]: string;
+  [key: string]: any;
 }
 
 const POS_MAP: Record<string, string> = {
@@ -23,30 +24,39 @@ const POS_MAP: Record<string, string> = {
 /**
  * Parse a folio reference like "145rb", a page-column ref like "42a",
  * or a plain page number like "42" into a sortable structure.
+ * Handles trailing prime suffixes (e.g. "145rb'") for documents with
+ * multiple pagination segments that restart numbering.
  */
 export function parseFolio(ref: string): Folio {
+  // Count and strip trailing primes
+  const primeMatch = ref.match(/('*)$/);
+  const prime = primeMatch ? primeMatch[1].length : 0;
+  const baseRef = prime > 0 ? ref.slice(0, -prime) : ref;
+  // Each prime level adds a large offset so primed folios sort after all non-primed
+  const primeOffset = prime * 10000000;
+
   // Plain page number (pagination: page)
-  const pageMatch = ref.match(/^(\d+)$/);
+  const pageMatch = baseRef.match(/^(\d+)$/);
   if (pageMatch) {
     const page = parseInt(pageMatch[1]);
-    return { folio: page, side: "r", col: "a", sort: page, ref };
+    return { folio: page, side: "r", col: "a", sort: page + primeOffset, ref };
   }
   // Page-column ref (pagination: page-two-column), e.g. "42a", "42b"
-  const pageColMatch = ref.match(/^(\d+)(a|b)$/);
+  const pageColMatch = baseRef.match(/^(\d+)(a|b)$/);
   if (pageColMatch) {
     const page = parseInt(pageColMatch[1]);
     const col = pageColMatch[2] as "a" | "b";
     const sort = page * 2 + (col === "b" ? 1 : 0);
-    return { folio: page, side: "r", col, sort, ref };
+    return { folio: page, side: "r", col, sort: sort + primeOffset, ref };
   }
   // Folio-column ref (pagination: folio-two-column), e.g. "145rb"
-  const m = ref.match(/^(\d+)(r|v)(a|b)$/);
+  const m = baseRef.match(/^(\d+)(r|v)(a|b)$/);
   if (!m) throw new Error(`Invalid folio reference: ${ref}`);
   const folio = parseInt(m[1]);
   const side = m[2] as "r" | "v";
   const col = m[3] as "a" | "b";
   const sort = folio * 4 + (side === "v" ? 2 : 0) + (col === "b" ? 1 : 0);
-  return { folio, side, col, sort, ref };
+  return { folio, side, col, sort: sort + primeOffset, ref };
 }
 
 /**
@@ -55,36 +65,76 @@ export function parseFolio(ref: string): Folio {
  * e.g., "145rb" -> "145_002", "42a" -> "42_001", "42" -> "42"
  */
 export function sortablePaginationId(ref: string): string {
+  // Count and strip trailing primes
+  const primeMatch = ref.match(/('*)$/);
+  const prime = primeMatch ? primeMatch[1].length : 0;
+  const baseRef = prime > 0 ? ref.slice(0, -prime) : ref;
+  const primeSuffix = "'".repeat(prime);
+
   // Plain page number
-  if (/^\d+$/.test(ref)) return ref;
+  if (/^\d+$/.test(baseRef)) return baseRef + primeSuffix;
   // Page-column ref (pagination: page-two-column)
-  const pageColMatch = ref.match(/^(\d+)(a|b)$/);
+  const pageColMatch = baseRef.match(/^(\d+)(a|b)$/);
   if (pageColMatch) {
     const pos = pageColMatch[2] === "a" ? "001" : "002";
-    return `${pageColMatch[1]}_${pos}`;
+    return `${pageColMatch[1]}_${pos}${primeSuffix}`;
   }
   // Folio-column ref (pagination: folio-two-column)
-  const m = ref.match(/^(\d+)(r|v)(a|b)$/);
+  const m = baseRef.match(/^(\d+)(r|v)(a|b)$/);
   if (!m) throw new Error(`Invalid folio reference: ${ref}`);
   const pos = POS_MAP[m[2] + m[3]];
-  return `${m[1]}_${pos}`;
+  return `${m[1]}_${pos}${primeSuffix}`;
+}
+
+/**
+ * A pagination segment mapping a PDF page to a printed page number.
+ * Documents may have multiple segments when unnumbered pages (e.g. half-title
+ * pages) are inserted mid-document, or when page numbering restarts.
+ */
+export interface PaginationStart {
+  pdfPage: number;
+  printedPage: number;
+  numeralType: string;
+}
+
+/**
+ * Convert raw YAML pagination_starts list into typed PaginationStart[].
+ */
+export function parsePaginationStarts(value: any[]): PaginationStart[] {
+  return value.map((item) => ({
+    pdfPage: item.pdf_page,
+    printedPage: item.printed_page,
+    numeralType: item.numeral_type ?? "arabic",
+  }));
+}
+
+/**
+ * Compute the printed page number for a given PDF page using pagination segments.
+ * Finds the last segment whose pdfPage is <= the given pdf page.
+ */
+export function pdfPageToPrintedPage(
+  pdfPage: number,
+  starts: PaginationStart[]
+): number {
+  let segment = starts[0];
+  for (const s of starts) {
+    if (pdfPage >= s.pdfPage) segment = s;
+  }
+  return segment.printedPage + (pdfPage - segment.pdfPage);
 }
 
 /**
  * Derive folio leaf from pdf page number.
  * For folio-two-column: consecutive PDF pages alternate recto/verso.
- * basePdfPage is the first PDF page, baseFolio is its folio number.
- * baseSide is whether basePdfPage is recto or verso.
+ * basePdfPage is the first PDF page (always recto), baseFolio is its folio number.
  */
 export function pdfPageToFolio(
   pdfPage: number,
   basePdfPage: number,
   baseFolio: number,
-  baseSide: "r" | "v"
 ): { folio: number; side: "r" | "v"; leaf: string } {
   const offset = pdfPage - basePdfPage;
-  const baseIsRecto = baseSide === "r";
-  const absIndex = offset + (baseIsRecto ? 0 : 1);
+  const absIndex = offset;
   const folioOffset = Math.floor(absIndex / 2);
   const isRecto = absIndex % 2 === 0;
   const folio = baseFolio + folioOffset;
@@ -93,25 +143,25 @@ export function pdfPageToFolio(
 }
 
 /**
- * Simple YAML parser for flat key: value files.
+ * Extract YAML frontmatter from a markdown file and return the text between
+ * the opening and closing `---` delimiters.
+ */
+function extractFrontmatter(text: string): string {
+  const lines = text.split("\n");
+  if (lines[0]?.trim() !== "---") return "";
+  const endIdx = lines.indexOf("---", 1);
+  if (endIdx === -1) return "";
+  return lines.slice(1, endIdx).join("\n");
+}
+
+/**
+ * Parse YAML frontmatter from a markdown file.
  */
 export function readYaml(path: string): ReadingMeta {
   const text = readFileSync(path, "utf-8");
-  const result: ReadingMeta = {};
-  for (const line of text.split("\n")) {
-    const m = line.match(/^([\w_]+):\s*(.+)$/);
-    if (m) {
-      let val = m[2].trim();
-      if (
-        (val.startsWith('"') && val.endsWith('"')) ||
-        (val.startsWith("'") && val.endsWith("'"))
-      ) {
-        val = val.slice(1, -1);
-      }
-      result[m[1]] = val;
-    }
-  }
-  return result;
+  const fm = extractFrontmatter(text);
+  if (!fm) return {};
+  return (yaml.load(fm) as ReadingMeta) ?? {};
 }
 
 /**
@@ -146,33 +196,65 @@ export function getReadingPagesForDocument(documentKey: string): Set<number> {
 }
 
 /**
+ * Compute the prime suffix for each pagination segment.
+ * When a later segment's first label collides with an earlier segment,
+ * it gets a ' suffix (or '' for a third collision, etc.).
+ * Returns segments sorted by pdfPage with their suffix.
+ */
+export function computeSegmentSuffixes(
+  starts: PaginationStart[],
+  pagination: string,
+): { pdfPage: number; suffix: string }[] {
+  const isFolio = pagination.startsWith("folio");
+  const sorted = [...starts].sort((a, b) => a.pdfPage - b.pdfPage);
+  const seenFirstLabels = new Set<string>();
+
+  return sorted.map((seg) => {
+    const firstLabel = isFolio
+      ? `${seg.printedPage}r`
+      : String(seg.printedPage);
+
+    let suffix = "";
+    while (seenFirstLabels.has(firstLabel + suffix)) {
+      suffix += "'";
+    }
+    seenFirstLabels.add(firstLabel + suffix);
+
+    return { pdfPage: seg.pdfPage, suffix };
+  });
+}
+
+/**
+ * Look up the prime suffix for a given PDF page number.
+ * segments must be sorted by pdfPage (as returned by computeSegmentSuffixes).
+ */
+export function getSuffixForPdfPage(
+  pdfPage: number,
+  segments: { pdfPage: number; suffix: string }[],
+): string {
+  let suffix = "";
+  for (const seg of segments) {
+    if (pdfPage >= seg.pdfPage) suffix = seg.suffix;
+  }
+  return suffix;
+}
+
+/**
  * Read markdown file, return { frontmatter, body } where body is the text after frontmatter.
  */
 export function readMarkdown(path: string): { frontmatter: ReadingMeta; body: string } {
   const text = readFileSync(path, "utf-8");
   const lines = text.split("\n");
-  const frontmatter: ReadingMeta = {};
-  let bodyStart = 0;
 
   if (lines[0]?.trim() === "---") {
     const endIdx = lines.indexOf("---", 1);
     if (endIdx !== -1) {
-      for (let i = 1; i < endIdx; i++) {
-        const m = lines[i].match(/^([\w_]+):\s*(.+)$/);
-        if (m) {
-          let val = m[2].trim();
-          if (
-            (val.startsWith('"') && val.endsWith('"')) ||
-            (val.startsWith("'") && val.endsWith("'"))
-          ) {
-            val = val.slice(1, -1);
-          }
-          frontmatter[m[1]] = val;
-        }
-      }
-      bodyStart = endIdx + 1;
+      const fm = lines.slice(1, endIdx).join("\n");
+      const frontmatter = (yaml.load(fm) as ReadingMeta) ?? {};
+      const body = lines.slice(endIdx + 1).join("\n");
+      return { frontmatter, body };
     }
   }
 
-  return { frontmatter, body: lines.slice(bodyStart).join("\n") };
+  return { frontmatter: {}, body: text };
 }

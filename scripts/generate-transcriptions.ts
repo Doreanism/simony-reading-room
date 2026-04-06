@@ -8,13 +8,19 @@
  *
  * Reads JSON files from public/d/{document-key}/{N}.json, splits lines
  * into columns based on horizontal position, and writes transcription
- * markdown to content/documents/transcription/{document-key}/{folio}{col}.md
+ * markdown to content/documents/transcription/{document-key}/{pdfPage}{col}.md
+ *
+ * Files are named by PDF page number (+ column suffix for two-column layouts).
+ * The printed page label is stored in the `page:` frontmatter field.
  */
 
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from "fs";
 import { join } from "path";
 import { execSync } from "child_process";
-import { sortablePaginationId, readYaml } from "./lib/folio.js";
+import {
+  readYaml, parsePaginationStarts,
+  computeSegmentSuffixes, getSuffixForPdfPage,
+} from "./lib/folio.js";
 
 interface OcrLine {
   text: string;
@@ -100,6 +106,11 @@ function generateForDocument(documentKey: string) {
   const meta = existsSync(metaPath) ? readYaml(metaPath) : {};
   const twoColumn = meta.pagination === "folio-two-column" || meta.pagination === "page-two-column";
 
+  // Build segment suffix map for documents with multiple pagination_starts
+  const segments = meta.pagination_starts
+    ? computeSegmentSuffixes(parsePaginationStarts(meta.pagination_starts), meta.pagination)
+    : [];
+
   const outDir = join(TRANSCRIPTIONS, documentKey);
   if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true });
 
@@ -114,8 +125,9 @@ function generateForDocument(documentKey: string) {
       readFileSync(join(pagesDir, jsonFile), "utf-8")
     );
 
-    // Skip pages without valid folio metadata (folio like "145r" or plain page like "42")
-    if (!data.folio || !data.folio.match(/^(\d+(r|v)|\d+)$/)) continue;
+    // Printed page label from folio metadata (when valid), else pdf_page
+    const validFolio = data.folio && /^(\d+(r|v)|\d+)$/.test(data.folio);
+    const suffix = getSuffixForPdfPage(data.pdf_page, segments);
 
     // Split lines into columns for two-column layouts, or treat as single column
     let columnEntries: { col: string; lines: OcrLine[] }[];
@@ -135,26 +147,30 @@ function generateForDocument(documentKey: string) {
     }
 
     for (const { col, lines } of columnEntries) {
-      if (lines.length === 0) continue;
+      // Filename: pdf_page + column (e.g., "42a", "42b", "42")
+      const fileRef = col ? `${data.pdf_page}${col}` : String(data.pdf_page);
+
+      // Page label: folio + column + collision suffix (e.g., "145va", "42a", "42'")
+      const pageLabel = validFolio
+        ? (col ? `${data.folio}${col}` : data.folio) + suffix
+        : String(data.pdf_page);
+
       detectHeadings(lines);
-
-      const ref = col ? `${data.folio}${col}` : data.folio;
-      const sid = sortablePaginationId(ref);
-
-      const frontmatter = [
-        "---",
-        `page: ${ref}`,
-        `pdf_page: ${data.pdf_page}`,
-        `sortable_pagination_id: "${sid}"`,
-        "---",
-      ].join("\n");
 
       const body = lines
         .map((l) => (l.type === "heading" ? `## ${l.text}` : l.text))
         .join("\n")
         // Escape :word patterns so MDC doesn't treat them as inline components
         .replace(/:([a-zA-Z])/g, "\\:$1");
-      const outPath = join(outDir, `${ref}.md`);
+
+      const frontmatter = [
+        "---",
+        `page: ${pageLabel}`,
+        `pdf_page: ${data.pdf_page}`,
+        "---",
+      ].join("\n");
+
+      const outPath = join(outDir, `${fileRef}.md`);
       writeFileSync(outPath, frontmatter + "\n" + body + "\n");
       written++;
     }

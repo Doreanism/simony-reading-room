@@ -3,13 +3,13 @@ key: panormitanus-decretals-simony
 title: "De Simonia (Liber V, Titulus III)"
 title_en: "On Simony (Book 5, Title 3)"
 author: panormitanus
-document: panormitanus-decretals-4-5
+document: panormitanus-decretals-3
 section: "Liber V, Titulus III"
 year: 1440
-pdf_page_start: 137
-pdf_page_end: 164
-page_start: 69ra
-page_end: 82vb
+pdf_page_start: 627
+pdf_page_end: 654
+page_start: 69ra'
+page_end: 82vb'
 start_text: "simonia"
 ---
 

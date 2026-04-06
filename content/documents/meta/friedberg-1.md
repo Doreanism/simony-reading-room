@@ -14,9 +14,10 @@ pagination: page-two-column
 language: latin
 typeface: roman
 ocr_model: "10.5281/zenodo.11113737"
-base_pdf_page: 53
-base_folio: 1
-base_side: r
+pagination_starts:
+  - pdf_page: 53
+    printed_page: 1
+    numeral_type: arabic
 ---
 
 The *Decretum Magistri Gratiani* (*Concordia Discordantium Canonum*) is the foundational collection of medieval canon law, compiled around 1140 in Bologna. It became the standard textbook of canon law throughout the medieval Church. This photomechanical reprint reproduces the second Leipzig edition of 1879 edited by Aemilius Friedberg — the standard modern critical edition. The text is set in two columns of roman type with a critical apparatus and Friedberg's annotations; the volume opens with an extensive prolegomena discussing sources, manuscripts, and prior editions. Columns in the main text are numbered sequentially (1–1444).

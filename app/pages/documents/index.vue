@@ -5,24 +5,9 @@ const { data: documents } = await useAsyncData('documents', () =>
   queryCollection('documentsMeta').all()
 )
 
-const { data: authors } = await useAsyncData('authors', () =>
-  queryCollection('authors').all()
-)
+const { authorNames } = useAuthors()
 
-function authorNames(slugs: string[] | undefined) {
-  if (!slugs?.length) return 'Anonymous'
-  return slugs
-    .map((slug) => {
-      if (slug === 'anonymous') return 'Anonymous'
-      return authors.value?.find((a) => a.key === slug)?.name_en ?? slug
-    })
-    .join(' & ')
-}
-
-const sortedDocuments = computed(() => {
-  if (!documents.value) return []
-  return [...documents.value].sort((a, b) => (a.year ?? 0) - (b.year ?? 0))
-})
+const sortedDocuments = computed(() => sortByYear(documents.value ?? []))
 </script>
 
 <template>

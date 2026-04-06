@@ -52,29 +52,34 @@ function blockStructure(body: string): Array<{ type: 'heading'; depth: number } 
  * Handles folio-column refs ("145ra"), page-column refs ("179a"), and plain page numbers ("42").
  */
 function expectedPageSequence(pageStart: string, pageEnd: string): string[] {
+  // Extract and strip trailing prime suffix
+  const primeSuffix = (String(pageStart).match(/('*)$/) || [""])[0];
+  const baseStart = primeSuffix ? String(pageStart).slice(0, -primeSuffix.length || undefined) : String(pageStart);
+  const baseEnd = primeSuffix ? String(pageEnd).slice(0, -primeSuffix.length || undefined) : String(pageEnd);
+
   // Plain page numbers
-  if (/^\d+$/.test(pageStart)) {
-    const start = parseInt(pageStart);
-    const end = parseInt(pageEnd);
+  if (/^\d+$/.test(baseStart)) {
+    const start = parseInt(baseStart);
+    const end = parseInt(baseEnd);
     const sequence: string[] = [];
-    for (let i = start; i <= end; i++) sequence.push(String(i));
+    for (let i = start; i <= end; i++) sequence.push(String(i) + primeSuffix);
     return sequence;
   }
   // Page-column refs (page-two-column), e.g. "179a", "219b"
-  if (/^\d+[ab]$/.test(pageStart)) {
-    const start = parseFolio(pageStart);
-    const end = parseFolio(pageEnd);
+  if (/^\d+[ab]$/.test(baseStart)) {
+    const start = parseFolio(baseStart);
+    const end = parseFolio(baseEnd);
     const sequence: string[] = [];
     for (let sort = start.sort; sort <= end.sort; sort++) {
       const page = Math.floor(sort / 2);
       const col = sort % 2 === 0 ? "a" : "b";
-      sequence.push(`${page}${col}`);
+      sequence.push(`${page}${col}${primeSuffix}`);
     }
     return sequence;
   }
   // Folio-column refs (folio-two-column), e.g. "145ra"
-  const start = parseFolio(pageStart);
-  const end = parseFolio(pageEnd);
+  const start = parseFolio(baseStart);
+  const end = parseFolio(baseEnd);
   const sequence: string[] = [];
   const positions: Array<{ side: "r" | "v"; col: "a" | "b" }> = [
     { side: "r", col: "a" },
@@ -85,7 +90,7 @@ function expectedPageSequence(pageStart: string, pageEnd: string): string[] {
 
   for (let folio = start.folio; folio <= end.folio + 1; folio++) {
     for (const pos of positions) {
-      const ref = `${folio}${pos.side}${pos.col}`;
+      const ref = `${folio}${pos.side}${pos.col}${primeSuffix}`;
       const sort = folio * 4 + (pos.side === "v" ? 2 : 0) + (pos.col === "b" ? 1 : 0);
       if (sort >= start.sort && sort <= end.sort) {
         sequence.push(ref);
@@ -130,7 +135,7 @@ describe("readings", () => {
       for (const file of files) {
         const { frontmatter } = readMarkdown(join(transcriptionDir, file));
         expect(frontmatter.reading).toBe(readingKey);
-        expect(frontmatter.page).toBe(basename(file, ".md"));
+        expect(String(frontmatter.page)).toBe(basename(file, ".md"));
         expect(frontmatter.pdf_page).toBeTruthy();
         expect(frontmatter.sortable_pagination_id).toBeTruthy();
 
@@ -139,8 +144,8 @@ describe("readings", () => {
         const page = basename(file, ".md");
         const pdfPage = String(frontmatter.pdf_page);
         const sid = String(frontmatter.sortable_pagination_id);
-        const isFolioColumn = /^\d+[rv][ab]$/.test(page);
-        const isPageColumn = /^\d+[ab]$/.test(page);
+        const isFolioColumn = /^\d+[rv][ab]'*$/.test(page);
+        const isPageColumn = /^\d+[ab]'*$/.test(page);
 
         // Must be an unquoted number in the YAML (no surrounding quotes in raw file)
         const rawContent = readFileSync(join(transcriptionDir, file), "utf-8");
@@ -150,7 +155,7 @@ describe("readings", () => {
         ).toMatch(/^sortable_pagination_id: \d/m);
 
         if (isFolioColumn || isPageColumn) {
-          const col = page.endsWith("a") ? "1" : "2";
+          const col = page.replace(/'*$/, "").endsWith("a") ? "1" : "2";
           expect(
             sid,
             `${file}: sortable_pagination_id should be ${pdfPage}.${col}`

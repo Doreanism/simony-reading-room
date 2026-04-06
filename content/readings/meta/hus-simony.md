@@ -8,8 +8,8 @@ section: "Complete Work"
 year: 1413
 pdf_page_start: 29
 pdf_page_end: 181
-page_start: 4
-page_end: 156
+page_start: 3
+page_end: 155
 start_text: "Svatokupectví, jenž se rozmnožilo"
 start_text_transcription: "Svatokupectvi"
 end_text: "zlí aby se pokáli. Amen."

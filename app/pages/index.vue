@@ -1,13 +1,13 @@
 <script setup lang="ts">
 useHead({ title: 'Simony Reading Room', titleTemplate: '%s' })
 
-const { data: readings } = await useAsyncData('home-readings', () =>
+const { data: readings } = await useAsyncData('readings', () =>
   queryCollection('readingsMeta').all()
 )
-const { data: documents } = await useAsyncData('home-documents', () =>
+const { data: documents } = await useAsyncData('documents', () =>
   queryCollection('documentsMeta').all()
 )
-const { data: authors } = await useAsyncData('home-authors', () =>
+const { data: authors } = await useAsyncData('authors', () =>
   queryCollection('authors').all()
 )
 </script>

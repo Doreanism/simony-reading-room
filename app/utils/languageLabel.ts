@@ -6,3 +6,7 @@ export function languageLabel(language: string | undefined | null): string {
     default: return ''
   }
 }
+
+export function translationLabel(language: string | undefined | null): string {
+  return language === 'early-english' ? 'Modern English' : 'English'
+}

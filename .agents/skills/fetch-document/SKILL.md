@@ -42,7 +42,7 @@ Examine the PDF to determine metadata yourself. Do not ask the user for values y
 
 - Render pages at 150 DPI and scan for folio/page numbers in the headers or margins. Start around pages 20-35 of the PDF, as the first numbered folio typically appears after prefatory material (title page, indices, prooemium).
 - Folio numbers appear as "fo.I.", "fo.II.", "Fo.III.", or similar in the top corner of recto pages. Page numbers appear as Arabic numerals.
-- Once you find a numbered page, work backwards to determine `base_pdf_page` (the PDF page of the first numbered folio/page), `base_folio` (the number at that page), and `base_side` (`r` or `v` for folio pagination).
+- Once you find a numbered page, work backwards to determine where pagination begins: the PDF page of the first numbered folio/page (always a recto page, i.e. odd PDF page) and the number at that page. This becomes the first entry in `pagination_starts`.
 
 ### Layout and typeface
 
@@ -52,7 +52,15 @@ Examine the PDF to determine metadata yourself. Do not ask the user for values y
 ### Assemble the meta file
 
 Write the meta file to `content/documents/meta/<key>.md` following the format of existing meta files. Include all fields:
-- `key`, `title`, `title_en`, `author` (slug), `year`, `url` (provenance), `document`, `cover` (`/d/<key>/cover.jpg`), `pages`, `filesize`, `pagination`, `language`, `typeface`, `ocr_model` (default: `10.5281/zenodo.11113737` for Latin; find an appropriate model for other languages), `base_pdf_page`, `base_folio`, `base_side`
+- `key`, `title`, `title_en`, `authors` (list of slugs), `year`, `url` (provenance), `document`, `cover` (`/d/<key>/cover.jpg`), `pages`, `filesize`, `pagination`, `language`, `typeface`, `ocr_model` (default: `10.5281/zenodo.11113737` for Latin; find an appropriate model for other languages)
+- `pagination_starts` — a list of segments, each with `pdf_page` (1-indexed, must be odd for recto-start pages), `printed_page`, and optionally `numeral_type` (default `arabic`) and `base_side` (default `r`). Example:
+  ```yaml
+  pagination_starts:
+    - pdf_page: 53
+      printed_page: 1
+      numeral_type: arabic
+  ```
+  For documents with multiple numbering sequences (e.g., front matter + main text, or two independently numbered sections), add additional entries.
 
 Present the proposed metadata to the user for confirmation before writing.
 
@@ -96,7 +104,7 @@ If no suitable portrait can be found, inform the user and skip the image (leave 
 
 Run: `npm run build:images -- <key>`
 
-This extracts WebP images from the PDF for every page. It may take a while for large documents. Report the result to the user.
+This extracts WebP images from the PDF for every page. It may take a while for large documents. Wait for it to complete before proceeding — page JSON generation depends on the WebP files being present.
 
 ## Step 6: Generate page JSON files
 

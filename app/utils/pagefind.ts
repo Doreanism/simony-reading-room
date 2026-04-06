@@ -38,6 +38,7 @@ export async function searchPagefind(
   query: string,
   options?: { documentKey?: string; limit?: number },
 ): Promise<PagefindSearchResult[]> {
+  if (import.meta.server) return []
   const pf = await loadPagefind()
 
   const filters: Record<string, string> = {}

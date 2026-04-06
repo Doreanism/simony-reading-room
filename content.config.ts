@@ -30,6 +30,11 @@ export default defineContentConfig({
         pages: z.number(),
         filesize: z.string(),
         pagination: z.string(),
+        pagination_starts: z.array(z.object({
+          pdf_page: z.number(),
+          printed_page: z.number(),
+          numeral_type: z.string().optional(),
+        })).optional(),
         language: z.string().optional(),
         typeface: z.string().optional(),
         ocr_model: z.string().optional(),

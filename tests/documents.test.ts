@@ -2,10 +2,11 @@ import { describe, it, expect } from "vitest";
 import { readdirSync, existsSync, readFileSync } from "fs";
 import { join, basename } from "path";
 import imageSize from "image-size";
-import { readYaml, parseFolio } from "../scripts/lib/folio.js";
+import { readYaml } from "../scripts/lib/folio.js";
 
 const AUTHORS_DIR = "content/authors";
 const DOCUMENTS_META = "content/documents/meta";
+const TRANSCRIPTIONS = "content/documents/transcription";
 const READINGS_META = "content/readings/meta";
 const PUBLIC_D = "public/d";
 
@@ -67,49 +68,47 @@ it(`${key} has all ${pages} json files`, () => {
       }
       expect(missing, `Missing json files: ${missing.slice(0, 10).join(", ")}${missing.length > 10 ? "..." : ""}`).toEqual([]);
     });
+
+    const twoColumn = meta.pagination === "folio-two-column" || meta.pagination === "page-two-column";
+    const transcriptionDir = join(TRANSCRIPTIONS, key);
+
+    if (existsSync(transcriptionDir)) {
+      it(`${key} has transcription files for all ${pages} pages`, () => {
+        const missing: string[] = [];
+        for (let p = 1; p <= pages; p++) {
+          if (twoColumn) {
+            if (!existsSync(join(transcriptionDir, `${p}a.md`))) missing.push(`${p}a`);
+            if (!existsSync(join(transcriptionDir, `${p}b.md`))) missing.push(`${p}b`);
+          } else {
+            if (!existsSync(join(transcriptionDir, `${p}.md`))) missing.push(String(p));
+          }
+        }
+        expect(missing, `Missing transcription files: ${missing.slice(0, 10).join(", ")}${missing.length > 10 ? "..." : ""}`).toEqual([]);
+      });
+    }
+
+    if (meta.pagination_starts) {
+      it(`${key} pagination_starts have correct parity`, () => {
+        const isFolio = meta.pagination?.startsWith("folio");
+        for (const seg of meta.pagination_starts) {
+          if (isFolio) {
+            const baseIsRecto = (seg.base_side ?? "r") === "r";
+            if (baseIsRecto) {
+              expect(seg.pdf_page % 2, `Recto pdf_page ${seg.pdf_page} must be odd`).toBe(1);
+            } else {
+              expect(seg.pdf_page % 2, `Verso pdf_page ${seg.pdf_page} must be even`).toBe(0);
+            }
+          } else {
+            expect(
+              seg.pdf_page % 2,
+              `pdf_page ${seg.pdf_page} parity must match printed_page ${seg.printed_page}`
+            ).toBe(seg.printed_page % 2);
+          }
+        }
+      });
+    }
   }
 });
-
-/**
- * Enumerate all page/column refs between start and end (inclusive).
- * For folio-two-column: "145rb" to "146ra" → ["145rb", "145va", "145vb", "146ra"]
- * For page-two-column: "42a" to "43b" → ["42a", "42b", "43a", "43b"]
- * For page: "1" to "5" → ["1", "2", "3", "4", "5"]
- */
-function enumPageRefs(startRef: string, endRef: string): string[] {
-  // Plain page numbers
-  if (/^\d+$/.test(startRef)) {
-    const start = parseInt(startRef);
-    const end = parseInt(endRef);
-    const refs: string[] = [];
-    for (let i = start; i <= end; i++) refs.push(String(i));
-    return refs;
-  }
-  // Page-column refs (page-two-column)
-  if (/^\d+(a|b)$/.test(startRef)) {
-    const start = parseFolio(startRef);
-    const end = parseFolio(endRef);
-    const refs: string[] = [];
-    for (let sort = start.sort; sort <= end.sort; sort++) {
-      const page = Math.floor(sort / 2);
-      const col = sort % 2 === 1 ? "b" : "a";
-      refs.push(`${page}${col}`);
-    }
-    return refs;
-  }
-  // Folio-column refs (folio-two-column)
-  const start = parseFolio(startRef);
-  const end = parseFolio(endRef);
-  const refs: string[] = [];
-  for (let sort = start.sort; sort <= end.sort; sort++) {
-    const folio = Math.floor(sort / 4);
-    const rem = sort % 4;
-    const side = rem >= 2 ? "v" : "r";
-    const col = rem % 2 === 1 ? "b" : "a";
-    refs.push(`${folio}${side}${col}`);
-  }
-  return refs;
-}
 
 describe("readings", () => {
   const metaFiles = readdirSync(READINGS_META).filter((f) => f.endsWith(".md"));
@@ -129,15 +128,25 @@ describe("readings", () => {
       expect(existsSync(join("content/authors", `${author}.md`)), `Missing author: ${author}.md`).toBe(true);
     });
 
-    it(`${key} has transcription files for all pages`, () => {
+    it(`${key} has document transcription files covering reading pages`, () => {
       const transcriptionDir = join("content/documents/transcription", document);
       if (!existsSync(transcriptionDir)) {
         expect.fail(`Missing transcription directory: ${transcriptionDir}`);
       }
-      const expected = enumPageRefs(meta.page_start, meta.page_end);
-      const missing = expected.filter(
-        (ref) => !existsSync(join(transcriptionDir, `${ref}.md`))
-      );
+      const docMeta = readYaml(join(DOCUMENTS_META, `${document}.md`));
+      const twoColumn = docMeta.pagination === "folio-two-column" || docMeta.pagination === "page-two-column";
+
+      const pdfStart = parseInt(meta.pdf_page_start);
+      const pdfEnd = parseInt(meta.pdf_page_end);
+      const missing: string[] = [];
+      for (let p = pdfStart; p <= pdfEnd; p++) {
+        if (twoColumn) {
+          if (!existsSync(join(transcriptionDir, `${p}a.md`))) missing.push(`${p}a`);
+          if (!existsSync(join(transcriptionDir, `${p}b.md`))) missing.push(`${p}b`);
+        } else {
+          if (!existsSync(join(transcriptionDir, `${p}.md`))) missing.push(String(p));
+        }
+      }
       expect(missing, `Missing transcription files: ${missing.join(", ")}`).toEqual([]);
     });
 

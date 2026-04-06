@@ -44,9 +44,9 @@ async function main() {
       const files = readdirSync(docDir).filter((f) => f.endsWith(".md"));
 
       for (const file of files) {
-        const folio = basename(file, ".md");
         const { frontmatter, body } = readMarkdown(join(docDir, file));
-        const pdfPage = frontmatter.pdf_page;
+        const folio = String(frontmatter.page || basename(file, ".md"));
+        const pdfPage = String(frontmatter.pdf_page);
         if (!pdfPage) continue;
 
         // Strip markdown headings for plain text content
@@ -73,7 +73,7 @@ async function main() {
             documentKey: [docKey],
           },
           sort: {
-            pdfPage: pdfPage,
+            pdfPage,
           },
         });
         recordCount++;
@@ -107,7 +107,7 @@ async function main() {
       for (const file of files) {
         const folio = basename(file, ".md");
         const { frontmatter, body } = readMarkdown(join(readingDir, file));
-        const pdfPage = frontmatter.pdf_page;
+        const pdfPage = String(frontmatter.pdf_page);
         if (!pdfPage) continue;
 
         const plainText = body.replace(/^#{1,6}\s+/gm, "").trim();
@@ -128,7 +128,7 @@ async function main() {
             documentKey: [reading.document],
           },
           sort: {
-            pdfPage: pdfPage,
+            pdfPage,
           },
         });
         recordCount++;

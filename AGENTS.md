@@ -69,8 +69,8 @@ Markdown files keyed by author slug (e.g., `john-major.md`). Frontmatter contain
 
 Source materials, organized by type:
 
-- **`meta/`** — Markdown files with metadata per source in frontmatter (title, author, year, provenance URL, page count, file size, `pagination` type, `typeface`, `ocr_model`) and a description of the work in the body. The `year` is the publication year of the specific edition/printing. Pagination types: `folio-two-column`, `folio`, `page`. Typeface values: `gothic`, `roman`, etc. The `ocr_model` field is a Zenodo DOI for the Kraken model to use for OCR.
-- **`transcription/{source-key}/`** — **Generated** per-column transcription files for all pages. Named by folio position (e.g., `145va.md`). These contain raw OCR text (with historical characters like `ſ`). Do not edit directly; edit the page JSON instead and run `build:transcriptions`.
+- **`meta/`** — Markdown files with metadata per source in frontmatter (title, author, year, provenance URL, page count, file size, `pagination` type, `pagination_starts`, `typeface`, `ocr_model`) and a description of the work in the body. The `year` is the publication year of the specific edition/printing. Pagination types: `folio-two-column`, `folio`, `page`. `pagination_starts` maps PDF pages to printed page numbers (each entry: `pdf_page`, `printed_page`, optional `numeral_type`, `base_side`). Typeface values: `gothic`, `roman`, etc. The `ocr_model` field is a Zenodo DOI for the Kraken model to use for OCR.
+- **`transcription/{source-key}/`** — **Generated** per-column transcription files for all pages. Named by PDF page number + column suffix (e.g., `42a.md`, `42b.md` for two-column, `42.md` for single-column). The printed page label is in the `page:` frontmatter field. These contain raw OCR text (with historical characters like `ſ`). Do not edit directly; edit the page JSON instead and run `build:transcriptions`.
 
 ### `content/readings/`
 

@@ -13,10 +13,13 @@ function doc(docKey: string) {
   return documents.value?.find((d) => d.key === docKey)
 }
 
-const sortedReadings = computed(() => {
-  if (!readings.value) return []
-  return [...readings.value].sort((a, b) => (a.year ?? 0) - (b.year ?? 0))
-})
+const { authors, authorName } = useAuthors()
+
+function authorImage(slug: string) {
+  return authors.value?.find((a) => a.key === slug)?.image ?? '/a/anonymous.jpg'
+}
+
+const sortedReadings = computed(() => sortByYear(readings.value ?? []))
 </script>
 
 <template>
@@ -33,7 +36,7 @@ const sortedReadings = computed(() => {
       :image="doc(reading.document)?.cover"
     >
       <template #meta>
-        <AuthorBadge :slug="reading.author" />
+        <AuthorBadge :name="authorName(reading.author)" :image="authorImage(reading.author)" />
         <span>&middot;</span>
         <span v-if="reading.year">{{ reading.year }}</span>
         <span v-if="reading.year">&middot;</span>

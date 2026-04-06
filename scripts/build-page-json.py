@@ -43,7 +43,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from lib.page_json_helpers import (
     DOCUMENTS_META, READINGS_META, PUBLIC_D,
     DEFAULT_OCR_MODEL, DEFAULT_MAX_DIM, DEFAULT_CHUNK_SIZE,
-    read_yaml, pdf_page_to_folio,
+    read_yaml, pdf_page_to_folio, pdf_page_to_printed_page,
 )
 
 MODES = ("kraken", "frompdf", "docai", "vastai")
@@ -116,24 +116,31 @@ def main():
     # Read document config
     doc_meta_path = os.path.join(DOCUMENTS_META, f"{document_key}.md")
     doc_meta = read_yaml(doc_meta_path)
-    base_pdf_page = int(doc_meta["base_pdf_page"])
-    base_folio = int(doc_meta["base_folio"])
+    pagination_starts = doc_meta["pagination_starts"]
     pagination = doc_meta.get("pagination", "folio-two-column")
     is_page_pagination = pagination in ("page", "page-two-column")
-    base_side = doc_meta.get("base_side", "r") if not is_page_pagination else "r"
     ocr_model = doc_meta.get("ocr_model", DEFAULT_OCR_MODEL)
 
     out_dir = os.path.join(PUBLIC_D, document_key)
     os.makedirs(out_dir, exist_ok=True)
 
+    def get_segment(pdf_page):
+        """Find the pagination segment for a given PDF page."""
+        seg = pagination_starts[0]
+        for s in pagination_starts:
+            if pdf_page >= s['pdf_page']:
+                seg = s
+        return seg
+
     # Build page list
     total = end - start + 1
     page_args = []
     for i, p in enumerate(range(start, end + 1)):
+        seg = get_segment(p)
         if is_page_pagination:
-            leaf = str(p - base_pdf_page + base_folio)
+            leaf = str(pdf_page_to_printed_page(p, pagination_starts))
         else:
-            _, _, leaf = pdf_page_to_folio(p, base_pdf_page, base_folio, base_side)
+            _, _, leaf = pdf_page_to_folio(p, seg['pdf_page'], seg['printed_page'])
         page_args.append({
             "page": p,
             "folio": leaf,

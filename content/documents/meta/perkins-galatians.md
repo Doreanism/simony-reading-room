@@ -15,8 +15,10 @@ pagination: page
 language: early-english
 typeface: roman
 ocr_model: ""
-base_pdf_page: 23
-base_folio: 1
+pagination_starts:
+  - pdf_page: 23
+    printed_page: 1
+    numeral_type: arabic
 ---
 
 A posthumous edition of William Perkins's commentary on the first five chapters of Paul's Epistle to the Galatians, printed at London by John Legatt, Printer to the University of Cambridge, in 1607. The work was composed by Perkins (1558–1602), the influential Puritan theologian and fellow of Christ's College, Cambridge, and is continued with a supplement on the sixth chapter by Ralph Cudworth. The commentary proceeds verse by verse, offering Reformed doctrinal exposition and practical application.

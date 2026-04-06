@@ -3,7 +3,10 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from "fs";
 import { join, basename } from "path";
 import { normalizeText, normalizeSearch } from "../utils/normalize-search.js";
-import { parseFolio, sortablePaginationId, readYaml, yamlValue } from "./lib/folio.js";
+import {
+  parseFolio, sortablePaginationId, readYaml, yamlValue,
+  parsePaginationStarts, pdfPageToPrintedPage, PaginationStart,
+} from "./lib/folio.js";
 
 const CONTENT = "content";
 const SOURCES_DIR = join(CONTENT, "documents");
@@ -22,49 +25,97 @@ function buildPerColumn(
   meta: ReadingMeta,
 ): number {
   const documentKey = meta.document;
-  const start = parseFolio(meta.page_start);
-  const end = parseFolio(meta.page_end);
+
+  const docMetaPath = join(SOURCES_DIR, "meta", `${documentKey}.md`);
+  const docMeta = existsSync(docMetaPath) ? readYaml(docMetaPath) : {};
+  const pagination = docMeta.pagination ?? "folio-two-column";
+  const isPagePagination = pagination === "page";
+
+  let paginationStarts: PaginationStart[] | null = null;
+  if (isPagePagination && docMeta.pagination_starts) {
+    paginationStarts = parsePaginationStarts(docMeta.pagination_starts);
+  }
 
   const sourceDir = join(SOURCES_DIR, "transcription", documentKey);
   if (!existsSync(sourceDir)) return 0;
 
-  // List and sort available column files
-  const files = readdirSync(sourceDir)
-    .filter((f) => f.endsWith(".md"))
-    .flatMap((f) => {
-      const ref = basename(f, ".md");
-      try {
-        return [{ file: f, ...parseFolio(ref) }];
-      } catch {
-        return [];
-      }
-    })
-    .sort((a, b) => a.sort - b.sort);
-
-  // Select files in the reading's folio range
-  const selected = files.filter(
-    (f) => f.sort >= start.sort && f.sort <= end.sort
-  );
-
-  if (selected.length === 0) return 0;
-
   // Collect column blocks: ref, pdfPage, content
   const blocks: { ref: string; pdfPage: string; content: string }[] = [];
-  for (const entry of selected) {
-    const raw = readFileSync(join(sourceDir, entry.file), "utf-8").trim();
-    let content = raw;
-    let pdfPage = "";
-    // Strip frontmatter if present, extracting pdf_page
-    if (content.startsWith("---")) {
-      const endIdx = content.indexOf("---", 3);
-      if (endIdx !== -1) {
-        const fm = content.slice(0, endIdx);
-        const pageMatch = fm.match(/pdf_page:\s*(\d+)/);
-        if (pageMatch) pdfPage = pageMatch[1];
-        content = content.slice(endIdx + 3).trim();
+
+  if (meta.pdf_page_start && meta.pdf_page_end) {
+    // Filter source files by pdf_page range (works for all pagination types,
+    // including documents with overlapping folio numbering across segments)
+    const pdfStart = parseInt(meta.pdf_page_start);
+    const pdfEnd = parseInt(meta.pdf_page_end);
+
+    const allFiles = readdirSync(sourceDir).filter((f) => f.endsWith(".md"));
+    for (const file of allFiles) {
+      const raw = readFileSync(join(sourceDir, file), "utf-8").trim();
+      let content = raw;
+      let pdfPage = "";
+      let pageRef = basename(file, ".md");
+
+      if (content.startsWith("---")) {
+        const endIdx = content.indexOf("---", 3);
+        if (endIdx !== -1) {
+          const fm = content.slice(0, endIdx);
+          const pdfMatch = fm.match(/pdf_page:\s*(\d+)/);
+          if (pdfMatch) pdfPage = pdfMatch[1];
+          const pageMatch = fm.match(/page:\s*(\S+)/);
+          if (pageMatch) pageRef = pageMatch[1];
+          content = content.slice(endIdx + 3).trim();
+        }
       }
+
+      const pdfPageNum = parseInt(pdfPage);
+      if (!pdfPage || pdfPageNum < pdfStart || pdfPageNum > pdfEnd) continue;
+
+      blocks.push({ ref: pageRef, pdfPage, content });
     }
-    blocks.push({ ref: entry.ref, pdfPage, content });
+
+    // Sort by pdf_page, then by column (a before b)
+    blocks.sort((a, b) => {
+      const pa = parseInt(a.pdfPage);
+      const pb = parseInt(b.pdfPage);
+      if (pa !== pb) return pa - pb;
+      return a.ref.localeCompare(b.ref);
+    });
+  } else {
+    // Fallback: use folio range from page_start/page_end
+    const start = parseFolio(meta.page_start);
+    const end = parseFolio(meta.page_end);
+
+    const files = readdirSync(sourceDir)
+      .filter((f) => f.endsWith(".md"))
+      .flatMap((f) => {
+        const ref = basename(f, ".md");
+        try {
+          return [{ file: f, ...parseFolio(ref) }];
+        } catch {
+          return [];
+        }
+      })
+      .sort((a, b) => a.sort - b.sort);
+
+    const selected = files.filter(
+      (f) => f.sort >= start.sort && f.sort <= end.sort
+    );
+
+    for (const entry of selected) {
+      const raw = readFileSync(join(sourceDir, entry.file), "utf-8").trim();
+      let content = raw;
+      let pdfPage = "";
+      if (content.startsWith("---")) {
+        const endIdx = content.indexOf("---", 3);
+        if (endIdx !== -1) {
+          const fm = content.slice(0, endIdx);
+          const pageMatch = fm.match(/pdf_page:\s*(\d+)/);
+          if (pageMatch) pdfPage = pageMatch[1];
+          content = content.slice(endIdx + 3).trim();
+        }
+      }
+      blocks.push({ ref: entry.ref, pdfPage, content });
+    }
   }
 
   // Join words split across column boundaries (marked with trailing "=")
@@ -144,17 +195,23 @@ function buildPerColumn(
   mkdirSync(outDir, { recursive: true });
 
   for (const block of blocks) {
-    const outPath = join(outDir, `${block.ref}.md`);
+    // Output ref: for page-pagination with segments, use the printed page number;
+    // otherwise use the source file ref unchanged.
+    const outputRef = paginationStarts
+      ? String(pdfPageToPrintedPage(parseInt(block.pdfPage), paginationStarts))
+      : block.ref;
+
+    const outPath = join(outDir, `${outputRef}.md`);
     if (existsSync(outPath)) continue;
 
     const lines: string[] = [];
     lines.push("---");
     lines.push(`reading: ${yamlValue(readingKey)}`);
-    lines.push(`page: ${block.ref}`);
+    lines.push(`page: ${outputRef}`);
     lines.push(`pdf_page: ${block.pdfPage}`);
     // Format: {pdfPage}.1 or {pdfPage}.2 for two-column pages (folio or page),
     // plain {pdfPage} for single-column pages.
-    const isTwoCol = /^\d+([rv][ab]|[ab])$/.test(block.ref);
+    const isTwoCol = /^\d+([rv][ab]|[ab])'*$/.test(block.ref);
     const colSuffix = isTwoCol ? "." + (block.ref.endsWith("a") ? "1" : "2") : "";
     lines.push(`sortable_pagination_id: ${block.pdfPage}${colSuffix}`);
     lines.push("---");

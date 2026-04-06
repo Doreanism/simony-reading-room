@@ -26,9 +26,7 @@ const { data: reading } = await useAsyncData(`reading-${slug}`, () =>
 
 useHead({ title: () => reading.value?.title_en })
 
-const { data: authors } = await useAsyncData('authors', () =>
-  queryCollection('authors').all()
-)
+const { authors, authorName: resolveAuthorName } = useAuthors()
 
 const { data: documentMeta } = await useAsyncData(`doc-${slug}`, async () => {
   const r = await queryCollection('readingsMeta').where('key', '=', slug).first()
@@ -56,86 +54,27 @@ function wrapBody(nodes: any[]) {
   return { body: { type: 'minimark', value: nodes } }
 }
 
-interface Section {
-  nodes: any[]
-  headingId: string | null
-  gridRow: number
-}
-
-interface FolioData {
-  page: string
-  pdfPage: number
-  dividerRow: number
-  transcriptionSections: Section[]
-  translationSections: Section[]
-}
-
-const folios = computed<FolioData[]>(() => {
-  if (!transcriptionColumns.value) return []
-  const transMap = new Map(
-    (translationColumns.value ?? []).map((c: any) => [c.page, c])
-  )
-
-  let row = 1
-  return transcriptionColumns.value.map((tc: any) => {
-    const tl = transMap.get(tc.page)
-    const dividerRow = row++
-
-    const transNodes: any[] = tc.body?.value ?? []
-    const translNodes: any[] = tl?.body?.value ?? []
-
-    let headingCount = 0
-    const sectionCount = Math.max(transNodes.length, translNodes.length)
-    const transcriptionSections: Section[] = []
-    const translationSections: Section[] = []
-
-    for (let i = 0; i < sectionCount; i++) {
-      const gridRow = row++
-      const tag = Array.isArray(transNodes[i]) ? transNodes[i][0] : transNodes[i]?.tag
-      const isHeading = tag && /^h[1-6]$/.test(tag)
-      if (isHeading) headingCount++
-
-      const transId = isHeading ? `${tc.page}-s${headingCount}` : null
-      const translId = isHeading ? `${tc.page}-l${headingCount}` : null
-
-      if (transNodes[i]) {
-        const node = transId && Array.isArray(transNodes[i])
-          ? [transNodes[i][0], { ...transNodes[i][1], id: transId }, ...transNodes[i].slice(2)]
-          : transNodes[i]
-        transcriptionSections.push({ nodes: [node], headingId: transId, gridRow })
-      }
-      if (translNodes[i]) {
-        const node = translId && Array.isArray(translNodes[i])
-          ? [translNodes[i][0], { ...translNodes[i][1], id: translId }, ...translNodes[i].slice(2)]
-          : translNodes[i]
-        translationSections.push({ nodes: [node], headingId: translId, gridRow })
-      }
-    }
-
-    return { page: tc.page, pdfPage: tc.pdf_page, dividerRow, transcriptionSections, translationSections }
-  })
-})
+const { folios } = useFolioLayout(transcriptionColumns, translationColumns)
 
 const author = computed(() => {
   if (!reading.value) return null
   return authors.value?.find((a) => a.key === reading.value!.author) ?? null
 })
 
-const authorName = computed(() => {
-  if (reading.value?.author === 'anonymous') return 'Anonymous'
-  return author.value?.name_en ?? (reading.value?.author || 'Anonymous')
-})
+const authorName = computed(() => resolveAuthorName(reading.value?.author))
 
 const coverImage = computed(() => {
   if (!documentMeta.value) return null
   return documentMeta.value.cover || `/d/${documentMeta.value.key}/cover.jpg`
 })
 
+const { pdfToLabel } = documentMeta.value
+  ? createPaginationMap(documentMeta.value.pagination, documentMeta.value.pagination_starts, documentMeta.value.pages)
+  : { pdfToLabel: new Map<number, string>() }
+
 const sourceLanguageLabel = computed(() => languageLabel(documentMeta.value?.language) || 'Original')
 
-const translationLanguageLabel = computed(() => {
-  return documentMeta.value?.language === 'early-english' ? 'Modern English' : 'English'
-})
+const translationLanguageLabel = computed(() => translationLabel(documentMeta.value?.language))
 
 </script>
 
@@ -180,7 +119,7 @@ const translationLanguageLabel = computed(() => {
           </NuxtLink>
           <span v-else-if="reading.author === 'anonymous'" class="mt-3 inline-flex items-center gap-2 text-sm text-neutral-500">
             <img
-              src="/a/anonymous.jpg"
+              :src="'/a/anonymous.jpg'"
               alt="Anonymous"
               class="w-8 h-8 rounded-full object-cover"
             />
@@ -219,7 +158,7 @@ const translationLanguageLabel = computed(() => {
             <span class="folio-marker !m-0 !border-0 !p-0 flex items-center gap-1">
               <NuxtLink :to="`#${folio.page}`" class="text-neutral-400">#</NuxtLink>
               <NuxtLink
-                :to="`/documents/${reading.document}/${folio.pdfPage}`"
+                :to="`/documents/${reading.document}/${pdfToLabel.get(folio.pdfPage) ?? folio.pdfPage}`"
                 class="hover:underline"
               >{{ folio.page }}</NuxtLink>
             </span>

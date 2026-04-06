@@ -26,16 +26,14 @@ Use the `public/d/<document_key>/<pdf_page_number>.json` page JSON files to extr
 
 Read `content/documents/meta/<document-key>.md` to get:
 - `pagination` — `page`, `folio`, or `folio-two-column`
-- `base_pdf_page` — PDF page number of the first numbered page/folio
-- `base_folio` — the number at that first page
-- `base_side` — `r` or `v` (for folio documents)
+- `pagination_starts` — list of `{ pdf_page, printed_page }` segments mapping PDF pages to printed page numbers
 - `language`
 
 ## Step 2: Find the passage in the PDF
 
-Use the webp page images to navigate to the passage. To estimate where to start looking:
-- For **page** pagination: `pdf_page ≈ base_pdf_page + (target_page - base_folio)`
-- For **folio** pagination: `pdf_page ≈ base_pdf_page + (target_folio - base_folio) * 2`
+Use the webp page images to navigate to the passage. To estimate where to start looking, use the first `pagination_starts` entry:
+- For **page** pagination: `pdf_page ≈ seg.pdf_page + (target_page - seg.printed_page)`
+- For **folio** pagination: `pdf_page ≈ seg.pdf_page + (target_folio - seg.printed_page) * 2`
 
 Read webp images in the estimated range to locate the exact start and end of the passage. Look for:
 - The verse/section/question heading that introduces the passage

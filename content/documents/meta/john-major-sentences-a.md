@@ -14,9 +14,10 @@ pagination: folio-two-column
 language: latin
 typeface: gothic
 ocr_model: "10.5281/zenodo.11113737"
-base_pdf_page: 13
-base_folio: 2
-base_side: r
+pagination_starts:
+  - pdf_page: 13
+    printed_page: 2
+    numeral_type: arabic
 ---
 
 The first edition (Redactio A) of John Major's commentary on the Fourth Book of Peter Lombard's Sentences, published in Paris in 1509 by the press of Josse Bade (Jodocus Badius Ascensius). This volume covers the sacraments, including distinctions on baptism, confirmation, the Eucharist, penance, extreme unction, orders, matrimony, and simony. The text is set in two columns of dense Gothic type with marginal annotations. This digital copy was scanned from the Bibliothèque nationale de France collection and is hosted by the Internet Archive.
