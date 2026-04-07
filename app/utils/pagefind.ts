@@ -4,12 +4,9 @@ function loadPagefind() {
   if (pagefindPromise) return pagefindPromise
   // Nuxt's virtual:public transform converts static asset imports into URL strings.
   // Two-stage import: first get the resolved URL, then import the actual module.
-  pagefindPromise = import(/* @vite-ignore */ '/pagefind/pagefind.js').then((mod) => {
-    if (typeof mod.default === 'string') {
-      return import(/* @vite-ignore */ mod.default)
-    }
-    return mod
-  })
+  // Indirect so Rollup doesn't try to resolve the import at build time
+  const path = '/pagefind/pagefind.js'
+  pagefindPromise = import(/* @vite-ignore */ path)
   return pagefindPromise
 }
 
