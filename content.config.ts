@@ -17,7 +17,7 @@ export default defineContentConfig({
     }),
     documentsMeta: defineCollection({
       type: 'page',
-      source: 'documents/meta/*.md',
+      source: 'documents/*.md',
       schema: z.object({
         key: z.string(),
         title: z.string(),
@@ -78,8 +78,7 @@ export default defineContentConfig({
         sortable_pagination_id: z.number(),
       }),
     }),
-    // documents/transcription/ is excluded from Nuxt Content — too many files
-    // (~4000+) causes the dev server and build to hang. Search is handled by
-    // Pagefind which indexes those files at build time instead.
+    // Document-level transcription text lives in page JSON (public/d/{doc}/{N}.json),
+    // not in Nuxt Content. Search is handled by Pagefind which indexes JSON directly.
   },
 })

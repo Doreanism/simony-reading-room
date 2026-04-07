@@ -102,8 +102,8 @@ function spreadForPage(page: number): number {
 function resolveLabelToPdf(label: string): number | null {
   const direct = labelToPdf.get(label)
   if (direct != null) return direct
-  // Strip column suffix: "145ra" -> "145r", "42b'" -> "42'"
-  const stripped = label.replace(/([rv\d])[ab]('*)$/, '$1$2')
+  // Strip column suffix: "145ra" -> "145r", "42b_2" -> "42_2"
+  const stripped = label.replace(/([rv\d])[ab](_\d+)?$/, '$1$2')
   if (stripped !== label) {
     const found = labelToPdf.get(stripped)
     if (found != null) return found

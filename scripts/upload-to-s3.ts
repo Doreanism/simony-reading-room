@@ -10,6 +10,9 @@
  * Local layout (public/a/):        S3 layout (authors/):
  *   <file>                            <file>
  *
+ * Local layout (public/pagefind/): S3 layout (pagefind/):
+ *   <file>                            <file>
+ *
  * Usage:
  *   tsx scripts/upload-to-s3.ts                # upload everything
  *   tsx scripts/upload-to-s3.ts <document-key> # upload one document
@@ -22,6 +25,7 @@ import {
   S3Client,
   PutObjectCommand,
   ListObjectsV2Command,
+  DeleteObjectsCommand,
 } from "@aws-sdk/client-s3";
 
 const BUCKET = process.env.BUCKET;
@@ -36,6 +40,7 @@ if (!BUCKET) {
 const s3 = new S3Client({ region: REGION });
 
 const PUBLIC_A = "public/a";
+const PUBLIC_PAGEFIND = "public/pagefind";
 
 const CONTENT_TYPES: Record<string, string> = {
   ".pdf": "application/pdf",
@@ -44,6 +49,8 @@ const CONTENT_TYPES: Record<string, string> = {
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
   ".png": "image/png",
+  ".js": "application/javascript",
+  ".css": "text/css",
 };
 
 async function listRemoteObjects(prefix: string): Promise<Map<string, number>> {
@@ -69,6 +76,8 @@ async function listRemoteObjects(prefix: string): Promise<Map<string, number>> {
   return objects;
 }
 
+const CONCURRENCY = 50;
+
 async function uploadFile(
   localPath: string,
   s3Key: string,
@@ -93,6 +102,23 @@ async function uploadFile(
   return true;
 }
 
+async function uploadFilesConcurrently(
+  files: { localPath: string; s3Key: string }[],
+  remoteObjects: Map<string, number>
+): Promise<number> {
+  let uploaded = 0;
+  for (let i = 0; i < files.length; i += CONCURRENCY) {
+    const batch = files.slice(i, i + CONCURRENCY);
+    const results = await Promise.all(
+      batch.map(({ localPath, s3Key }) =>
+        uploadFile(localPath, s3Key, remoteObjects)
+      )
+    );
+    uploaded += results.filter(Boolean).length;
+  }
+  return uploaded;
+}
+
 async function uploadDocument(documentKey: string) {
   console.log(`  listing remote objects...`);
   const remoteObjects = await listRemoteObjects(`documents/${documentKey}`);
@@ -110,14 +136,13 @@ async function uploadDocument(documentKey: string) {
   // Upload page images and JSON
   const pagesDir = join(PUBLIC_D, documentKey);
   if (existsSync(pagesDir)) {
-    const files = readdirSync(pagesDir).filter(
-      (f) => f.includes(".")
-    );
-    for (const file of files) {
-      const localPath = join(pagesDir, file);
-      const s3Key = `documents/${documentKey}/${file}`;
-      if (await uploadFile(localPath, s3Key, remoteObjects)) uploaded++;
-    }
+    const files = readdirSync(pagesDir)
+      .filter((f) => f.includes("."))
+      .map((f) => ({
+        localPath: join(pagesDir, f),
+        s3Key: `documents/${documentKey}/${f}`,
+      }));
+    uploaded += await uploadFilesConcurrently(files, remoteObjects);
   }
 
   return uploaded;
@@ -131,13 +156,59 @@ async function uploadAuthors(): Promise<number> {
   const remoteObjects = await listRemoteObjects("authors/");
   console.log(`  ${remoteObjects.size} file(s) already on S3`);
 
+  const files = readdirSync(PUBLIC_A)
+    .filter((f) => f.includes("."))
+    .map((f) => ({ localPath: join(PUBLIC_A, f), s3Key: `authors/${f}` }));
+  return uploadFilesConcurrently(files, remoteObjects);
+}
+
+async function uploadPagefind(): Promise<number> {
+  if (!existsSync(PUBLIC_PAGEFIND)) return 0;
+
+  console.log("Uploading pagefind...");
+  console.log("  listing remote objects...");
+  const remoteObjects = await listRemoteObjects("pagefind/");
+  console.log(`  ${remoteObjects.size} file(s) already on S3`);
+
   let uploaded = 0;
-  const files = readdirSync(PUBLIC_A).filter((f) => f.includes("."));
-  for (const file of files) {
-    const localPath = join(PUBLIC_A, file);
-    const s3Key = `authors/${file}`;
-    if (await uploadFile(localPath, s3Key, remoteObjects)) uploaded++;
+
+  function walkDir(dir: string): string[] {
+    const entries = readdirSync(dir, { withFileTypes: true });
+    const files: string[] = [];
+    for (const entry of entries) {
+      const fullPath = join(dir, entry.name);
+      if (entry.isDirectory()) {
+        files.push(...walkDir(fullPath));
+      } else {
+        files.push(fullPath);
+      }
+    }
+    return files;
   }
+
+  const files = walkDir(PUBLIC_PAGEFIND).map((localPath) => {
+    const relativePath = localPath.slice(PUBLIC_PAGEFIND.length + 1);
+    return { localPath, s3Key: `pagefind/${relativePath}` };
+  });
+  const localKeys = new Set(files.map((f) => f.s3Key));
+  uploaded += await uploadFilesConcurrently(files, remoteObjects);
+
+  // Delete stale remote objects (e.g. old content-hashed fragments)
+  const staleKeys = [...remoteObjects.keys()].filter((k) => !localKeys.has(k));
+  if (staleKeys.length > 0) {
+    // DeleteObjects accepts up to 1000 keys per request
+    for (let i = 0; i < staleKeys.length; i += 1000) {
+      const batch = staleKeys.slice(i, i + 1000);
+      await s3.send(
+        new DeleteObjectsCommand({
+          Bucket: BUCKET,
+          Delete: { Objects: batch.map((Key) => ({ Key })) },
+        })
+      );
+    }
+    console.log(`  deleted ${staleKeys.length} stale pagefind file(s)`);
+  }
+
   return uploaded;
 }
 
@@ -151,6 +222,9 @@ if (filterKey) {
 } else {
   // Upload authors
   totalUploaded += await uploadAuthors();
+
+  // Upload pagefind search index
+  totalUploaded += await uploadPagefind();
 
   // Upload documents
   if (existsSync(PUBLIC_D)) {

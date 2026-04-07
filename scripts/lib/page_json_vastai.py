@@ -94,7 +94,7 @@ def run_vastai(document_key: str, start_page: int | None, end_page: int | None):
 
         # Upload files
         print("Uploading build script and lib files...")
-        _run(ssh_cmd + [f"mkdir -p /workspace/scripts/lib /workspace/content/documents/meta /workspace/public/d/{document_key}"])
+        _run(ssh_cmd + [f"mkdir -p /workspace/scripts/lib /workspace/content/documents /workspace/public/d/{document_key}"])
 
         lib_dir = Path(__file__).parent
         script_dir = lib_dir.parent
@@ -106,8 +106,8 @@ def run_vastai(document_key: str, start_page: int | None, end_page: int | None):
             _run(["scp"] + scp_opts + [f[0], f[1]])
 
         _run(["scp"] + scp_opts +
-             [f"content/documents/meta/{document_key}.md",
-              f"{ssh_host}:/workspace/content/documents/meta/{document_key}.md"])
+             [f"content/documents/{document_key}.md",
+              f"{ssh_host}:/workspace/content/documents/{document_key}.md"])
 
         # Install deps
         print("Installing Kraken on remote instance...")

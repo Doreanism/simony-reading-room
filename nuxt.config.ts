@@ -47,6 +47,9 @@ export default defineNuxtConfig({
     '/d/**': {
       proxy: `https://simony.s3.us-west-2.amazonaws.com/documents/**`,
     },
+    '/pagefind/**': {
+      proxy: `https://simony.s3.us-west-2.amazonaws.com/pagefind/**`,
+    },
   },
 
   compatibilityDate: '2025-03-24',

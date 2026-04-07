@@ -1,16 +1,16 @@
 #!/usr/bin/env tsx
 
 /**
- * Builds a Pagefind search index from document transcription and reading
- * translation files.
+ * Builds a Pagefind search index from page JSON and reading translation files.
  *
  * Usage:
  *   tsx scripts/build-search-index.ts
  *
  * Reads:
- *   - content/documents/transcription/{doc}/{folio}.md  (OCR transcriptions)
+ *   - public/d/{doc}/{N}.json                        (OCR page JSON)
+ *   - content/documents/{doc}.md                 (document metadata)
  *   - content/readings/translation/{reading}/{folio}.md (reading translations)
- *   - content/readings/meta/*.md                        (reading metadata)
+ *   - content/readings/meta/*.md                      (reading metadata)
  *
  * Writes the Pagefind index to public/pagefind/.
  */
@@ -18,10 +18,15 @@
 import { readdirSync, existsSync } from "fs";
 import { join, basename } from "path";
 import * as pagefind from "pagefind";
-import { readMarkdown, readYaml } from "./lib/folio.js";
+import {
+  readYaml, readMarkdown,
+  parsePaginationStarts, computeSegmentSuffixes, getSuffixForPdfPage,
+} from "./lib/folio.js";
+import { processPage, linesToText, readPageJson } from "./lib/ocr.js";
 import { normalizeText } from "../utils/normalize-search.js";
 
-const TRANSCRIPTION_DIR = "content/documents/transcription";
+const PUBLIC_D = "public/d";
+const DOCUMENTS_META = "content/documents";
 const TRANSLATION_DIR = "content/readings/translation";
 const READINGS_META_DIR = "content/readings/meta";
 
@@ -33,50 +38,64 @@ async function main() {
 
   let recordCount = 0;
 
-  // --- Index document transcriptions ---
-  if (existsSync(TRANSCRIPTION_DIR)) {
-    const docs = readdirSync(TRANSCRIPTION_DIR, { withFileTypes: true })
-      .filter((d) => d.isDirectory())
-      .map((d) => d.name);
+  // --- Index document transcriptions from page JSON ---
+  if (existsSync(DOCUMENTS_META) && existsSync(PUBLIC_D)) {
+    const docMetaFiles = readdirSync(DOCUMENTS_META).filter((f) => f.endsWith(".md"));
 
-    for (const docKey of docs) {
-      const docDir = join(TRANSCRIPTION_DIR, docKey);
-      const files = readdirSync(docDir).filter((f) => f.endsWith(".md"));
+    for (const metaFile of docMetaFiles) {
+      const meta = readYaml(join(DOCUMENTS_META, metaFile));
+      const docKey = meta.key || basename(metaFile, ".md");
+      const pagesDir = join(PUBLIC_D, docKey);
+      if (!existsSync(pagesDir)) continue;
 
-      for (const file of files) {
-        const { frontmatter, body } = readMarkdown(join(docDir, file));
-        const folio = String(frontmatter.page || basename(file, ".md"));
-        const pdfPage = String(frontmatter.pdf_page);
-        if (!pdfPage) continue;
+      const twoColumn = meta.pagination === "folio-two-column" || meta.pagination === "page-two-column";
+      const segments = meta.pagination_starts
+        ? computeSegmentSuffixes(parsePaginationStarts(meta.pagination_starts), meta.pagination)
+        : [];
 
-        // Strip markdown headings for plain text content
-        const plainText = body
-          .replace(/^#{1,6}\s+/gm, "")
-          .replace(/\\:/g, ":")
-          .trim();
-        if (!plainText) continue;
+      const jsonFiles = readdirSync(pagesDir)
+        .filter((f) => f.endsWith(".json"))
+        .sort((a, b) => parseInt(a) - parseInt(b));
 
-        // Normalize medieval characters so searches for modern text match
-        const normalized = normalizeText(plainText);
+      for (const jsonFile of jsonFiles) {
+        const data = readPageJson(join(pagesDir, jsonFile));
+        const columnEntries = processPage(data, twoColumn);
 
-        await index.addCustomRecord({
-          url: `/documents/${docKey}/${pdfPage}`,
-          content: normalized,
-          language: "la",
-          meta: {
-            folio,
-            pdfPage,
-            documentKey: docKey,
-          },
-          filters: {
-            type: ["transcription"],
-            documentKey: [docKey],
-          },
-          sort: {
-            pdfPage,
-          },
-        });
-        recordCount++;
+        const validFolio = data.folio && /^(\d+(r|v)|\d+)$/.test(data.folio);
+        const suffix = getSuffixForPdfPage(data.pdf_page, segments);
+
+        for (const { col, lines } of columnEntries) {
+          const folio = validFolio
+            ? (col ? `${data.folio}${col}` : data.folio) + suffix
+            : String(data.pdf_page);
+
+          // Strip markdown headings for plain text content
+          const plainText = linesToText(lines)
+            .replace(/^#{1,6}\s+/gm, "")
+            .trim();
+          if (!plainText) continue;
+
+          const normalized = normalizeText(plainText);
+
+          await index.addCustomRecord({
+            url: `/documents/${docKey}/${data.pdf_page}`,
+            content: normalized,
+            language: "la",
+            meta: {
+              folio,
+              pdfPage: String(data.pdf_page),
+              documentKey: docKey,
+            },
+            filters: {
+              type: ["transcription"],
+              documentKey: [docKey],
+            },
+            sort: {
+              pdfPage: String(data.pdf_page),
+            },
+          });
+          recordCount++;
+        }
       }
     }
   }

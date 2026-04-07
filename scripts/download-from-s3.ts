@@ -11,6 +11,9 @@
  *   <key>/<N>.webp                   <key>/<N>.webp
  *   <key>/<N>.json                   <key>/<N>.json
  *
+ * S3 layout (pagefind/):           Local layout (public/pagefind/):
+ *   <file>                            <file>
+ *
  * Usage:
  *   tsx scripts/download-from-s3.ts                # download everything
  *   tsx scripts/download-from-s3.ts <document-key> # download one document
@@ -30,6 +33,7 @@ const BUCKET = process.env.BUCKET;
 const REGION = process.env.REGION || "us-west-2";
 const PUBLIC_A = "public/a";
 const PUBLIC_D = "public/d";
+const PUBLIC_PAGEFIND = "public/pagefind";
 
 if (!BUCKET) {
   console.error("BUCKET env var is required");
@@ -118,6 +122,7 @@ if (filterKey) {
 } else {
   totalDownloaded += await downloadPrefix("authors/", PUBLIC_A, "authors");
   totalDownloaded += await downloadPrefix("documents/", PUBLIC_D, "documents");
+  totalDownloaded += await downloadPrefix("pagefind/", PUBLIC_PAGEFIND, "pagefind");
 }
 
 console.log(`\nDone. ${totalDownloaded} file(s) downloaded.`);

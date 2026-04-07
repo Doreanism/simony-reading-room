@@ -12,7 +12,7 @@ Transcribe the reading `$ARGUMENTS` by iteratively improving per-column transcri
 ## Setup
 
 1. Read the reading meta from `content/readings/meta/$ARGUMENTS.md` to get: `document`, `pdf_page_start`, `pdf_page_end`, `page_start`, `page_end`, `start_text`, `end_text`
-2. Read the document meta from `content/documents/meta/{document}.md` to get: `pagination`, `pagination_starts`
+2. Read the document meta from `content/documents/{document}.md` to get: `pagination`, `pagination_starts`
 3. Determine folio references for each PDF page from the reading transcription files (the `page:` frontmatter field has the folio label for each pdf page)
 
 ## Sources
@@ -25,7 +25,6 @@ Sources per page:
 2. **Page image** at `public/d/{document}/{N}.webp` — high-resolution scan (~1800×2500 pixels). This is the ground truth.
 
 Do **NOT** read:
-- OCR column files (`content/documents/transcription/{document}/*.md`) — these are document-level OCR, not reading-level
 - OCR JSON files (`public/d/{document}/{N}.json`) — these are for the document viewer text overlay, not for transcription
 
 ## Transcription rules
@@ -91,7 +90,7 @@ The body is the transcribed text for that column only. Do not include folio mark
 
 ### Copy OCR transcriptions
 
-Run `npm run build:readings -- $ARGUMENTS` to generate the initial reading transcription files from document-level OCR columns. This copies and normalizes the relevant columns into `content/readings/transcription/$ARGUMENTS/`. The script skips files that already exist, so it is safe to re-run. These OCR-derived files are the starting point; the improvement loop refines them against the page images.
+Run `npm run build:readings -- $ARGUMENTS` to generate the initial reading transcription files from page JSON. This reads the OCR data from `public/d/{document}/{N}.json`, splits columns, normalizes text, and writes to `content/readings/transcription/$ARGUMENTS/`. The script skips files that already exist, so it is safe to re-run. These OCR-derived files are the starting point; the improvement loop refines them against the page images.
 
 ### Improvement loop
 

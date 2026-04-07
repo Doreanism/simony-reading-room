@@ -12,11 +12,11 @@ import { readdirSync, existsSync, mkdirSync } from "fs";
 import { join } from "path";
 import { readYaml } from "./lib/folio.js";
 
-const DOCUMENTS_META = "content/documents/meta";
+const DOCUMENTS_META = "content/documents";
 const PUBLIC_D = "public/d";
 
 if (!existsSync(DOCUMENTS_META)) {
-  console.log("No content/documents/meta directory found.");
+  console.log("No content/documents directory found.");
   process.exit(0);
 }
 

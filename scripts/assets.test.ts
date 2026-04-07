@@ -14,7 +14,7 @@ import { existsSync, readdirSync } from "fs";
 import { join } from "path";
 import { readYaml } from "./lib/folio.js";
 
-const META_DIR = "content/documents/meta";
+const META_DIR = "content/documents";
 const PUBLIC_D = "public/d";
 
 const skipMissing = !!process.env.SKIP_MISSING_ASSETS;

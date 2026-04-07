@@ -24,7 +24,7 @@ Use the `public/d/<document_key>/<pdf_page_number>.json` page JSON files to extr
 
 ## Step 1: Load document metadata
 
-Read `content/documents/meta/<document-key>.md` to get:
+Read `content/documents/<document-key>.md` to get:
 - `pagination` — `page`, `folio`, or `folio-two-column`
 - `pagination_starts` — list of `{ pdf_page, printed_page }` segments mapping PDF pages to printed page numbers
 - `language`

@@ -5,7 +5,7 @@ from pathlib import Path
 
 import yaml
 
-DOCUMENTS_META = "content/documents/meta"
+DOCUMENTS_META = "content/documents"
 READINGS_META = "content/readings/meta"
 PUBLIC_D = "public/d"
 DEFAULT_OCR_MODEL = "10.5281/zenodo.11113737"

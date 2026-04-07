@@ -9,8 +9,8 @@
  * Pipeline steps (in order):
  *   1. build:images            — render page PNGs from PDF
  *   2. build:normalize-spreads — normalize spread image dimensions
- *   3. build:transcriptions    — reshape JSON → per-column markdown
- *   4. build:readings          — combine columns into reading excerpts
+ *   3. build:readings          — combine columns into reading excerpts
+ *   4. build:search-index      — rebuild Pagefind search index
  *
  * Note: Transcription (page images → JSON text) and translation (Latin → English)
  * are done via Claude Code agents, not automated scripts. See README.md.
@@ -26,8 +26,8 @@ if (!documentKey) {
   console.error("Pipeline steps:");
   console.error("  1. build:images            — render page PNGs from PDF");
   console.error("  2. build:normalize-spreads  — normalize spread dimensions");
-  console.error("  3. build:transcriptions     — JSON → markdown");
-  console.error("  4. build:readings           — combine into reading excerpts");
+  console.error("  3. build:readings           — combine into reading excerpts");
+  console.error("  4. build:search-index       — rebuild Pagefind search index");
   console.error("");
   console.error("Transcription and translation are done via Claude Code agents.");
   process.exit(1);
@@ -36,8 +36,8 @@ if (!documentKey) {
 const steps: { name: string; cmd: string }[] = [
   { name: "Page images",        cmd: `tsx scripts/build-page-images.ts ${documentKey}` },
   { name: "Normalize spreads",  cmd: `tsx scripts/normalize-spread-sizes.ts ${documentKey}` },
-  { name: "Generate markdown",  cmd: `tsx scripts/generate-transcriptions.ts ${documentKey}` },
   { name: "Build readings",     cmd: `tsx scripts/build-readings.ts` },
+  { name: "Search index",       cmd: `tsx scripts/build-search-index.ts` },
 ];
 
 for (const step of steps) {

@@ -5,8 +5,7 @@ import imageSize from "image-size";
 import { readYaml } from "../scripts/lib/folio.js";
 
 const AUTHORS_DIR = "content/authors";
-const DOCUMENTS_META = "content/documents/meta";
-const TRANSCRIPTIONS = "content/documents/transcription";
+const DOCUMENTS_META = "content/documents";
 const READINGS_META = "content/readings/meta";
 const PUBLIC_D = "public/d";
 
@@ -69,24 +68,6 @@ it(`${key} has all ${pages} json files`, () => {
       expect(missing, `Missing json files: ${missing.slice(0, 10).join(", ")}${missing.length > 10 ? "..." : ""}`).toEqual([]);
     });
 
-    const twoColumn = meta.pagination === "folio-two-column" || meta.pagination === "page-two-column";
-    const transcriptionDir = join(TRANSCRIPTIONS, key);
-
-    if (existsSync(transcriptionDir)) {
-      it(`${key} has transcription files for all ${pages} pages`, () => {
-        const missing: string[] = [];
-        for (let p = 1; p <= pages; p++) {
-          if (twoColumn) {
-            if (!existsSync(join(transcriptionDir, `${p}a.md`))) missing.push(`${p}a`);
-            if (!existsSync(join(transcriptionDir, `${p}b.md`))) missing.push(`${p}b`);
-          } else {
-            if (!existsSync(join(transcriptionDir, `${p}.md`))) missing.push(String(p));
-          }
-        }
-        expect(missing, `Missing transcription files: ${missing.slice(0, 10).join(", ")}${missing.length > 10 ? "..." : ""}`).toEqual([]);
-      });
-    }
-
     if (meta.pagination_starts) {
       it(`${key} pagination_starts have correct parity`, () => {
         const isFolio = meta.pagination?.startsWith("folio");
@@ -128,26 +109,16 @@ describe("readings", () => {
       expect(existsSync(join("content/authors", `${author}.md`)), `Missing author: ${author}.md`).toBe(true);
     });
 
-    it(`${key} has document transcription files covering reading pages`, () => {
-      const transcriptionDir = join("content/documents/transcription", document);
-      if (!existsSync(transcriptionDir)) {
-        expect.fail(`Missing transcription directory: ${transcriptionDir}`);
-      }
-      const docMeta = readYaml(join(DOCUMENTS_META, `${document}.md`));
-      const twoColumn = docMeta.pagination === "folio-two-column" || docMeta.pagination === "page-two-column";
-
+    it(`${key} has page JSON files covering reading pages`, () => {
+      const jsonDir = join(PUBLIC_D, document);
+      if (!existsSync(jsonDir)) return; // skip when assets not downloaded
       const pdfStart = parseInt(meta.pdf_page_start);
       const pdfEnd = parseInt(meta.pdf_page_end);
-      const missing: string[] = [];
+      const missing: number[] = [];
       for (let p = pdfStart; p <= pdfEnd; p++) {
-        if (twoColumn) {
-          if (!existsSync(join(transcriptionDir, `${p}a.md`))) missing.push(`${p}a`);
-          if (!existsSync(join(transcriptionDir, `${p}b.md`))) missing.push(`${p}b`);
-        } else {
-          if (!existsSync(join(transcriptionDir, `${p}.md`))) missing.push(String(p));
-        }
+        if (!existsSync(join(jsonDir, `${p}.json`))) missing.push(p);
       }
-      expect(missing, `Missing transcription files: ${missing.join(", ")}`).toEqual([]);
+      expect(missing, `Missing JSON files: ${missing.join(", ")}`).toEqual([]);
     });
 
     it(`${key} has reading transcription files`, () => {

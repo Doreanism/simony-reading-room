@@ -51,7 +51,7 @@ Examine the PDF to determine metadata yourself. Do not ask the user for values y
 
 ### Assemble the meta file
 
-Write the meta file to `content/documents/meta/<key>.md` following the format of existing meta files. Include all fields:
+Write the meta file to `content/documents/<key>.md` following the format of existing meta files. Include all fields:
 - `key`, `title`, `title_en`, `authors` (list of slugs), `year`, `url` (provenance), `document`, `cover` (`/d/<key>/cover.jpg`), `pages`, `filesize`, `pagination`, `language`, `typeface`, `ocr_model` (default: `10.5281/zenodo.11113737` for Latin; find an appropriate model for other languages)
 - `pagination_starts` — a list of segments, each with `pdf_page` (1-indexed, must be odd for recto-start pages), `printed_page`, and optionally `numeral_type` (default `arabic`) and `base_side` (default `r`). Example:
   ```yaml
@@ -141,14 +141,11 @@ Required `.env` variables:
 
 If these are not set, inform the user and offer the alternative of running Kraken OCR overnight instead (`npm run build:page-json -- <key>`), which takes ~55s/page.
 
-### After page JSON is generated
-
-Run transcription file generation (fast):
+After Document AI finishes, embed the OCR text into the PDF so the PDF itself has a usable text layer:
 ```
-npm run build:transcriptions -- <key>
+python3 scripts/embed-ocr-in-pdf.py <key>
+mv public/d/<key>-ocr.pdf public/d/<key>.pdf
 ```
-
-Report the number of transcription files generated.
 
 ## Step 7: Run tests
 

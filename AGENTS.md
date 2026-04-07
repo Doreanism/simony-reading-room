@@ -10,12 +10,11 @@ The canonical source of truth for transcribed text is the **page JSON** in `publ
 Source PDF (public/d/{source}.pdf)
   → Page images for ALL pages (public/d/{source}/{N}.webp)
   → OCR JSON for ALL pages (Kraken, for viewer text overlay/search)
-  → Per-column transcription .md files for ALL pages (raw OCR text)
   → build:readings produces per-column normalized reading transcription files
   → Per-column reading translation files written by translate-reading skill
 ```
 
-Assets in `public/a/` and `public/d/` are gitignored. In production they are served from S3 via `/a/` (authors) and `/d/` (documents) proxy routes. For local development, run `npm run download` to pull assets from S3.
+Assets in `public/a/`, `public/d/`, and `public/pagefind/` are gitignored. In production they are served from S3 via proxy routes (`/a/`, `/d/`, `/pagefind/`). For local development, run `npm run download` to pull assets from S3.
 
 ## OCR Setup
 
@@ -45,10 +44,10 @@ These are run once per document and the results are committed or uploaded to S3.
 | Script | Command | Purpose |
 |--------|---------|---------|
 | `build:page-json` | `python3 scripts/build-page-json.py <mode> <doc> [start] [end]` | Produce page JSON. Modes: `kraken`, `frompdf`, `docai`, `vastai` |
-| `build:transcriptions` | `tsx scripts/generate-transcriptions.ts` | Generate per-column .md transcription files from page JSON (all pages) |
 | `build:images` | `tsx scripts/build-page-images.ts` | Extract page images from source PDF |
 | `build:normalize-spreads` | `tsx scripts/normalize-spread-sizes.ts` | Normalize spread image dimensions for the book viewer |
-| `build:readings` | `tsx scripts/build-readings.ts` | Produce per-column normalized reading transcription files from document-level OCR columns |
+| `build:readings` | `tsx scripts/build-readings.ts` | Produce per-column normalized reading transcription files from page JSON |
+| `build:search-index` | `tsx scripts/build-search-index.ts` | Build Pagefind search index from page JSON and translation files |
 
 Example: `npm run build:page-json -- kraken john-major-sentences-a`
 
@@ -56,8 +55,7 @@ Example: `npm run build:page-json -- kraken john-major-sentences-a`
 
 | Script | Command | Purpose |
 |--------|---------|---------|
-| `build` | `tsx scripts/build-search-index.ts && nuxt build` | Build Pagefind search index, then full deploy build |
-| `build:search-index` | `tsx scripts/build-search-index.ts` | Build Pagefind search index from transcription and translation files |
+| `build` | `nuxt build` | Full deploy build (Pagefind index is pre-built and served from S3) |
 
 ## `content/` Directory Structure
 
@@ -67,10 +65,7 @@ Markdown files keyed by author slug (e.g., `john-major.md`). Frontmatter contain
 
 ### `content/documents/`
 
-Source materials, organized by type:
-
-- **`meta/`** — Markdown files with metadata per source in frontmatter (title, author, year, provenance URL, page count, file size, `pagination` type, `pagination_starts`, `typeface`, `ocr_model`) and a description of the work in the body. The `year` is the publication year of the specific edition/printing. Pagination types: `folio-two-column`, `folio`, `page`. `pagination_starts` maps PDF pages to printed page numbers (each entry: `pdf_page`, `printed_page`, optional `numeral_type`, `base_side`). Typeface values: `gothic`, `roman`, etc. The `ocr_model` field is a Zenodo DOI for the Kraken model to use for OCR.
-- **`transcription/{source-key}/`** — **Generated** per-column transcription files for all pages. Named by PDF page number + column suffix (e.g., `42a.md`, `42b.md` for two-column, `42.md` for single-column). The printed page label is in the `page:` frontmatter field. These contain raw OCR text (with historical characters like `ſ`). Do not edit directly; edit the page JSON instead and run `build:transcriptions`.
+Markdown files with metadata per source in frontmatter (title, author, year, provenance URL, page count, file size, `pagination` type, `pagination_starts`, `typeface`, `ocr_model`) and a description of the work in the body. The `year` is the publication year of the specific edition/printing. Pagination types: `folio-two-column`, `folio`, `page`. `pagination_starts` maps PDF pages to printed page numbers (each entry: `pdf_page`, `printed_page`, optional `numeral_type`, `base_side`). Typeface values: `gothic`, `roman`, etc. The `ocr_model` field is a Zenodo DOI for the Kraken model to use for OCR.
 
 ### `content/readings/`
 
@@ -110,7 +105,7 @@ Cover images live at `{source-key}/cover.jpg` inside `public/d/`. Typically extr
 }
 ```
 
-Coordinates are normalized (0-1) relative to page dimensions. Lines are sorted by vertical position. The JSON stores raw OCR output — column splitting is done downstream by `generate-transcriptions.ts` based on the document's pagination type (e.g., `folio-two-column` splits at the horizontal midpoint).
+Coordinates are normalized (0-1) relative to page dimensions. Lines are sorted by vertical position. The JSON stores raw OCR output — column splitting is done downstream by consumer scripts (`build-search-index.ts`, `build-readings.ts`) based on the document's pagination type (e.g., `folio-two-column` splits at the horizontal midpoint). The shared column-splitting logic lives in `scripts/lib/ocr.ts`.
 
 ## Reading Transcription and Translation
 
@@ -122,13 +117,11 @@ Use the skills `/transcribe-reading` and `/translate-reading` for detailed instr
 
 ## Search
 
-Full-text search uses [Pagefind](https://pagefind.app/), a client-side static search library. The search index is built at deploy time by `scripts/build-search-index.ts`, which indexes document transcription files (`content/documents/transcription/`) and reading translation files (`content/readings/translation/`). The index is written to `public/pagefind/` (gitignored).
-
-Document transcription files are **not** registered as a Nuxt Content collection — the volume (~4000+ files) causes the dev server and build to hang. They remain in `content/documents/transcription/` in git but are only read by the Pagefind build script.
+Full-text search uses [Pagefind](https://pagefind.app/), a client-side static search library. The search index is built locally by `scripts/build-search-index.ts`, which reads page JSON from `public/d/` (document transcriptions) and reading translation files from `content/readings/translation/`. The index is written to `public/pagefind/` (gitignored) and uploaded to S3 alongside other assets. In production it is served via the `/pagefind/**` proxy route.
 
 Each indexed record carries metadata (`folio`, `pdfPage`, `documentKey`) and filters (`type: transcription|translation`, `documentKey`) so the client can filter and display results appropriately.
 
-For local development, run `npm run build:search-index` to generate the index before starting the dev server.
+For local development, run `npm run build:search-index` to generate the index, or `npm run download` to pull the pre-built index from S3.
 
 ## Agent Tools
 
@@ -137,6 +130,7 @@ Reusable scripts for agent workflows live in `.agents/tools/`. These are not par
 | Tool | Command | Purpose |
 |------|---------|---------|
 | `pdf-tool.py` | `python3 .agents/tools/pdf-tool.py <command>` | PDF operations (metadata, page rendering) |
+| `image-tool.py` | `python3 .agents/tools/image-tool.py <command>` | Crop/split webp page images for closer reading |
 
 ### pdf-tool.py
 
@@ -146,6 +140,15 @@ Reusable scripts for agent workflows live in `.agents/tools/`. These are not par
 - `cover <pdf> --output <path> [--page N]` — Extract a page as a 3:4 cover image (900x1200 JPG).
 - `text <pdf> <pages> [--limit N]` — Extract embedded text from pages. Limit chars per page with `--limit`.
 - `json <doc-key> <pages> [--limit N]` — Show text from page JSON files (`public/d/<doc>/<N>.json`). Pages are 1-indexed.
+
+### image-tool.py
+
+Operates on webp page images (e.g. `public/d/<doc>/<N>.webp`). Requires Pillow (`pip install pillow`).
+
+- `info <image>` — Print image dimensions and file size.
+- `crop <image> x0 y0 x1 y1 [--scale N] [--output PATH]` — Crop a region using normalized coordinates (0–1). Saves to `/tmp/image-tool-crop.webp` by default.
+- `left <image> [--split 0.5] [--scale N] [--output PATH]` — Extract the left column of a two-column page.
+- `right <image> [--split 0.5] [--scale N] [--output PATH]` — Extract the right column of a two-column page.
 
 ## Vue Conventions
 

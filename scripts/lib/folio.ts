@@ -24,22 +24,22 @@ const POS_MAP: Record<string, string> = {
 /**
  * Parse a folio reference like "145rb", a page-column ref like "42a",
  * or a plain page number like "42" into a sortable structure.
- * Handles trailing prime suffixes (e.g. "145rb'") for documents with
+ * Handles trailing segment suffixes (e.g. "145rb_2") for documents with
  * multiple pagination segments that restart numbering.
  */
 export function parseFolio(ref: string): Folio {
-  // Count and strip trailing primes
-  const primeMatch = ref.match(/('*)$/);
-  const prime = primeMatch ? primeMatch[1].length : 0;
-  const baseRef = prime > 0 ? ref.slice(0, -prime) : ref;
-  // Each prime level adds a large offset so primed folios sort after all non-primed
-  const primeOffset = prime * 10000000;
+  // Strip trailing segment suffix (_2, _3, etc.)
+  const segMatch = ref.match(/_(\d+)$/);
+  const segNum = segMatch ? parseInt(segMatch[1]) : 0;
+  const baseRef = segMatch ? ref.slice(0, -segMatch[0].length) : ref;
+  // Each segment level adds a large offset so suffixed folios sort after all unsuffixed
+  const segOffset = (segNum >= 2 ? segNum - 1 : 0) * 10000000;
 
   // Plain page number (pagination: page)
   const pageMatch = baseRef.match(/^(\d+)$/);
   if (pageMatch) {
     const page = parseInt(pageMatch[1]);
-    return { folio: page, side: "r", col: "a", sort: page + primeOffset, ref };
+    return { folio: page, side: "r", col: "a", sort: page + segOffset, ref };
   }
   // Page-column ref (pagination: page-two-column), e.g. "42a", "42b"
   const pageColMatch = baseRef.match(/^(\d+)(a|b)$/);
@@ -47,7 +47,7 @@ export function parseFolio(ref: string): Folio {
     const page = parseInt(pageColMatch[1]);
     const col = pageColMatch[2] as "a" | "b";
     const sort = page * 2 + (col === "b" ? 1 : 0);
-    return { folio: page, side: "r", col, sort: sort + primeOffset, ref };
+    return { folio: page, side: "r", col, sort: sort + segOffset, ref };
   }
   // Folio-column ref (pagination: folio-two-column), e.g. "145rb"
   const m = baseRef.match(/^(\d+)(r|v)(a|b)$/);
@@ -56,7 +56,7 @@ export function parseFolio(ref: string): Folio {
   const side = m[2] as "r" | "v";
   const col = m[3] as "a" | "b";
   const sort = folio * 4 + (side === "v" ? 2 : 0) + (col === "b" ? 1 : 0);
-  return { folio, side, col, sort: sort + primeOffset, ref };
+  return { folio, side, col, sort: sort + segOffset, ref };
 }
 
 /**
@@ -65,25 +65,25 @@ export function parseFolio(ref: string): Folio {
  * e.g., "145rb" -> "145_002", "42a" -> "42_001", "42" -> "42"
  */
 export function sortablePaginationId(ref: string): string {
-  // Count and strip trailing primes
-  const primeMatch = ref.match(/('*)$/);
-  const prime = primeMatch ? primeMatch[1].length : 0;
-  const baseRef = prime > 0 ? ref.slice(0, -prime) : ref;
-  const primeSuffix = "'".repeat(prime);
+  // Strip trailing segment suffix (_2, _3, etc.)
+  const segMatch = ref.match(/_(\d+)$/);
+  const segNum = segMatch ? parseInt(segMatch[1]) : 0;
+  const baseRef = segMatch ? ref.slice(0, -segMatch[0].length) : ref;
+  const segSuffix = segNum >= 2 ? `_${segNum}` : "";
 
   // Plain page number
-  if (/^\d+$/.test(baseRef)) return baseRef + primeSuffix;
+  if (/^\d+$/.test(baseRef)) return baseRef + segSuffix;
   // Page-column ref (pagination: page-two-column)
   const pageColMatch = baseRef.match(/^(\d+)(a|b)$/);
   if (pageColMatch) {
     const pos = pageColMatch[2] === "a" ? "001" : "002";
-    return `${pageColMatch[1]}_${pos}${primeSuffix}`;
+    return `${pageColMatch[1]}_${pos}${segSuffix}`;
   }
   // Folio-column ref (pagination: folio-two-column)
   const m = baseRef.match(/^(\d+)(r|v)(a|b)$/);
   if (!m) throw new Error(`Invalid folio reference: ${ref}`);
   const pos = POS_MAP[m[2] + m[3]];
-  return `${m[1]}_${pos}${primeSuffix}`;
+  return `${m[1]}_${pos}${segSuffix}`;
 }
 
 /**
@@ -196,9 +196,9 @@ export function getReadingPagesForDocument(documentKey: string): Set<number> {
 }
 
 /**
- * Compute the prime suffix for each pagination segment.
+ * Compute the segment suffix for each pagination segment.
  * When a later segment's first label collides with an earlier segment,
- * it gets a ' suffix (or '' for a third collision, etc.).
+ * it gets a _2 suffix (or _3 for a third collision, etc.).
  * Returns segments sorted by pdfPage with their suffix.
  */
 export function computeSegmentSuffixes(
@@ -214,9 +214,11 @@ export function computeSegmentSuffixes(
       ? `${seg.printedPage}r`
       : String(seg.printedPage);
 
+    let n = 1;
     let suffix = "";
     while (seenFirstLabels.has(firstLabel + suffix)) {
-      suffix += "'";
+      n++;
+      suffix = `_${n}`;
     }
     seenFirstLabels.add(firstLabel + suffix);
 
