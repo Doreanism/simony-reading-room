@@ -6,7 +6,7 @@ author: john-wycliffe
 document: wycliffe-simony
 section: "Complete Work"
 year: 1380
-pdf_page_start: 42
+pdf_page_start: 43
 pdf_page_end: 155
 page_start: 1
 page_end: 113

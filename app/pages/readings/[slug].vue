@@ -68,9 +68,6 @@ const coverImage = computed(() => {
   return documentMeta.value.cover || `/d/${documentMeta.value.key}/cover.jpg`
 })
 
-const { pdfToLabel } = documentMeta.value
-  ? createPaginationMap(documentMeta.value.pagination, documentMeta.value.pagination_starts, documentMeta.value.pages)
-  : { pdfToLabel: new Map<number, string>() }
 
 const sourceLanguageLabel = computed(() => languageLabel(documentMeta.value?.language) || 'Original')
 
@@ -146,24 +143,18 @@ const translationLanguageLabel = computed(() => translationLabel(documentMeta.va
 
     <!-- Side-by-side content: two DOM subtrees with display:contents for grid alignment -->
     <div class="reading-content max-w-6xl mx-auto xl:grid xl:grid-cols-2 gap-x-8" :data-view="currentView">
+      <!-- Folio dividers (outside both columns so they're never hidden by column toggle) -->
+      <FolioDivider
+        v-for="folio in folios"
+        :key="`divider-${folio.page}`"
+        :id="folio.page"
+        :page="folio.page"
+        :document-key="reading.document"
+        :style="{ gridRow: folio.dividerRow, gridColumn: '1 / -1' }"
+      />
       <!-- Transcription column (display:contents so children join parent grid) -->
       <div class="reading-col reading-col-transcription xl:contents">
         <template v-for="folio in folios" :key="folio.page">
-          <div
-            :id="folio.page"
-            class="flex items-center gap-3 my-6"
-            :style="{ gridRow: folio.dividerRow, gridColumn: '1 / -1' }"
-          >
-            <div class="flex-1 border-t border-neutral-300" />
-            <span class="folio-marker !m-0 !border-0 !p-0 flex items-center gap-1">
-              <NuxtLink :to="`#${folio.page}`" class="text-neutral-400">#</NuxtLink>
-              <NuxtLink
-                :to="`/documents/${reading.document}/${pdfToLabel.get(folio.pdfPage) ?? folio.pdfPage}`"
-                class="hover:underline"
-              >{{ folio.page }}</NuxtLink>
-            </span>
-            <div class="flex-1 border-t border-neutral-300" />
-          </div>
           <div
             v-for="section in folio.transcriptionSections"
             :key="section.gridRow"
@@ -179,12 +170,6 @@ const translationLanguageLabel = computed(() => translationLabel(documentMeta.va
       <!-- Translation column -->
       <div class="reading-col reading-col-translation xl:contents">
         <template v-for="folio in folios" :key="folio.page">
-          <!-- Mobile-only folio divider -->
-          <div class="flex items-center gap-3 my-6 xl:hidden">
-            <div class="flex-1 border-t border-neutral-300" />
-            <span class="folio-marker !m-0 !border-0 !p-0">{{ folio.page }}</span>
-            <div class="flex-1 border-t border-neutral-300" />
-          </div>
           <div
             v-for="section in folio.translationSections"
             :key="section.gridRow"
