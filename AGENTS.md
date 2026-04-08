@@ -107,6 +107,12 @@ Cover images live at `{source-key}/cover.jpg` inside `public/d/`. Typically extr
 
 Coordinates are normalized (0-1) relative to page dimensions. Lines are sorted by vertical position. The JSON stores raw OCR output — column splitting is done downstream by consumer scripts (`build-search-index.ts`, `build-readings.ts`) based on the document's pagination type (e.g., `folio-two-column` splits at the horizontal midpoint). The shared column-splitting logic lives in `scripts/lib/ocr.ts`.
 
+## Translation Vocabulary
+
+Preferred English renderings for recurring Latin terms:
+
+- **simoniacus / simoniaci** → "simoniac / simoniacs" (not "simonist / simonists")
+
 ## Reading Transcription and Translation
 
 Reading transcriptions and translations are stored as **per-column files** in `content/readings/transcription/{reading-key}/` and `content/readings/translation/{reading-key}/`. Each file corresponds to one folio column (e.g., `145rb.md`) and contains flowing text for that column only.
