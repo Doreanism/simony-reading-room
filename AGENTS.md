@@ -1,5 +1,7 @@
 # Translation Pipeline
 
+**Do not create git commits.** The user manages commits themselves.
+
 This project is a translation pipeline for medieval printed texts. Source PDFs are split into page images, transcribed, and translated. The site is built with Nuxt Content and deployed at simony.sellingjesus.org.
 
 ## Pipeline Overview

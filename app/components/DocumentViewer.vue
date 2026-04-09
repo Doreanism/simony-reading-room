@@ -70,8 +70,10 @@ const pagePairs = computed(() => {
 
 const currentPair = computed(() => pagePairs.value[currentSpread.value] ?? [])
 
-// Image preloading
+// Image & JSON preloading
 const loadedImages = new Set<string>()
+const jsonCache = new Map<string, any>()
+provide('pageJsonCache', jsonCache)
 
 function preloadImage(page: number): Promise<void> {
   const src = `/d/${props.doc.key}/${page}.webp`
@@ -85,12 +87,23 @@ function preloadImage(page: number): Promise<void> {
   )
 }
 
+function preloadJson(page: number): Promise<void> {
+  const key = `/d/${props.doc.key}/${page}.json`
+  if (jsonCache.has(key)) return Promise.resolve()
+  return $fetch(key).then(
+    (data) => { jsonCache.set(key, data) },
+    () => {},
+  )
+}
+
 function preloadSpread(spreadIdx: number): Promise<void> {
   const pair = pagePairs.value[spreadIdx]
   if (!pair) return Promise.resolve()
-  return Promise.all(
-    pair.filter((p): p is number => p !== null).map(preloadImage),
-  ).then(() => {})
+  const pages = pair.filter((p): p is number => p !== null)
+  return Promise.all([
+    ...pages.map(preloadImage),
+    ...pages.map(preloadJson),
+  ]).then(() => {})
 }
 
 // Find spread index containing a given page number
@@ -102,8 +115,8 @@ function spreadForPage(page: number): number {
 function resolveLabelToPdf(label: string): number | null {
   const direct = labelToPdf.get(label)
   if (direct != null) return direct
-  // Strip column suffix: "145ra" -> "145r", "42b_2" -> "42_2"
-  const stripped = label.replace(/([rv\d])[ab](_\d+)?$/, '$1$2')
+  // Strip column suffix: "145ra" -> "145r", "2.42b" -> "2.42"
+  const stripped = label.replace(/([rv\d])[ab]$/, '$1')
   if (stripped !== label) {
     const found = labelToPdf.get(stripped)
     if (found != null) return found

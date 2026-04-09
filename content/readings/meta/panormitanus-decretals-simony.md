@@ -8,8 +8,8 @@ section: "Liber V, Titulus III"
 year: 1440
 pdf_page_start: 627
 pdf_page_end: 654
-page_start: 69ra_2
-page_end: 82vb_2
+page_start: 2.69ra
+page_end: 2.82vb
 start_text: "simonia"
 ---
 

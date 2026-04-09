@@ -10,7 +10,7 @@ document: /d/salamanca-paludanus-sentences-4.pdf
 cover: /d/salamanca-paludanus-sentences-4/cover.jpg
 pages: 536
 filesize: 78MB
-pagination: folio-two-column
+pagination: page-two-column
 language: latin
 typeface: roman
 ocr_model: "10.5281/zenodo.11113737"

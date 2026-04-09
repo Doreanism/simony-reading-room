@@ -8,8 +8,8 @@ section: "Distinctio XXV, Quaestiones IV–V"
 year: 1315
 pdf_page_start: 304
 pdf_page_end: 311
-page_start: 201vb
-page_end: 205rb
+page_start: 314b
+page_end: 321b
 start_text: "Et videtur quod non: quia non minus est ipse Dominus in spiritualibus quam Imperator in temporalibus"
 end_text: "Ad argumentum in oppositum responsum est in secunda conclusione primi articuli"
 ---

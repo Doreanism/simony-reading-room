@@ -29,10 +29,19 @@ const props = defineProps<{
 }>()
 
 const pageData = ref<PageData | null>(null)
+const jsonCache = inject<Map<string, any>>('pageJsonCache', null)
 
 onMounted(async () => {
+  const key = `/d/${props.documentKey}/${props.page}.json`
+  const cached = jsonCache?.get(key)
+  if (cached) {
+    pageData.value = cached
+    return
+  }
   try {
-    pageData.value = await $fetch<PageData>(`/d/${props.documentKey}/${props.page}.json`)
+    const data = await $fetch<PageData>(key)
+    pageData.value = data
+    jsonCache?.set(key, data)
   } catch {
     // No JSON for this page
   }

@@ -24,15 +24,15 @@ const POS_MAP: Record<string, string> = {
 /**
  * Parse a folio reference like "145rb", a page-column ref like "42a",
  * or a plain page number like "42" into a sortable structure.
- * Handles trailing segment suffixes (e.g. "145rb_2") for documents with
+ * Handles segment prefixes (e.g. "2.145rb") for documents with
  * multiple pagination segments that restart numbering.
  */
 export function parseFolio(ref: string): Folio {
-  // Strip trailing segment suffix (_2, _3, etc.)
-  const segMatch = ref.match(/_(\d+)$/);
+  // Strip leading segment prefix (2., 3., etc.)
+  const segMatch = ref.match(/^(\d+)\./);
   const segNum = segMatch ? parseInt(segMatch[1]) : 0;
-  const baseRef = segMatch ? ref.slice(0, -segMatch[0].length) : ref;
-  // Each segment level adds a large offset so suffixed folios sort after all unsuffixed
+  const baseRef = segMatch ? ref.slice(segMatch[0].length) : ref;
+  // Each segment level adds a large offset so prefixed folios sort after all unprefixed
   const segOffset = (segNum >= 2 ? segNum - 1 : 0) * 10000000;
 
   // Plain page number (pagination: page)
@@ -48,6 +48,14 @@ export function parseFolio(ref: string): Folio {
     const col = pageColMatch[2] as "a" | "b";
     const sort = page * 2 + (col === "b" ? 1 : 0);
     return { folio: page, side: "r", col, sort: sort + segOffset, ref };
+  }
+  // Plain folio ref (pagination: folio), e.g. "3r", "3v"
+  const folioOnlyMatch = baseRef.match(/^(\d+)(r|v)$/);
+  if (folioOnlyMatch) {
+    const folio = parseInt(folioOnlyMatch[1]);
+    const side = folioOnlyMatch[2] as "r" | "v";
+    const sort = folio * 2 + (side === "v" ? 1 : 0);
+    return { folio, side, col: "a", sort: sort + segOffset, ref };
   }
   // Folio-column ref (pagination: folio-two-column), e.g. "145rb"
   const m = baseRef.match(/^(\d+)(r|v)(a|b)$/);
@@ -65,25 +73,28 @@ export function parseFolio(ref: string): Folio {
  * e.g., "145rb" -> "145_002", "42a" -> "42_001", "42" -> "42"
  */
 export function sortablePaginationId(ref: string): string {
-  // Strip trailing segment suffix (_2, _3, etc.)
-  const segMatch = ref.match(/_(\d+)$/);
+  // Strip leading segment prefix (2., 3., etc.)
+  const segMatch = ref.match(/^(\d+)\./);
   const segNum = segMatch ? parseInt(segMatch[1]) : 0;
-  const baseRef = segMatch ? ref.slice(0, -segMatch[0].length) : ref;
-  const segSuffix = segNum >= 2 ? `_${segNum}` : "";
+  const baseRef = segMatch ? ref.slice(segMatch[0].length) : ref;
+  const segPrefix = segNum >= 2 ? `${segNum}.` : "";
 
   // Plain page number
-  if (/^\d+$/.test(baseRef)) return baseRef + segSuffix;
+  if (/^\d+$/.test(baseRef)) return segPrefix + baseRef;
   // Page-column ref (pagination: page-two-column)
   const pageColMatch = baseRef.match(/^(\d+)(a|b)$/);
   if (pageColMatch) {
     const pos = pageColMatch[2] === "a" ? "001" : "002";
-    return `${pageColMatch[1]}_${pos}${segSuffix}`;
+    return `${segPrefix}${pageColMatch[1]}_${pos}`;
   }
+  // Plain folio ref (pagination: folio), e.g. "3r"
+  const folioOnlyMatch2 = baseRef.match(/^(\d+)(r|v)$/);
+  if (folioOnlyMatch2) return segPrefix + baseRef;
   // Folio-column ref (pagination: folio-two-column)
   const m = baseRef.match(/^(\d+)(r|v)(a|b)$/);
   if (!m) throw new Error(`Invalid folio reference: ${ref}`);
   const pos = POS_MAP[m[2] + m[3]];
-  return `${m[1]}_${pos}${segSuffix}`;
+  return `${segPrefix}${m[1]}_${pos}`;
 }
 
 /**
@@ -196,15 +207,15 @@ export function getReadingPagesForDocument(documentKey: string): Set<number> {
 }
 
 /**
- * Compute the segment suffix for each pagination segment.
+ * Compute the segment prefix for each pagination segment.
  * When a later segment's first label collides with an earlier segment,
- * it gets a _2 suffix (or _3 for a third collision, etc.).
- * Returns segments sorted by pdfPage with their suffix.
+ * it gets a "2." prefix (or "3." for a third collision, etc.).
+ * Returns segments sorted by pdfPage with their prefix.
  */
-export function computeSegmentSuffixes(
+export function computeSegmentPrefixes(
   starts: PaginationStart[],
   pagination: string,
-): { pdfPage: number; suffix: string }[] {
+): { pdfPage: number; prefix: string }[] {
   const isFolio = pagination.startsWith("folio");
   const sorted = [...starts].sort((a, b) => a.pdfPage - b.pdfPage);
   const seenFirstLabels = new Set<string>();
@@ -215,30 +226,30 @@ export function computeSegmentSuffixes(
       : String(seg.printedPage);
 
     let n = 1;
-    let suffix = "";
-    while (seenFirstLabels.has(firstLabel + suffix)) {
+    let prefix = "";
+    while (seenFirstLabels.has(prefix + firstLabel)) {
       n++;
-      suffix = `_${n}`;
+      prefix = `${n}.`;
     }
-    seenFirstLabels.add(firstLabel + suffix);
+    seenFirstLabels.add(prefix + firstLabel);
 
-    return { pdfPage: seg.pdfPage, suffix };
+    return { pdfPage: seg.pdfPage, prefix };
   });
 }
 
 /**
- * Look up the prime suffix for a given PDF page number.
- * segments must be sorted by pdfPage (as returned by computeSegmentSuffixes).
+ * Look up the segment prefix for a given PDF page number.
+ * segments must be sorted by pdfPage (as returned by computeSegmentPrefixes).
  */
-export function getSuffixForPdfPage(
+export function getPrefixForPdfPage(
   pdfPage: number,
-  segments: { pdfPage: number; suffix: string }[],
+  segments: { pdfPage: number; prefix: string }[],
 ): string {
-  let suffix = "";
+  let prefix = "";
   for (const seg of segments) {
-    if (pdfPage >= seg.pdfPage) suffix = seg.suffix;
+    if (pdfPage >= seg.pdfPage) prefix = seg.prefix;
   }
-  return suffix;
+  return prefix;
 }
 
 /**

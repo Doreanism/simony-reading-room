@@ -10,16 +10,6 @@
   text-align: left;
 }
 
-/* Reading column visibility: on small screens, hide the inactive column */
-@media (max-width: 1279px) {
-  .reading-content[data-view="translation"] .reading-col-transcription {
-    display: none;
-  }
-  .reading-content[data-view="transcription"] .reading-col-translation {
-    display: none;
-  }
-}
-
 /* Folio markers rendered as subtle annotations in reading dividers */
 .folio-marker {
   font-size: 0.7rem;

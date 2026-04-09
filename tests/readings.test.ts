@@ -52,18 +52,18 @@ function blockStructure(body: string): Array<{ type: 'heading'; depth: number } 
  * Handles folio-column refs ("145ra"), page-column refs ("179a"), and plain page numbers ("42").
  */
 function expectedPageSequence(pageStart: string, pageEnd: string): string[] {
-  // Extract and strip trailing segment suffix (_2, _3, etc.)
-  const segMatch = String(pageStart).match(/_(\d+)$/);
-  const segSuffix = segMatch ? segMatch[0] : "";
-  const baseStart = segSuffix ? String(pageStart).slice(0, -segSuffix.length) : String(pageStart);
-  const baseEnd = segSuffix ? String(pageEnd).slice(0, -segSuffix.length) : String(pageEnd);
+  // Extract and strip leading segment prefix (2., 3., etc.)
+  const segMatch = String(pageStart).match(/^(\d+\.)/);
+  const segPrefix = segMatch ? segMatch[0] : "";
+  const baseStart = segPrefix ? String(pageStart).slice(segPrefix.length) : String(pageStart);
+  const baseEnd = segPrefix ? String(pageEnd).slice(segPrefix.length) : String(pageEnd);
 
   // Plain page numbers
   if (/^\d+$/.test(baseStart)) {
     const start = parseInt(baseStart);
     const end = parseInt(baseEnd);
     const sequence: string[] = [];
-    for (let i = start; i <= end; i++) sequence.push(String(i) + segSuffix);
+    for (let i = start; i <= end; i++) sequence.push(segPrefix + String(i));
     return sequence;
   }
   // Page-column refs (page-two-column), e.g. "179a", "219b"
@@ -74,7 +74,19 @@ function expectedPageSequence(pageStart: string, pageEnd: string): string[] {
     for (let sort = start.sort; sort <= end.sort; sort++) {
       const page = Math.floor(sort / 2);
       const col = sort % 2 === 0 ? "a" : "b";
-      sequence.push(`${page}${col}${segSuffix}`);
+      sequence.push(`${segPrefix}${page}${col}`);
+    }
+    return sequence;
+  }
+  // Plain folio refs (folio), e.g. "3r", "8r"
+  if (/^\d+[rv]$/.test(baseStart)) {
+    const start = parseFolio(baseStart);
+    const end = parseFolio(baseEnd);
+    const sequence: string[] = [];
+    for (let sort = start.sort; sort <= end.sort; sort++) {
+      const folio = Math.floor(sort / 2);
+      const side = sort % 2 === 0 ? "r" : "v";
+      sequence.push(`${segPrefix}${folio}${side}`);
     }
     return sequence;
   }
@@ -91,7 +103,7 @@ function expectedPageSequence(pageStart: string, pageEnd: string): string[] {
 
   for (let folio = start.folio; folio <= end.folio + 1; folio++) {
     for (const pos of positions) {
-      const ref = `${folio}${pos.side}${pos.col}${segSuffix}`;
+      const ref = `${segPrefix}${folio}${pos.side}${pos.col}`;
       const sort = folio * 4 + (pos.side === "v" ? 2 : 0) + (pos.col === "b" ? 1 : 0);
       if (sort >= start.sort && sort <= end.sort) {
         sequence.push(ref);
@@ -145,18 +157,17 @@ describe("readings", () => {
         const page = basename(file, ".md");
         const pdfPage = String(frontmatter.pdf_page);
         const sid = String(frontmatter.sortable_pagination_id);
-        const isFolioColumn = /^\d+[rv][ab](_\d+)?$/.test(page);
-        const isPageColumn = /^\d+[ab](_\d+)?$/.test(page);
+        const isFolioColumn = /^(\d+\.)?\d+[rv][ab]$/.test(page);
+        const isPageColumn = /^(\d+\.)?\d+[ab]$/.test(page);
 
-        // Must be an unquoted number in the YAML (no surrounding quotes in raw file)
-        const rawContent = readFileSync(join(transcriptionDir, file), "utf-8");
+        // Must be a positive number (not NaN, not a string, not negative)
         expect(
-          rawContent,
-          `${file}: sortable_pagination_id must be an unquoted number (no quotes)`
-        ).toMatch(/^sortable_pagination_id: \d/m);
+          frontmatter.sortable_pagination_id,
+          `${file}: sortable_pagination_id must be a positive number, got ${JSON.stringify(frontmatter.sortable_pagination_id)}`
+        ).toBeGreaterThan(0);
 
         if (isFolioColumn || isPageColumn) {
-          const col = page.replace(/_\d+$/, "").endsWith("a") ? "1" : "2";
+          const col = page.replace(/^\d+\./, "").endsWith("a") ? "1" : "2";
           expect(
             sid,
             `${file}: sortable_pagination_id should be ${pdfPage}.${col}`

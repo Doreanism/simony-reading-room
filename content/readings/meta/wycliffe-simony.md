@@ -7,9 +7,9 @@ document: wycliffe-simony
 section: "Complete Work"
 year: 1380
 pdf_page_start: 43
-pdf_page_end: 155
+pdf_page_end: 154
 page_start: 1
-page_end: 113
+page_end: 112
 start_text: "Post generalem sermonem de heresi"
 end_text: "totam ecclesiam semper regnat. Amen."
 ---

@@ -6,7 +6,7 @@ import { normalizeText, normalizeSearch } from "../utils/normalize-search.js";
 import {
   readYaml, yamlValue,
   parsePaginationStarts, pdfPageToPrintedPage, PaginationStart,
-  computeSegmentSuffixes, getSuffixForPdfPage,
+  computeSegmentPrefixes, getPrefixForPdfPage,
 } from "./lib/folio.js";
 import { processPage, linesToText, readPageJson } from "./lib/ocr.js";
 
@@ -43,9 +43,9 @@ function buildPerColumn(
   const pagesDir = join(PUBLIC_D, documentKey);
   if (!existsSync(pagesDir)) return 0;
 
-  // Build segment suffix map for folio label computation
+  // Build segment prefix map for folio label computation
   const segments = docMeta.pagination_starts
-    ? computeSegmentSuffixes(parsePaginationStarts(docMeta.pagination_starts), pagination)
+    ? computeSegmentPrefixes(parsePaginationStarts(docMeta.pagination_starts), pagination)
     : [];
 
   const pdfStart = parseInt(meta.pdf_page_start);
@@ -63,11 +63,11 @@ function buildPerColumn(
     const columnEntries = processPage(data, twoColumn);
 
     const validFolio = data.folio && /^(\d+(r|v)|\d+)$/.test(data.folio);
-    const suffix = getSuffixForPdfPage(data.pdf_page, segments);
+    const prefix = getPrefixForPdfPage(data.pdf_page, segments);
 
     for (const { col, lines } of columnEntries) {
       const pageLabel = validFolio
-        ? (col ? `${data.folio}${col}` : data.folio) + suffix
+        ? prefix + (col ? `${data.folio}${col}` : data.folio)
         : String(data.pdf_page);
 
       const text = linesToText(lines)
@@ -179,7 +179,7 @@ function buildPerColumn(
     lines.push(`pdf_page: ${block.pdfPage}`);
     // Format: {pdfPage}.1 or {pdfPage}.2 for two-column pages (folio or page),
     // plain {pdfPage} for single-column pages.
-    const isTwoCol = /^\d+([rv][ab]|[ab])(_\d+)?$/.test(block.ref);
+    const isTwoCol = /^(\d+\.)?\d+([rv][ab]|[ab])$/.test(block.ref);
     const colSuffix = isTwoCol ? "." + (block.ref.endsWith("a") ? "1" : "2") : "";
     lines.push(`sortable_pagination_id: ${block.pdfPage}${colSuffix}`);
     lines.push("---");

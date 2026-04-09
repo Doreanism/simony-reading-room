@@ -4,8 +4,8 @@ const props = defineProps<{
   documentKey: string
 }>()
 
-// Strip column suffix (a/b) for folio-two-column pages: "145ra" → "145r"
-const documentPage = computed(() => props.page.replace(/^(\d+[rv])[ab]$/, '$1'))
+// Strip column suffix (a/b) for folio-two-column pages: "145ra" → "145r", "2.145ra" → "2.145r"
+const documentPage = computed(() => props.page.replace(/^((?:\d+\.)?\d+[rv])[ab]$/, '$1'))
 </script>
 
 <template>

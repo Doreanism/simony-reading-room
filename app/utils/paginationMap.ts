@@ -39,7 +39,7 @@ function computeLabel(pdfPage: number, seg: PaginationStartDef, isFolio: boolean
  *
  * For folio pagination: labels like "2r", "145v".
  * For page pagination: labels like "42" or "xliv" (roman).
- * When a second numbering sequence collides, labels get a _2 suffix (e.g. "2r_2").
+ * When a second numbering sequence collides, labels get a "2." prefix (e.g. "2.2r").
  * Front-matter pages (before the first segment) use their PDF page number.
  */
 export function createPaginationMap(
@@ -69,14 +69,14 @@ export function createPaginationMap(
     // Detect collision with earlier segments
     const firstLabel = computeLabel(seg.pdf_page, seg, isFolio)
     let n = 1
-    let suffix = ''
-    while (labelToPdf.has(firstLabel + suffix)) {
+    let prefix = ''
+    while (labelToPdf.has(prefix + firstLabel)) {
       n++
-      suffix = `_${n}`
+      prefix = `${n}.`
     }
 
     for (let pdfPage = seg.pdf_page; pdfPage < segEnd; pdfPage++) {
-      const label = computeLabel(pdfPage, seg, isFolio) + suffix
+      const label = prefix + computeLabel(pdfPage, seg, isFolio)
       pdfToLabel.set(pdfPage, label)
       labelToPdf.set(label, pdfPage)
     }

@@ -20,7 +20,7 @@ import { join, basename } from "path";
 import * as pagefind from "pagefind";
 import {
   readYaml, readMarkdown,
-  parsePaginationStarts, computeSegmentSuffixes, getSuffixForPdfPage,
+  parsePaginationStarts, computeSegmentPrefixes, getPrefixForPdfPage,
 } from "./lib/folio.js";
 import { processPage, linesToText, readPageJson } from "./lib/ocr.js";
 import { normalizeText } from "../utils/normalize-search.js";
@@ -50,7 +50,7 @@ async function main() {
 
       const twoColumn = meta.pagination === "folio-two-column" || meta.pagination === "page-two-column";
       const segments = meta.pagination_starts
-        ? computeSegmentSuffixes(parsePaginationStarts(meta.pagination_starts), meta.pagination)
+        ? computeSegmentPrefixes(parsePaginationStarts(meta.pagination_starts), meta.pagination)
         : [];
 
       const jsonFiles = readdirSync(pagesDir)
@@ -62,11 +62,11 @@ async function main() {
         const columnEntries = processPage(data, twoColumn);
 
         const validFolio = data.folio && /^(\d+(r|v)|\d+)$/.test(data.folio);
-        const suffix = getSuffixForPdfPage(data.pdf_page, segments);
+        const prefix = getPrefixForPdfPage(data.pdf_page, segments);
 
         for (const { col, lines } of columnEntries) {
           const folio = validFolio
-            ? (col ? `${data.folio}${col}` : data.folio) + suffix
+            ? prefix + (col ? `${data.folio}${col}` : data.folio)
             : String(data.pdf_page);
 
           // Strip markdown headings for plain text content

@@ -8,7 +8,7 @@
     "build:nuxt": "nuxt build && rm -rf .output/public/d .output/public/a .output/public/pagefind",
     "build:search-index": "tsx scripts/build-search-index.ts",
     "pipeline": "tsx scripts/pipeline.ts",
-    "build:images": "tsx scripts/build-page-images.ts",
+    "build:images": ".venv/bin/python3 scripts/build-page-images.py",
     "build:normalize-spreads": "tsx scripts/normalize-spread-sizes.ts",
     "build:page-json": ".venv/bin/python3 scripts/build-page-json.py",
     "build:merge": "tsx scripts/merge-transcriptions.ts",

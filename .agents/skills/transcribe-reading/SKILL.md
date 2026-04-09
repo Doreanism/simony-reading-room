@@ -78,11 +78,11 @@ Each file has this frontmatter:
 reading: $ARGUMENTS
 page: {folio_column}
 pdf_page: {pdf_page_number}
-sortable_pagination_id: "{folio}_{position}"
+sortable_pagination_id: {sort_id}
 ---
 ```
 
-Where `sortable_pagination_id` uses the position mapping: ra=001, rb=002, va=003, vb=004. Example: `145rb` → `"145_002"`.
+Where `sortable_pagination_id` is a positive number based on `pdf_page`: for single-column pages it equals `pdf_page` (e.g., `7`); for two-column pages the first column is `pdf_page.1` and the second is `pdf_page.2` (e.g., `938.1`, `938.2`). It must be an unquoted YAML number, never a string.
 
 The body is the transcribed text for that column only. Do not include folio markers in the text — the column identity is the filename.
 
