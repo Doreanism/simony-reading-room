@@ -53,7 +53,7 @@ Examine the PDF to determine metadata yourself. Do not ask the user for values y
 
 Write the meta file to `content/documents/<key>.md` following the format of existing meta files. Include all fields:
 - `key`, `title`, `title_en`, `authors` (list of slugs), `year`, `url` (provenance), `document`, `cover` (`/d/<key>/cover.jpg`), `pages`, `filesize`, `pagination`, `language`, `typeface`, `ocr_model` (default: `10.5281/zenodo.11113737` for Latin; find an appropriate model for other languages)
-- `pagination_starts` — a list of segments, each with `pdf_page` (1-indexed, must be odd for recto-start pages), `printed_page`, and optionally `numeral_type` (default `arabic`) and `base_side` (default `r`). Example:
+- `pagination_starts` — a list of segments, each with `pdf_page` (1-indexed, must be odd for recto-start pages), `printed_page`, and optionally `numeral_type` (default `arabic`). Example:
   ```yaml
   pagination_starts:
     - pdf_page: 53

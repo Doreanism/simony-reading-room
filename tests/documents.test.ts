@@ -69,16 +69,19 @@ it(`${key} has all ${pages} json files`, () => {
     });
 
     if (meta.pagination_starts) {
+      it(`${key} pagination_starts have required fields`, () => {
+        for (const seg of meta.pagination_starts) {
+          expect(seg.pdf_page, `pagination_starts entry missing pdf_page`).toBeDefined();
+          expect(seg.printed_page, `pagination_starts entry missing printed_page`).toBeDefined();
+          expect(seg.numeral_type, `pagination_starts entry missing numeral_type`).toBeDefined();
+        }
+      });
+
       it(`${key} pagination_starts have correct parity`, () => {
         const isFolio = meta.pagination?.startsWith("folio");
         for (const seg of meta.pagination_starts) {
           if (isFolio) {
-            const baseIsRecto = (seg.base_side ?? "r") === "r";
-            if (baseIsRecto) {
-              expect(seg.pdf_page % 2, `Recto pdf_page ${seg.pdf_page} must be odd`).toBe(1);
-            } else {
-              expect(seg.pdf_page % 2, `Verso pdf_page ${seg.pdf_page} must be even`).toBe(0);
-            }
+            expect(seg.pdf_page % 2, `Recto pdf_page ${seg.pdf_page} must be odd`).toBe(1);
           } else {
             expect(
               seg.pdf_page % 2,

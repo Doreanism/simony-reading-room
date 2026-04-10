@@ -67,7 +67,7 @@ Markdown files keyed by author slug (e.g., `john-major.md`). Frontmatter contain
 
 ### `content/documents/`
 
-Markdown files with metadata per source in frontmatter (title, author, year, provenance URL, page count, file size, `pagination` type, `pagination_starts`, `typeface`, `ocr_model`) and a description of the work in the body. The `year` is the publication year of the specific edition/printing. Pagination types: `folio-two-column`, `folio`, `page`. `pagination_starts` maps PDF pages to printed page numbers (each entry: `pdf_page`, `printed_page`, optional `numeral_type`, `base_side`). Typeface values: `gothic`, `roman`, etc. The `ocr_model` field is a Zenodo DOI for the Kraken model to use for OCR.
+Markdown files with metadata per source in frontmatter (title, author, year, provenance URL, page count, file size, `pagination` type, `pagination_starts`, `typeface`, `ocr_model`) and a description of the work in the body. The `year` is the publication year of the specific edition/printing. Pagination types: `folio-two-column`, `folio`, `page`. `pagination_starts` maps PDF pages to printed page numbers (each entry: `pdf_page`, `printed_page`, optional `numeral_type`). Typeface values: `gothic`, `roman`, etc. The `ocr_model` field is a Zenodo DOI for the Kraken model to use for OCR.
 
 ### `content/readings/`
 
