@@ -106,6 +106,8 @@ Run: `npm run build:images -- <key>`
 
 This extracts WebP images from the PDF for every page. It may take a while for large documents. Wait for it to complete before proceeding — page JSON generation depends on the WebP files being present.
 
+**Important:** Do NOT run this step inside a background agent or in parallel with other CPU-intensive work. The script is CPU and memory intensive (renders high-DPI pixmaps from the PDF), and running it concurrently with other agents or other instances of itself will overload the system and crash the terminal. Run it in the foreground and wait for it to finish.
+
 ## Step 6: Generate page JSON files
 
 Page JSON files (one per page in `public/d/<key>/`) drive the document viewer text overlay and search index. Generate them now using the appropriate method.

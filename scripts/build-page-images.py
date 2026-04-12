@@ -11,6 +11,7 @@ Usage:
 
 import io
 import multiprocessing
+import os
 import sys
 from pathlib import Path
 
@@ -39,7 +40,7 @@ def render_page(args):
     images = page.get_images()
     if images:
         max_w = max(doc.extract_image(im[0])["width"] for im in images)
-        dpi = round(max_w / (pw / 72))
+        dpi = min(round(max_w / (pw / 72)), 300)
     else:
         dpi = 300
 
@@ -88,10 +89,15 @@ def main():
         return
 
     cpu_count = multiprocessing.cpu_count()
-    print(f"\nConverting {len(tasks)} page(s) using {cpu_count} CPU(s)...\n")
+    # Each worker loads the full PDF + renders a pixmap; estimate ~512MB per worker.
+    avail_mb = os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_AVPHYS_PAGES") / (1024 ** 2)
+    mem_workers = max(1, int(avail_mb // 512))
+    workers = min(cpu_count, mem_workers)
+    print(f"\nConverting {len(tasks)} page(s) using {workers} worker(s) "
+          f"({cpu_count} CPUs, {int(avail_mb)} MB available)...\n")
 
     converted = 0
-    with multiprocessing.Pool() as pool:
+    with multiprocessing.Pool(workers) as pool:
         for doc_key, page_num, dpi, w, h in pool.imap_unordered(render_page, tasks):
             print(f"  {doc_key}/{page_num}.webp — {dpi} DPI ({w}x{h})")
             converted += 1

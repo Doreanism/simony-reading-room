@@ -46,7 +46,7 @@ These are run once per document and the results are committed or uploaded to S3.
 | Script | Command | Purpose |
 |--------|---------|---------|
 | `build:page-json` | `python3 scripts/build-page-json.py <mode> <doc> [start] [end]` | Produce page JSON. Modes: `kraken`, `frompdf`, `docai`, `vastai` |
-| `build:images` | `tsx scripts/build-page-images.ts` | Extract page images from source PDF |
+| `build:images` | `.venv/bin/python3 scripts/build-page-images.py` | Extract page images from source PDF |
 | `build:normalize-spreads` | `tsx scripts/normalize-spread-sizes.ts` | Normalize spread image dimensions for the book viewer |
 | `build:readings` | `tsx scripts/build-readings.ts` | Produce per-column normalized reading transcription files from page JSON |
 | `build:search-index` | `tsx scripts/build-search-index.ts` | Build Pagefind search index from page JSON and translation files |
