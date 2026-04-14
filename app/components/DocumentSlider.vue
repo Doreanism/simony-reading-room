@@ -4,7 +4,7 @@ const props = defineProps<{
   max: number
   pagePairs: (number | null)[][]
   documentKey: string
-  pagination?: string | null
+  paginationStarts?: any[]
 }>()
 
 const emit = defineEmits<{
@@ -90,7 +90,7 @@ const hoverLabel = computed(() => {
   const pages = pair.filter((p): p is number => p !== null)
   const folios = hoverFolios.value.filter((f): f is string => f !== null)
   if (folios.length === pages.length) {
-    const prefix = paginationPrefix(props.pagination)
+    const prefix = paginationPrefix(paginationForPdfPage(props.paginationStarts, pages[0]!))
     return `${prefix} ${folios.join("\u2013")}`
   }
   return pages.join("\u2013")

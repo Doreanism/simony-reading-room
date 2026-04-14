@@ -2,7 +2,7 @@ export interface PaginationStartDef {
   pdf_page: number
   printed_page: number
   numeral_type?: string
-
+  pagination: string
 }
 
 function toRoman(n: number): string {
@@ -18,7 +18,8 @@ function toRoman(n: number): string {
   return result
 }
 
-function computeLabel(pdfPage: number, seg: PaginationStartDef, isFolio: boolean): string {
+function computeLabel(pdfPage: number, seg: PaginationStartDef): string {
+  const isFolio = seg.pagination.startsWith('folio')
   if (isFolio) {
     const offset = pdfPage - seg.pdf_page
     const absIndex = offset
@@ -26,6 +27,11 @@ function computeLabel(pdfPage: number, seg: PaginationStartDef, isFolio: boolean
     const isRecto = absIndex % 2 === 0
     const folio = seg.printed_page + folioOffset
     return `${folio}${isRecto ? 'r' : 'v'}`
+  }
+  if (seg.pagination === 'column') {
+    const offset = pdfPage - seg.pdf_page
+    const left = seg.printed_page + offset * 2
+    return `${left}\u2013${left + 1}`
   }
   const printed = seg.printed_page + (pdfPage - seg.pdf_page)
   if (seg.numeral_type === 'roman') {
@@ -37,13 +43,12 @@ function computeLabel(pdfPage: number, seg: PaginationStartDef, isFolio: boolean
 /**
  * Build bidirectional maps between PDF page numbers and printed page labels.
  *
- * For folio pagination: labels like "2r", "145v".
- * For page pagination: labels like "42" or "xliv" (roman).
+ * Each pagination segment carries its own pagination type, so one document
+ * may mix folio and page labels across segments.
  * When a second numbering sequence collides, labels get a "2." prefix (e.g. "2.2r").
  * Front-matter pages (before the first segment) use their PDF page number.
  */
 export function createPaginationMap(
-  pagination: string,
   paginationStarts: PaginationStartDef[] | undefined,
   totalPages: number,
 ) {
@@ -59,7 +64,6 @@ export function createPaginationMap(
     return { pdfToLabel, labelToPdf }
   }
 
-  const isFolio = isFolioPagination(pagination)
   const sorted = [...paginationStarts].sort((a, b) => a.pdf_page - b.pdf_page)
 
   for (let si = 0; si < sorted.length; si++) {
@@ -67,7 +71,7 @@ export function createPaginationMap(
     const segEnd = si + 1 < sorted.length ? sorted[si + 1]!.pdf_page : totalPages + 1
 
     // Detect collision with earlier segments
-    const firstLabel = computeLabel(seg.pdf_page, seg, isFolio)
+    const firstLabel = computeLabel(seg.pdf_page, seg)
     let n = 1
     let prefix = ''
     while (labelToPdf.has(prefix + firstLabel)) {
@@ -76,9 +80,17 @@ export function createPaginationMap(
     }
 
     for (let pdfPage = seg.pdf_page; pdfPage < segEnd; pdfPage++) {
-      const label = prefix + computeLabel(pdfPage, seg, isFolio)
+      const label = prefix + computeLabel(pdfPage, seg)
       pdfToLabel.set(pdfPage, label)
       labelToPdf.set(label, pdfPage)
+      // For `column` pagination, also register each individual column number
+      // so users can jump to "col. 862" and land on the page containing it.
+      if (seg.pagination === 'column') {
+        const offset = pdfPage - seg.pdf_page
+        const left = seg.printed_page + offset * 2
+        labelToPdf.set(`${prefix}${left}`, pdfPage)
+        labelToPdf.set(`${prefix}${left + 1}`, pdfPage)
+      }
     }
   }
 

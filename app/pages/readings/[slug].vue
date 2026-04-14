@@ -117,7 +117,7 @@ const translationLanguageLabel = computed(() =>
               <span>&middot;</span>
               <span>{{
                 folioLabel(
-                  documentMeta?.pagination,
+                  paginationForPdfPage(documentMeta?.pagination_starts, reading.pdf_page_start),
                   reading.page_start,
                   reading.page_end,
                 )

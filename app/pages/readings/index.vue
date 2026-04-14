@@ -13,6 +13,11 @@ function doc(docKey: string) {
   return documents.value?.find((d) => d.key === docKey)
 }
 
+function paginationForReading(reading: { document: string; pdf_page_start: number }): string {
+  const d = doc(reading.document)
+  return paginationForPdfPage(d?.pagination_starts, reading.pdf_page_start)
+}
+
 const { authors, authorName } = useAuthors()
 
 function authorImage(slug: string) {
@@ -44,7 +49,7 @@ const sortedReadings = computed(() => sortByYear(readings.value ?? []))
         <span v-if="languageLabel(doc(reading.document)?.language)">&middot;</span>
         <span>{{ reading.section }}</span>
         <span>&middot;</span>
-        <span>{{ folioLabel(doc(reading.document)?.pagination, reading.page_start, reading.page_end) }}</span>
+        <span>{{ folioLabel(paginationForReading(reading), reading.page_start, reading.page_end) }}</span>
       </template>
     </ListItemCard>
   </div>

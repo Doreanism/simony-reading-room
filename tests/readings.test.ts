@@ -145,6 +145,18 @@ describe("readings", () => {
 
     it(`${readingKey} transcription pages have valid frontmatter`, () => {
       const files = getPageFiles(transcriptionDir);
+
+      // Group files by pdf_page to detect whether a pdf page is represented by
+      // one or two column files (the latter occurs under folio-two-column,
+      // page-two-column, and `column` pagination).
+      const byPdfPage = new Map<string, string[]>();
+      for (const file of files) {
+        const { frontmatter } = readMarkdown(join(transcriptionDir, file));
+        const pdfPage = String(frontmatter.pdf_page);
+        if (!byPdfPage.has(pdfPage)) byPdfPage.set(pdfPage, []);
+        byPdfPage.get(pdfPage)!.push(file);
+      }
+
       for (const file of files) {
         const { frontmatter } = readMarkdown(join(transcriptionDir, file));
         expect(frontmatter.reading).toBe(readingKey);
@@ -152,13 +164,12 @@ describe("readings", () => {
         expect(frontmatter.pdf_page).toBeTruthy();
         expect(frontmatter.sortable_pagination_id).toBeTruthy();
 
-        // sortable_pagination_id must be "{pdf_page}" for single-column pages
-        // or "{pdf_page}.1"/"{pdf_page}.2" for two-column folio pages
         const page = basename(file, ".md");
         const pdfPage = String(frontmatter.pdf_page);
         const sid = String(frontmatter.sortable_pagination_id);
         const isFolioColumn = /^(\d+\.)?\d+[rv][ab]$/.test(page);
         const isPageColumn = /^(\d+\.)?\d+[ab]$/.test(page);
+        const pageFilesForPdf = byPdfPage.get(pdfPage)!.sort();
 
         // Must be a positive number (not NaN, not a string, not negative)
         expect(
@@ -168,6 +179,14 @@ describe("readings", () => {
 
         if (isFolioColumn || isPageColumn) {
           const col = page.replace(/^\d+\./, "").endsWith("a") ? "1" : "2";
+          expect(
+            sid,
+            `${file}: sortable_pagination_id should be ${pdfPage}.${col}`
+          ).toBe(`${pdfPage}.${col}`);
+        } else if (pageFilesForPdf.length === 2) {
+          // `column` pagination: two consecutive integer refs share a pdf_page.
+          // First (lower) ref is .1, second is .2.
+          const col = pageFilesForPdf.indexOf(basename(file)) === 0 ? "1" : "2";
           expect(
             sid,
             `${file}: sortable_pagination_id should be ${pdfPage}.${col}`

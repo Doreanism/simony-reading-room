@@ -101,11 +101,14 @@ export function sortablePaginationId(ref: string): string {
  * A pagination segment mapping a PDF page to a printed page number.
  * Documents may have multiple segments when unnumbered pages (e.g. half-title
  * pages) are inserted mid-document, or when page numbering restarts.
+ * Each segment carries its own pagination type (folio, page, etc.) so a single
+ * document can mix pagination styles across segments.
  */
 export interface PaginationStart {
   pdfPage: number;
   printedPage: number;
   numeralType: string;
+  pagination: string;
 }
 
 /**
@@ -116,12 +119,29 @@ export function parsePaginationStarts(value: any[]): PaginationStart[] {
     pdfPage: item.pdf_page,
     printedPage: item.printed_page,
     numeralType: item.numeral_type ?? "arabic",
+    pagination: item.pagination,
   }));
+}
+
+/**
+ * Find the pagination segment covering a given PDF page (the last segment
+ * whose pdfPage is <= the given page).
+ */
+export function segmentForPdfPage(
+  pdfPage: number,
+  starts: PaginationStart[],
+): PaginationStart {
+  let segment = starts[0];
+  for (const s of starts) {
+    if (pdfPage >= s.pdfPage) segment = s;
+  }
+  return segment;
 }
 
 /**
  * Compute the printed page number for a given PDF page using pagination segments.
  * Finds the last segment whose pdfPage is <= the given pdf page.
+ * For `column` pagination, returns the first (left) column's number on that PDF page.
  */
 export function pdfPageToPrintedPage(
   pdfPage: number,
@@ -131,7 +151,11 @@ export function pdfPageToPrintedPage(
   for (const s of starts) {
     if (pdfPage >= s.pdfPage) segment = s;
   }
-  return segment.printedPage + (pdfPage - segment.pdfPage);
+  const offset = pdfPage - segment.pdfPage;
+  if (segment.pagination === "column") {
+    return segment.printedPage + offset * 2;
+  }
+  return segment.printedPage + offset;
 }
 
 /**
@@ -214,13 +238,12 @@ export function getReadingPagesForDocument(documentKey: string): Set<number> {
  */
 export function computeSegmentPrefixes(
   starts: PaginationStart[],
-  pagination: string,
 ): { pdfPage: number; prefix: string }[] {
-  const isFolio = pagination.startsWith("folio");
   const sorted = [...starts].sort((a, b) => a.pdfPage - b.pdfPage);
   const seenFirstLabels = new Set<string>();
 
   return sorted.map((seg) => {
+    const isFolio = seg.pagination.startsWith("folio");
     const firstLabel = isFolio
       ? `${seg.printedPage}r`
       : String(seg.printedPage);

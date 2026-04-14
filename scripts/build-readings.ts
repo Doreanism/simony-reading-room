@@ -6,7 +6,7 @@ import { normalizeText, normalizeSearch } from "../utils/normalize-search.js";
 import {
   readYaml, yamlValue,
   parsePaginationStarts, pdfPageToPrintedPage, PaginationStart,
-  computeSegmentPrefixes, getPrefixForPdfPage,
+  computeSegmentPrefixes, getPrefixForPdfPage, segmentForPdfPage,
 } from "./lib/folio.js";
 import { processPage, linesToText, readPageJson } from "./lib/ocr.js";
 
@@ -31,41 +31,42 @@ function buildPerColumn(
 
   const docMetaPath = join(SOURCES_DIR, `${documentKey}.md`);
   const docMeta = existsSync(docMetaPath) ? readYaml(docMetaPath) : {};
-  const pagination = docMeta.pagination ?? "folio-two-column";
-  const twoColumn = pagination === "folio-two-column" || pagination === "page-two-column";
-  const isPagePagination = pagination === "page";
-
-  let paginationStarts: PaginationStart[] | null = null;
-  if (isPagePagination && docMeta.pagination_starts) {
-    paginationStarts = parsePaginationStarts(docMeta.pagination_starts);
-  }
+  const paginationStarts: PaginationStart[] = docMeta.pagination_starts
+    ? parsePaginationStarts(docMeta.pagination_starts)
+    : [];
 
   const pagesDir = join(PUBLIC_D, documentKey);
   if (!existsSync(pagesDir)) return 0;
 
   // Build segment prefix map for folio label computation
-  const segments = docMeta.pagination_starts
-    ? computeSegmentPrefixes(parsePaginationStarts(docMeta.pagination_starts), pagination)
-    : [];
+  const segments = computeSegmentPrefixes(paginationStarts);
 
   const pdfStart = parseInt(meta.pdf_page_start);
   const pdfEnd = parseInt(meta.pdf_page_end);
   if (!pdfStart || !pdfEnd) return 0;
 
   // Collect column blocks: ref, pdfPage, content
-  const blocks: { ref: string; pdfPage: string; content: string }[] = [];
+  const blocks: { ref: string; pdfPage: string; content: string; pagination: string; colIndex: number }[] = [];
 
   for (let pdfPage = pdfStart; pdfPage <= pdfEnd; pdfPage++) {
     const jsonPath = join(pagesDir, `${pdfPage}.json`);
     if (!existsSync(jsonPath)) continue;
 
     const data = readPageJson(jsonPath);
+    const seg = paginationStarts.length
+      ? segmentForPdfPage(pdfPage, paginationStarts)
+      : null;
+    const pagination = seg?.pagination ?? "folio-two-column";
+    const twoColumn =
+      pagination === "folio-two-column" ||
+      pagination === "page-two-column" ||
+      pagination === "column";
     const columnEntries = processPage(data, twoColumn);
 
     const validFolio = data.folio && /^(\d+(r|v)|\d+)$/.test(data.folio);
     const prefix = getPrefixForPdfPage(data.pdf_page, segments);
 
-    for (const { col, lines } of columnEntries) {
+    columnEntries.forEach(({ col, lines }, idx) => {
       const pageLabel = validFolio
         ? prefix + (col ? `${data.folio}${col}` : data.folio)
         : String(data.pdf_page);
@@ -74,8 +75,14 @@ function buildPerColumn(
         // Escape :word patterns so MDC doesn't treat them as inline components
         .replace(/:([a-zA-Z])/g, "\\:$1");
 
-      blocks.push({ ref: pageLabel, pdfPage: String(pdfPage), content: text });
-    }
+      blocks.push({
+        ref: pageLabel,
+        pdfPage: String(pdfPage),
+        content: text,
+        pagination,
+        colIndex: idx,
+      });
+    });
   }
 
   // Sort by pdf_page, then by column (a before b)
@@ -163,11 +170,18 @@ function buildPerColumn(
   mkdirSync(outDir, { recursive: true });
 
   for (const block of blocks) {
-    // Output ref: for page-pagination with segments, use the printed page number;
-    // otherwise use the source file ref unchanged.
-    const outputRef = paginationStarts
-      ? String(pdfPageToPrintedPage(parseInt(block.pdfPage), paginationStarts))
-      : block.ref;
+    // Output ref: for page/column pagination with segments, use the printed
+    // page/column number; otherwise use the source file ref unchanged.
+    let outputRef = block.ref;
+    if (paginationStarts.length) {
+      if (block.pagination === "page") {
+        outputRef = String(pdfPageToPrintedPage(parseInt(block.pdfPage), paginationStarts));
+      } else if (block.pagination === "column") {
+        outputRef = String(
+          pdfPageToPrintedPage(parseInt(block.pdfPage), paginationStarts) + block.colIndex,
+        );
+      }
+    }
 
     const outPath = join(outDir, `${outputRef}.md`);
     if (existsSync(outPath)) continue;
@@ -177,10 +191,15 @@ function buildPerColumn(
     lines.push(`reading: ${yamlValue(readingKey)}`);
     lines.push(`page: ${outputRef}`);
     lines.push(`pdf_page: ${block.pdfPage}`);
-    // Format: {pdfPage}.1 or {pdfPage}.2 for two-column pages (folio or page),
+    // Format: {pdfPage}.1 or {pdfPage}.2 for two-column pages (folio, page, or column),
     // plain {pdfPage} for single-column pages.
-    const isTwoCol = /^(\d+\.)?\d+([rv][ab]|[ab])$/.test(block.ref);
-    const colSuffix = isTwoCol ? "." + (block.ref.endsWith("a") ? "1" : "2") : "";
+    const isFolioOrPageCol = /^(\d+\.)?\d+([rv][ab]|[ab])$/.test(block.ref);
+    const isColumnPagination = block.pagination === "column";
+    const colSuffix = isFolioOrPageCol
+      ? "." + (block.ref.endsWith("a") ? "1" : "2")
+      : isColumnPagination
+        ? `.${block.colIndex + 1}`
+        : "";
     lines.push(`sortable_pagination_id: ${block.pdfPage}${colSuffix}`);
     lines.push("---");
     lines.push("");

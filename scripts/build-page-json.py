@@ -14,7 +14,8 @@ Modes:
   vastai    Rent a Vast.ai GPU, run Kraken remotely, download results, destroy instance.
 
 Options:
-  --chunk-size N    Pages per Document AI request (default: 15, docai only)
+  --chunk-size N    Pages per Document AI request (default: 15, docai only; currently ignored — one page per RPC)
+  --concurrency N   Parallel Document AI requests (default: 4, docai only)
   --max-dim N       Scale images so the largest dimension is N pixels (default: 2400, kraken only)
   --no-scale        Disable scaling (kraken only)
 
@@ -23,7 +24,7 @@ Document AI environment variables (from .env or environment):
   GOOGLE_LOCATION       Processor location (default: us)
   GOOGLE_PROCESSOR_ID   Document AI OCR processor ID
 
-Reads ocr_model and base pagination from document metadata.
+Reads ocr_model and per-segment pagination from document metadata.
 Vast.ai requires vastai CLI installed in .venv.
 
 Uses multiprocessing to OCR pages in parallel (kraken only). Set WORKERS env var
@@ -75,6 +76,12 @@ def main():
         chunk_size = int(args[idx + 1])
         args = args[:idx] + args[idx + 2:]
 
+    concurrency = 4
+    if "--concurrency" in args:
+        idx = args.index("--concurrency")
+        concurrency = int(args[idx + 1])
+        args = args[:idx] + args[idx + 2:]
+
     if not args:
         print(__doc__.strip())
         sys.exit(1)
@@ -117,8 +124,6 @@ def main():
     doc_meta_path = os.path.join(DOCUMENTS_META, f"{document_key}.md")
     doc_meta = read_yaml(doc_meta_path)
     pagination_starts = doc_meta["pagination_starts"]
-    pagination = doc_meta.get("pagination", "folio-two-column")
-    is_page_pagination = pagination in ("page", "page-two-column")
     ocr_model = doc_meta.get("ocr_model", DEFAULT_OCR_MODEL)
 
     out_dir = os.path.join(PUBLIC_D, document_key)
@@ -137,7 +142,8 @@ def main():
     page_args = []
     for i, p in enumerate(range(start, end + 1)):
         seg = get_segment(p)
-        if is_page_pagination:
+        seg_pagination = seg.get("pagination", "folio-two-column")
+        if seg_pagination in ("page", "page-two-column"):
             leaf = str(pdf_page_to_printed_page(p, pagination_starts))
         else:
             _, _, leaf = pdf_page_to_folio(p, seg['pdf_page'], seg['printed_page'])
@@ -167,7 +173,7 @@ def main():
             print(f"PDF not found: {pdf_path}", file=sys.stderr)
             sys.exit(1)
         from lib.page_json_docai import run_docai
-        run_docai(page_args, pdf_path, out_dir, chunk_size)
+        run_docai(page_args, pdf_path, out_dir, chunk_size, concurrency)
 
     else:  # kraken
         from lib.page_json_kraken import run_kraken

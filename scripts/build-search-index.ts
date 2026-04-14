@@ -21,6 +21,7 @@ import * as pagefind from "pagefind";
 import {
   readYaml, readMarkdown,
   parsePaginationStarts, computeSegmentPrefixes, getPrefixForPdfPage,
+  segmentForPdfPage, pdfPageToPrintedPage,
 } from "./lib/folio.js";
 import { processPage, linesToText, readPageJson } from "./lib/ocr.js";
 import { normalizeText } from "../utils/normalize-search.js";
@@ -48,10 +49,10 @@ async function main() {
       const pagesDir = join(PUBLIC_D, docKey);
       if (!existsSync(pagesDir)) continue;
 
-      const twoColumn = meta.pagination === "folio-two-column" || meta.pagination === "page-two-column";
-      const segments = meta.pagination_starts
-        ? computeSegmentPrefixes(parsePaginationStarts(meta.pagination_starts), meta.pagination)
+      const paginationStarts = meta.pagination_starts
+        ? parsePaginationStarts(meta.pagination_starts)
         : [];
+      const segments = computeSegmentPrefixes(paginationStarts);
 
       const jsonFiles = readdirSync(pagesDir)
         .filter((f) => f.endsWith(".json"))
@@ -59,15 +60,31 @@ async function main() {
 
       for (const jsonFile of jsonFiles) {
         const data = readPageJson(join(pagesDir, jsonFile));
+        const seg = paginationStarts.length
+          ? segmentForPdfPage(data.pdf_page, paginationStarts)
+          : null;
+        const pagination = seg?.pagination ?? "folio-two-column";
+        const twoColumn =
+          pagination === "folio-two-column" ||
+          pagination === "page-two-column" ||
+          pagination === "column";
         const columnEntries = processPage(data, twoColumn);
 
         const validFolio = data.folio && /^(\d+(r|v)|\d+)$/.test(data.folio);
         const prefix = getPrefixForPdfPage(data.pdf_page, segments);
 
-        for (const { col, lines } of columnEntries) {
-          const folio = validFolio
-            ? prefix + (col ? `${data.folio}${col}` : data.folio)
-            : String(data.pdf_page);
+        const columnBaseLabel =
+          pagination === "column" && paginationStarts.length
+            ? pdfPageToPrintedPage(data.pdf_page, paginationStarts)
+            : null;
+
+        for (let i = 0; i < columnEntries.length; i++) {
+          const { col, lines } = columnEntries[i]!;
+          const folio = columnBaseLabel !== null
+            ? String(columnBaseLabel + i)
+            : validFolio
+              ? prefix + (col ? `${data.folio}${col}` : data.folio)
+              : String(data.pdf_page);
 
           // Strip markdown headings for plain text content
           const plainText = linesToText(lines)

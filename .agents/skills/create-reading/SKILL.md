@@ -25,13 +25,12 @@ Use the `public/d/<document_key>/<pdf_page_number>.json` page JSON files to extr
 ## Step 1: Load document metadata
 
 Read `content/documents/<document-key>.md` to get:
-- `pagination` — `page`, `folio`, or `folio-two-column`
-- `pagination_starts` — list of `{ pdf_page, printed_page }` segments mapping PDF pages to printed page numbers
+- `pagination_starts` — list of segments, each with `{ pdf_page, printed_page, pagination }` (and optional `numeral_type`). The `pagination` field on each segment is the pagination type for that segment (`page`, `folio`, `folio-two-column`, or `page-two-column`). Different segments may use different pagination types.
 - `language`
 
 ## Step 2: Find the passage in the PDF
 
-Use the webp page images to navigate to the passage. To estimate where to start looking, use the first `pagination_starts` entry:
+Use the webp page images to navigate to the passage. To estimate where to start looking, pick the `pagination_starts` entry covering the target page and use its `pagination`:
 - For **page** pagination: `pdf_page ≈ seg.pdf_page + (target_page - seg.printed_page)`
 - For **folio** pagination: `pdf_page ≈ seg.pdf_page + (target_folio - seg.printed_page) * 2`
 
@@ -48,6 +47,8 @@ From the printed numbers you read in the images:
 - **`page` pagination**: `page_start` and `page_end` are the printed page numbers (integers).
 - **`folio-two-column` pagination**: `page_start` and `page_end` are folio+column references like `145rb`. Determine which column the passage starts/ends in from the page image.
 - **`folio` pagination**: `page_start` and `page_end` are folio references like `145r`.
+
+Use the pagination of the segment that covers the passage's PDF page range.
 
 ## Step 4: Determine start_text and end_text
 

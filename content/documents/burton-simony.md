@@ -10,7 +10,6 @@ document: /d/burton-simony.pdf
 cover: /d/burton-simony/cover.jpg
 pages: 153
 filesize: 101.5MB
-pagination: page
 language: early-english
 typeface: roman
 ocr_model: ""
@@ -18,6 +17,7 @@ pagination_starts:
   - pdf_page: 17
     printed_page: 1
     numeral_type: arabic
+    pagination: page
 ---
 
 A treatise against simony — the buying and selling of ecclesiastical offices and spiritual goods — by Henry Burton, Puritan divine and Rector of St. Matthew Friday Street, London. Burton defines simony broadly, drawing on canon law, scholastic theology, Scripture, and common law, to argue that contemporary practices of purchasing and selling church livings, tithes, and patronage rights are condemned by the church universal. Addressed to Prince Charles (later Charles I) and printed in London by William Stansby for Edmund Weaver and John Smethwicke, 1624.

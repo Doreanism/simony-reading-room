@@ -12,7 +12,7 @@ Transcribe the reading `$ARGUMENTS` by iteratively improving per-column transcri
 ## Setup
 
 1. Read the reading meta from `content/readings/meta/$ARGUMENTS.md` to get: `document`, `pdf_page_start`, `pdf_page_end`, `page_start`, `page_end`, `start_text`, `end_text`
-2. Read the document meta from `content/documents/{document}.md` to get: `pagination`, `pagination_starts`
+2. Read the document meta from `content/documents/{document}.md` to get: `pagination_starts` (each segment includes its own `pagination` type)
 3. Determine folio references for each PDF page from the reading transcription files (the `page:` frontmatter field has the folio label for each pdf page)
 
 ## Sources

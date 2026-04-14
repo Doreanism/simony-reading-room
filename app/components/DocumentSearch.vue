@@ -2,7 +2,7 @@
 const props = defineProps<{
   documentKey: string
   pageLabel: string
-  pagination?: string
+  paginationStarts?: any[]
   canPrev: boolean
   canNext: boolean
 }>()
@@ -101,7 +101,7 @@ function navigateTo(result: PagefindSearchResult) {
           @click="navigateTo(result)"
         >
           <div class="text-xs text-(--ui-text-dimmed) mb-0.5">
-            <span class="font-medium">{{ paginationPrefix(pagination) }} {{ result.folio }}</span>
+            <span class="font-medium">{{ paginationPrefix(paginationForPdfPage(paginationStarts, Number(result.pdfPage))) }} {{ result.folio }}</span>
           </div>
           <!-- eslint-disable-next-line vue/no-v-html -->
           <p class="text-sm font-serif leading-snug text-(--ui-text) pagefind-excerpt" v-html="result.excerpt" />

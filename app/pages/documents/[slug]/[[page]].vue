@@ -116,7 +116,7 @@ const { data: docReadings } = await useAsyncData(`readings-for-${slug}`, () =>
               <span v-if="languageLabel(doc?.language)">&middot;</span>
               <span>{{ reading.section }}</span>
               <span>&middot;</span>
-              <span>{{ folioLabel(doc?.pagination, reading.page_start, reading.page_end) }}</span>
+              <span>{{ folioLabel(paginationForPdfPage(doc?.pagination_starts, reading.pdf_page_start), reading.page_start, reading.page_end) }}</span>
             </template>
           </ListItemCard>
         </div>

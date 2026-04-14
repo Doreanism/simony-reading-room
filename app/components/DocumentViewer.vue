@@ -4,14 +4,12 @@ const route = useRoute()
 const props = defineProps<{
   doc: {
     key: string
-    pagination: string
     pagination_starts?: any[]
     pages: number
   }
 }>()
 
 const { pdfToLabel, labelToPdf } = createPaginationMap(
-  props.doc.pagination,
   props.doc.pagination_starts,
   props.doc.pages,
 )
@@ -313,7 +311,7 @@ function goToPage(pdfPage: number) {
           v-model="searchQuery"
           :document-key="doc.key"
           :page-label="pageLabel"
-          :pagination="doc.pagination"
+          :pagination-starts="doc.pagination_starts"
           :can-prev="currentSpread > 0"
           :can-next="currentSpread < pagePairs.length - 1"
           @navigate="goToPage"
@@ -332,7 +330,7 @@ function goToPage(pdfPage: number) {
       :max="pagePairs.length - 1"
       :page-pairs="pagePairs"
       :document-key="doc.key"
-      :pagination="doc.pagination"
+      :pagination-starts="doc.pagination_starts"
       @update:model-value="onSliderChange"
     />
   </div>
@@ -349,7 +347,7 @@ function goToPage(pdfPage: number) {
         v-model="searchQuery"
         :document-key="doc.key"
         :page-label="pageLabel"
-        :pagination="doc.pagination"
+        :pagination-starts="doc.pagination_starts"
         :can-prev="currentSpread > 0"
         :can-next="currentSpread < pagePairs.length - 1"
         @navigate="goToPage"

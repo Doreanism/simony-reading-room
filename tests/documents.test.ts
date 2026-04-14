@@ -74,20 +74,18 @@ it(`${key} has all ${pages} json files`, () => {
           expect(seg.pdf_page, `pagination_starts entry missing pdf_page`).toBeDefined();
           expect(seg.printed_page, `pagination_starts entry missing printed_page`).toBeDefined();
           expect(seg.numeral_type, `pagination_starts entry missing numeral_type`).toBeDefined();
+          expect(seg.pagination, `pagination_starts entry missing pagination`).toBeDefined();
         }
       });
 
       it(`${key} pagination_starts have correct parity`, () => {
-        const isFolio = meta.pagination?.startsWith("folio");
         for (const seg of meta.pagination_starts) {
+          const isFolio = seg.pagination?.startsWith("folio");
           if (isFolio) {
             expect(seg.pdf_page % 2, `Recto pdf_page ${seg.pdf_page} must be odd`).toBe(1);
-          } else {
-            expect(
-              seg.pdf_page % 2,
-              `pdf_page ${seg.pdf_page} parity must match printed_page ${seg.printed_page}`
-            ).toBe(seg.printed_page % 2);
           }
+          // page / page-two-column / column: no parity invariant, since
+          // segments may restart anywhere after unpaginated prefatory material.
         }
       });
     }

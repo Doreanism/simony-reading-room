@@ -46,21 +46,22 @@ Examine the PDF to determine metadata yourself. Do not ask the user for values y
 
 ### Layout and typeface
 
-- Determine `pagination` from the page layout: `folio-two-column` (two text columns, folio numbered), `folio` (single column, folio numbered), or `page` (single column, page numbered).
+- Determine the pagination type from the page layout: `folio-two-column` (two text columns, folio numbered), `folio` (single column, folio numbered), `page` (single column, page numbered), or `page-two-column` (two columns, page numbered). This is recorded per segment in `pagination_starts`, so different segments in the same document may use different types.
 - Determine `typeface` from the text appearance: `gothic` (blackletter/textura) or `roman`.
 
 ### Assemble the meta file
 
 Write the meta file to `content/documents/<key>.md` following the format of existing meta files. Include all fields:
-- `key`, `title`, `title_en`, `authors` (list of slugs), `year`, `url` (provenance), `document`, `cover` (`/d/<key>/cover.jpg`), `pages`, `filesize`, `pagination`, `language`, `typeface`, `ocr_model` (default: `10.5281/zenodo.11113737` for Latin; find an appropriate model for other languages)
-- `pagination_starts` — a list of segments, each with `pdf_page` (1-indexed, must be odd for recto-start pages), `printed_page`, and optionally `numeral_type` (default `arabic`). Example:
+- `key`, `title`, `title_en`, `authors` (list of slugs), `year`, `url` (provenance), `document`, `cover` (`/d/<key>/cover.jpg`), `pages`, `filesize`, `language`, `typeface`, `ocr_model` (default: `10.5281/zenodo.11113737` for Latin; find an appropriate model for other languages)
+- `pagination_starts` — a list of segments, each with `pdf_page` (1-indexed; must be odd for recto-start folio segments), `printed_page`, `pagination` (one of `folio-two-column`, `folio`, `page`, `page-two-column`), and optionally `numeral_type` (default `arabic`). Example:
   ```yaml
   pagination_starts:
     - pdf_page: 53
       printed_page: 1
       numeral_type: arabic
+      pagination: page
   ```
-  For documents with multiple numbering sequences (e.g., front matter + main text, or two independently numbered sections), add additional entries.
+  For documents with multiple numbering sequences (e.g., front matter + main text, or two independently numbered sections), add additional entries. Each segment carries its own `pagination`, so a document may mix folio and page numbering.
 
 Present the proposed metadata to the user for confirmation before writing.
 
