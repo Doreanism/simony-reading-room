@@ -119,11 +119,10 @@ async function uploadFilesConcurrently(
   return uploaded;
 }
 
-async function uploadDocument(documentKey: string) {
-  console.log(`  listing remote objects...`);
-  const remoteObjects = await listRemoteObjects(`documents/${documentKey}`);
-  console.log(`  ${remoteObjects.size} file(s) already on S3`);
-
+async function uploadDocument(
+  documentKey: string,
+  remoteObjects: Map<string, number>
+) {
   let uploaded = 0;
 
   // Upload PDF
@@ -218,7 +217,10 @@ let totalUploaded = 0;
 
 if (filterKey) {
   console.log(`Uploading ${filterKey}...`);
-  totalUploaded = await uploadDocument(filterKey);
+  console.log("  listing remote objects...");
+  const remoteObjects = await listRemoteObjects(`documents/${filterKey}`);
+  console.log(`  ${remoteObjects.size} file(s) already on S3`);
+  totalUploaded = await uploadDocument(filterKey, remoteObjects);
 } else {
   // Upload authors
   totalUploaded += await uploadAuthors();
@@ -237,9 +239,13 @@ if (filterKey) {
       }
     }
 
+    console.log("Listing remote documents...");
+    const allRemote = await listRemoteObjects("documents/");
+    console.log(`  ${allRemote.size} file(s) already on S3`);
+
     for (const key of keys) {
       console.log(`Uploading ${key}...`);
-      totalUploaded += await uploadDocument(key);
+      totalUploaded += await uploadDocument(key, allRemote);
     }
   }
 }

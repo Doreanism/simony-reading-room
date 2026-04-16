@@ -8,3 +8,4 @@
 /public/d
 /public/pagefind
 __pycache__
+/.claude/scheduled_tasks.lock

@@ -21,87 +21,18 @@ Download the PDF to `public/d/<key>.pdf`.
 
 Verify the downloaded file is a valid PDF (check the file starts with `%PDF`). If the download fails or produces an HTML error page, inform the user and stop.
 
+**Google Books header page:** Google Books PDFs typically begin with a promotional "This is a reproduction of a library book..." page. After verifying the download, render the first page to check. If it is this Google Books scan notice (not actual book content), trim it:
+```
+python3 .agents/tools/pdf-tool.py trim public/d/<key>.pdf --start 1
+```
+
 ## Step 2: Get PDF metadata
 
 Use `python3 -c` with PyMuPDF (`fitz`) to extract:
 - Total page count
 - File size (from the filesystem)
 
-## Step 3: Determine metadata from the PDF
-
-Examine the PDF to determine metadata yourself. Do not ask the user for values you can figure out from the document.
-
-### Title, author, year, and description
-
-- Extract the embedded PDF metadata (title, author) using PyMuPDF as a starting point.
-- Render the **title page** (typically the first or second page of content) at 150+ DPI and read it to get the exact title, author, publisher, and place of publication.
-- Render the **colophon** or publication page (typically one of the last few pages, or verso of title page) at 300 DPI and read it to find the publication date. The colophon also confirms the printer.
-- Draft a brief description of the work based on what you've read.
-
-### Pagination base
-
-- Render pages at 150 DPI and scan for folio/page numbers in the headers or margins. Start around pages 20-35 of the PDF, as the first numbered folio typically appears after prefatory material (title page, indices, prooemium).
-- Folio numbers appear as "fo.I.", "fo.II.", "Fo.III.", or similar in the top corner of recto pages. Page numbers appear as Arabic numerals.
-- Once you find a numbered page, work backwards to determine where pagination begins: the PDF page of the first numbered folio/page (always a recto page, i.e. odd PDF page) and the number at that page. This becomes the first entry in `pagination_starts`.
-
-### Layout and typeface
-
-- Determine the pagination type from the page layout: `folio-two-column` (two text columns, folio numbered), `folio` (single column, folio numbered), `page` (single column, page numbered), or `page-two-column` (two columns, page numbered). This is recorded per segment in `pagination_starts`, so different segments in the same document may use different types.
-- Determine `typeface` from the text appearance: `gothic` (blackletter/textura) or `roman`.
-
-### Assemble the meta file
-
-Write the meta file to `content/documents/<key>.md` following the format of existing meta files. Include all fields:
-- `key`, `title`, `title_en`, `authors` (list of slugs), `year`, `url` (provenance), `document`, `cover` (`/d/<key>/cover.jpg`), `pages`, `filesize`, `language`, `typeface`, `ocr_model` (default: `10.5281/zenodo.11113737` for Latin; find an appropriate model for other languages)
-- `pagination_starts` — a list of segments, each with `pdf_page` (1-indexed; must be odd for recto-start folio segments), `printed_page`, `pagination` (one of `folio-two-column`, `folio`, `page`, `page-two-column`), and optionally `numeral_type` (default `arabic`). Example:
-  ```yaml
-  pagination_starts:
-    - pdf_page: 53
-      printed_page: 1
-      numeral_type: arabic
-      pagination: page
-  ```
-  For documents with multiple numbering sequences (e.g., front matter + main text, or two independently numbered sections), add additional entries. Each segment carries its own `pagination`, so a document may mix folio and page numbering.
-
-Present the proposed metadata to the user for confirmation before writing.
-
-## Step 4: Create author file and image
-
-Check whether an author file already exists at `content/authors/<author-slug>.md`.
-
-### If the author file does not exist
-
-Create `content/authors/<author-slug>.md` following the format of existing author files:
-
-```yaml
----
-key: <author-slug>
-name: <canonical Latin or native-language name>
-name_en: <English name>
-wikipedia: <Wikipedia URL>
-image: /a/<author-slug>.jpg
-born: <birth year>
-died: <death year>
----
-
-<One-paragraph biography in English.>
-```
-
-Use information from the document itself (title page, colophon) and general knowledge to fill in the fields. The biography should be 3–5 sentences covering the author's role, major works, and historical significance. Present the proposed author file to the user for confirmation before writing.
-
-### Author portrait image
-
-Search Wikimedia Commons for a public-domain portrait of the author. Prefer a painted or engraved portrait contemporary with the author's lifetime. Download it and save to `public/a/<author-slug>.jpg`.
-
-The image must be a **square crop** — ideally 400×400 px. Crop to the face and shoulders if needed. Use ImageMagick (`convert`) to resize/crop:
-
-```bash
-convert <source> -resize 400x400^ -gravity center -extent 400x400 public/a/<author-slug>.jpg
-```
-
-If no suitable portrait can be found, inform the user and skip the image (leave the `image` field in the author file but note that it is missing).
-
-## Step 5: Generate page images
+## Step 3: Generate page images
 
 Run: `npm run build:images -- <key>`
 
@@ -109,7 +40,7 @@ This extracts WebP images from the PDF for every page. It may take a while for l
 
 **Important:** Do NOT run this step inside a background agent or in parallel with other CPU-intensive work. The script is CPU and memory intensive (renders high-DPI pixmaps from the PDF), and running it concurrently with other agents or other instances of itself will overload the system and crash the terminal. Run it in the foreground and wait for it to finish.
 
-## Step 6: Generate page JSON files
+## Step 4: Generate page JSON files
 
 Page JSON files (one per page in `public/d/<key>/`) drive the document viewer text overlay and search index. Generate them now using the appropriate method.
 
@@ -149,6 +80,80 @@ After Document AI finishes, embed the OCR text into the PDF so the PDF itself ha
 python3 scripts/embed-ocr-in-pdf.py <key>
 mv public/d/<key>-ocr.pdf public/d/<key>.pdf
 ```
+
+## Step 5: Determine metadata from the PDF
+
+Now that page images (WebP) and page JSON are available, examine the document to determine metadata. Use `pdf-tool.py json` to read page JSON text and `image-tool.py` to inspect page images. Do not ask the user for values you can figure out from the document.
+
+### Title, author, year, and description
+
+- Extract the embedded PDF metadata (title, author) using PyMuPDF as a starting point.
+- Read the **title page** WebP (typically the first or second page of content) to get the exact title, author, publisher, and place of publication.
+- Read the **colophon** or publication page WebP (typically one of the last few pages, or verso of title page) to find the publication date. The colophon also confirms the printer.
+- Draft a brief description of the work based on what you've read.
+
+### Pagination base
+
+- Use `pdf-tool.py json` to read page JSON text for pages around 20–35 (after front matter). Page numbers or folio numbers typically appear as the first or last token on a line.
+- Folio numbers appear as "fo.I.", "fo.II.", "Fo.III.", or similar in the top corner of recto pages. Page numbers appear as Arabic numerals.
+- Once you find a numbered page, work backwards to determine where pagination begins: the PDF page of the first numbered folio/page (always a recto page, i.e. odd PDF page) and the number at that page. This becomes the first entry in `pagination_starts`.
+
+### Layout and typeface
+
+- Determine the pagination type from the page layout: `folio-two-column` (two text columns, folio numbered), `folio` (single column, folio numbered), `page` (single column, page numbered), or `page-two-column` (two columns, page numbered). This is recorded per segment in `pagination_starts`, so different segments in the same document may use different types.
+- Determine `typeface` from the text appearance: `gothic` (blackletter/textura) or `roman`.
+
+### Assemble the meta file
+
+Write the meta file to `content/documents/<key>.md` following the format of existing meta files. Include all fields:
+- `key`, `title`, `title_en`, `authors` (list of slugs), `year`, `url` (provenance), `document`, `cover` (`/d/<key>/cover.jpg`), `pages`, `filesize`, `language`, `typeface`, `ocr_model` (default: `10.5281/zenodo.11113737` for Latin; find an appropriate model for other languages)
+- `pagination_starts` — a list of segments, each with `pdf_page` (1-indexed; must be odd for recto-start folio segments), `printed_page`, `pagination` (one of `folio-two-column`, `folio`, `page`, `page-two-column`), and optionally `numeral_type` (default `arabic`). Example:
+  ```yaml
+  pagination_starts:
+    - pdf_page: 53
+      printed_page: 1
+      numeral_type: arabic
+      pagination: page
+  ```
+  For documents with multiple numbering sequences (e.g., front matter + main text, or two independently numbered sections), add additional entries. Each segment carries its own `pagination`, so a document may mix folio and page numbering.
+
+Present the proposed metadata to the user for confirmation before writing.
+
+## Step 6: Create author file and image
+
+Check whether an author file already exists at `content/authors/<author-slug>.md`.
+
+### If the author file does not exist
+
+Create `content/authors/<author-slug>.md` following the format of existing author files:
+
+```yaml
+---
+key: <author-slug>
+name: <canonical Latin or native-language name>
+name_en: <English name>
+wikipedia: <Wikipedia URL>
+image: /a/<author-slug>.jpg
+born: <birth year>
+died: <death year>
+---
+
+<One-paragraph biography in English.>
+```
+
+Use information from the document itself (title page, colophon) and general knowledge to fill in the fields. The biography should be 3–5 sentences covering the author's role, major works, and historical significance. Present the proposed author file to the user for confirmation before writing.
+
+### Author portrait image
+
+Search Wikimedia Commons for a public-domain portrait of the author. Prefer a painted or engraved portrait contemporary with the author's lifetime. Download it and save to `public/a/<author-slug>.jpg`.
+
+The image must be a **square crop** — ideally 400×400 px. Crop to the face and shoulders if needed. Use ImageMagick (`convert`) to resize/crop:
+
+```bash
+convert <source> -resize 400x400^ -gravity center -extent 400x400 public/a/<author-slug>.jpg
+```
+
+If no suitable portrait can be found, inform the user and skip the image (leave the `image` field in the author file but note that it is missing).
 
 ## Step 7: Run tests
 
