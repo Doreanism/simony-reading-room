@@ -3,6 +3,8 @@ key: council-of-constance
 title: "Magnum Oecumenicum Constantiense Concilium De Universali Ecclesiae Reformatione, Unione, Et Fide. Tomus I"
 title_en: "The Great Ecumenical Council of Constance on the Universal Reformation, Union, and Faith of the Church. Volume I"
 authors:
+  - maurice-of-prague
+editors:
   - hermann-von-der-hardt
 year: 1700
 url: https://www.google.com/books/edition/Magnum_Oecumenicum_Constantiense_Concili/6cREAAAAcAAJ

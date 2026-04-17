@@ -7,6 +7,7 @@ import { normalizeSearch } from "../utils/normalize-search.js";
 const READINGS_META = "content/readings/meta";
 const READINGS_TRANSCRIPTION = "content/readings/transcription";
 const READINGS_TRANSLATION = "content/readings/translation";
+const DOCUMENTS_META = "content/documents";
 
 /**
  * Extract the body text (after frontmatter) from a reading file.
@@ -121,6 +122,18 @@ describe("readings", () => {
     const meta = readYaml(join(READINGS_META, metaFile));
     const transcriptionDir = join(READINGS_TRANSCRIPTION, readingKey);
     const translationDir = join(READINGS_TRANSLATION, readingKey);
+
+    if (meta.author) {
+      it(`${readingKey} author is listed on the referenced document`, () => {
+        const docPath = join(DOCUMENTS_META, `${meta.document}.md`);
+        expect(existsSync(docPath), `Document file not found: ${docPath}`).toBe(true);
+        const doc = readYaml(docPath);
+        expect(
+          doc.authors,
+          `${readingKey}: author "${meta.author}" not found in document authors [${(doc.authors ?? []).join(", ")}]`
+        ).toContain(meta.author);
+      });
+    }
 
     if (!existsSync(transcriptionDir)) continue;
 
