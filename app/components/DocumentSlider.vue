@@ -5,6 +5,7 @@ const props = defineProps<{
   pagePairs: (number | null)[][]
   documentKey: string
   paginationStarts?: any[]
+  pdfToLabel: Map<number, string>
 }>()
 
 const emit = defineEmits<{
@@ -56,44 +57,18 @@ function onSliderMouseLeave() {
   if (!isDragging.value) hoverSpread.value = null
 }
 
-// Folio lookup cache: pdf page → folio string (e.g. "145v")
-const folioCache = new Map<number, string | null>()
-
-async function getPageFolio(page: number): Promise<string | null> {
-  if (folioCache.has(page)) return folioCache.get(page)!
-  try {
-    const data = await $fetch<{ folio?: string }>(`/d/${props.documentKey}/${page}.json`)
-    const folio = data.folio ?? null
-    folioCache.set(page, folio)
-    return folio
-  } catch {
-    folioCache.set(page, null)
-    return null
-  }
-}
-
-const hoverFolios = ref<(string | null)[]>([])
-
-watch(hoverSpread, async (spread) => {
-  if (spread === null) { hoverFolios.value = []; return }
-  const pair = props.pagePairs[spread]
-  if (!pair) return
-  const pages = pair.filter((p): p is number => p !== null)
-  const folios = await Promise.all(pages.map(getPageFolio))
-  if (hoverSpread.value === spread) hoverFolios.value = folios
-})
-
 const hoverLabel = computed(() => {
   if (hoverSpread.value === null) return ""
   const pair = props.pagePairs[hoverSpread.value]
   if (!pair) return ""
   const pages = pair.filter((p): p is number => p !== null)
-  const folios = hoverFolios.value.filter((f): f is string => f !== null)
-  if (folios.length === pages.length) {
-    const prefix = paginationPrefix(paginationForPdfPage(props.paginationStarts, pages[0]!))
-    return `${prefix} ${folios.join("\u2013")}`
-  }
-  return pages.join("\u2013")
+  if (!pages.length) return ""
+  const labels = pages.map((p) => props.pdfToLabel.get(p) ?? String(p))
+  const first = labels[0]!.split("\u2013")[0]!
+  const last = labels[labels.length - 1]!.split("\u2013").pop()!
+  const range = first === last ? first : `${first}\u2013${last}`
+  const prefix = paginationPrefix(paginationForPdfPage(props.paginationStarts, pages[0]!))
+  return `${prefix} ${range}`
 })
 </script>
 

@@ -312,6 +312,7 @@ function goToPage(pdfPage: number) {
           :document-key="doc.key"
           :page-label="pageLabel"
           :pagination-starts="doc.pagination_starts"
+          :pdf-to-label="pdfToLabel"
           :can-prev="currentSpread > 0"
           :can-next="currentSpread < pagePairs.length - 1"
           @navigate="goToPage"
@@ -331,6 +332,7 @@ function goToPage(pdfPage: number) {
       :page-pairs="pagePairs"
       :document-key="doc.key"
       :pagination-starts="doc.pagination_starts"
+      :pdf-to-label="pdfToLabel"
       @update:model-value="onSliderChange"
     />
   </div>

@@ -3,9 +3,16 @@ const props = defineProps<{
   documentKey: string
   pageLabel: string
   paginationStarts?: any[]
+  pdfToLabel: Map<number, string>
   canPrev: boolean
   canNext: boolean
 }>()
+
+function resultLabel(pdfPage: number): string {
+  const label = props.pdfToLabel.get(pdfPage) ?? String(pdfPage)
+  const prefix = paginationPrefix(paginationForPdfPage(props.paginationStarts, pdfPage))
+  return `${prefix} ${label}`
+}
 
 const emit = defineEmits<{
   navigate: [pdfPage: number]
@@ -101,7 +108,7 @@ function navigateTo(result: PagefindSearchResult) {
           @click="navigateTo(result)"
         >
           <div class="text-xs text-(--ui-text-dimmed) mb-0.5">
-            <span class="font-medium">{{ paginationPrefix(paginationForPdfPage(paginationStarts, Number(result.pdfPage))) }} {{ result.folio }}</span>
+            <span class="font-medium">{{ resultLabel(Number(result.pdfPage)) }}</span>
           </div>
           <!-- eslint-disable-next-line vue/no-v-html -->
           <p class="text-sm font-serif leading-snug text-(--ui-text) pagefind-excerpt" v-html="result.excerpt" />
