@@ -182,7 +182,11 @@ describe("readings", () => {
         const sid = String(frontmatter.sortable_pagination_id);
         const isFolioColumn = /^(\d+\.)?\d+[rv][ab]$/.test(page);
         const isPageColumn = /^(\d+\.)?\d+[ab]$/.test(page);
-        const pageFilesForPdf = byPdfPage.get(pdfPage)!.sort();
+        const pageFilesForPdf = byPdfPage.get(pdfPage)!.sort((a, b) => {
+          const na = parseInt(a, 10);
+          const nb = parseInt(b, 10);
+          return isNaN(na) || isNaN(nb) ? a.localeCompare(b) : na - nb;
+        });
 
         // Must be a positive number (not NaN, not a string, not negative)
         expect(
