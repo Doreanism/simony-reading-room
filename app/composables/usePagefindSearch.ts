@@ -1,4 +1,4 @@
-import { searchPagefind, type PagefindSearchResult } from '~/utils/pagefind'
+import { MIN_SEARCH_LENGTH, searchPagefind, type PagefindSearchResult } from '~/utils/pagefind'
 
 export function usePagefindSearch(options?: { query?: Ref<string>; documentKey?: string; limit?: number }) {
   const query = options?.query ?? ref('')
@@ -9,7 +9,7 @@ export function usePagefindSearch(options?: { query?: Ref<string>; documentKey?:
 
   function search(val: string) {
     clearTimeout(debounceTimer)
-    if (val.length < 2) {
+    if (val.trim().length < MIN_SEARCH_LENGTH) {
       results.value = []
       loading.value = false
       return

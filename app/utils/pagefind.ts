@@ -1,3 +1,5 @@
+export const MIN_SEARCH_LENGTH = 3
+
 let pagefindPromise: Promise<any> | null = null
 
 function loadPagefind() {
@@ -43,7 +45,13 @@ export async function searchPagefind(
     filters.documentKey = options.documentKey
   }
 
-  const response = await pf.search(query, { filters })
+  const wildcarded = query
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((t) => `${t}*`)
+    .join(' ')
+  const response = await pf.search(wildcarded, { filters })
   const limit = options?.limit ?? 50
   const results: PagefindSearchResult[] = []
 

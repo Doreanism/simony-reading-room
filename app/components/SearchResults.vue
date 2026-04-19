@@ -1,21 +1,25 @@
 <script setup lang="ts">
-defineProps<{
+import { MIN_SEARCH_LENGTH } from '~/utils/pagefind'
+
+const props = defineProps<{
   query: string
   loading: boolean
   results: PagefindSearchResult[]
   listClass?: string
 }>()
+
+const trimmedLength = computed(() => props.query.trim().length)
 </script>
 
 <template>
   <div>
-    <slot name="empty" v-if="query.length > 0 && query.length < 2">
-      <p class="text-sm text-neutral-500">Type at least 2 characters</p>
+    <slot name="empty" v-if="trimmedLength > 0 && trimmedLength < MIN_SEARCH_LENGTH">
+      <p class="text-sm text-neutral-500">Type at least {{ MIN_SEARCH_LENGTH }} characters</p>
     </slot>
     <slot name="loading" v-else-if="loading">
       <p class="text-sm text-neutral-500">Searching...</p>
     </slot>
-    <slot name="no-results" v-else-if="query.length >= 2 && results.length === 0">
+    <slot name="no-results" v-else-if="trimmedLength >= MIN_SEARCH_LENGTH && results.length === 0">
       <p class="text-sm text-neutral-500">No results found</p>
     </slot>
     <ul v-else-if="results.length > 0" :class="listClass">
