@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync, readdirSync, existsSync } from "fs";
 import { join, basename } from "path";
-import { parseFolio, readYaml, readMarkdown } from "../scripts/lib/folio.js";
+import { parseFolio, readYaml, readMarkdown, parsePaginationStarts, segmentForPdfPage } from "../scripts/lib/folio.js";
 import { normalizeSearch } from "../utils/normalize-search.js";
 
 const READINGS_META = "content/readings/meta";
@@ -132,6 +132,37 @@ describe("readings", () => {
           doc.authors,
           `${readingKey}: author "${meta.author}" not found in document authors [${(doc.authors ?? []).join(", ")}]`
         ).toContain(meta.author);
+      });
+    }
+
+    if (meta.document && meta.pdf_page_start != null) {
+      it(`${readingKey} page_start and page_end format matches document pagination type`, () => {
+        const docPath = join(DOCUMENTS_META, `${meta.document}.md`);
+        if (!existsSync(docPath)) return;
+        const doc = readYaml(docPath);
+        if (!doc.pagination_starts) return;
+        const starts = parsePaginationStarts(doc.pagination_starts);
+        const seg = segmentForPdfPage(meta.pdf_page_start, starts);
+        const pagination = seg.pagination;
+
+        const patterns: Record<string, RegExp> = {
+          page: /^(\d+\.)?\d+$/,
+          "page-two-column": /^(\d+\.)?\d+[ab]$/,
+          folio: /^(\d+\.)?\d+[rv]$/,
+          "folio-two-column": /^(\d+\.)?\d+[rv][ab]$/,
+          column: /^(\d+\.)?\d+$/,
+        };
+        const pattern = patterns[pagination];
+        if (!pattern) return;
+
+        expect(
+          String(meta.page_start),
+          `${readingKey}: page_start "${meta.page_start}" doesn't match expected format for pagination "${pagination}"`
+        ).toMatch(pattern);
+        expect(
+          String(meta.page_end),
+          `${readingKey}: page_end "${meta.page_end}" doesn't match expected format for pagination "${pagination}"`
+        ).toMatch(pattern);
       });
     }
 
