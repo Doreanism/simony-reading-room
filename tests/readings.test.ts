@@ -179,11 +179,15 @@ describe("readings", () => {
         expect(fullSequence).toContain(ref);
       }
 
-      // Files must be consecutive (no gaps)
-      for (let i = 1; i < refs.length; i++) {
-        const prev = parseFolio(refs[i - 1]);
-        const curr = parseFolio(refs[i]);
-        expect(curr.sort).toBe(prev.sort + 1);
+      // Files must be evenly spaced (no irregular gaps).
+      // Most readings use step=1 (all pages covered); bilingual readings may use step=2.
+      if (refs.length >= 2) {
+        const step = parseFolio(refs[1]).sort - parseFolio(refs[0]).sort;
+        for (let i = 1; i < refs.length; i++) {
+          const prev = parseFolio(refs[i - 1]);
+          const curr = parseFolio(refs[i]);
+          expect(curr.sort).toBe(prev.sort + step);
+        }
       }
     });
 

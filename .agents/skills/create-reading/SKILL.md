@@ -85,16 +85,8 @@ Present the proposed meta to the user for confirmation before writing.
 
 ## Step 6: Run transcription
 
-After the meta file is confirmed and written, invoke the `transcribe-reading` skill:
-
-```
-/transcribe-reading <reading-key>
-```
+After the meta file is confirmed and written, use the Skill tool to invoke `transcribe-reading` with the reading key as the argument. Do not ask the user — run it immediately.
 
 ## Step 7: Run translation
 
-After transcription is complete, invoke the `translate-reading` skill:
-
-```
-/translate-reading <reading-key>
-```
+After transcription is complete, use the Skill tool to invoke `translate-reading` with the reading key as the argument. Do not ask the user — run it immediately.

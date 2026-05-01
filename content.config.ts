@@ -52,6 +52,7 @@ export default defineContentConfig({
         document: z.string(),
         section: z.string(),
         year: z.number().optional(),
+        translator: z.string().optional(),
         description: z.string().optional(),
         pdf_page_start: z.number(),
         pdf_page_end: z.number(),

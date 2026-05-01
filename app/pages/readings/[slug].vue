@@ -156,6 +156,10 @@ const translationLanguageLabel = computed(() =>
             <span v-else class="mt-3 block text-sm text-neutral-500">{{
               authorName
             }}</span>
+            <span
+              v-if="reading.translator"
+              class="mt-1 block text-sm text-neutral-500"
+            >Trans. {{ reading.translator }}</span>
           </div>
         </div>
 
@@ -215,7 +219,7 @@ const translationLanguageLabel = computed(() =>
               :key="section.gridRow"
               :id="section.headingId ?? undefined"
               class="prose prose-stone prose-lg max-w-prose xl:w-[65ch] font-serif leading-relaxed text-justify mx-auto xl:mx-0 xl:ml-auto"
-              :lang="documentMeta?.language === 'latin' ? 'la' : undefined"
+              :lang="documentMeta?.language === 'latin' ? 'la' : documentMeta?.language === 'greek' ? 'grc' : undefined"
               :style="{ gridRow: section.gridRow, gridColumn: 1 }"
             >
               <ContentRenderer :value="wrapBody(section.nodes)" />
