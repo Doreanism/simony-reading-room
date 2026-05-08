@@ -38,6 +38,15 @@ async function main() {
   if (!index) throw new Error("Failed to create Pagefind index");
 
   let recordCount = 0;
+  const seenUrls = new Set<string>();
+  const addRecord = async (record: Parameters<typeof index.addCustomRecord>[0]) => {
+    if (seenUrls.has(record.url)) {
+      throw new Error(`Duplicate Pagefind URL: ${record.url} — Pagefind dedupes by URL, so the second record would silently overwrite the first.`);
+    }
+    seenUrls.add(record.url);
+    await index.addCustomRecord(record);
+    recordCount++;
+  };
 
   // --- Index document transcriptions from page JSON ---
   if (existsSync(DOCUMENTS_META) && existsSync(PUBLIC_D)) {
@@ -94,8 +103,8 @@ async function main() {
 
           const normalized = normalizeText(plainText);
 
-          await index.addCustomRecord({
-            url: `/documents/${docKey}/${data.pdf_page}`,
+          await addRecord({
+            url: `/documents/${docKey}/${data.pdf_page}${col ? `#${col}` : ""}`,
             content: normalized,
             language: "la",
             meta: {
@@ -111,7 +120,6 @@ async function main() {
               pdfPage: String(data.pdf_page),
             },
           });
-          recordCount++;
         }
       }
     }
@@ -149,7 +157,7 @@ async function main() {
         const plainText = body.replace(/^#{1,6}\s+/gm, "").trim();
         if (!plainText) continue;
 
-        await index.addCustomRecord({
+        await addRecord({
           url: `/readings/${readingKey}#${folio}`,
           content: plainText,
           language: "en",
@@ -167,7 +175,6 @@ async function main() {
             pdfPage,
           },
         });
-        recordCount++;
       }
     }
   }
