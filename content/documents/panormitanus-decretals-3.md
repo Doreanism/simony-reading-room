@@ -9,7 +9,7 @@ url: https://archive.org/details/gri_panormitanvs00nicc
 document: /d/panormitanus-decretals-3.pdf
 cover: /d/panormitanus-decretals-3/cover.jpg
 pages: 877
-filesize: 118MB
+filesize: 118.5MB
 language: latin
 typeface: gothic
 ocr_model: "10.5281/zenodo.11113737"

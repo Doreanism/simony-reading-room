@@ -9,7 +9,7 @@ url: https://archive.org/details/bub_gb_tFiEcjWFEcsC/
 document: /d/turretin-institutes-1693-3.pdf
 cover: /d/turretin-institutes-1693-3/cover.jpg
 pages: 779
-filesize: 58MB
+filesize: 60.0MB
 language: latin
 typeface: roman
 ocr_model: 10.5281/zenodo.11113737

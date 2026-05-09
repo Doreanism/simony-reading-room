@@ -9,7 +9,7 @@ url: https://archive.org/details/monumenta03geseuoft/
 document: /d/mgh-ldl-3.pdf
 cover: /d/mgh-ldl-3/cover.jpg
 pages: 800
-filesize: 53MB
+filesize: 53.6MB
 language: latin
 typeface: roman
 ocr_model: "10.5281/zenodo.11113737"

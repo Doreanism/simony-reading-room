@@ -9,7 +9,7 @@ url: https://archive.org/details/corpusscriptoru18wiengoog
 document: /d/csel-41.pdf
 cover: /d/csel-41/cover.jpg
 pages: 767
-filesize: 23MB
+filesize: 30.3MB
 language: latin
 typeface: roman
 ocr_model: "10.5281/zenodo.11113737"

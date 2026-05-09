@@ -9,7 +9,7 @@ url: https://books.google.com/books?id=yKFJAAAAcAAJ
 document: /d/thomas-of-strasbourg-sentences.pdf
 cover: /d/thomas-of-strasbourg-sentences/cover.jpg
 pages: 926
-filesize: 140.1MB
+filesize: 133.6MB
 language: latin
 typeface: roman
 ocr_model: "10.5281/zenodo.11113737"

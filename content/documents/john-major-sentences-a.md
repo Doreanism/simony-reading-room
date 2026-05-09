@@ -9,7 +9,7 @@ url: https://archive.org/details/bub_gb_VELCLv2RWmwC/page/n7/mode/2up
 document: /d/john-major-sentences-a.pdf
 cover: /d/john-major-sentences-a/cover.jpg
 pages: 500
-filesize: 51MB
+filesize: 46.6MB
 language: latin
 typeface: gothic
 ocr_model: "10.5281/zenodo.11113737"

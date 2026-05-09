@@ -9,7 +9,7 @@ url: https://gallica.bnf.fr/ark:/12148/btv1b52519901m/f2.item.r=14524
 document: /d/courson-summa.pdf
 cover: /d/courson-summa/cover.jpg
 pages: 384
-filesize: 194.0MB
+filesize: 197.9MB
 language: latin
 typeface: gothic
 ocr_model: 10.5281/zenodo.11113737

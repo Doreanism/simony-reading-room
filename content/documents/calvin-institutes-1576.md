@@ -9,7 +9,7 @@ url: https://archive.org/details/institutiochrist1576calv/
 document: /d/calvin-institutes-1576.pdf
 cover: /d/calvin-institutes-1576/cover.jpg
 pages: 928
-filesize: 85MB
+filesize: 85.2MB
 language: latin
 typeface: roman
 ocr_model: 10.5281/zenodo.11113737

@@ -9,7 +9,7 @@ url: https://archive.org/details/JoannisGersoniiOperaOmnia17062/
 document: /d/gerson-2.pdf
 cover: /d/gerson-2/cover.jpg
 pages: 592
-filesize: 81MB
+filesize: 87.1MB
 language: latin
 typeface: roman
 ocr_model: 10.5281/zenodo.11113737

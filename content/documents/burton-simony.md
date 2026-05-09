@@ -9,7 +9,7 @@ url: https://archive.org/details/bim_early-english-books-1475-1640_a-censure-of-
 document: /d/burton-simony.pdf
 cover: /d/burton-simony/cover.jpg
 pages: 153
-filesize: 101.5MB
+filesize: 106.1MB
 language: early-english
 typeface: roman
 ocr_model: ""

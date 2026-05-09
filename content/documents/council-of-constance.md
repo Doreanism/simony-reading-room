@@ -11,7 +11,7 @@ url: https://www.google.com/books/edition/Magnum_Oecumenicum_Constantiense_Conci
 document: /d/council-of-constance.pdf
 cover: /d/council-of-constance/cover.jpg
 pages: 1116
-filesize: 104.3MB
+filesize: 104.1MB
 language: latin
 typeface: roman
 ocr_model: "10.5281/zenodo.11113737"

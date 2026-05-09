@@ -9,7 +9,7 @@ url: https://digi.vatlib.it/mss/detail/Arch.Cap.S.Pietro.C.114
 document: /d/huguccio-summa-acsp-c114.pdf
 cover: /d/huguccio-summa-acsp-c114/cover.jpg
 pages: 684
-filesize: 503.0MB
+filesize: 479.7MB
 language: latin
 typeface: gothic
 ocr_model: 10.5281/zenodo.11113737

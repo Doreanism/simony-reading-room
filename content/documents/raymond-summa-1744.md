@@ -9,7 +9,7 @@ url: https://archive.org/details/bub_gb_Ge5dJpx5O9YC
 document: /d/raymond-summa-1744.pdf
 cover: /d/raymond-summa-1744/cover.jpg
 pages: 734
-filesize: 41MB
+filesize: 43.6MB
 language: latin
 typeface: roman
 ocr_model: "10.5281/zenodo.11113737"

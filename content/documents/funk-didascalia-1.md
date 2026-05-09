@@ -9,7 +9,7 @@ url: https://archive.org/details/didascaliaetcon00funkgoog/
 document: /d/funk-didascalia-1.pdf
 cover: /d/funk-didascalia-1/cover.jpg
 pages: 773
-filesize: 39MB
+filesize: 45.4MB
 language: latin
 typeface: roman
 ocr_model: "10.5281/zenodo.11113737"

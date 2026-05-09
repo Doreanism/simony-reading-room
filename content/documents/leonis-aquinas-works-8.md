@@ -9,7 +9,7 @@ url: https://archive.org/details/operaomniaiussui08thom
 document: /d/leonis-aquinas-works-8.pdf
 cover: /d/leonis-aquinas-works-8/cover.jpg
 pages: 468
-filesize: 42MB
+filesize: 41.2MB
 language: latin
 typeface: roman
 ocr_model: "10.5281/zenodo.11113737"

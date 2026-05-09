@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { readdirSync, existsSync, readFileSync } from "fs";
+import { readdirSync, existsSync, readFileSync, statSync } from "fs";
 import { join, basename } from "path";
+import { execFileSync } from "child_process";
 import imageSize from "image-size";
 import { readYaml } from "../scripts/lib/folio.js";
 
@@ -8,6 +9,24 @@ const AUTHORS_DIR = "content/authors";
 const DOCUMENTS_META = "content/documents";
 const READINGS_META = "content/readings/meta";
 const PUBLIC_D = "public/d";
+
+// Documents whose source PDF does not yet have an embedded OCR text layer.
+const KNOWN_NO_EMBEDDED_OCR = new Set<string>([
+  "huguccio-summa-acsp-c114", // WIP
+]);
+
+const OCR_MATCH_TOLERANCE = 0.05;
+
+const alnumOnly = (s: string) => s.replace(/[^\p{L}\p{N}]/gu, "");
+
+function multisetSymmetricDiff(a: string, b: string): number {
+  const counts = new Map<string, number>();
+  for (const c of a) counts.set(c, (counts.get(c) ?? 0) + 1);
+  for (const c of b) counts.set(c, (counts.get(c) ?? 0) - 1);
+  let total = 0;
+  for (const n of counts.values()) total += Math.abs(n);
+  return total;
+}
 
 describe("authors", () => {
   const authorFiles = readdirSync(AUTHORS_DIR).filter((f) => f.endsWith(".md"));
@@ -66,6 +85,59 @@ it(`${key} has all ${pages} json files`, () => {
         }
       }
       expect(missing, `Missing json files: ${missing.slice(0, 10).join(", ")}${missing.length > 10 ? "..." : ""}`).toEqual([]);
+    });
+
+    it.skipIf(KNOWN_NO_EMBEDDED_OCR.has(key))(`${key} embedded OCR matches page JSON`, () => {
+      const docPath = join("public", meta.document.replace(/^\//, ""));
+      if (!existsSync(docPath)) return; // skip when assets not downloaded
+      // Sample three pages spread across the PDF and compare the embedded
+      // text layer (extracted via pdftotext) against the page JSON character
+      // multiset. We strip whitespace and punctuation since pdftotext can
+      // reorder lines or drop/insert hyphens. Tolerance allows for tiny
+      // glyph-mapping noise while still catching real problems like a
+      // missing layer or a duplicated layer.
+      const samples = Array.from(
+        new Set([0.25, 0.5, 0.75].map((f) => Math.max(1, Math.min(pages, Math.floor(pages * f)))))
+      );
+      const checked: Record<number, string> = {};
+      const failures: Record<number, string> = {};
+      for (const p of samples) {
+        const jsonPath = join(PUBLIC_D, key, `${p}.json`);
+        if (!existsSync(jsonPath)) continue;
+        const data = JSON.parse(readFileSync(jsonPath, "utf8"));
+        const jsonText = (data.lines ?? []).map((l: { text: string }) => l.text).join("");
+        const pdfText = execFileSync(
+          "pdftotext",
+          ["-f", String(p), "-l", String(p), docPath, "-"],
+          { encoding: "utf8" }
+        );
+        const jsonChars = alnumOnly(jsonText);
+        const pdfChars = alnumOnly(pdfText);
+        const diff = multisetSymmetricDiff(jsonChars, pdfChars);
+        const denom = Math.max(jsonChars.length, 1);
+        const ratio = diff / denom;
+        const summary = `json=${jsonChars.length} pdf=${pdfChars.length} diff=${diff} (${(ratio * 100).toFixed(2)}%)`;
+        checked[p] = summary;
+        if (ratio > OCR_MATCH_TOLERANCE) failures[p] = summary;
+      }
+      expect(Object.keys(checked).length, `No JSON files found among sampled pages ${samples.join(", ")}`).toBeGreaterThan(0);
+      expect(failures, `Embedded OCR diverges from JSON beyond ${OCR_MATCH_TOLERANCE * 100}%: ${JSON.stringify(failures)}`).toEqual({});
+    });
+
+    it(`${key} filesize matches PDF`, () => {
+      const docPath = join("public", meta.document.replace(/^\//, ""));
+      if (!existsSync(docPath)) return; // skip when assets not downloaded
+      const declared: string = meta.filesize;
+      const m = declared.match(/^(\d+(?:\.\d+)?)(MB|KB)$/);
+      expect(m, `Invalid filesize format: ${declared}`).not.toBeNull();
+      const [, numStr, unit] = m!;
+      const declaredNum = parseFloat(numStr);
+      const decimals = (numStr.split(".")[1] ?? "").length;
+      const divisor = unit === "MB" ? 1024 * 1024 : 1024;
+      const actualNum = statSync(docPath).size / divisor;
+      const factor = Math.pow(10, decimals);
+      const actualRounded = Math.round(actualNum * factor) / factor;
+      expect(actualRounded, `Declared ${declared} but actual is ${actualNum.toFixed(Math.max(decimals, 1))}${unit}`).toBe(declaredNum);
     });
 
     if (meta.pagination_starts) {

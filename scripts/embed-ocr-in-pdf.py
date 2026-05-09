@@ -38,6 +38,24 @@ def embed_ocr(source_key: str):
         rect = page.rect
         pw, ph = rect.width, rect.height
 
+        # Remove any pre-existing text layer so we don't end up with two
+        # stacked OCR layers (the original embedded text plus ours).
+        existing = page.get_text("dict")
+        existing_lines = 0
+        for block in existing["blocks"]:
+            if block["type"] != 0:
+                continue
+            for line in block["lines"]:
+                page.add_redact_annot(line["bbox"], fill=None)
+                existing_lines += 1
+        if existing_lines:
+            # images=0 / graphics=0 → leave page images and vector art alone;
+            # only the text operators in the content stream are removed.
+            page.apply_redactions(
+                images=fitz.PDF_REDACT_IMAGE_NONE,
+                graphics=fitz.PDF_REDACT_LINE_ART_NONE,
+            )
+
         writer = fitz.TextWriter(page.rect)
 
         for line in lines:

@@ -10,7 +10,7 @@ url: https://archive.org/details/bim_early-english-books-1475-1640_a-commentarie
 document: /d/perkins-galatians.pdf
 cover: /d/perkins-galatians/cover.jpg
 pages: 627
-filesize: 12MB
+filesize: 269.2MB
 language: early-english
 typeface: roman
 ocr_model: ""

@@ -9,7 +9,7 @@ url: https://gallica.bnf.fr/ark:/12148/btv1b52512463p/f1.item
 document: /d/geoffrey-poitiers-summa-lat3143.pdf
 cover: /d/geoffrey-poitiers-summa-lat3143/cover.jpg
 pages: 239
-filesize: 178.1MB
+filesize: 183.1MB
 language: latin
 typeface: gothic
 ocr_model: 10.5281/zenodo.11113737

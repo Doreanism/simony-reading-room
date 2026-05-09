@@ -9,7 +9,7 @@ url: https://archive.org/details/letterswithengli01basiuoft
 document: /d/loeb-basil-letters-1.pdf
 cover: /d/loeb-basil-letters-1/cover.jpg
 pages: 434
-filesize: 19MB
+filesize: 18.5MB
 language: greek
 typeface: roman
 ocr_model: "10.5281/zenodo.11113737"

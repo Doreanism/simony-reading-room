@@ -9,7 +9,7 @@ url: https://archive.org/details/imgmar4754addMiscellaneaOpal
 document: /d/middleton-sentences-4.pdf
 cover: /d/middleton-sentences-4/cover.jpg
 pages: 723
-filesize: 98MB
+filesize: 94.2MB
 language: latin
 typeface: roman
 ocr_model: "10.5281/zenodo.11113737"
