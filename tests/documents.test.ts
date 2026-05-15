@@ -151,14 +151,21 @@ it(`${key} has all ${pages} json files`, () => {
       });
 
       it(`${key} pagination_starts have correct parity`, () => {
-        for (const seg of meta.pagination_starts) {
+        const sorted = [...meta.pagination_starts].sort(
+          (a: any, b: any) => a.pdf_page - b.pdf_page,
+        );
+        sorted.forEach((seg: any, i: number) => {
           const isFolio = seg.pagination?.startsWith("folio");
-          if (isFolio) {
+          // Only the first folio segment must start on an odd (recto) PDF page.
+          // Later folio segments may start on an even page when an odd-length
+          // run of unfoliated leaves (e.g. a tabula between books) shifts parity;
+          // recto/verso is computed relative to each segment's own pdf_page.
+          if (isFolio && i === 0) {
             expect(seg.pdf_page % 2, `Recto pdf_page ${seg.pdf_page} must be odd`).toBe(1);
           }
           // page / page-two-column / column: no parity invariant, since
           // segments may restart anywhere after unpaginated prefatory material.
-        }
+        });
       });
     }
   }
