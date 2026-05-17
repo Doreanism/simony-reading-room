@@ -113,6 +113,10 @@ const translationLanguageLabel = computed(() =>
               {{ reading.title }}
             </p>
             <div class="mt-2 flex flex-wrap gap-4 text-sm text-neutral-600">
+              <template v-if="reading.year">
+                <span>{{ reading.year }}</span>
+                <span>&middot;</span>
+              </template>
               <span>{{ reading.section }}</span>
               <span>&middot;</span>
               <span>{{

@@ -10,11 +10,6 @@ const DOCUMENTS_META = "content/documents";
 const READINGS_META = "content/readings/meta";
 const PUBLIC_D = "public/d";
 
-// Documents whose source PDF does not yet have an embedded OCR text layer.
-const KNOWN_NO_EMBEDDED_OCR = new Set<string>([
-  "huguccio-summa-acsp-c114", // WIP
-]);
-
 const OCR_MATCH_TOLERANCE = 0.05;
 
 const alnumOnly = (s: string) => s.replace(/[^\p{L}\p{N}]/gu, "");
@@ -87,7 +82,7 @@ it(`${key} has all ${pages} json files`, () => {
       expect(missing, `Missing json files: ${missing.slice(0, 10).join(", ")}${missing.length > 10 ? "..." : ""}`).toEqual([]);
     });
 
-    it.skipIf(KNOWN_NO_EMBEDDED_OCR.has(key))(`${key} embedded OCR matches page JSON`, () => {
+    it(`${key} embedded OCR matches page JSON`, () => {
       const docPath = join("public", meta.document.replace(/^\//, ""));
       if (!existsSync(docPath)) return; // skip when assets not downloaded
       // Sample three pages spread across the PDF and compare the embedded
