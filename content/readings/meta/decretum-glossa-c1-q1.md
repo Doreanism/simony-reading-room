@@ -2,12 +2,12 @@
 key: decretum-glossa-c1-q1
 title: "Glossa ordinaria ad C. 1 q. 1"
 title_en: "Glossa ordinaria on Causa 1, Question 1 (Simoniacal Ordination)"
-author: gratian
+author: johannes-teutonicus
 document: decretum-glossa-1591
 section: "Causa I, Quaestio I"
 year: 1216
-pdf_page_start: 590
-pdf_page_end: 652
+pdf_page_start: 591
+pdf_page_end: 653
 page_start: 467
 page_end: 529
 start_text: "Iudas omnium redemptorem vendidit"
