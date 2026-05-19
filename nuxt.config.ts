@@ -20,9 +20,35 @@ export default defineNuxtConfig({
       ],
     },
     workbox: {
-      navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html,png,json}'],
-      globIgnores: ['a/**', 'd/**', 'pagefind/**', '**/_payload.json'],
+      globPatterns: [
+        'manifest.webmanifest',
+        'favicon.ico',
+        'favicon-*.png',
+        'apple-touch-icon.png',
+        'pwa-*.png',
+        '_nuxt/entry.*.css',
+      ],
+      navigateFallback: '/offline',
+      navigateFallbackDenylist: [
+        /^\/a\//, /^\/d\//, /^\/pagefind\//, /^\/api\//,
+      ],
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) => url.pathname.startsWith('/_nuxt/'),
+          handler: 'StaleWhileRevalidate',
+          options: { cacheName: 'nuxt-assets' },
+        },
+        {
+          urlPattern: ({ url }) => url.pathname.startsWith('/__nuxt_content/'),
+          handler: 'StaleWhileRevalidate',
+          options: { cacheName: 'nuxt-content' },
+        },
+        {
+          urlPattern: ({ request }) => request.mode === 'navigate',
+          handler: 'NetworkFirst',
+          options: { cacheName: 'pages', networkTimeoutSeconds: 3 },
+        },
+      ],
     },
   },
 

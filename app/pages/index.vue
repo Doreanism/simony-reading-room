@@ -1,14 +1,14 @@
 <script setup lang="ts">
 useHead({ title: 'Simony Reading Room', titleTemplate: '%s' })
 
-const { data: readings } = await useAsyncData('readings', () =>
-  queryCollection('readingsMeta').all()
+const { data: readingsCount } = await useAsyncData('readingsCount', () =>
+  queryCollection('readingsMeta').count()
 )
-const { data: documents } = await useAsyncData('documents', () =>
-  queryCollection('documentsMeta').all()
+const { data: documentsCount } = await useAsyncData('documentsCount', () =>
+  queryCollection('documentsMeta').count()
 )
-const { data: authors } = await useAsyncData('authors', () =>
-  queryCollection('authors').all()
+const { data: authorsCount } = await useAsyncData('authorsCount', () =>
+  queryCollection('authors').count()
 )
 </script>
 
@@ -39,7 +39,7 @@ const { data: authors } = await useAsyncData('authors', () =>
         class="group flex flex-col items-center gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 p-8 transition-all hover:ring-2 hover:ring-primary hover:shadow-lg"
       >
         <UIcon name="i-lucide-book-open" class="text-4xl text-primary" />
-        <span class="-mb-2 text-xs text-neutral-400 dark:text-neutral-500">{{ readings?.length ?? 0 }}</span>
+        <span class="-mb-2 text-xs text-neutral-400 dark:text-neutral-500">{{ readingsCount ?? 0 }}</span>
         <span
           class="text-xl font-serif font-semibold group-hover:text-primary transition-colors"
           >Readings</span
@@ -54,7 +54,7 @@ const { data: authors } = await useAsyncData('authors', () =>
         class="group flex flex-col items-center gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 p-8 transition-all hover:ring-2 hover:ring-primary hover:shadow-lg"
       >
         <UIcon name="i-lucide-file-text" class="text-4xl text-primary" />
-        <span class="-mb-2 text-xs text-neutral-400 dark:text-neutral-500">{{ documents?.length ?? 0 }}</span>
+        <span class="-mb-2 text-xs text-neutral-400 dark:text-neutral-500">{{ documentsCount ?? 0 }}</span>
         <span
           class="text-xl font-serif font-semibold group-hover:text-primary transition-colors"
           >Documents</span
@@ -69,7 +69,7 @@ const { data: authors } = await useAsyncData('authors', () =>
         class="group flex flex-col items-center gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 p-8 transition-all hover:ring-2 hover:ring-primary hover:shadow-lg"
       >
         <UIcon name="i-lucide-users" class="text-4xl text-primary" />
-        <span class="-mb-2 text-xs text-neutral-400 dark:text-neutral-500">{{ authors?.length ?? 0 }}</span>
+        <span class="-mb-2 text-xs text-neutral-400 dark:text-neutral-500">{{ authorsCount ?? 0 }}</span>
         <span
           class="text-xl font-serif font-semibold group-hover:text-primary transition-colors"
           >Authors</span
@@ -82,9 +82,13 @@ const { data: authors } = await useAsyncData('authors', () =>
 
     <figure class="mt-16">
       <img
-        src="/simon-magus.jpg"
+        src="/simon-magus.webp"
         alt="The Fall of Simon Magus, by Sébastien Bourdon (1657)"
-        class="mx-auto rounded-lg shadow-lg max-w-full"
+        width="600"
+        height="851"
+        loading="lazy"
+        decoding="async"
+        class="mx-auto rounded-lg shadow-lg max-w-full h-auto"
       />
       <figcaption class="mt-3 text-sm text-neutral-500 italic">
         Sébastien Bourdon, <em>La Chute de Simon le Magicien</em> (1657)
