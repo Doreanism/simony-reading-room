@@ -318,6 +318,22 @@ describe("readings", () => {
       }
     });
 
+    it(`${readingKey} transcription headings aren't paragraph-length`, () => {
+      const MAX_HEADING_LENGTH = 200;
+      const files = getPageFiles(transcriptionDir);
+      for (const file of files) {
+        const body = extractBody(readFileSync(join(transcriptionDir, file), "utf-8"));
+        const headings = [...body.matchAll(/^#{1,6}[ \t]+(.+)$/gm)];
+        for (const match of headings) {
+          const text = match[1].trim();
+          expect(
+            text.length,
+            `Heading in ${file} is ${text.length} chars (max ${MAX_HEADING_LENGTH}); likely a paragraph: "${text.slice(0, 80)}..."`
+          ).toBeLessThanOrEqual(MAX_HEADING_LENGTH);
+        }
+      }
+    });
+
     it(`${readingKey} transcription headings have blank lines around them`, () => {
       const files = getPageFiles(transcriptionDir);
       for (const file of files) {
