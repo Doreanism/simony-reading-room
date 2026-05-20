@@ -174,10 +174,11 @@ function buildPerColumn(
     // page/column number; otherwise use the source file ref unchanged.
     let outputRef = block.ref;
     if (paginationStarts.length) {
+      const segPrefix = getPrefixForPdfPage(parseInt(block.pdfPage), segments);
       if (block.pagination === "page") {
-        outputRef = String(pdfPageToPrintedPage(parseInt(block.pdfPage), paginationStarts));
+        outputRef = segPrefix + String(pdfPageToPrintedPage(parseInt(block.pdfPage), paginationStarts));
       } else if (block.pagination === "column") {
-        outputRef = String(
+        outputRef = segPrefix + String(
           pdfPageToPrintedPage(parseInt(block.pdfPage), paginationStarts) + block.colIndex,
         );
       }
