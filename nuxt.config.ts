@@ -28,6 +28,10 @@ export default defineNuxtConfig({
         'pwa-*.png',
         '_nuxt/entry.*.css',
       ],
+      // vite-pwa-nuxt auto-appends **/_payload.json when prerender is enabled
+      // and **/_nuxt/builds/**/*.json for the app manifest. Both are large/per-route;
+      // runtime caching handles them, no need to precache.
+      globIgnores: ['**/_payload.json', '**/_nuxt/builds/**'],
       navigateFallback: '/offline',
       navigateFallbackDenylist: [
         /^\/a\//, /^\/d\//, /^\/pagefind\//, /^\/api\//,
@@ -75,6 +79,23 @@ export default defineNuxtConfig({
     },
     '/pagefind/**': {
       proxy: `https://simony.s3.us-west-2.amazonaws.com/pagefind/**`,
+    },
+    '/': { prerender: true },
+    '/readings': { prerender: true },
+    '/readings/**': { prerender: true },
+    '/authors': { prerender: true },
+    '/authors/**': { prerender: true },
+    '/documents': { prerender: true },
+    '/documents/*': { prerender: true },
+    // Document viewer with explicit page param: too many permutations to prerender;
+    // serve from edge cache and revalidate in background.
+    '/documents/*/**': { swr: 3600 },
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      failOnError: false,
     },
   },
 
