@@ -96,6 +96,11 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: false,
+      // Don't follow FolioDivider links into the document viewer's per-page URLs
+      // (/documents/<slug>/<page>) — there are thousands and prerendering them
+      // all OOMs the Netlify Nitro bundler. They fall through to swr instead.
+      // Excludes `_payload.json` siblings so prerendered landing pages keep theirs.
+      ignore: [(route: string) => /^\/documents\/[^\/]+\/[^\/_].*/.test(route)],
     },
   },
 
