@@ -8,7 +8,7 @@ year: 1744
 url: https://archive.org/details/bub_gb_Ge5dJpx5O9YC
 document: /d/raymond-summa-1744.pdf
 cover: /d/raymond-summa-1744/cover.jpg
-pages: 734
+pages: 735
 filesize: 43.6MB
 language: latin
 typeface: roman
@@ -18,7 +18,7 @@ pagination_starts:
     printed_page: 1
     numeral_type: roman
     pagination: page
-  - pdf_page: 94
+  - pdf_page: 95
     printed_page: 1
     numeral_type: arabic
     pagination: page

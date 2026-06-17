@@ -123,6 +123,10 @@ async function uploadDocument(
   documentKey: string,
   remoteObjects: Map<string, number>
 ) {
+  if (!documentKey) {
+    throw new Error("uploadDocument called with empty documentKey");
+  }
+
   let uploaded = 0;
 
   // Upload PDF
@@ -233,9 +237,10 @@ if (filterKey) {
     const keys = new Set<string>();
     for (const entry of readdirSync(PUBLIC_D, { withFileTypes: true })) {
       if (entry.isDirectory()) {
-        keys.add(entry.name);
+        if (entry.name) keys.add(entry.name);
       } else if (entry.name.endsWith(".pdf")) {
-        keys.add(entry.name.replace(".pdf", ""));
+        const key = entry.name.slice(0, -".pdf".length);
+        if (key) keys.add(key);
       }
     }
 

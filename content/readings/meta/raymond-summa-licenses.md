@@ -6,8 +6,8 @@ author: raymond-of-penyafort
 document: raymond-summa-1744
 section: "Liber I, Titulus III"
 year: 1234
-pdf_page_start: 114
-pdf_page_end: 117
+pdf_page_start: 115
+pdf_page_end: 118
 page_start: 21
 page_end: 24
 start_text: "Diximus qualiter spiritualia prohibeantur acquiri"

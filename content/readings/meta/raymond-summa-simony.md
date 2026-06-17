@@ -6,8 +6,8 @@ author: raymond-of-penyafort
 document: raymond-summa-1744
 section: "Liber I, Titulus I"
 year: 1234
-pdf_page_start: 94
-pdf_page_end: 113
+pdf_page_start: 95
+pdf_page_end: 114
 page_start: 1
 page_end: 20
 start_text: "Quoniam inter crimina Ecclesiastica Simoniaca hæresis obtinet primum locum"
